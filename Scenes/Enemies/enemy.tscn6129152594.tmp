@@ -1,0 +1,34 @@
+[gd_scene load_steps=11 format=3 uid="uid://dsaua6iwjkfft"]
+
+[ext_resource type="Script" uid="uid://ycu2q01ywlf4" path="res://Scenes/Enemies/enemy.gd" id="1_x1rqp"]
+[ext_resource type="SpriteFrames" uid="uid://bln4bgg458q0p" path="res://Scenes/Enemies/skins/chat.tres" id="2_jcvw6"]
+[ext_resource type="SpriteFrames" uid="uid://bptwp61wlbtu5" path="res://Scenes/Enemies/skins/amazon.tres" id="2_tq087"]
+[ext_resource type="SpriteFrames" uid="uid://bhg8ms7b44l8s" path="res://Scenes/Enemies/skins/copilot.tres" id="4_4bcle"]
+[ext_resource type="SpriteFrames" uid="uid://73cq5fhpoxxi" path="res://Scenes/Enemies/skins/gemini.tres" id="5_beuat"]
+[ext_resource type="SpriteFrames" uid="uid://bmk7stxx2h5j6" path="res://Scenes/Enemies/skins/simsini.tres" id="6_7ubbs"]
+[ext_resource type="SpriteFrames" uid="uid://q5jtjhebqlye" path="res://Scenes/Enemies/skins/siri.tres" id="7_ycxl0"]
+[ext_resource type="SpriteFrames" uid="uid://gxncnt6imh3x" path="res://Scenes/Enemies/skins/yarbis.tres" id="8_pko3b"]
+[ext_resource type="SpriteFrames" uid="uid://igfm1xru21vt" path="res://Scenes/Enemies/deepseek.tres" id="9_53ao7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jcvw6"]
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_x1rqp")
+skins = Array[SpriteFrames]([ExtResource("2_tq087"), ExtResource("2_jcvw6"), ExtResource("4_4bcle"), ExtResource("5_beuat"), ExtResource("6_7ubbs"), ExtResource("7_ycxl0"), ExtResource("8_pko3b"), ExtResource("9_53ao7")])
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -18)
+sprite_frames = ExtResource("8_pko3b")
+animation = &"idle"
+frame_progress = 0.14821412
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.43, 1.43)
+shape = SubResource("CircleShape2D_jcvw6")
+
+[node name="HitLag" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="HitLag" to="." method="_on_hit_lag_timeout"]

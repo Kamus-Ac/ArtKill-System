@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://dvhw17bp32phn"]
+
+[ext_resource type="PackedScene" uid="uid://bvqgi43nkhtrb" path="res://Scenes/Players/basic_player.tscn" id="1_jfw68"]
+[ext_resource type="Script" uid="uid://dp0okih6wnh2y" path="res://Scenes/Players/player_rotating.gd" id="2_m1cum"]
+[ext_resource type="Shape2D" uid="uid://drewp4ag3n1u7" path="res://Scenes/colisiones/colision_recolect.tres" id="5_12uka"]
+[ext_resource type="SpriteFrames" uid="uid://dlevfnbld3xxe" path="res://Scenes/Players/Viejita/Animaciones/viejita.tres" id="5_klec2"]
+[ext_resource type="Shape2D" uid="uid://cihg3734rn1ja" path="res://Scenes/colisiones/colision_atackarea.tres" id="6_88hw3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_12uka"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_klec2"]
+
+[node name="BasicPlayer" instance=ExtResource("1_jfw68")]
+script = ExtResource("2_m1cum")
+
+[node name="Coll" parent="." index="0"]
+position = Vector2(0, 9)
+shape = SubResource("CircleShape2D_12uka")
+debug_color = Color(0.3764706, 0.6117647, 0.20392157, 0.76862746)
+
+[node name="Marker2D" type="Marker2D" parent="." index="1"]
+position = Vector2(1, 0)
+
+[node name="AnimatedSprite2D" parent="Flip" index="0"]
+sprite_frames = ExtResource("5_klec2")
+animation = &"death"
+
+[node name="CollisionShape2D" parent="Flip/Areas/recolect" index="0"]
+position = Vector2(15, 1)
+shape = ExtResource("5_12uka")
+
+[node name="CollisionShape2D" parent="Flip/Areas/AttackArea" index="0"]
+position = Vector2(15.360001, 7.715)
+scale = Vector2(1.025, 1.025)
+shape = ExtResource("6_88hw3")
+debug_color = Color(0.99607843, 0, 0.17254902, 0.8784314)
+
+[node name="CollisionShape2D" parent="Flip/Areas/Daño" index="0"]
+position = Vector2(-0.9999999, 5.9999995)
+scale = Vector2(0.965, 0.965)
+shape = SubResource("CircleShape2D_klec2")
+
+[node name="CollisionShape2D" parent="Flip/Areas/UltiArea" index="0"]
+scale = Vector2(3.135, 3.135)
+
+[connection signal="animation_finished" from="Flip/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="Flip/Areas/recolect" to="." method="_on_recolect_body_entered"]
