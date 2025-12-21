@@ -24,8 +24,6 @@ enum STATE {
 	DEAD
 }
 
-#tiempo de recarga de cuándo se termina 
-
 const MAX_SPEED := 250
 const ACCELERATION_SMOOTHING := 18
 var current_state: STATE = STATE.IDLE

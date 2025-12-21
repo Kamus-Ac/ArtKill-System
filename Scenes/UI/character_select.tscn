@@ -1,0 +1,132 @@
+[gd_scene load_steps=5 format=3 uid="uid://536btmvjhqi5"]
+
+[ext_resource type="Texture2D" uid="uid://8myba8fjb41q" path="res://Scenes/UI/istockphoto-1440114432-612x612.jpg" id="1_10ym7"]
+[ext_resource type="Texture2D" uid="uid://b345jca3bjnks" path="res://Scenes/UI/gordo.png" id="2_d3lco"]
+[ext_resource type="Script" uid="uid://fhn4v6qc8lrn" path="res://Scenes/UI/character_select.gd" id="2_whe0c"]
+[ext_resource type="Script" uid="uid://c127btfvcob36" path="res://Scenes/UI/character_card.gd" id="3_dieb8"]
+
+[node name="CharacterSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9924271, 0.9560501)
+script = ExtResource("2_whe0c")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1308.0
+offset_bottom = -805.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.167005, 4.0932817)
+texture = ExtResource("1_10ym7")
+
+[node name="MainPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.091576
+offset_top = 8.367763
+offset_right = 198.09155
+offset_bottom = 8.367798
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="MainPanel"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="MainPanel/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "Select your Character"
+
+[node name="CharactersBox" type="HBoxContainer" parent="MainPanel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Gus" type="PanelContainer" parent="MainPanel/VBox/CharactersBox"]
+custom_minimum_size = Vector2(180, 260)
+layout_mode = 2
+script = ExtResource("3_dieb8")
+character_id = "Gordo"
+character_name = "Gus"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/VBox/CharactersBox/Gus"]
+layout_mode = 2
+
+[node name="Shadow" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Gus/VBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_d3lco")
+stretch_mode = 5
+
+[node name="Sprite" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Gus/VBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="MainPanel/VBox/CharactersBox/Gus/VBoxContainer"]
+layout_mode = 2
+
+[node name="Tomy" type="PanelContainer" parent="MainPanel/VBox/CharactersBox"]
+custom_minimum_size = Vector2(180, 260)
+layout_mode = 2
+script = ExtResource("3_dieb8")
+character_id = "Viejita"
+character_name = "Tomy"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/VBox/CharactersBox/Tomy"]
+layout_mode = 2
+
+[node name="Shadow" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Tomy/VBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_d3lco")
+stretch_mode = 5
+
+[node name="Sprite" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Tomy/VBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="MainPanel/VBox/CharactersBox/Tomy/VBoxContainer"]
+layout_mode = 2
+
+[node name="Idol" type="PanelContainer" parent="MainPanel/VBox/CharactersBox"]
+custom_minimum_size = Vector2(180, 260)
+layout_mode = 2
+script = ExtResource("3_dieb8")
+character_id = "Idol"
+character_name = "Vale"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/VBox/CharactersBox/Idol"]
+layout_mode = 2
+
+[node name="Shadow" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Idol/VBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_d3lco")
+stretch_mode = 5
+
+[node name="Sprite" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Idol/VBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="MainPanel/VBox/CharactersBox/Idol/VBoxContainer"]
+layout_mode = 2
+
+[node name="Confirm" type="Button" parent="MainPanel/VBox"]
+custom_minimum_size = Vector2(200, 48)
+layout_mode = 2
+text = "Confirm"
