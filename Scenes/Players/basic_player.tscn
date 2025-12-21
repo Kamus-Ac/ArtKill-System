@@ -1,8 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvqgi43nkhtrb"]
+[gd_scene load_steps=8 format=3 uid="uid://bvqgi43nkhtrb"]
 
 [ext_resource type="Script" uid="uid://dan1nkfvkil6u" path="res://Scenes/Players/basic_player.gd" id="1_qdrsv"]
+[ext_resource type="SpriteFrames" uid="uid://dlevfnbld3xxe" path="res://Scenes/Players/Viejita/Animaciones/viejita.tres" id="2_fty27"]
+[ext_resource type="Shape2D" uid="uid://drewp4ag3n1u7" path="res://Scenes/colisiones/colision_recolect.tres" id="3_npi4c"]
+[ext_resource type="Shape2D" uid="uid://cihg3734rn1ja" path="res://Scenes/colisiones/colision_atackarea.tres" id="4_m2e41"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qdrsv"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_fty27"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dx1ff"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d3vtk"]
 
 [node name="BasicPlayer" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
@@ -10,39 +18,59 @@ collision_mask = 9
 script = ExtResource("1_qdrsv")
 
 [node name="Coll" type="CollisionShape2D" parent="."]
+position = Vector2(0, 9)
+scale = Vector2(1.065, 1.065)
+shape = SubResource("CircleShape2D_fty27")
+debug_color = Color(0.3764706, 0.6117647, 0.20392157, 0.76862746)
 
 [node name="Flip" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flip"]
+sprite_frames = ExtResource("2_fty27")
+animation = &"death"
 
 [node name="Areas" type="Node2D" parent="Flip"]
+visible = false
 
 [node name="recolect" type="Area2D" parent="Flip/Areas"]
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Flip/Areas/recolect"]
+position = Vector2(15, 1)
+shape = ExtResource("3_npi4c")
 
 [node name="AttackArea" type="Area2D" parent="Flip/Areas"]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Flip/Areas/AttackArea"]
+position = Vector2(15.360001, 7.715)
+scale = Vector2(1.025, 1.025)
+shape = ExtResource("4_m2e41")
+debug_color = Color(0.99607843, 0, 0.17254902, 0.8784314)
 
 [node name="Daño" type="Area2D" parent="Flip/Areas"]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Flip/Areas/Daño"]
+position = Vector2(-0.9999999, 5.9999995)
+scale = Vector2(0.965, 0.965)
+shape = SubResource("CircleShape2D_dx1ff")
 debug_color = Color(0.87058824, 0, 0.8509804, 0.77254903)
 
 [node name="UltiArea" type="Area2D" parent="Flip/Areas"]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Flip/Areas/UltiArea"]
-scale = Vector2(2, 2)
-shape = SubResource("CircleShape2D_qdrsv")
+scale = Vector2(3.135, 3.135)
+shape = SubResource("CircleShape2D_d3vtk")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(1, 0)
 
 [node name="DamageTimer" type="Timer" parent="."]
 wait_time = 0.8
 one_shot = true
 
+[connection signal="body_entered" from="Flip/Areas/recolect" to="." method="_on_recolect_body_entered"]
 [connection signal="body_entered" from="Flip/Areas/Daño" to="." method="_on_daño_body_entered"]
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
