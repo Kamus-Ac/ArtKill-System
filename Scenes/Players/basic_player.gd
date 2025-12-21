@@ -15,6 +15,10 @@ var health = 3
 var invulnerable := false
 const DAMAGE_COOLDOWN := 0.8   # tiempo en segundos
 
+
+#Ideas a mejorar:
+#Cooldown para ataque básico, checar animacion de ataque (en general todas las animaciones)
+#ia enemigos
 enum STATE {
 	IDLE,
 	RUNNING,
@@ -75,7 +79,6 @@ func _physics_process(delta: float) -> void:
 	grab_and_throw()
 	flip_sprite()
 	rotate_object()
-	#print("PLAYER STATE:" + str(current_state))
 
 
 func match_states(input_dir: Vector2):
@@ -108,40 +111,13 @@ func match_states(input_dir: Vector2):
 			anim.play("basicAttack")
 			basic_attack()
 			
-			#if Input.is_action_just_pressed("Ulti"):
-				#current_state = STATE.ATTACKING_ULTI
-			#
-			#if input_dir == Vector2.ZERO:
-				#current_state = STATE.IDLE
-			#else:
-				#current_state = STATE.RUNNING
-				
 		STATE.ATTACKING_ULTI:
 			anim.play("ulti")
 			ulti_attack()
-			
-			#if Input.is_action_just_pressed("BasicAttack"):
-				#current_state = STATE.ATTACKING
-			#
-			#if input_dir == Vector2.ZERO:
-				#current_state = STATE.IDLE
-			#else:
-				#current_state = STATE.RUNNING
 				
 		STATE.HURTED:
 			anim.play("hurt")
 			
-			#if Input.is_action_just_pressed("BasicAttack"):
-				#current_state = STATE.ATTACKING
-			#
-			#if Input.is_action_just_pressed("Ulti"):
-				#current_state = STATE.ATTACKING_ULTI
-			#
-			#if input_dir == Vector2.ZERO:
-				#current_state = STATE.IDLE
-			#else:
-				#current_state = STATE.RUNNING
-				
 		STATE.DEAD:
 			anim.play("death")
 			velocity = Vector2.ZERO
@@ -164,14 +140,6 @@ func take_damage(from_position: Vector2):
 		queue_free()
 
 func basic_attack() -> void:
-	#var dir := get_attack_direction()
-	#emit_signal("player_attack", dir)
-	#anim.play("BasicAttack")
-
-		# DEBUG: posición y tamaño del area
-	#print("AttackArea global_pos:", attack_area.global_position, "shape:", attack_area.get_node("CollisionShape2D").shape)
-
-		# Opción robusta: tomar cuerpos superpuestos AHORA mismo
 	var bodies := attack_area.get_overlapping_bodies()
 	print("Bodies overlapped (count):", bodies.size())
 	for b in bodies:
@@ -181,11 +149,6 @@ func basic_attack() -> void:
 				b.die()
 
 func ulti_attack() -> void:
-	var dir := get_attack_direction()
-		# DEBUG: posición y tamaño del area
-	#print("AttackArea global_pos:", attack_area.global_position, "shape:", attack_area.get_node("CollisionShape2D").shape)
-
-		# Opción robusta: tomar cuerpos superpuestos AHORA mismo
 	var bodies := ulti_area.get_overlapping_bodies()
 	print("Bodies overlapped ULTI(count):", bodies.size())
 	for b in bodies:
@@ -242,9 +205,6 @@ func flip_sprite():
 
 func rotate_object():
 	marker_2d.look_at(get_global_mouse_position())
-
-func get_attack_direction() -> Vector2:
-	return (get_global_mouse_position() - global_position).normalized()
 
 func apply_knockback(from_position: Vector2, force := 180.0):
 	var direction = (global_position - from_position).normalized()

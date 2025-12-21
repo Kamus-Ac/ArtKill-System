@@ -1,13 +1,13 @@
 extends CharacterBody2D
 @onready var hit_lag: Timer = $HitLag
 
-@export var skins: Array[SpriteFrames]  # aquí pondrás tus 8 skins
+@export var skins: Array[SpriteFrames]  # 8 skins
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @export var isDead: bool = false
 
 
 signal died
-const MAX_SPEED = 90
+const MAX_SPEED = 85
 const IMPULSE = 0.5
 
 #varibles debug

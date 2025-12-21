@@ -1,7 +1,7 @@
 extends Node
 
 @export var enemy_scene: PackedScene
-@export var spawn_radius := 1000 #radio en el que spawnean
+@export var spawn_radius := 950 #radio en el que spawnean
 @export var initial_spawn_count := 3 #cuántos al inicio
 @export var spawn_increase_per_wave := 15 #cuantos incrementan por ronda
 @export var max_enemies_per_wave := 105 #cuantos puede haber por ronda 
