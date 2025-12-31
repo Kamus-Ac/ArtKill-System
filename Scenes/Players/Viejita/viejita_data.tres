@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://godl0fknqbqb"]
+
+[ext_resource type="Script" uid="uid://cykrf8nfa65dj" path="res://Scenes/Players/characters_data.gd" id="1_5l2yg"]
+[ext_resource type="SpriteFrames" uid="uid://dlevfnbld3xxe" path="res://Scenes/Players/Viejita/Animaciones/viejita.tres" id="2_teoj0"]
+
+[resource]
+script = ExtResource("1_5l2yg")
+id = "Viejita"
+character_name = "Tomy"
+max_speed = 250.0
+max_health = 3
+sprite = ExtResource("2_teoj0")
+metadata/_custom_type_script = "uid://cykrf8nfa65dj"

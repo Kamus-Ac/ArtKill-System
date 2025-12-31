@@ -2,17 +2,15 @@ extends PanelContainer
 
 signal selected(card)
 
-@export var character_id: String
-@export var character_name: String
-@export var character_sprite: Texture2D
+@export var character_data: CharacterData
 
 @onready var sprite: TextureRect = $VBoxContainer/Sprite
 @onready var name_label: Label = $VBoxContainer/Name
 
 
 func _ready():
-	sprite.texture = character_sprite
-	name_label.text = character_name
+	name_label.text = character_data.character_name
+	sprite.texture = character_data.sprite.get_frame_texture("idle", 0)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 
 

@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://536btmvjhqi5"]
+[gd_scene load_steps=8 format=3 uid="uid://536btmvjhqi5"]
 
 [ext_resource type="Texture2D" uid="uid://8myba8fjb41q" path="res://Scenes/UI/istockphoto-1440114432-612x612.jpg" id="1_10ym7"]
 [ext_resource type="Texture2D" uid="uid://b345jca3bjnks" path="res://Scenes/UI/gordo.png" id="2_d3lco"]
 [ext_resource type="Script" uid="uid://fhn4v6qc8lrn" path="res://Scenes/UI/character_select.gd" id="2_whe0c"]
 [ext_resource type="Script" uid="uid://c127btfvcob36" path="res://Scenes/UI/character_card.gd" id="3_dieb8"]
+[ext_resource type="Resource" uid="uid://j7kfry2ifdx1" path="res://Scenes/Players/Gordo/gordo_data.tres" id="4_apj1b"]
+[ext_resource type="Resource" uid="uid://godl0fknqbqb" path="res://Scenes/Players/Viejita/viejita_data.tres" id="6_dieb8"]
+[ext_resource type="Resource" uid="uid://cpn0itqsdlwgo" path="res://Scenes/Players/Idol/idol_data.tres" id="6_pjomi"]
 
 [node name="CharacterSelect" type="Control"]
 layout_mode = 3
@@ -58,8 +61,7 @@ alignment = 1
 custom_minimum_size = Vector2(180, 260)
 layout_mode = 2
 script = ExtResource("3_dieb8")
-character_id = "Gordo"
-character_name = "Gus"
+character_data = ExtResource("4_apj1b")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/VBox/CharactersBox/Gus"]
 layout_mode = 2
@@ -82,8 +84,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(180, 260)
 layout_mode = 2
 script = ExtResource("3_dieb8")
-character_id = "Viejita"
-character_name = "Tomy"
+character_data = ExtResource("6_dieb8")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/VBox/CharactersBox/Tomy"]
 layout_mode = 2
@@ -106,8 +107,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(180, 260)
 layout_mode = 2
 script = ExtResource("3_dieb8")
-character_id = "Idol"
-character_name = "Vale"
+character_data = ExtResource("6_pjomi")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/VBox/CharactersBox/Idol"]
 layout_mode = 2
@@ -129,4 +129,7 @@ layout_mode = 2
 [node name="Confirm" type="Button" parent="MainPanel/VBox"]
 custom_minimum_size = Vector2(200, 48)
 layout_mode = 2
+disabled = true
 text = "Confirm"
+
+[connection signal="pressed" from="MainPanel/VBox/Confirm" to="." method="_on_confirm_pressed"]

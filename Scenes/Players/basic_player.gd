@@ -9,11 +9,14 @@ signal animation_done
 @onready var flip: Node2D = $Flip
 @onready var marker_2d: Marker2D = $Marker2D
 
+
+
 #---VIDA---#
 #var hearts_list: Array[TextureRect]
 var health = 3
 var invulnerable := false
 const DAMAGE_COOLDOWN := 0.8   # tiempo en segundos
+@export var character_data: CharacterData
 
 
 #Ideas a mejorar:
@@ -28,7 +31,7 @@ enum STATE {
 	DEAD
 }
 
-const MAX_SPEED := 250
+var MAX_SPEED: int
 const ACCELERATION_SMOOTHING := 18
 var current_state: STATE = STATE.IDLE
 var normal_veloocity := Vector2.ZERO
@@ -49,14 +52,25 @@ var grabbing: bool = false
 
 
 func _ready() -> void:
+
+	if GameManager.selected_character:
+		MAX_SPEED = GameManager.selected_character.max_speed
+		health = GameManager.selected_character.max_health
+		anim.sprite_frames = GameManager.selected_character.sprite
+
 	# asegurar que la animación ataque no esté en loop desde el editor
 	# conectar la señal para volver a idle al terminar
+
 	if anim:
 		anim.animation_finished.connect(_on_anim_finished)
 	# por defecto el area no "monitorea" (no es requerido si usamos get_overlapping_bodies())
 	attack_area.monitoring = true 
 	ulti_area.monitoring = true
-	
+
+
+
+
+
 
 
 func _physics_process(delta: float) -> void:

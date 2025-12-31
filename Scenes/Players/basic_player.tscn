@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bvqgi43nkhtrb"]
 
 [ext_resource type="Script" uid="uid://dan1nkfvkil6u" path="res://Scenes/Players/basic_player.gd" id="1_qdrsv"]
-[ext_resource type="SpriteFrames" uid="uid://dlevfnbld3xxe" path="res://Scenes/Players/Viejita/Animaciones/viejita.tres" id="2_fty27"]
+[ext_resource type="SpriteFrames" uid="uid://oygggrhhee65" path="res://Scenes/Players/Idol/Animaciones/idol.tres" id="2_fty27"]
 [ext_resource type="Shape2D" uid="uid://drewp4ag3n1u7" path="res://Scenes/colisiones/colision_recolect.tres" id="3_npi4c"]
 [ext_resource type="Shape2D" uid="uid://cihg3734rn1ja" path="res://Scenes/colisiones/colision_atackarea.tres" id="4_m2e41"]
 
@@ -27,10 +27,9 @@ debug_color = Color(0.3764706, 0.6117647, 0.20392157, 0.76862746)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flip"]
 sprite_frames = ExtResource("2_fty27")
-animation = &"death"
+animation = &"ulti"
 
 [node name="Areas" type="Node2D" parent="Flip"]
-visible = false
 
 [node name="recolect" type="Area2D" parent="Flip/Areas"]
 collision_mask = 4
@@ -58,6 +57,7 @@ shape = SubResource("CircleShape2D_dx1ff")
 debug_color = Color(0.87058824, 0, 0.8509804, 0.77254903)
 
 [node name="UltiArea" type="Area2D" parent="Flip/Areas"]
+visible = false
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Flip/Areas/UltiArea"]

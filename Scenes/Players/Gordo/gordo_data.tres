@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://j7kfry2ifdx1"]
+
+[ext_resource type="Script" uid="uid://cykrf8nfa65dj" path="res://Scenes/Players/characters_data.gd" id="1_hw1xj"]
+[ext_resource type="SpriteFrames" uid="uid://dtdhksluavg6j" path="res://Scenes/Players/Gordo/Animaciones/gordo.tres" id="2_02p7y"]
+
+[resource]
+script = ExtResource("1_hw1xj")
+id = "Gordo"
+character_name = "Gus"
+max_speed = 300
+max_health = 3
+sprite = ExtResource("2_02p7y")
+metadata/_custom_type_script = "uid://cykrf8nfa65dj"
