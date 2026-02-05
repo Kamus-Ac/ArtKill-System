@@ -93,7 +93,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("2_d3lco")
-stretch_mode = 5
+stretch_mode = 4
 
 [node name="Sprite" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Tomy/VBoxContainer"]
 custom_minimum_size = Vector2(128, 128)
