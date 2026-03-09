@@ -3,20 +3,25 @@ extends CharacterBody2D
 signal player_attack(dir: Vector2)
 signal player_ulti()
 signal animation_done
-@onready var attack_area: Area2D = $Flip/Areas/AttackArea
-@onready var ulti_area: Area2D = $Flip/Areas/UltiArea
+var attack_area: Area2D 
+var ulti_area: Area2D
+var ulti_script: Node2D
 @onready var anim: AnimatedSprite2D = $Flip/AnimatedSprite2D
 @onready var flip: Node2D = $Flip
 @onready var marker_2d: Marker2D = $Marker2D
+@onready var character_holder: Node2D = $CharacterScene
+@export var character_data: CharacterData
+var character_loaded : Node2D
 
-
+#Ulti
+var isUltiActive : bool = false
 
 #---VIDA---#
 #var hearts_list: Array[TextureRect]
-var health = 3
+var health
 var invulnerable := false
 const DAMAGE_COOLDOWN := 0.8   # tiempo en segundos
-@export var character_data: CharacterData
+
 
 
 #Ideas a mejorar:
@@ -57,25 +62,28 @@ func _ready() -> void:
 		MAX_SPEED = GameManager.selected_character.max_speed
 		health = GameManager.selected_character.max_health
 		anim.sprite_frames = GameManager.selected_character.sprite
+		load_character(GameManager.selected_character.character_scene)
 
 	# asegurar que la animación ataque no esté en loop desde el editor
 	# conectar la señal para volver a idle al terminar
-
 	if anim:
 		anim.animation_finished.connect(_on_anim_finished)
-	# por defecto el area no "monitorea" (no es requerido si usamos get_overlapping_bodies())
-	attack_area.monitoring = true 
+
+	
+	
+func load_character(module_scene: PackedScene):
+	character_loaded = module_scene.instantiate()
+	character_holder.add_child(character_loaded)
+	ulti_script = character_loaded.get_node("UltiScript")
+	attack_area = character_loaded.get_node("Areas/AttackArea")
+	ulti_area = character_loaded.get_node("Areas/UltiArea")
+	
+	attack_area.monitoring = true
 	ulti_area.monitoring = true
-
-
-
-
-
 
 
 func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("Left", "Right", "Up", "Down")
-
 # knockback siempre suma fuerza, no cancela movimiento
 	if knockback.length() > 10:
 		knockback = knockback.move_toward(Vector2.ZERO, knockback_decay)
@@ -88,14 +96,20 @@ func _physics_process(delta: float) -> void:
 
 # suma knockback
 	velocity += knockback
+
+
 	move_and_slide()
-	match_states(input_dir)
+	match_states(input_dir, delta)
 	grab_and_throw()
 	flip_sprite()
 	rotate_object()
 
 
-func match_states(input_dir: Vector2):
+	
+	
+
+
+func match_states(input_dir: Vector2, delta: float):
 	match current_state:
 		STATE.IDLE:
 			anim.play("idle")
@@ -126,6 +140,11 @@ func match_states(input_dir: Vector2):
 			basic_attack()
 			
 		STATE.ATTACKING_ULTI:
+			if !isUltiActive:
+				isUltiActive = true
+				ulti_script.start(self)
+				
+			ulti_script.ulti_move(delta)
 			anim.play("ulti")
 			ulti_attack()
 				
@@ -155,7 +174,6 @@ func take_damage(from_position: Vector2):
 
 func basic_attack() -> void:
 	var bodies := attack_area.get_overlapping_bodies()
-	print("Bodies overlapped (count):", bodies.size())
 	for b in bodies:
 		print(" - found:", b, " groups:", b.get_groups())
 		if b and b.is_in_group("enemies"):
@@ -227,12 +245,16 @@ func apply_knockback(from_position: Vector2, force := 180.0):
 #---SEÑALES---#
 func _on_anim_finished():
 	emit_signal("animation_done")
-	if current_state in [STATE.ATTACKING, STATE.ATTACKING_ULTI, STATE.HURTED]:
+	
+	if current_state == STATE.ATTACKING_ULTI:
+		isUltiActive = false
+		current_state = STATE.IDLE
+	
+	elif current_state in [STATE.ATTACKING, STATE.HURTED]:
 		current_state = STATE.IDLE
 
 func _on_daño_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies") and not body.isDead:
-		print("DAÑOOO")
 		take_damage(body.global_position)
 
 func _on_damage_timer_timeout() -> void:

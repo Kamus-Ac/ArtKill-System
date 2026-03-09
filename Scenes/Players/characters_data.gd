@@ -6,3 +6,4 @@ class_name CharacterData
 @export var max_speed: int
 @export var max_health: int
 @export var sprite: SpriteFrames
+@export var character_scene: PackedScene
