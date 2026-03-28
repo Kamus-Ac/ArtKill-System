@@ -6,6 +6,7 @@ var ulti_area: CollisionShape2D
 var damage_area: Area2D
 var ulti_script: Node2D
 var areas: Node2D 
+var recolect: Area2D
 @onready var anim: AnimatedSprite2D = $Flip/AnimatedSprite2D
 @onready var flip: Node2D = $Flip
 @onready var marker_2d: Marker2D = $Marker2D
@@ -21,6 +22,7 @@ var isUltiActive : bool = false
 var health
 var invulnerable := false
 const DAMAGE_COOLDOWN := 0.8   # tiempo en segundos
+const ULT_COOLDOWN := 10.0 #tiempo en segundos
 
 
 
@@ -53,6 +55,7 @@ var isClickBeingPressed: bool = false
 var factor: float = 1.0 # Factor de velocidad conforme mantienes el click
 var objectPosition: Vector2 = Vector2.ZERO
 var object: RigidBody2D = null
+var lastobject: RigidBody2D = null
 var grabbing: bool = false
 
 
@@ -80,6 +83,8 @@ func load_character(module_scene: PackedScene):
 	ulti_area = character_loaded.get_node("Areas/Ulti_Area/CollisionShape2D")
 	damage_area = character_loaded.get_node("Areas/Daño")
 	areas = character_loaded.get_node("Areas")
+	recolect = character_loaded.get_node("Areas/Recolect")
+	recolect.body_entered.connect(_on_recolect_body_entered)
 	damage_area.body_entered.connect(_on_daño_body_entered)
 
 
@@ -184,7 +189,7 @@ func grab_and_throw():
 	if object:
 		if !grabbing:
 			grab_objects()
-			print("agarra")
+			#print("agarra")
 		if Input.is_action_pressed("Grab") and grabbing:
 			isClickBeingPressed = true
 			lastClickState = isClickBeingPressed
@@ -216,7 +221,10 @@ func throw_object():
 	object.position = pos
 	object.apply_impulse(flip_position * -factor)
 
+	lastobject= object
 	object = null
+	"""print("objeto puesto nulo") sucedia que el objeto volvia a entrar por ciertos frames al area2d 
+	haciendo que otra vez se añadiera al jugador porque aun se detectaba el input antes del lastclickstate"""
 	grabbing = false
 	lastClickState = false
 	factor = 1.0
@@ -257,5 +265,9 @@ func _on_damage_timer_timeout() -> void:
 	invulnerable = false
 
 func _on_recolect_body_entered(body: Node2D) -> void:
-	if body.is_in_group("objects"):
-		object = body
+	if !object and body!=lastobject: #Esta linea se agregó para evitar el bug del throwobject
+		if body.is_in_group("objects"):
+			object = body
+			#print("nuevo objeto")
+		
+		
