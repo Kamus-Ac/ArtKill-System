@@ -16,9 +16,13 @@ var character_loaded : Node2D
 
 #Ulti
 var isUltiActive : bool = false
+var isUltiAvailable : bool = false
+var kill_count : int = 0
+var ulti_kills_required : int = 7
 
 #---VIDA---#
 #var hearts_list: Array[TextureRect]
+var max_health
 var health
 var invulnerable := false
 const DAMAGE_COOLDOWN := 0.8   # tiempo en segundos
@@ -60,10 +64,10 @@ var grabbing: bool = false
 
 
 func _ready() -> void:
-
 	if GameManager.selected_character:
 		MAX_SPEED = GameManager.selected_character.max_speed
-		health = GameManager.selected_character.max_health
+		max_health = GameManager.selected_character.max_health
+		health = max_health
 		anim.sprite_frames = GameManager.selected_character.sprite
 		
 		load_character(GameManager.selected_character.character_scene)
@@ -127,7 +131,7 @@ func match_states(input_dir: Vector2, delta: float):
 			elif Input.is_action_just_pressed("BasicAttack"):
 				current_state = STATE.ATTACKING
 			
-			elif Input.is_action_just_pressed("Ulti"):
+			elif Input.is_action_just_pressed("Ulti") and isUltiAvailable:
 				current_state = STATE.ATTACKING_ULTI
 				
 		STATE.RUNNING:
@@ -149,8 +153,8 @@ func match_states(input_dir: Vector2, delta: float):
 		STATE.ATTACKING_ULTI:
 			if !isUltiActive:
 				isUltiActive = true
+				isUltiAvailable = false
 				ulti_script.start(self)
-				
 			ulti_script.ulti_move(delta)
 			anim.play("ulti")
 			ulti_area.disabled = false
@@ -170,7 +174,7 @@ func take_damage(from_position: Vector2):
 	$DamageTimer.start()
 	
 	health -= 1
-	SignalManager.took_damage.emit(health)
+	SignalManager.took_damage.emit(health, max_health)
 	current_state = STATE.HURTED
 	apply_knockback(from_position)
 	
@@ -248,16 +252,22 @@ func _on_anim_finished():
 	
 	if current_state == STATE.ATTACKING_ULTI:
 		isUltiActive = false
+		isUltiAvailable = false
 		ulti_area.disabled = true
+		kill_count = 0
 		current_state = STATE.IDLE
-		
+	
 	elif current_state in [STATE.ATTACKING, STATE.HURTED]:
 		player_hitbox_col.disabled = true
 		current_state = STATE.IDLE
 
 func _on_daño_body_entered(body: Node2D) -> void:
+	if invulnerable:
+		return
+		
 	if isUltiActive:
 		return
+
 	if body.is_in_group("enemies") and not body.isDead:
 		take_damage(body.global_position)
 
@@ -271,3 +281,15 @@ func _on_recolect_body_entered(body: Node2D) -> void:
 			#print("nuevo objeto")
 		
 		
+	#print("ENTRÓ:", body)
+	#if body.is_in_group("objects"):
+		#object = body
+
+
+func _on_enemy_killed():
+	kill_count += 1
+	print("Kills:", kill_count)
+
+	if kill_count >= ulti_kills_required:
+		isUltiAvailable = true
+		print("ULTI LISTA")
