@@ -2,7 +2,12 @@
 
 [ext_resource type="SpriteFrames" uid="uid://b6e6oqvokyycn" path="res://Scenes/UI/heart.tres" id="1_3r3sn"]
 
-[node name="heart" type="AnimatedSprite2D"]
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 scale = Vector2(5.105, 5.105)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
 sprite_frames = ExtResource("1_3r3sn")
-animation = &"vivo"
+animation = &"muerto"

@@ -18,6 +18,7 @@ var isUltiActive : bool = false
 
 #---VIDA---#
 #var hearts_list: Array[TextureRect]
+var max_health
 var health
 var invulnerable := false
 const DAMAGE_COOLDOWN := 0.8   # tiempo en segundos
@@ -60,7 +61,8 @@ func _ready() -> void:
 
 	if GameManager.selected_character:
 		MAX_SPEED = GameManager.selected_character.max_speed
-		health = GameManager.selected_character.max_health
+		max_health = GameManager.selected_character.max_health
+		health = max_health
 		anim.sprite_frames = GameManager.selected_character.sprite
 		
 		load_character(GameManager.selected_character.character_scene)
@@ -165,7 +167,7 @@ func take_damage(from_position: Vector2):
 	$DamageTimer.start()
 	
 	health -= 1
-	SignalManager.took_damage.emit(health)
+	SignalManager.took_damage.emit(health, max_health)
 	current_state = STATE.HURTED
 	apply_knockback(from_position)
 	
@@ -248,8 +250,12 @@ func _on_anim_finished():
 		current_state = STATE.IDLE
 
 func _on_daño_body_entered(body: Node2D) -> void:
+	if invulnerable:
+		return
+		
 	if isUltiActive:
 		return
+
 	if body.is_in_group("enemies") and not body.isDead:
 		take_damage(body.global_position)
 

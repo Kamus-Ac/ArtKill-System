@@ -1,14 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqpvwgr5lusyp"]
+[gd_scene load_steps=7 format=3 uid="uid://cqpvwgr5lusyp"]
 
 [ext_resource type="Script" uid="uid://bj5kql8nbtmmv" path="res://Scenes/Players/Viejita/viejita.gd" id="1_cvnl6"]
+[ext_resource type="Script" uid="uid://crea02gg0i2qu" path="res://Scenes/Colision Shape/hitbox.gd" id="2_46q1k"]
 [ext_resource type="Shape2D" uid="uid://drewp4ag3n1u7" path="res://Scenes/Colision Shape/colision_recolect.tres" id="2_cvnl6"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_46q1k"]
-size = Vector2(20.760975, 12)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1y8b1"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_afnxa"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1y8b1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_afnxa"]
+size = Vector2(31.973684, 16.210526)
 
 [node name="Viejita" type="Node2D"]
 
@@ -22,15 +23,6 @@ collision_mask = 4
 position = Vector2(15, 1)
 shape = ExtResource("2_cvnl6")
 
-[node name="AttackArea" type="Area2D" parent="Areas"]
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/AttackArea"]
-position = Vector2(15.360001, 7.715)
-scale = Vector2(1.025, 1.025)
-shape = SubResource("RectangleShape2D_46q1k")
-debug_color = Color(0.99607843, 0, 0.17254902, 0.8784314)
-
 [node name="Daño" type="Area2D" parent="Areas"]
 collision_mask = 2
 
@@ -38,12 +30,28 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_1y8b1")
 debug_color = Color(0.87058824, 0, 0.8509804, 0.77254903)
 
-[node name="UltiArea" type="Area2D" parent="Areas"]
+[node name="Ulti_Area" type="Area2D" parent="Areas"]
 collision_mask = 2
+monitoring = false
+script = ExtResource("2_46q1k")
+metadata/_custom_type_script = "uid://crea02gg0i2qu"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/UltiArea"]
-scale = Vector2(3.135, 3.135)
-shape = SubResource("CircleShape2D_afnxa")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Ulti_Area"]
+scale = Vector2(1.8, 1.8)
+shape = SubResource("CapsuleShape2D_1y8b1")
+disabled = true
+
+[node name="Player_Hitbox" type="Area2D" parent="Areas"]
+collision_mask = 2
+monitoring = false
+script = ExtResource("2_46q1k")
+metadata/_custom_type_script = "uid://crea02gg0i2qu"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Player_Hitbox"]
+position = Vector2(19.5, 6)
+scale = Vector2(0.76, 0.76)
+shape = SubResource("RectangleShape2D_afnxa")
+disabled = true
 
 [node name="UltiScript" type="Node2D" parent="."]
 script = ExtResource("1_cvnl6")
