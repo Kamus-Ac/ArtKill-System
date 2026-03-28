@@ -23,7 +23,6 @@ position = Vector2(15, 1)
 shape = ExtResource("2_cvnl6")
 
 [node name="AttackArea" type="Area2D" parent="Areas"]
-visible = false
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/AttackArea"]
@@ -36,13 +35,10 @@ debug_color = Color(0.99607843, 0, 0.17254902, 0.8784314)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Daño"]
-position = Vector2(-0.9999999, 5.9999995)
-scale = Vector2(0.965, 0.965)
 shape = SubResource("CircleShape2D_1y8b1")
 debug_color = Color(0.87058824, 0, 0.8509804, 0.77254903)
 
 [node name="UltiArea" type="Area2D" parent="Areas"]
-visible = false
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/UltiArea"]

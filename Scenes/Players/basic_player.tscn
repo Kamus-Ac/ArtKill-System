@@ -1,15 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://bvqgi43nkhtrb"]
 
 [ext_resource type="Script" uid="uid://dan1nkfvkil6u" path="res://Scenes/Players/basic_player.gd" id="1_qdrsv"]
-[ext_resource type="SpriteFrames" uid="uid://dlevfnbld3xxe" path="res://Scenes/Players/Viejita/Animaciones/viejita.tres" id="2_fty27"]
+[ext_resource type="SpriteFrames" uid="uid://dtdhksluavg6j" path="res://Scenes/Players/Gordo/Animaciones/gordo.tres" id="2_8i48k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fty27"]
 radius = 7.0
 
 [node name="BasicPlayer" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
-collision_mask = 9
+collision_mask = 11
 script = ExtResource("1_qdrsv")
+
+[node name="Flip" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flip"]
+sprite_frames = ExtResource("2_8i48k")
+animation = &"ulti"
 
 [node name="Coll" type="CollisionShape2D" parent="."]
 position = Vector2(0, 9)
@@ -25,11 +31,5 @@ wait_time = 0.8
 one_shot = true
 
 [node name="CharacterScene" type="Node2D" parent="."]
-
-[node name="Flip" type="Node2D" parent="."]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flip"]
-sprite_frames = ExtResource("2_fty27")
-animation = &"basicAttack"
 
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

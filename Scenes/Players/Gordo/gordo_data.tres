@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CharacterData" load_steps=4 format=3 uid="uid://j7kfry2ifdx1"]
 
-[ext_resource type="PackedScene" uid="uid://cqpvwgr5lusyp" path="res://Scenes/Players/Viejita/viejita.tscn" id="1_avtew"]
+[ext_resource type="PackedScene" uid="uid://dr4tspb0xelhe" path="res://Scenes/Players/Gordo/gordo.tscn" id="1_avtew"]
 [ext_resource type="Script" uid="uid://cykrf8nfa65dj" path="res://Scenes/Players/characters_data.gd" id="1_hw1xj"]
 [ext_resource type="SpriteFrames" uid="uid://dtdhksluavg6j" path="res://Scenes/Players/Gordo/Animaciones/gordo.tres" id="2_02p7y"]
 

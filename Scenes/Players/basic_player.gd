@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
-signal player_attack(dir: Vector2)
-signal player_ulti()
 signal animation_done
-var attack_area: Area2D 
-var ulti_area: Area2D
+var player_hitbox_col: CollisionShape2D 
+var ulti_area: CollisionShape2D
+var damage_area: Area2D
 var ulti_script: Node2D
+var areas: Node2D 
 @onready var anim: AnimatedSprite2D = $Flip/AnimatedSprite2D
 @onready var flip: Node2D = $Flip
 @onready var marker_2d: Marker2D = $Marker2D
@@ -62,6 +62,7 @@ func _ready() -> void:
 		MAX_SPEED = GameManager.selected_character.max_speed
 		health = GameManager.selected_character.max_health
 		anim.sprite_frames = GameManager.selected_character.sprite
+		
 		load_character(GameManager.selected_character.character_scene)
 
 	# asegurar que la animación ataque no esté en loop desde el editor
@@ -75,11 +76,11 @@ func load_character(module_scene: PackedScene):
 	character_loaded = module_scene.instantiate()
 	character_holder.add_child(character_loaded)
 	ulti_script = character_loaded.get_node("UltiScript")
-	attack_area = character_loaded.get_node("Areas/AttackArea")
-	ulti_area = character_loaded.get_node("Areas/UltiArea")
-	
-	attack_area.monitoring = true
-	ulti_area.monitoring = true
+	player_hitbox_col = character_loaded.get_node("Areas/Player_Hitbox/CollisionShape2D")
+	ulti_area = character_loaded.get_node("Areas/Ulti_Area/CollisionShape2D")
+	damage_area = character_loaded.get_node("Areas/Daño")
+	areas = character_loaded.get_node("Areas")
+	damage_area.body_entered.connect(_on_daño_body_entered)
 
 
 func _physics_process(delta: float) -> void:
@@ -91,8 +92,9 @@ func _physics_process(delta: float) -> void:
 		knockback = Vector2.ZERO
 
 # movimiento normal
-	normal_veloocity = input_dir * MAX_SPEED
-	velocity = velocity.lerp(normal_veloocity, 1 - exp(-delta * ACCELERATION_SMOOTHING))
+	if !isUltiActive:
+		normal_veloocity = input_dir * MAX_SPEED
+		velocity = velocity.lerp(normal_veloocity, 1 - exp(-delta * ACCELERATION_SMOOTHING))
 
 # suma knockback
 	velocity += knockback
@@ -137,7 +139,7 @@ func match_states(input_dir: Vector2, delta: float):
 			
 		STATE.ATTACKING:
 			anim.play("basicAttack")
-			basic_attack()
+			player_hitbox_col.disabled = false
 			
 		STATE.ATTACKING_ULTI:
 			if !isUltiActive:
@@ -146,7 +148,7 @@ func match_states(input_dir: Vector2, delta: float):
 				
 			ulti_script.ulti_move(delta)
 			anim.play("ulti")
-			ulti_attack()
+			ulti_area.disabled = false
 				
 		STATE.HURTED:
 			anim.play("hurt")
@@ -172,28 +174,17 @@ func take_damage(from_position: Vector2):
 		await animation_done
 		queue_free()
 
-func basic_attack() -> void:
-	var bodies := attack_area.get_overlapping_bodies()
-	for b in bodies:
-		print(" - found:", b, " groups:", b.get_groups())
-		if b and b.is_in_group("enemies"):
-			if b.has_method("die"):
-				b.die()
+
 
 func ulti_attack() -> void:
-	var bodies := ulti_area.get_overlapping_bodies()
-	print("Bodies overlapped ULTI(count):", bodies.size())
-	for b in bodies:
-		print(" - found:", b, " groups:", b.get_groups())
-		if b and b.is_in_group("enemies"):
-			if b.has_method("die"):
-				b.die()
+	pass
 
 func grab_and_throw():
 	isClickBeingPressed = false
 	if object:
 		if !grabbing:
 			grab_objects()
+			print("agarra")
 		if Input.is_action_pressed("Grab") and grabbing:
 			isClickBeingPressed = true
 			lastClickState = isClickBeingPressed
@@ -233,6 +224,7 @@ func throw_object():
 func flip_sprite():
 	mouse_position = get_global_mouse_position()
 	flip_position = position - mouse_position
+	areas.scale.x = 1 if flip_position.x < 0 else -1
 	flip.scale.x = 1 if flip_position.x < 0 else -1
 
 func rotate_object():
@@ -248,12 +240,16 @@ func _on_anim_finished():
 	
 	if current_state == STATE.ATTACKING_ULTI:
 		isUltiActive = false
+		ulti_area.disabled = true
 		current_state = STATE.IDLE
-	
+		
 	elif current_state in [STATE.ATTACKING, STATE.HURTED]:
+		player_hitbox_col.disabled = true
 		current_state = STATE.IDLE
 
 func _on_daño_body_entered(body: Node2D) -> void:
+	if isUltiActive:
+		return
 	if body.is_in_group("enemies") and not body.isDead:
 		take_damage(body.global_position)
 

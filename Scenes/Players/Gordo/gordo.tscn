@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://dr4tspb0xelhe"]
+
+[ext_resource type="Shape2D" uid="uid://drewp4ag3n1u7" path="res://Scenes/Colision Shape/colision_recolect.tres" id="1_x4h0i"]
+[ext_resource type="Script" uid="uid://crea02gg0i2qu" path="res://Scenes/Colision Shape/hitbox.gd" id="2_3dkrk"]
+[ext_resource type="Script" uid="uid://bxoc8pxlsikt5" path="res://Scenes/Players/Gordo/gordo.gd" id="2_l500s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3dkrk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3dkrk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hen0x"]
+
+[node name="Gordo" type="Node2D"]
+
+[node name="Areas" type="Node2D" parent="."]
+
+[node name="recolect" type="Area2D" parent="Areas"]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/recolect"]
+position = Vector2(15, 1)
+shape = ExtResource("1_x4h0i")
+
+[node name="Daño" type="Area2D" parent="Areas"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Daño"]
+shape = SubResource("CircleShape2D_3dkrk")
+debug_color = Color(0.87058824, 0, 0.8509804, 0.77254903)
+
+[node name="Ulti_Area" type="Area2D" parent="Areas"]
+collision_mask = 2
+monitoring = false
+script = ExtResource("2_3dkrk")
+metadata/_custom_type_script = "uid://crea02gg0i2qu"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Ulti_Area"]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("CapsuleShape2D_3dkrk")
+disabled = true
+
+[node name="Player_Hitbox" type="Area2D" parent="Areas"]
+collision_mask = 2
+monitoring = false
+script = ExtResource("2_3dkrk")
+metadata/_custom_type_script = "uid://crea02gg0i2qu"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Player_Hitbox"]
+position = Vector2(15.3, 7.1)
+scale = Vector2(1.025, 1.025)
+shape = SubResource("RectangleShape2D_hen0x")
+disabled = true
+
+[node name="UltiScript" type="Node2D" parent="."]
+script = ExtResource("2_l500s")

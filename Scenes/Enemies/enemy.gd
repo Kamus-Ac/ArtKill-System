@@ -100,12 +100,13 @@ func assign_random_skin():
 
 
 
-
-func die():
-	emit_signal("died")
-	isDead = true
-	current_state = STATE.DEAD
-	queue_free()
+func die(hit):
+	if hit is Player_Hitbox:
+		print("muerto")
+		emit_signal("died")
+		isDead = true
+		current_state = STATE.DEAD
+		queue_free()
 
 func get_direction_to_player():
 	var player_node = get_tree().get_first_node_in_group("player") as Node2D
