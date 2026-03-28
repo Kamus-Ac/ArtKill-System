@@ -5,9 +5,9 @@
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-scale = Vector2(5.105, 5.105)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(4, 4)
+position = Vector2(0, 80)
+scale = Vector2(6, 6)
 sprite_frames = ExtResource("1_3r3sn")
 animation = &"muerto"

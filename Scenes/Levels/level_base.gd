@@ -7,12 +7,16 @@ var i = 0
 
 func _ready() -> void:
 	var player = get_tree().get_first_node_in_group("player")
-
+	#player.connect("died", Callable(self, "_on_player_died"))
 	SignalManager.took_damage.connect(Callable(self, "update_hearts"))
-	
+
 	create_hearts(player.max_health)
 	update_hearts(player.health, player.max_health)
-	
+
+func _on_player_died() -> void:
+	await get_tree().create_timer(5.0).timeout  # espera 1 segundo
+	get_tree().reload_current_scene()
+
 	
 func create_hearts(max_health):
 	var hearts_parent = $CanvasLayer/HBoxContainer

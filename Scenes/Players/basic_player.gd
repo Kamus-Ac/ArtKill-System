@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 signal animation_done
+signal died
+
 var player_hitbox_col: CollisionShape2D 
 var ulti_area: CollisionShape2D
 var damage_area: Area2D
@@ -179,6 +181,7 @@ func take_damage(from_position: Vector2):
 		current_state = STATE.DEAD
 		await animation_done
 		queue_free()
+		#emit_signal("died")
 
 
 

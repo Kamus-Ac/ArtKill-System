@@ -40,7 +40,7 @@ offset_left = 60.0
 offset_top = 40.0
 offset_right = 160.0
 offset_bottom = 140.0
-theme_override_constants/separation = 32
+theme_override_constants/separation = 50
 
 [node name="BasicPlayer" parent="." instance=ExtResource("7_614yd")]
 
