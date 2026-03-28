@@ -15,6 +15,9 @@ var character_loaded : Node2D
 
 #Ulti
 var isUltiActive : bool = false
+var isUltiAvailable : bool = false
+var kill_count : int = 0
+var ulti_kills_required : int = 7
 
 #---VIDA---#
 #var hearts_list: Array[TextureRect]
@@ -58,7 +61,6 @@ var grabbing: bool = false
 
 
 func _ready() -> void:
-
 	if GameManager.selected_character:
 		MAX_SPEED = GameManager.selected_character.max_speed
 		max_health = GameManager.selected_character.max_health
@@ -126,7 +128,7 @@ func match_states(input_dir: Vector2, delta: float):
 			elif Input.is_action_just_pressed("BasicAttack"):
 				current_state = STATE.ATTACKING
 			
-			elif Input.is_action_just_pressed("Ulti"):
+			elif Input.is_action_just_pressed("Ulti") and isUltiAvailable:
 				current_state = STATE.ATTACKING_ULTI
 				
 		STATE.RUNNING:
@@ -148,8 +150,8 @@ func match_states(input_dir: Vector2, delta: float):
 		STATE.ATTACKING_ULTI:
 			if !isUltiActive:
 				isUltiActive = true
+				isUltiAvailable = false
 				ulti_script.start(self)
-				
 			ulti_script.ulti_move(delta)
 			anim.play("ulti")
 			ulti_area.disabled = false
@@ -188,7 +190,6 @@ func grab_and_throw():
 	if object:
 		if !grabbing:
 			grab_objects()
-			print("agarra")
 		if Input.is_action_pressed("Grab") and grabbing:
 			isClickBeingPressed = true
 			lastClickState = isClickBeingPressed
@@ -244,9 +245,11 @@ func _on_anim_finished():
 	
 	if current_state == STATE.ATTACKING_ULTI:
 		isUltiActive = false
+		isUltiAvailable = false
 		ulti_area.disabled = true
+		kill_count = 0
 		current_state = STATE.IDLE
-		
+	
 	elif current_state in [STATE.ATTACKING, STATE.HURTED]:
 		player_hitbox_col.disabled = true
 		current_state = STATE.IDLE
@@ -268,3 +271,12 @@ func _on_recolect_body_entered(body: Node2D) -> void:
 	print("ENTRÓ:", body)
 	if body.is_in_group("objects"):
 		object = body
+
+
+func _on_enemy_killed():
+	kill_count += 1
+	print("Kills:", kill_count)
+
+	if kill_count >= ulti_kills_required:
+		isUltiAvailable = true
+		print("ULTI LISTA")

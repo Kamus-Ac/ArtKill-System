@@ -33,6 +33,10 @@ var current_state: STATE = STATE.RUNNING
 func _ready() -> void:
 	SignalManager.isLaunching.connect(islaunching)
 	assign_random_skin()
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		# Conectar la señal "died" de esta instancia a la función del player
+		self.died.connect(player._on_enemy_killed)
 
 
 func _physics_process(_delta):
