@@ -82,6 +82,8 @@ func load_character(module_scene: PackedScene):
 	ulti_area = character_loaded.get_node("Areas/Ulti_Area/CollisionShape2D")
 	damage_area = character_loaded.get_node("Areas/Daño")
 	areas = character_loaded.get_node("Areas")
+	var recolect_area = character_loaded.get_node("Areas/recolect")
+	recolect_area.body_entered.connect(_on_recolect_body_entered)
 	damage_area.body_entered.connect(_on_daño_body_entered)
 
 
@@ -263,5 +265,6 @@ func _on_damage_timer_timeout() -> void:
 	invulnerable = false
 
 func _on_recolect_body_entered(body: Node2D) -> void:
+	print("ENTRÓ:", body)
 	if body.is_in_group("objects"):
 		object = body

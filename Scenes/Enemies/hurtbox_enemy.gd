@@ -10,7 +10,6 @@ func _ready() -> void:
 
 
 		
-func _on_area_entered(hit_area: Player_Hitbox) -> void:
-	if hit_area != null and owner.has_method("die"):
-		print("pego")
+func _on_area_entered(hit_area: Area2D) -> void:
+	if owner.has_method("die") and hit_area is Player_Hitbox:
 		owner.die(hit_area)
