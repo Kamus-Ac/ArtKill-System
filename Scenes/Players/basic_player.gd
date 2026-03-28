@@ -13,6 +13,7 @@ var recolect: Area2D
 @onready var character_holder: Node2D = $CharacterScene
 @export var character_data: CharacterData
 var character_loaded : Node2D
+var rotation_dir : Vector2
 
 #Ulti
 var isUltiActive : bool = false
@@ -94,6 +95,7 @@ func load_character(module_scene: PackedScene):
 
 func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("Left", "Right", "Up", "Down")
+	
 # knockback siempre suma fuerza, no cancela movimiento
 	if knockback.length() > 10:
 		knockback = knockback.move_toward(Vector2.ZERO, knockback_decay)
@@ -288,6 +290,7 @@ func _on_recolect_body_entered(body: Node2D) -> void:
 
 func _on_enemy_killed():
 	kill_count += 1
+	SignalManager.kill_count.emit(kill_count)
 	print("Kills:", kill_count)
 
 	if kill_count >= ulti_kills_required:

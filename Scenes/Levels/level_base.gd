@@ -2,13 +2,16 @@ extends Node2D
 
 var hearts_list: Array = []
 var i = 0
-
+@onready var texture_rect: TextureRect = $CanvasLayer/TextureRect
+var percentage_ult: float = 0
+var ult_max: float = 7
 # Called when the node enters the scene tree for the first time.
 
 func _ready() -> void:
 	var player = get_tree().get_first_node_in_group("player")
 
 	SignalManager.took_damage.connect(Callable(self, "update_hearts"))
+	SignalManager.kill_count.connect(ult_bar)
 	
 	create_hearts(player.max_health)
 	update_hearts(player.health, player.max_health)
@@ -36,3 +39,8 @@ func update_hearts(health, max_health):
 			anim.play("vivo")
 		else:
 			anim.play("muerto")
+
+func ult_bar(kill:int):
+	percentage_ult = kill/percentage_ult
+	texture_rect.scale.x = percentage_ult
+	

@@ -62,7 +62,7 @@ layout_mode = 2
 theme_override_constants/separation = 24
 alignment = 1
 
-[node name="Gus" type="PanelContainer" parent="MainPanel/VBox/CharactersBox"]
+[node name="Gus" type="PanelContainer" parent="MainPanel/VBox/CharactersBox" unique_id=153322553]
 custom_minimum_size = Vector2(200, 260)
 layout_mode = 2
 script = ExtResource("3_dieb8")
@@ -71,14 +71,14 @@ character_data = ExtResource("4_apj1b")
 [node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/VBox/CharactersBox/Gus" unique_id=1854825512]
 layout_mode = 2
 
-[node name="Shadow" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Gus/VBoxContainer"]
+[node name="Shadow" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Gus/VBoxContainer" unique_id=1486137845]
 visible = false
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("2_d3lco")
 stretch_mode = 5
 
-[node name="Sprite" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Gus/VBoxContainer"]
+[node name="Sprite" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Gus/VBoxContainer" unique_id=1891789989]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 stretch_mode = 5
@@ -96,14 +96,14 @@ character_data = ExtResource("6_dieb8")
 [node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/VBox/CharactersBox/Tomy" unique_id=1639629513]
 layout_mode = 2
 
-[node name="Shadow" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Tomy/VBoxContainer"]
+[node name="Shadow" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Tomy/VBoxContainer" unique_id=2104008145]
 visible = false
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("2_d3lco")
 stretch_mode = 4
 
-[node name="Sprite" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Tomy/VBoxContainer"]
+[node name="Sprite" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Tomy/VBoxContainer" unique_id=217096151]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 stretch_mode = 5
@@ -112,7 +112,7 @@ stretch_mode = 5
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Idol" type="PanelContainer" parent="MainPanel/VBox/CharactersBox"]
+[node name="Idol" type="PanelContainer" parent="MainPanel/VBox/CharactersBox" unique_id=1923428036]
 visible = false
 custom_minimum_size = Vector2(180, 260)
 layout_mode = 2
