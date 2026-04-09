@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dsaua6iwjkfft"]
+[gd_scene format=3 uid="uid://dsaua6iwjkfft"]
 
 [ext_resource type="Script" uid="uid://ycu2q01ywlf4" path="res://Scenes/Enemies/enemy.gd" id="1_x1rqp"]
 [ext_resource type="SpriteFrames" uid="uid://bln4bgg458q0p" path="res://Scenes/Enemies/skins/chat.tres" id="2_jcvw6"]
@@ -15,33 +15,33 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4bcle"]
 
-[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+[node name="Enemy" type="CharacterBody2D" unique_id=1076933887 groups=["enemies"]]
 collision_layer = 2
 collision_mask = 15
 script = ExtResource("1_x1rqp")
 skins = Array[SpriteFrames]([ExtResource("2_tq087"), ExtResource("2_jcvw6"), ExtResource("4_4bcle"), ExtResource("5_beuat"), ExtResource("6_7ubbs"), ExtResource("7_ycxl0"), ExtResource("8_pko3b"), ExtResource("9_tq087")])
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=133299885]
 position = Vector2(0, -23)
 sprite_frames = ExtResource("7_ycxl0")
 animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1837539380]
 visible = false
 position = Vector2(0, -4.999998)
 scale = Vector2(1.09, 1.09)
 shape = SubResource("CircleShape2D_jcvw6")
 
-[node name="HitLag" type="Timer" parent="."]
+[node name="HitLag" type="Timer" parent="." unique_id=1135330333]
 one_shot = true
 
-[node name="EnemyHurtBox" type="Area2D" parent="."]
+[node name="EnemyHurtBox" type="Area2D" parent="." unique_id=82079396]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 6
 script = ExtResource("10_4bcle")
 metadata/_custom_type_script = "uid://ysn1i3gwaakr"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHurtBox" unique_id=949960267]
 position = Vector2(0, -6.5)
 shape = SubResource("CapsuleShape2D_4bcle")
 
