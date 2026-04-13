@@ -216,12 +216,13 @@ func match_states(delta: float):
 			elif Input.is_action_just_pressed("BasicAttack"):
 				current_state = STATE.ATTACKING
 			
-			elif Input.is_action_just_pressed("Ulti"):
+			elif Input.is_action_just_pressed("Ulti") and isUltiAvailable:
 				current_state = STATE.ATTACKING_ULTI
 			
 
 				
 		STATE.ATTACKING:
+			move(delta)
 			anim.play("basicAttack")
 			player_hitbox_col.disabled = false
 			
