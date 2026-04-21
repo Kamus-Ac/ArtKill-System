@@ -34,6 +34,8 @@ shape = SubResource("CircleShape2D_jcvw6")
 one_shot = true
 
 [node name="Enemy_Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
 monitoring = false
 script = ExtResource("11_beuat")
 metadata/_custom_type_script = "uid://c56xdds258tel"

@@ -4,7 +4,7 @@ extends Area2D
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	monitorable = false
-	collision_layer = 1
+	collision_layer = 0
 	collision_mask = 2
 	
 

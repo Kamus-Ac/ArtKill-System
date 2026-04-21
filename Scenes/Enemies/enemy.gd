@@ -142,8 +142,8 @@ func islaunching2(body: Node2D):
 		body2.hit_lag.start(1.0)
 		body2.hitting=true
 		body2.knockback = enemy_impulse
-	print("COLISION CON:", body2.name)
-	print("DIR:", (body2.global_position - global_position))
+	#print("COLISION CON:", body2.name)
+	#print("DIR:", (body2.global_position - global_position))
 
 
 func _on_hit_lag_timeout() -> void:

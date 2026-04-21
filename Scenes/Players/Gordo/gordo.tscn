@@ -51,6 +51,8 @@ shape = SubResource("RectangleShape2D_hen0x")
 disabled = true
 
 [node name="Player_Hurtbox" type="Area2D" parent="Areas"]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("3_hen0x")
 metadata/_custom_type_script = "uid://c2u602qug3hko"
 
