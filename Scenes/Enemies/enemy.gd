@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var skins: Array[SpriteFrames]  # 8 skins
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @export var isDead: bool = false
-@onready var enemy_hurt_box: Area2D = $EnemyHurtBox
+@onready var launchingArea: Area2D = $LaunchingArea
 
 signal died
 const MAX_SPEED = 85
@@ -36,7 +36,7 @@ var current_state: STATE = STATE.RUNNING
 
 func _ready() -> void:
 	#SignalManager.isLaunching.connect(islaunching)
-	enemy_hurt_box.body_entered.connect(islaunching2)
+	launchingArea.body_entered.connect(islaunching2)
 	assign_random_skin()
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
@@ -61,26 +61,6 @@ func _physics_process(_delta):
 					knockback = Vector2.ZERO
 				
 				velocity+=knockback
-				"""if hit_enemy_enemy:
-					var push_force = Vector2(
-						clampf(push_enemy_enemy.x, 100, 100.0),
-						clampf(push_enemy_enemy.y, 100, 100.0)
-					)
-					velocity = Vector2(
-						push_force.x * sign(push_enemy_enemy.x),
-						push_force.y * sign(push_enemy_enemy.y)
-					)
-
-				elif hit_obj_enemy:
-					push_obj_enemy += push_obj_enemy
-					var push_force = Vector2(
-						clampf(push_obj_enemy.x, 100, 100.0),
-						clampf(push_obj_enemy.y, 100, 100.0)
-					)
-					velocity = Vector2(
-						push_force.x * sign(push_obj_enemy.x),
-						push_force.y * sign(push_obj_enemy.y)
-					)"""
 
 			# --- MOVIMIENTO FINAL ---
 			move_and_slide()
@@ -129,28 +109,6 @@ func get_direction_to_player():
 		return (player_node.global_position - global_position).normalized()
 	return Vector2.ZERO
 
-"""func islaunching():
-	if collision:
-			body = collision.get_collider()
-			
-			if body and body.is_in_group("objects") and !hitting:				
-				velocity = Vector2.ZERO
-				hitting = true
-				hit_obj_enemy = true
-				hit_lag.start(1.0)
-				#push_obj_enemy = collision.get_normal()
-				
-				if body is RigidBody2D:
-					var dir_to_rb = (body.global_position - global_position).normalized()
-					var rb_impulse = dir_to_rb * (IMPULSE * 50) # Escala para que sí se mueva
-					body.apply_impulse(rb_impulse)
-					
-			if body and body.is_in_group("enemies") and !hitting:
-				velocity = Vector2.ZERO
-				hitting = true
-				hit_enemy_enemy = true
-				hit_lag.start(1.0)
-				push_enemy_enemy = collision.get_normal()"""
 
 func islaunching2(body: Node2D):
 	body2 = body
@@ -184,6 +142,8 @@ func islaunching2(body: Node2D):
 		body2.hit_lag.start(1.0)
 		body2.hitting=true
 		body2.knockback = enemy_impulse
+	print("COLISION CON:", body2.name)
+	print("DIR:", (body2.global_position - global_position))
 
 
 func _on_hit_lag_timeout() -> void:

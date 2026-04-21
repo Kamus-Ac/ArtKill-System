@@ -2,11 +2,21 @@ extends CharacterBody2D
 
 signal animation_done
 
-var player_hitbox_col: CollisionShape2D 
-var ulti_area: CollisionShape2D
-var damage_area: Area2D
+#Areas
+
 var areas: Node2D 
-var recolect: Area2D
+var player_hitbox_col: CollisionShape2D  #Player Hitbox
+var ulti_area: CollisionShape2D #Player Hitbox de la Ulti
+var damage_area: Area2D #Player Hurtbox
+var recolect: Area2D #Recolección de Objetos
+
+#Vida
+
+var max_health
+var health
+var invulnerable := false
+const DAMAGE_COOLDOWN := 0.8   # tiempo en segundos
+
 
 
 @onready var anim: AnimatedSprite2D = $Flip/AnimatedSprite2D
@@ -16,7 +26,6 @@ var recolect: Area2D
 @export var character_data: CharacterData
 var character_loaded : Node2D
 
-var rotation_dir : Vector2
 var current_dir : DIRECTION
 
 #Ulti
@@ -25,14 +34,8 @@ var isUltiActive : bool = false
 var isUltiAvailable : bool = false
 var kill_count : int = 0
 var ulti_kills_required : int = 7
-
-#---VIDA---#
-#var hearts_list: Array[TextureRect]
-var max_health
-var health
-var invulnerable := false
-const DAMAGE_COOLDOWN := 0.8   # tiempo en segundos
 const ULT_COOLDOWN := 10.0 #tiempo en segundos
+
 
 #No estoy de acuerdo con esto que voy a hacer, pero es lo más rápido.
 var up : bool = false
@@ -96,6 +99,8 @@ func _ready() -> void:
 	# conectar la señal para volver a idle al terminar
 	if anim:
 		anim.animation_finished.connect(_on_anim_finished)
+		
+	add_to_group("player")
 
 	
 	
@@ -105,11 +110,11 @@ func load_character(module_scene: PackedScene):
 	ulti_script = character_loaded.get_node("UltiScript")
 	player_hitbox_col = character_loaded.get_node("Areas/Player_Hitbox/CollisionShape2D")
 	ulti_area = character_loaded.get_node("Areas/Ulti_Area/CollisionShape2D")
-	damage_area = character_loaded.get_node("Areas/Daño")
+	damage_area = character_loaded.get_node("Areas/Player_Hurtbox")
 	areas = character_loaded.get_node("Areas")
 	recolect = character_loaded.get_node("Areas/Recolect")
 	recolect.body_entered.connect(_on_recolect_body_entered)
-	damage_area.body_entered.connect(_on_daño_body_entered)
+
 
 
 func _physics_process(delta: float) -> void:
@@ -243,22 +248,24 @@ func match_states(delta: float):
 			anim.play("death")
 			velocity = Vector2.ZERO
 
-func take_damage(from_position: Vector2):
-	if invulnerable or current_state == STATE.DEAD:
-		return  # No recibe daño si está en cooldown
+func take_damage(damage: int):
+	print("Damage: ",damage)
 
-	invulnerable = true
-	$DamageTimer.start()
-	
-	health -= 1
-	SignalManager.took_damage.emit(health, max_health)
-	current_state = STATE.HURTED
-	apply_knockback(from_position)
-	
-	if health <= 0:
-		current_state = STATE.DEAD
-		await animation_done
-		queue_free()
+	#if invulnerable or current_state == STATE.DEAD:
+		#return  # No recibe daño si está en cooldown
+#
+	#invulnerable = true
+	#$DamageTimer.start()
+	#
+	#health -= 1
+	#SignalManager.took_damage.emit(health, max_health)
+	#current_state = STATE.HURTED
+	#apply_knockback(from_position)
+	#
+	#if health <= 0:
+		#current_state = STATE.DEAD
+		#await animation_done
+		#queue_free()
 
 func grab_and_throw():
 	isClickBeingPressed = false
@@ -332,16 +339,6 @@ func _on_anim_finished():
 	elif current_state in [STATE.ATTACKING, STATE.HURTED]:
 		player_hitbox_col.disabled = true
 		current_state = STATE.IDLE
-
-func _on_daño_body_entered(body: Node2D) -> void:
-	if invulnerable:
-		return
-		
-	if isUltiActive:
-		return
-
-	if body.is_in_group("enemies") and not body.isDead:
-		take_damage(body.global_position)
 
 func _on_damage_timer_timeout() -> void:
 	invulnerable = false
