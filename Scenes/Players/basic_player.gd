@@ -11,11 +11,7 @@ var damage_area: Area2D #Player Hurtbox
 var recolect: Area2D #Recolección de Objetos
 
 #Vida
-
-var max_health
-var health
-var invulnerable := false
-const DAMAGE_COOLDOWN := 0.8   # tiempo en segundos
+var health_component: Player_Health
 
 
 
@@ -89,8 +85,6 @@ var grabbing: bool = false
 func _ready() -> void:
 	if GameManager.selected_character:
 		MAX_SPEED = GameManager.selected_character.max_speed
-		max_health = GameManager.selected_character.max_health
-		health = max_health
 		anim.sprite_frames = GameManager.selected_character.sprite
 		
 		load_character(GameManager.selected_character.character_scene)
@@ -107,6 +101,8 @@ func _ready() -> void:
 func load_character(module_scene: PackedScene):
 	character_loaded = module_scene.instantiate()
 	character_holder.add_child(character_loaded)
+	health_component = character_loaded.get_node("Player_Health")
+	health_component.health_depleted.connect(_on_health_health_depleted)
 	ulti_script = character_loaded.get_node("UltiScript")
 	player_hitbox_col = character_loaded.get_node("Areas/Player_Hitbox/CollisionShape2D")
 	ulti_area = character_loaded.get_node("Areas/Ulti_Area/CollisionShape2D")
@@ -248,24 +244,6 @@ func match_states(delta: float):
 			anim.play("death")
 			velocity = Vector2.ZERO
 
-func take_damage(damage: int):
-	print("Damage: ",damage)
-
-	#if invulnerable or current_state == STATE.DEAD:
-		#return  # No recibe daño si está en cooldown
-#
-	#invulnerable = true
-	#$DamageTimer.start()
-	#
-	#health -= 1
-	#SignalManager.took_damage.emit(health, max_health)
-	#current_state = STATE.HURTED
-	#apply_knockback(from_position)
-	#
-	#if health <= 0:
-		#current_state = STATE.DEAD
-		#await animation_done
-		#queue_free()
 
 func grab_and_throw():
 	isClickBeingPressed = false
@@ -340,9 +318,6 @@ func _on_anim_finished():
 		player_hitbox_col.disabled = true
 		current_state = STATE.IDLE
 
-func _on_damage_timer_timeout() -> void:
-	invulnerable = false
-
 func _on_recolect_body_entered(body: Node2D) -> void:
 	if !object and body!=lastobject: #Esta linea se agregó para evitar el bug del throwobject
 		if body.is_in_group("objects"):
@@ -353,6 +328,11 @@ func _on_recolect_body_entered(body: Node2D) -> void:
 	#print("ENTRÓ:", body)
 	#if body.is_in_group("objects"):
 		#object = body
+
+func _on_health_health_depleted():
+	current_state = STATE.DEAD
+	await animation_done
+	queue_free()
 
 func _on_enemy_killed():
 	kill_count += 1
