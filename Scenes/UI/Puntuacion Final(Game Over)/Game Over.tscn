@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://dv1uvtwehl8no"]
+
+[ext_resource type="Script" uid="uid://bkcifxlduu5b6" path="res://Scenes/UI/Puntuacion Final(Game Over)/game_over.gd" id="1_unhhn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7caah"]
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 3
+
+[node name="GameOver" type="Control" unique_id=1110839108]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_unhhn")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1813385147]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.39215687)
+
+[node name="PanelContainer" type="PanelContainer" parent="ColorRect" unique_id=108424379]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -244.0
+offset_top = -211.0
+offset_right = 244.0
+offset_bottom = 211.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7caah")
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/PanelContainer" unique_id=1732259348]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/PanelContainer/MarginContainer" unique_id=1825406605]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/PanelContainer/MarginContainer/VBoxContainer" unique_id=452529620]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 42
+text = "Fin del Juego"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="ColorRect" unique_id=2055523254]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.49791664
+anchor_top = 0.60833335
+anchor_right = 0.5052083
+anchor_bottom = 0.60833335
+offset_left = -82.0
+offset_top = -20.0
+offset_right = 82.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Reintentar"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button2" type="Button" parent="ColorRect" unique_id=1282098222]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.65800005
+anchor_right = 0.5
+anchor_bottom = 0.65800005
+offset_left = -85.0
+offset_top = -20.640076
+offset_right = 95.0
+offset_bottom = 20.359924
+text = "Salir al Menu Principal"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="ColorRect" unique_id=95161957]
+layout_mode = 0
+offset_left = 1028.0
+offset_top = 444.0
+offset_right = 1080.0
+offset_bottom = 467.0
+text = "0"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=2098254270]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.44200003
+anchor_top = 0.42200002
+anchor_right = 0.44200003
+anchor_bottom = 0.42200002
+offset_left = -64.640076
+offset_top = -12.76001
+offset_right = 65.359924
+offset_bottom = 12.23999
+grow_horizontal = 2
+grow_vertical = 2
+text = "Puntuacion Final"
+
+[node name="Label4" type="Label" parent="ColorRect" unique_id=2112278789]
+layout_mode = 0
+offset_left = 787.0
+offset_top = 484.0
+offset_right = 845.0
+offset_bottom = 507.0
+text = "Tiempo"
+
+[node name="Label5" type="Label" parent="ColorRect" unique_id=2066583167]
+layout_mode = 0
+offset_left = 790.0
+offset_top = 524.0
+offset_right = 972.0
+offset_bottom = 573.0
+text = "Habilidades Definitivas 
+Usadas"
