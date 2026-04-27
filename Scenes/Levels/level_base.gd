@@ -11,6 +11,7 @@ func _ready() -> void:
 	var player = get_tree().get_first_node_in_group("player")
 	SignalManager.kill_count.connect(ult_bar)
 	SignalManager.ult_used.connect(ult_reset)
+	pause_menu.hide()
 	
 	
 	
@@ -24,5 +25,25 @@ func ult_bar(kill:int):
 func ult_reset():
 	texture_rect.size.x=0
 	percentage_ult = 0
+	
+@onready var pause_menu: Control = $GameCamera/CanvasLayer2/pause_menu
+
+var paused = false
+
+func _process(delta):
+	if Input.is_action_just_pressed("Pausa"):
+			pauseMenu()
+			
+func pauseMenu():
+	if paused:
+		pause_menu.hide()
+		Engine.time_scale = 1
+	else:
+		pause_menu.show()
+		Engine.time_scale = 0
+		
+	paused = !paused
+			
+	
 	
 	
