@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://gxncnt6imh3x"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://gxncnt6imh3x"]
 
 [ext_resource type="Texture2D" uid="uid://dunj7ewd883p7" path="res://Scenes/Enemies/skins/Yarbis_IA.png" id="1_x52c6"]
 

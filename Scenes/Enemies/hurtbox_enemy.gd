@@ -6,7 +6,7 @@ func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	monitorable = false
 	collision_layer = 2
-	collision_mask = 1
+	collision_mask = 7
 
 
 func _on_area_entered(hit_area: Area2D) -> void:

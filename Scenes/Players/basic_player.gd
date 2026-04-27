@@ -29,7 +29,6 @@ var ulti_script: Node2D
 var isUltiActive : bool = false
 var isUltiAvailable : bool = false
 var kill_count : int = 0
-var ulti_kills_required : int = 7
 const ULT_COOLDOWN := 10.0 #tiempo en segundos
 
 
@@ -132,6 +131,7 @@ func _physics_process(delta: float) -> void:
 	grab_and_throw()
 	flip_sprite()
 	rotate_object()
+	_loading_ult(delta)
 
 func cartesian_to_isometric(cartesian):
 	return Vector2(cartesian.x - cartesian.y, (cartesian.x+cartesian.y) / 2)
@@ -233,7 +233,6 @@ func match_states(delta: float):
 				isUltiAvailable = false
 				ulti_script.start(self)
 			ulti_script.ulti_move(delta)
-			SignalManager.ult_used.emit()
 			anim.play("ulti")
 			ulti_area.disabled = false
 				
@@ -312,6 +311,8 @@ func _on_anim_finished():
 		isUltiAvailable = false
 		ulti_area.disabled = true
 		kill_count = 0
+		GameManager.timeToUlt = 0
+		SignalManager.ult_used.emit()
 		current_state = STATE.IDLE
 	
 	elif current_state in [STATE.ATTACKING, STATE.HURTED]:
@@ -334,11 +335,20 @@ func _on_health_health_depleted():
 	await animation_done
 	queue_free()
 
-func _on_enemy_killed():
+"""func _on_enemy_killed():
 	kill_count += 1
 	SignalManager.kill_count.emit(kill_count)
 	print("Kills:", kill_count)
 
-	if kill_count >= ulti_kills_required:
+	if kill_count >= GameManager.ulti_kills_required:
 		isUltiAvailable = true
-		print("ULTI LISTA")
+		print("ULTI LISTA")"""
+
+func _on_enemy_killed():
+	GameManager.timeToUlt += 1
+	print("timeToUlt: %.2f" %GameManager.timeToUlt)
+
+func _loading_ult(_delta: float):
+	GameManager.timeToUlt+=_delta
+	if GameManager.timeToUlt >= GameManager.ulti_kills_required:
+		isUltiAvailable=true

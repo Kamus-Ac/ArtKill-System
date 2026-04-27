@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://bmk7stxx2h5j6"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://bmk7stxx2h5j6"]
 
 [ext_resource type="Texture2D" uid="uid://lsag1g0uy0re" path="res://Scenes/Enemies/skins/IA_SimSimi_iddle.png" id="1_1tgi5"]
 

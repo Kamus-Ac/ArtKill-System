@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvqgi43nkhtrb"]
+[gd_scene format=3 uid="uid://bvqgi43nkhtrb"]
 
 [ext_resource type="Script" uid="uid://dan1nkfvkil6u" path="res://Scenes/Players/basic_player.gd" id="1_qdrsv"]
 [ext_resource type="SpriteFrames" uid="uid://oygggrhhee65" path="res://Scenes/Players/Idol/Animaciones/idol.tres" id="2_8i48k"]
@@ -6,31 +6,31 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_fty27"]
 radius = 7.0
 
-[node name="BasicPlayer" type="CharacterBody2D" groups=["player"]]
+[node name="BasicPlayer" type="CharacterBody2D" unique_id=1400309274 groups=["player"]]
 y_sort_enabled = true
-collision_mask = 27
+collision_mask = 11
 script = ExtResource("1_qdrsv")
 
-[node name="Flip" type="Node2D" parent="."]
+[node name="Flip" type="Node2D" parent="." unique_id=1654536317]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flip"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flip" unique_id=1720341703]
 sprite_frames = ExtResource("2_8i48k")
 animation = &"ulti"
 
-[node name="Coll" type="CollisionShape2D" parent="."]
+[node name="Coll" type="CollisionShape2D" parent="." unique_id=1480478777]
 visible = false
 position = Vector2(0, 9)
 scale = Vector2(1.065, 1.065)
 shape = SubResource("CircleShape2D_fty27")
 debug_color = Color(0.3764706, 0.6117647, 0.20392157, 0.76862746)
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1147486484]
 position = Vector2(1, 0)
 
-[node name="DamageTimer" type="Timer" parent="."]
+[node name="DamageTimer" type="Timer" parent="." unique_id=71706283]
 wait_time = 0.8
 one_shot = true
 
-[node name="CharacterScene" type="Node2D" parent="."]
+[node name="CharacterScene" type="Node2D" parent="." unique_id=1458441063]
 
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
