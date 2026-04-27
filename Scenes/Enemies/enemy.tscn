@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsaua6iwjkfft"]
+[gd_scene format=3 uid="uid://dsaua6iwjkfft"]
 
 [ext_resource type="Script" uid="uid://ycu2q01ywlf4" path="res://Scenes/Enemies/enemy.gd" id="1_x1rqp"]
 [ext_resource type="SpriteFrames" uid="uid://bptwp61wlbtu5" path="res://Scenes/Enemies/skins/amazon.tres" id="2_ubio8"]
@@ -15,9 +15,9 @@ height = 24.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ubio8"]
 
-[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+[node name="Enemy" type="CharacterBody2D" unique_id=358593171 groups=["enemies"]]
 collision_layer = 2
-collision_mask = 15
+collision_mask = 31
 script = ExtResource("1_x1rqp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=133299885]
@@ -25,7 +25,7 @@ position = Vector2(0, -23)
 sprite_frames = ExtResource("2_ubio8")
 animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1507215249]
 position = Vector2(0, -4.999998)
 scale = Vector2(1.09, 1.09)
 shape = SubResource("CircleShape2D_jcvw6")
@@ -33,18 +33,18 @@ shape = SubResource("CircleShape2D_jcvw6")
 [node name="HitLag" type="Timer" parent="." unique_id=1135330333]
 one_shot = true
 
-[node name="Enemy_Hitbox" type="Area2D" parent="."]
+[node name="Enemy_Hitbox" type="Area2D" parent="." unique_id=1222397178]
 collision_layer = 2
 collision_mask = 0
 monitoring = false
 script = ExtResource("11_beuat")
 metadata/_custom_type_script = "uid://c56xdds258tel"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_Hitbox" unique_id=40060804]
 position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_7ubbs")
 
-[node name="EnemyHurtBox" type="Area2D" parent="."]
+[node name="EnemyHurtBox" type="Area2D" parent="." unique_id=2084333704]
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("10_4bcle")
@@ -54,12 +54,12 @@ metadata/_custom_type_script = "uid://ysn1i3gwaakr"
 position = Vector2(0, -6.5)
 shape = SubResource("CapsuleShape2D_4bcle")
 
-[node name="LaunchingArea" type="Area2D" parent="."]
+[node name="LaunchingArea" type="Area2D" parent="." unique_id=715067017]
 collision_layer = 2
 collision_mask = 6
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LaunchingArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaunchingArea" unique_id=804058693]
 position = Vector2(0, -6.5)
 shape = SubResource("CapsuleShape2D_ubio8")
 

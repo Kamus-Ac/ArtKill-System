@@ -113,7 +113,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="Idol" type="PanelContainer" parent="MainPanel/VBox/CharactersBox" unique_id=1923428036]
-visible = false
 custom_minimum_size = Vector2(180, 260)
 layout_mode = 2
 script = ExtResource("3_dieb8")
@@ -123,6 +122,7 @@ character_data = ExtResource("6_pjomi")
 layout_mode = 2
 
 [node name="Shadow" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Idol/VBoxContainer" unique_id=1336836274]
+visible = false
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("2_d3lco")

@@ -8,7 +8,8 @@ extends CharacterBody2D
 
 signal died
 const MAX_SPEED = 85
-const IMPULSE = 50
+const SPEED = 20
+const IMPULSE = 300
 
 #varibles debug
 var check
@@ -17,8 +18,8 @@ var collision
 var body2: Node2D
 
 var hitting : bool = false
-var hit_obj_enemy: bool = false
-var hit_enemy_enemy: bool = false
+"""var hit_obj_enemy: bool = false
+var hit_enemy_enemy: bool = false"""
 
 var push_obj_enemy : Vector2 = Vector2.ZERO
 var mag_obj_enemy : float = 0
@@ -26,6 +27,9 @@ var push_enemy_enemy : Vector2 = Vector2.ZERO
 
 var knockback:= Vector2.ZERO
 var knockback_decay:= 8.0
+
+var time: float
+var dur_timer : float
 
 enum STATE {
 	RUNNING,
@@ -48,19 +52,25 @@ func _physics_process(_delta):
 	match current_state:
 		STATE.RUNNING:
 			anim_sprite.play("idle")
+			var direction = get_direction_to_player()
 			# --- MOVIMIENTO BÁSICO ---
 			if not hitting:
-				var direction = get_direction_to_player()
-				velocity = direction * MAX_SPEED
-
+				velocity += direction * SPEED
+				if velocity.length_squared()>MAX_SPEED*MAX_SPEED:
+					velocity = direction * MAX_SPEED
+			
 			# --- KNOCKBACKS ---
 			if hitting:
-				if knockback.length() > 10:
-					knockback = knockback.move_toward(Vector2.ZERO, knockback_decay)
+				if knockback.length_squared()>128:
+					knockback = knockback.lerp(Vector2.ZERO, _delta)
+					#print(knockback)
+					
+					velocity=knockback
 				else:
-					knockback = Vector2.ZERO
-				
-				velocity+=knockback
+					hitting=false
+					velocity =Vector2.ZERO
+			
+			
 
 			# --- MOVIMIENTO FINAL ---
 			move_and_slide()
@@ -116,9 +126,7 @@ func islaunching2(body: Node2D):
 		hitting = true
 		if hitting:				
 			velocity = Vector2.ZERO
-			hitting = true
-			hit_obj_enemy = true
-			hit_lag.start(1.0)
+			#hit_lag.start(1.0)
 			#print("si le pego")
 			#push_obj_enemy = collision.get_normal()
 			
@@ -127,14 +135,13 @@ func islaunching2(body: Node2D):
 				var rb_impulse = dir_to_rb * (IMPULSE) # Escala para que sí se mueva
 				body2.linear_velocity = Vector2.ZERO
 				body2.angular_velocity = 0
-				body2.apply_impulse(rb_impulse * 10)
+				body2.apply_impulse(rb_impulse/5)
 				knockback = -rb_impulse
 				
-	if body2 and body2.is_in_group("enemies") and !hitting:
+	if body2 and body2.is_in_group("enemies"):
 		velocity = Vector2.ZERO
 		hitting = true
-		hit_enemy_enemy = true
-		hit_lag.start(1.0)
+		#hit_lag.start(1.0)
 		var dir_to_enemy = (body2.global_position - global_position).normalized()
 		var enemy_impulse = dir_to_enemy * (IMPULSE)
 		knockback = -enemy_impulse
@@ -142,18 +149,18 @@ func islaunching2(body: Node2D):
 		body2.hit_lag.start(1.0)
 		body2.hitting=true
 		body2.knockback = enemy_impulse
+
+	if body2 and body2.is_in_group("notas"):
+		queue_free()
+		body2.queue_free()
 	#print("COLISION CON:", body2.name)
 	#print("DIR:", (body2.global_position - global_position))
 
 
 func _on_hit_lag_timeout() -> void:
 	hitting = false
+	time=0
 	
-	if hit_obj_enemy:
-		hit_obj_enemy=false
-	
-	if hit_enemy_enemy:
-		hit_enemy_enemy=false
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:

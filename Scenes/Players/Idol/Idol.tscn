@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://dnv3x3k1xxw5o"]
+
+[ext_resource type="Shape2D" uid="uid://drewp4ag3n1u7" path="res://Scenes/Colision Shape/colision_recolect.tres" id="1_ndles"]
+[ext_resource type="Script" uid="uid://crea02gg0i2qu" path="res://Scenes/Colision Shape/hitbox.gd" id="2_gfn1h"]
+[ext_resource type="Script" uid="uid://c2u602qug3hko" path="res://Scenes/Colision Shape/hurtbox.gd" id="3_g8aoc"]
+[ext_resource type="Script" uid="uid://dg52yk1sjhphc" path="res://Scenes/Players/Idol/idol.gd" id="4_skvel"]
+[ext_resource type="Script" uid="uid://bs8j4dudypi2y" path="res://Scenes/Players/health.gd" id="5_iyroa"]
+[ext_resource type="PackedScene" uid="uid://b5xdnwpiu4oxx" path="res://Scenes/UI/heart.tscn" id="6_6d077"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3dkrk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hen0x"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6jt8c"]
+radius = 8.0
+height = 24.0
+
+[node name="Idol" type="Node2D" unique_id=2082194408]
+
+[node name="Areas" type="Node2D" parent="." unique_id=185863002]
+
+[node name="Recolect" type="Area2D" parent="Areas" unique_id=882013311]
+visible = false
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Recolect" unique_id=800588834]
+position = Vector2(15, 1)
+shape = ExtResource("1_ndles")
+debug_color = Color(0.30739522, 0.624829, 0.14004394, 0.5568628)
+
+[node name="Ulti_Area" type="Area2D" parent="Areas" unique_id=205694629]
+visible = false
+collision_mask = 2
+monitoring = false
+script = ExtResource("2_gfn1h")
+metadata/_custom_type_script = "uid://crea02gg0i2qu"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Ulti_Area" unique_id=1555773070]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("CapsuleShape2D_3dkrk")
+disabled = true
+
+[node name="Player_Hitbox" type="Area2D" parent="Areas" unique_id=1877218440]
+collision_mask = 2
+monitoring = false
+script = ExtResource("2_gfn1h")
+metadata/_custom_type_script = "uid://crea02gg0i2qu"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Player_Hitbox" unique_id=375071381]
+position = Vector2(15.3, 7.1)
+scale = Vector2(1.025, 1.025)
+shape = SubResource("RectangleShape2D_hen0x")
+disabled = true
+
+[node name="Player_Hurtbox" type="Area2D" parent="Areas" unique_id=358856909 node_paths=PackedStringArray("health")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_g8aoc")
+health = NodePath("../../Player_Health")
+metadata/_custom_type_script = "uid://c2u602qug3hko"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Player_Hurtbox" unique_id=449723334]
+position = Vector2(1, 2)
+shape = SubResource("CapsuleShape2D_6jt8c")
+
+[node name="UltiScript" type="Node2D" parent="." unique_id=331190663]
+position = Vector2(0, 3)
+script = ExtResource("4_skvel")
+
+[node name="Player_Health" type="Node" parent="." unique_id=1572099246]
+script = ExtResource("5_iyroa")
+metadata/_custom_type_script = "uid://bs8j4dudypi2y"
+
+[node name="Heart_Bar" type="CanvasLayer" parent="." unique_id=823286074]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Heart_Bar" unique_id=1601183099]
+offset_left = -20.0
+offset_right = 273.0
+offset_bottom = 50.0
+
+[node name="Heart" type="TextureRect" parent="Heart_Bar/HBoxContainer" unique_id=1086016422]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+stretch_mode = 5
+
+[node name="AnimatedSprite2D" parent="Heart_Bar/HBoxContainer/Heart" unique_id=191280477 instance=ExtResource("6_6d077")]
+scale = Vector2(6, 6)
+offset = Vector2(10, 10)
+
+[node name="Heart2" type="TextureRect" parent="Heart_Bar/HBoxContainer" unique_id=2140123105]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+stretch_mode = 5
+
+[node name="AnimatedSprite2D" parent="Heart_Bar/HBoxContainer/Heart2" unique_id=169708783 instance=ExtResource("6_6d077")]
+scale = Vector2(6, 6)
+offset = Vector2(10, 10)
+
+[node name="Heart3" type="TextureRect" parent="Heart_Bar/HBoxContainer" unique_id=1451104992]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+stretch_mode = 5
+
+[node name="AnimatedSprite2D" parent="Heart_Bar/HBoxContainer/Heart3" unique_id=1756895298 instance=ExtResource("6_6d077")]
+scale = Vector2(6, 6)
+offset = Vector2(10, 10)
