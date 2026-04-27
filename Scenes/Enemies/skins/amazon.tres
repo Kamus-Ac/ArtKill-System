@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://bptwp61wlbtu5"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://bptwp61wlbtu5"]
 
 [ext_resource type="Texture2D" uid="uid://dexhqchkwn8ws" path="res://Scenes/Enemies/skins/amazon.png" id="1_bjmfy"]
 
