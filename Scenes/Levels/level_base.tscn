@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://by4w2pqjciigh" path="res://Scenes/Levels/level_base.gd" id="1_8s78d"]
 [ext_resource type="TileSet" uid="uid://caju6ag1i72xm" path="res://Scenes/Tilesets/escenario.tres" id="2_rnfvs"]
+[ext_resource type="PackedScene" uid="uid://b7eo22rbdtbwl" path="res://Scenes/UI/Pause/pause_menu.tscn" id="3_4f6dp"]
 [ext_resource type="PackedScene" uid="uid://dmruwmswylq0o" path="res://Scenes/Managers/enemy_manager.tscn" id="3_614yd"]
 [ext_resource type="PackedScene" uid="uid://o611ga5dcuxt" path="res://Scenes/GameCamera/game_camera.tscn" id="3_m7m8v"]
 [ext_resource type="Texture2D" uid="uid://8myba8fjb41q" path="res://Scenes/UI/istockphoto-1440114432-612x612.jpg" id="5_ej2hx"]
@@ -13,6 +14,10 @@
 script = ExtResource("1_8s78d")
 
 [node name="GameCamera" parent="." unique_id=628233803 instance=ExtResource("3_m7m8v")]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="GameCamera" unique_id=1600422208]
+
+[node name="pause_menu" parent="GameCamera/CanvasLayer2" unique_id=1040893944 instance=ExtResource("3_4f6dp")]
 
 [node name="EnemyManager" parent="." unique_id=1902379502 instance=ExtResource("3_614yd")]
 
