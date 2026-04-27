@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dr4tspb0xelhe"]
+[gd_scene load_steps=10 format=3 uid="uid://dr4tspb0xelhe"]
 
 [ext_resource type="Shape2D" uid="uid://drewp4ag3n1u7" path="res://Scenes/Colision Shape/colision_recolect.tres" id="1_x4h0i"]
 [ext_resource type="Script" uid="uid://crea02gg0i2qu" path="res://Scenes/Colision Shape/hitbox.gd" id="2_3dkrk"]
 [ext_resource type="Script" uid="uid://bxoc8pxlsikt5" path="res://Scenes/Players/Gordo/gordo.gd" id="2_l500s"]
 [ext_resource type="Script" uid="uid://c2u602qug3hko" path="res://Scenes/Colision Shape/hurtbox.gd" id="3_hen0x"]
 [ext_resource type="Script" uid="uid://bs8j4dudypi2y" path="res://Scenes/Players/health.gd" id="5_6jt8c"]
+[ext_resource type="PackedScene" uid="uid://b5xdnwpiu4oxx" path="res://Scenes/UI/heart.tscn" id="6_c4300"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3dkrk"]
 
@@ -69,3 +70,37 @@ script = ExtResource("2_l500s")
 [node name="Player_Health" type="Node" parent="."]
 script = ExtResource("5_6jt8c")
 metadata/_custom_type_script = "uid://bs8j4dudypi2y"
+
+[node name="Heart_Bar" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Heart_Bar"]
+offset_left = -20.0
+offset_right = 273.0
+offset_bottom = 50.0
+
+[node name="Heart" type="TextureRect" parent="Heart_Bar/HBoxContainer"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+stretch_mode = 5
+
+[node name="AnimatedSprite2D" parent="Heart_Bar/HBoxContainer/Heart" instance=ExtResource("6_c4300")]
+scale = Vector2(6, 6)
+offset = Vector2(10, 10)
+
+[node name="Heart2" type="TextureRect" parent="Heart_Bar/HBoxContainer"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+stretch_mode = 5
+
+[node name="AnimatedSprite2D" parent="Heart_Bar/HBoxContainer/Heart2" instance=ExtResource("6_c4300")]
+scale = Vector2(6, 6)
+offset = Vector2(10, 10)
+
+[node name="Heart3" type="TextureRect" parent="Heart_Bar/HBoxContainer"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+stretch_mode = 5
+
+[node name="AnimatedSprite2D" parent="Heart_Bar/HBoxContainer/Heart3" instance=ExtResource("6_c4300")]
+scale = Vector2(6, 6)
+offset = Vector2(10, 10)
