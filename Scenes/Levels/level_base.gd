@@ -13,6 +13,8 @@ func _ready() -> void:
 	
 func _process(_delta: float) -> void:
 	ult_bar()
+	if Input.is_action_just_pressed("Pausa"):
+			pauseMenu()
 
 func ult_bar():
 	if (percentage_ult<244.0):
@@ -28,10 +30,6 @@ func ult_reset():
 @onready var pause_menu: Control = $GameCamera/CanvasLayer2/pause_menu
 
 var paused = false
-
-func _process(delta):
-	if Input.is_action_just_pressed("Pausa"):
-			pauseMenu()
 			
 func pauseMenu():
 	if paused:
