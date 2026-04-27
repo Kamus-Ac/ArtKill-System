@@ -1,33 +1,31 @@
-[gd_scene format=3 uid="uid://dsaua6iwjkfft"]
+[gd_scene load_steps=9 format=3 uid="uid://dsaua6iwjkfft"]
 
 [ext_resource type="Script" uid="uid://ycu2q01ywlf4" path="res://Scenes/Enemies/enemy.gd" id="1_x1rqp"]
-[ext_resource type="SpriteFrames" uid="uid://bln4bgg458q0p" path="res://Scenes/Enemies/skins/chat.tres" id="2_jcvw6"]
-[ext_resource type="SpriteFrames" uid="uid://bptwp61wlbtu5" path="res://Scenes/Enemies/skins/amazon.tres" id="2_tq087"]
-[ext_resource type="SpriteFrames" uid="uid://bhg8ms7b44l8s" path="res://Scenes/Enemies/skins/copilot.tres" id="4_4bcle"]
-[ext_resource type="SpriteFrames" uid="uid://73cq5fhpoxxi" path="res://Scenes/Enemies/skins/gemini.tres" id="5_beuat"]
-[ext_resource type="SpriteFrames" uid="uid://bmk7stxx2h5j6" path="res://Scenes/Enemies/skins/simsini.tres" id="6_7ubbs"]
 [ext_resource type="SpriteFrames" uid="uid://q5jtjhebqlye" path="res://Scenes/Enemies/skins/siri.tres" id="7_ycxl0"]
-[ext_resource type="SpriteFrames" uid="uid://gxncnt6imh3x" path="res://Scenes/Enemies/skins/yarbis.tres" id="8_pko3b"]
-[ext_resource type="SpriteFrames" uid="uid://c4fafs2q4qc5g" path="res://Scenes/Enemies/skins/deepseek.tres" id="9_tq087"]
 [ext_resource type="Script" uid="uid://ysn1i3gwaakr" path="res://Scenes/Enemies/hurtbox_enemy.gd" id="10_4bcle"]
+[ext_resource type="Script" uid="uid://c56xdds258tel" path="res://Scenes/Enemies/hitbox_enemy.gd" id="11_beuat"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jcvw6"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ubbs"]
+radius = 6.0
+height = 24.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4bcle"]
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1076933887 groups=["enemies"]]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ubio8"]
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
 collision_mask = 15
 script = ExtResource("1_x1rqp")
-skins = Array[SpriteFrames]([ExtResource("2_tq087"), ExtResource("2_jcvw6"), ExtResource("4_4bcle"), ExtResource("5_beuat"), ExtResource("6_7ubbs"), ExtResource("7_ycxl0"), ExtResource("8_pko3b"), ExtResource("9_tq087")])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=133299885]
 position = Vector2(0, -23)
 sprite_frames = ExtResource("7_ycxl0")
 animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1837539380]
-visible = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4.999998)
 scale = Vector2(1.09, 1.09)
 shape = SubResource("CircleShape2D_jcvw6")
@@ -35,15 +33,35 @@ shape = SubResource("CircleShape2D_jcvw6")
 [node name="HitLag" type="Timer" parent="." unique_id=1135330333]
 one_shot = true
 
-[node name="EnemyHurtBox" type="Area2D" parent="." unique_id=82079396]
+[node name="Enemy_Hitbox" type="Area2D" parent="."]
 collision_layer = 2
-collision_mask = 6
+collision_mask = 0
+monitoring = false
+script = ExtResource("11_beuat")
+metadata/_custom_type_script = "uid://c56xdds258tel"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_Hitbox"]
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_7ubbs")
+
+[node name="EnemyHurtBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 7
 script = ExtResource("10_4bcle")
 metadata/_custom_type_script = "uid://ysn1i3gwaakr"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHurtBox" unique_id=949960267]
 position = Vector2(0, -6.5)
 shape = SubResource("CapsuleShape2D_4bcle")
+
+[node name="LaunchingArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 6
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaunchingArea"]
+position = Vector2(0, -6.5)
+shape = SubResource("CapsuleShape2D_ubio8")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="HitLag" to="." method="_on_hit_lag_timeout"]

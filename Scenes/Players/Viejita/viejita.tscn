@@ -15,11 +15,11 @@ size = Vector2(31.973684, 16.210526)
 
 [node name="Areas" type="Node2D" parent="."]
 
-[node name="recolect" type="Area2D" parent="Areas"]
+[node name="Recolect" type="Area2D" parent="Areas"]
 visible = false
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/recolect"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Recolect"]
 position = Vector2(15, 1)
 shape = ExtResource("2_cvnl6")
 
