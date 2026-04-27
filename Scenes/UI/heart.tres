@@ -31,7 +31,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ag3pi")
 }],
-"loop": true,
+"loop": false,
 "name": &"vivo",
 "speed": 5.0
 }]
