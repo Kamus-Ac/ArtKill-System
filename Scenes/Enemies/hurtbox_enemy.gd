@@ -9,7 +9,6 @@ func _ready() -> void:
 	collision_mask = 7
 
 
-		
 func _on_area_entered(hit_area: Area2D) -> void:
 	if owner.has_method("die") and hit_area is Player_Hitbox:
 		owner.die(hit_area)

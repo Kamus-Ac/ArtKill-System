@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dsaua6iwjkfft"]
 
 [ext_resource type="Script" uid="uid://ycu2q01ywlf4" path="res://Scenes/Enemies/enemy.gd" id="1_x1rqp"]
-[ext_resource type="SpriteFrames" uid="uid://q5jtjhebqlye" path="res://Scenes/Enemies/skins/siri.tres" id="7_ycxl0"]
+[ext_resource type="SpriteFrames" uid="uid://bptwp61wlbtu5" path="res://Scenes/Enemies/skins/amazon.tres" id="2_ubio8"]
 [ext_resource type="Script" uid="uid://ysn1i3gwaakr" path="res://Scenes/Enemies/hurtbox_enemy.gd" id="10_4bcle"]
 [ext_resource type="Script" uid="uid://c56xdds258tel" path="res://Scenes/Enemies/hitbox_enemy.gd" id="11_beuat"]
 
@@ -22,7 +22,7 @@ script = ExtResource("1_x1rqp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=133299885]
 position = Vector2(0, -23)
-sprite_frames = ExtResource("7_ycxl0")
+sprite_frames = ExtResource("2_ubio8")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
