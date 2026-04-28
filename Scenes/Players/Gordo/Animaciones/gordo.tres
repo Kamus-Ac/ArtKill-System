@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" format=3 uid="uid://dtdhksluavg6j"]
+[gd_resource type="SpriteFrames" load_steps=21 format=3 uid="uid://dtdhksluavg6j"]
 
 [ext_resource type="Texture2D" uid="uid://cudcja1w7nt2t" path="res://Scenes/Players/Gordo/Animaciones/Gordo_BasicAttack.png" id="1_cwloh"]
 [ext_resource type="Texture2D" uid="uid://dvdq201e0qqrh" path="res://Scenes/Players/Gordo/Animaciones/Gordo_Death.png" id="2_nbf6w"]

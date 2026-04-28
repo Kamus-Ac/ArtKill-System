@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://b2gft8tdpey3f"]
+[gd_scene load_steps=4 format=3 uid="uid://b2gft8tdpey3f"]
 
-[ext_resource type="Texture2D" uid="uid://bism1ae0ydq47" path="res://Scenes/assets/objects/bolaDepapel.png" id="1_x2w1k"]
+[ext_resource type="Texture2D" uid="uid://drrvrouwtqm6c" path="res://Scenes/assets/objects/ball.png" id="1_x2w1k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x2w1k"]
 radius = 5.0
@@ -8,21 +8,21 @@ radius = 5.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2w1k"]
 size = Vector2(14, 14)
 
-[node name="Object" type="RigidBody2D" unique_id=742101139 groups=["objects"]]
+[node name="Object" type="RigidBody2D" groups=["objects"]]
 collision_layer = 4
 collision_mask = 14
 gravity_scale = 0.0
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=990732937]
-scale = Vector2(0.485, 0.485)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.35, 0.35)
 texture = ExtResource("1_x2w1k")
 
-[node name="CollisionTF" type="CollisionShape2D" parent="." unique_id=572366711]
+[node name="CollisionTF" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_x2w1k")
 debug_color = Color(0.8156863, 0.4, 0.18431373, 0.84313726)
 
-[node name="Area2D" type="Area2D" parent="." unique_id=952852801]
+[node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=988804774]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_x2w1k")

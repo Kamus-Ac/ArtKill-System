@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bubbfpuw4aegl"
-path="res://.godot/imported/loli_idle.png-6966f36b9395bb3226d0ea1eefec1b00.ctex"
+uid="uid://drrvrouwtqm6c"
+path="res://.godot/imported/ball.png-3c448b9147cd505536fde1eda2fc8be8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Players/Idol/Animaciones/loli_idle.png"
-dest_files=["res://.godot/imported/loli_idle.png-6966f36b9395bb3226d0ea1eefec1b00.ctex"]
+source_file="res://Scenes/assets/objects/ball.png"
+dest_files=["res://.godot/imported/ball.png-3c448b9147cd505536fde1eda2fc8be8.ctex"]
 
 [params]
 

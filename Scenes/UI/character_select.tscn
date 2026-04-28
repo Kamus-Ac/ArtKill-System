@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://536btmvjhqi5"]
+[gd_scene load_steps=8 format=3 uid="uid://536btmvjhqi5"]
 
 [ext_resource type="Texture2D" uid="uid://b345jca3bjnks" path="res://Scenes/UI/gordo.png" id="2_d3lco"]
 [ext_resource type="Texture2D" uid="uid://gn4p6hbfygrd" path="res://Scenes/UI/fondo.png" id="2_dieb8"]
@@ -8,7 +8,7 @@
 [ext_resource type="Resource" uid="uid://godl0fknqbqb" path="res://Scenes/Players/Viejita/viejita_data.tres" id="6_dieb8"]
 [ext_resource type="Resource" uid="uid://cpn0itqsdlwgo" path="res://Scenes/Players/Idol/idol_data.tres" id="6_pjomi"]
 
-[node name="CharacterSelect" type="Control" unique_id=1415777433]
+[node name="CharacterSelect" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,7 +18,7 @@ grow_vertical = 2
 scale = Vector2(0.9924271, 0.9560501)
 script = ExtResource("2_whe0c")
 
-[node name="Background" type="TextureRect" parent="." unique_id=102147933]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,111 +32,112 @@ grow_vertical = 2
 scale = Vector2(1.1, 1.1)
 texture = ExtResource("2_dieb8")
 
-[node name="MainPanel" type="PanelContainer" parent="." unique_id=1275530572]
+[node name="MainPanel" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -192.0
+offset_left = -323.5
 offset_top = -192.5
-offset_right = 193.0
+offset_right = 366.042
 offset_bottom = 192.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBox" type="VBoxContainer" parent="MainPanel" unique_id=1771853527]
+[node name="VBox" type="VBoxContainer" parent="MainPanel"]
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Label" type="Label" parent="MainPanel/VBox" unique_id=836126871]
+[node name="Label" type="Label" parent="MainPanel/VBox"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
 text = "Select your Character"
 
-[node name="CharactersBox" type="HBoxContainer" parent="MainPanel/VBox" unique_id=526533469]
+[node name="CharactersBox" type="HBoxContainer" parent="MainPanel/VBox"]
 layout_mode = 2
 theme_override_constants/separation = 24
 alignment = 1
 
-[node name="Gus" type="PanelContainer" parent="MainPanel/VBox/CharactersBox" unique_id=1325140424]
+[node name="Gus" type="PanelContainer" parent="MainPanel/VBox/CharactersBox"]
 custom_minimum_size = Vector2(200, 260)
 layout_mode = 2
 script = ExtResource("3_dieb8")
 character_data = ExtResource("4_apj1b")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/VBox/CharactersBox/Gus" unique_id=749404353]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/VBox/CharactersBox/Gus"]
 layout_mode = 2
 
-[node name="Shadow" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Gus/VBoxContainer" unique_id=1366908900]
+[node name="Shadow" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Gus/VBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("2_d3lco")
 stretch_mode = 5
 
-[node name="Sprite" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Gus/VBoxContainer" unique_id=1110014416]
+[node name="Sprite" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Gus/VBoxContainer"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="MainPanel/VBox/CharactersBox/Gus/VBoxContainer" unique_id=1321377254]
+[node name="Name" type="Label" parent="MainPanel/VBox/CharactersBox/Gus/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Tomy" type="PanelContainer" parent="MainPanel/VBox/CharactersBox" unique_id=74061667]
+[node name="Tomy" type="PanelContainer" parent="MainPanel/VBox/CharactersBox"]
 custom_minimum_size = Vector2(180, 260)
 layout_mode = 2
 script = ExtResource("3_dieb8")
 character_data = ExtResource("6_dieb8")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/VBox/CharactersBox/Tomy" unique_id=1002133688]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/VBox/CharactersBox/Tomy"]
 layout_mode = 2
 
-[node name="Shadow" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Tomy/VBoxContainer" unique_id=390283379]
+[node name="Shadow" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Tomy/VBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("2_d3lco")
 stretch_mode = 4
 
-[node name="Sprite" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Tomy/VBoxContainer" unique_id=285646915]
+[node name="Sprite" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Tomy/VBoxContainer"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="MainPanel/VBox/CharactersBox/Tomy/VBoxContainer" unique_id=839744085]
+[node name="Name" type="Label" parent="MainPanel/VBox/CharactersBox/Tomy/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Idol" type="PanelContainer" parent="MainPanel/VBox/CharactersBox" unique_id=237637472]
+[node name="Tomy2" type="PanelContainer" parent="MainPanel/VBox/CharactersBox"]
 custom_minimum_size = Vector2(180, 260)
 layout_mode = 2
 script = ExtResource("3_dieb8")
 character_data = ExtResource("6_pjomi")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/VBox/CharactersBox/Idol" unique_id=1632888107]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/VBox/CharactersBox/Tomy2"]
 layout_mode = 2
 
-[node name="Shadow" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Idol/VBoxContainer" unique_id=1529389716]
+[node name="Shadow" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Tomy2/VBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("2_d3lco")
-stretch_mode = 5
+stretch_mode = 4
 
-[node name="Sprite" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Idol/VBoxContainer" unique_id=394639303]
-custom_minimum_size = Vector2(128, 128)
+[node name="Sprite" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Tomy2/VBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="MainPanel/VBox/CharactersBox/Idol/VBoxContainer" unique_id=556557176]
+[node name="Name" type="Label" parent="MainPanel/VBox/CharactersBox/Tomy2/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 
-[node name="Confirm" type="Button" parent="MainPanel/VBox" unique_id=68965359]
+[node name="Confirm" type="Button" parent="MainPanel/VBox"]
 custom_minimum_size = Vector2(200, 48)
 layout_mode = 2
 disabled = true
