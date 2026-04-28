@@ -1,6 +1,13 @@
 [gd_scene format=3 uid="uid://b7eo22rbdtbwl"]
 
 [ext_resource type="Script" uid="uid://8pbaya78ppfm" path="res://Scenes/UI/Pause/pause_menu.gd" id="1_66yrw"]
+[ext_resource type="Texture2D" uid="uid://c6gxug7ud3ddj" path="res://Scenes/UI/Pause/MenuPrincipal.png" id="2_pklis"]
+[ext_resource type="Texture2D" uid="uid://cdteu2wocanvx" path="res://Scenes/UI/Pause/Menu3.png" id="3_bnb0t"]
+[ext_resource type="Texture2D" uid="uid://chaqukjwtrwjd" path="res://Scenes/UI/Pause/Menu2.png" id="3_fw2d7"]
+[ext_resource type="Texture2D" uid="uid://df7a4uw3xhjgp" path="res://Scenes/UI/Pause/Reanudar.png" id="3_k5mxc"]
+[ext_resource type="Texture2D" uid="uid://btb88rh7pbqrp" path="res://Scenes/UI/Pause/Reanudar2.png" id="4_fw2d7"]
+[ext_resource type="Texture2D" uid="uid://3txlpq7jbc56" path="res://Scenes/UI/Pause/Reanudar3.png" id="6_8lm4w"]
+[ext_resource type="Texture2D" uid="uid://cf7lerr5iojfs" path="res://Scenes/UI/Pause/Pausa.png" id="8_8lm4w"]
 
 [node name="pause_menu" type="Control" unique_id=1040893944]
 layout_mode = 3
@@ -9,43 +16,50 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 script = ExtResource("1_66yrw")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=304184858]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=644673347]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 440.0
+offset_bottom = 440.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="menu principal" type="TextureButton" parent="CenterContainer" unique_id=1238074071]
+custom_minimum_size = Vector2(350, 120)
+layout_mode = 2
+texture_normal = ExtResource("3_bnb0t")
+texture_pressed = ExtResource("3_fw2d7")
+texture_hover = ExtResource("2_pklis")
+
+[node name="resumen" type="TextureButton" parent="CenterContainer/menu principal" unique_id=1090161057]
+custom_minimum_size = Vector2(350, 120)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -62.0
-offset_top = -15.5
-offset_right = 62.0
-offset_bottom = 15.5
+offset_left = -441.5
+offset_top = -609.5
+offset_right = 449.5
+offset_bottom = -209.5
 grow_horizontal = 2
 grow_vertical = 2
+texture_normal = ExtResource("6_8lm4w")
+texture_pressed = ExtResource("4_fw2d7")
+texture_hover = ExtResource("3_k5mxc")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=672701090]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/menu principal" unique_id=373797572]
+layout_mode = 0
+offset_top = -813.0
+offset_right = 882.0
+offset_bottom = -420.0
+texture = ExtResource("8_8lm4w")
 
-[node name="MenuPrincipal" type="Button" parent="MarginContainer/VBoxContainer" unique_id=969681587]
-layout_mode = 2
-text = "Menu Principal"
-
-[node name="Resumen" type="Button" parent="MarginContainer/VBoxContainer/MenuPrincipal" unique_id=564016085]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -62.0
-offset_top = -44.5
-offset_right = 62.0
-offset_bottom = -13.5
-grow_horizontal = 2
-text = "Resumen
-"
-
-[connection signal="pressed" from="MarginContainer/VBoxContainer/MenuPrincipal" to="." method="_on_menu_principal_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/MenuPrincipal/Resumen" to="." method="_on_resumen_pressed"]
+[connection signal="pressed" from="CenterContainer/menu principal" to="." method="_on_menu_principal_pressed"]
+[connection signal="pressed" from="CenterContainer/menu principal/resumen" to="." method="_on_resumen_pressed"]
