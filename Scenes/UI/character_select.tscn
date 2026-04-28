@@ -129,7 +129,7 @@ texture = ExtResource("2_d3lco")
 stretch_mode = 5
 
 [node name="Sprite" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Idol/VBoxContainer" unique_id=394639303]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 stretch_mode = 5
 

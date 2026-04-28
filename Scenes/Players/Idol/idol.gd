@@ -11,7 +11,7 @@ var reverse: bool
 var start_position := Vector2.ZERO
 var note:PackedScene= preload("res://Scenes/Players/Idol/Nota.tscn")
 var pack_notes: Array[CharacterBody2D]
-var delay= 0.25
+var delay= 0.1
 var count: int = 1
 func start(p: CharacterBody2D):
 	player = p
@@ -69,7 +69,7 @@ func move_notes()->void:
 				continue
 			var t=time-(delay*i)
 			if t>0:
-				nota.velocity.x =  cos(t * 10) * 200
-				nota.velocity.y =  sin(t * 10) * 200
+				nota.position.x =  (t*50)*cos(t*7.5) 
+				nota.position.y =  (t*50)*sin(t*7.5) 
 			i+=1
 				

@@ -106,7 +106,7 @@ func assign_random_skin():
 
 
 func die(hit):
-	if hit is Player_Hitbox:
+	if hit is Player_Hitbox or hit.is_in_group("notas"):
 		print("muerto")
 		emit_signal("died")
 		isDead = true
@@ -151,7 +151,7 @@ func islaunching2(body: Node2D):
 		body2.knockback = enemy_impulse
 
 	if body2 and body2.is_in_group("notas"):
-		queue_free()
+		die(body2)
 		body2.queue_free()
 	#print("COLISION CON:", body2.name)
 	#print("DIR:", (body2.global_position - global_position))
