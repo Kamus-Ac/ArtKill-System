@@ -4,6 +4,15 @@
 [ext_resource type="Script" uid="uid://dopk8g8xjbfd2" path="res://Scenes/UI/Main_Menu/main_menu.gd" id="1_br04u"]
 [ext_resource type="Texture2D" uid="uid://odbgxs2eg5ub" path="res://Scenes/UI/pixil-frame-0_13.png" id="2_2fw6m"]
 [ext_resource type="Texture2D" uid="uid://dnb7ci4xaj18h" path="res://Scenes/UI/Main_Menu/Art-Kill.png" id="2_ksfd3"]
+[ext_resource type="Texture2D" uid="uid://yxeh0cjsks7s" path="res://Scenes/UI/Main_Menu/JUGAR1.png" id="5_7bj1q"]
+[ext_resource type="Texture2D" uid="uid://cseftxotfcwpc" path="res://Scenes/UI/Main_Menu/JUGAR2.png" id="6_m4jla"]
+[ext_resource type="Texture2D" uid="uid://54qujjoodvhu" path="res://Scenes/UI/Main_Menu/JUGAR3.png" id="6_nipkv"]
+[ext_resource type="Texture2D" uid="uid://s60rlous4wl6" path="res://Scenes/UI/Main_Menu/SALIR1.png" id="7_tom6x"]
+[ext_resource type="Texture2D" uid="uid://bbtmygvwictlw" path="res://Scenes/UI/Main_Menu/SALIR2.png" id="8_nipkv"]
+[ext_resource type="Texture2D" uid="uid://bq0kt4fdyhmv" path="res://Scenes/UI/Main_Menu/AJUSTES1.png" id="9_dxhfe"]
+[ext_resource type="Texture2D" uid="uid://bepkqqiwa30lh" path="res://Scenes/UI/Main_Menu/SALIR3.png" id="9_g3pcc"]
+[ext_resource type="Texture2D" uid="uid://bu24i6ftw7qpu" path="res://Scenes/UI/Main_Menu/AJUSTES2.png" id="10_g3pcc"]
+[ext_resource type="Texture2D" uid="uid://toht7q7lhg60" path="res://Scenes/UI/Main_Menu/AJUSTES3.png" id="12_ytfuy"]
 
 [node name="Main_Menu" type="Control" unique_id=1768571984]
 layout_mode = 3
@@ -19,10 +28,6 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -2.0
-offset_top = -4.0
-offset_right = -2.0
-offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_06t4h")
@@ -41,28 +46,39 @@ position = Vector2(697, 155)
 scale = Vector2(0.1260376, 0.12612915)
 texture = ExtResource("2_2fw6m")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Fondo" unique_id=1285608698]
+[node name="YUGAR" type="TextureButton" parent="Fondo" unique_id=2141637538]
 layout_mode = 0
-offset_left = 547.0
-offset_top = 591.0
-offset_right = 1354.0
-offset_bottom = 712.0
+offset_left = 777.0
+offset_top = 498.0
+offset_right = 1656.0
+offset_bottom = 889.0
+scale = Vector2(0.45, 0.45)
+texture_normal = ExtResource("5_7bj1q")
+texture_pressed = ExtResource("6_nipkv")
+texture_hover = ExtResource("6_m4jla")
 
-[node name="Jugar" type="Button" parent="Fondo/VBoxContainer" unique_id=1793553814]
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "JUGAR"
+[node name="ZALIR" type="TextureButton" parent="Fondo" unique_id=1900529064]
+layout_mode = 0
+offset_left = 777.0
+offset_top = 860.0
+offset_right = 1658.0
+offset_bottom = 1252.0
+scale = Vector2(0.45, 0.45)
+texture_normal = ExtResource("7_tom6x")
+texture_pressed = ExtResource("9_g3pcc")
+texture_hover = ExtResource("8_nipkv")
 
-[node name="Opciones" type="Button" parent="Fondo/VBoxContainer" unique_id=1376332370]
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "OPCIONES"
+[node name="AJUSTES" type="TextureButton" parent="Fondo" unique_id=196229612]
+layout_mode = 0
+offset_left = 777.0
+offset_top = 673.0
+offset_right = 1659.0
+offset_bottom = 1065.0
+scale = Vector2(0.45, 0.45)
+texture_normal = ExtResource("9_dxhfe")
+texture_pressed = ExtResource("12_ytfuy")
+texture_hover = ExtResource("10_g3pcc")
 
-[node name="Salir" type="Button" parent="Fondo/VBoxContainer" unique_id=1906671343]
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "SALIR"
-
-[connection signal="pressed" from="Fondo/VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
-[connection signal="pressed" from="Fondo/VBoxContainer/Opciones" to="." method="_on_opciones_pressed"]
-[connection signal="pressed" from="Fondo/VBoxContainer/Salir" to="." method="_on_salir_pressed"]
+[connection signal="pressed" from="Fondo/YUGAR" to="." method="_on_yugar_pressed"]
+[connection signal="pressed" from="Fondo/ZALIR" to="." method="_on_zalir_pressed"]
+[connection signal="pressed" from="Fondo/AJUSTES" to="." method="_on_ajustes_pressed"]
