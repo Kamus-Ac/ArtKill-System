@@ -1,9 +1,90 @@
 [gd_scene format=3 uid="uid://bmr1g4fj71s5p"]
 
+[ext_resource type="Script" uid="uid://db565kkxlxcou" path="res://Scenes/UI/Puntuacion In-Game/puntuacion_in_game.gd" id="1_ahk0b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2ajq"]
+bg_color = Color(0.45064825, 0.4506483, 0.45064813, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [node name="PuntuacionInGame" type="Control" unique_id=66172300]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_top = 0.006
+anchor_right = 0.99700004
+anchor_bottom = 1.006
+offset_left = -6.0
+offset_top = 0.52
+offset_right = -0.2401123
+offset_bottom = 0.51989746
+script = ExtResource("1_ahk0b")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1634539258]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -524.0
+offset_top = -276.0
+offset_right = 524.0
+offset_bottom = 276.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i2ajq")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=787951426]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1096485732]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1108893872]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 72
+bbcode_enabled = true
+text = "[wave][center]Puntuacion[/center][/wave]"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="." unique_id=9463747]
+layout_mode = 0
+offset_left = 655.0
+offset_top = 435.0
+offset_right = 763.0
+offset_bottom = 480.0
+theme_override_font_sizes/font_size = 32
+text = "Puntos"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=1102013204]
+layout_mode = 0
+offset_left = 566.0
+offset_top = 619.0
+offset_right = 929.0
+offset_bottom = 712.0
+theme_override_font_sizes/font_size = 32
+text = "Habilidades Definitivas 
+Usadas"
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="." unique_id=822319801]
+layout_mode = 0
+offset_left = 559.0
+offset_top = 516.0
+offset_right = 863.0
+offset_bottom = 561.0
+theme_override_font_sizes/font_size = 32
+text = "Tiempo Sobrevivido"
+vertical_alignment = 1

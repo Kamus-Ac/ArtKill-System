@@ -34,7 +34,7 @@ func spawn_wave(count: int) -> void:
 
 	for i in range(count):
 		var dir := Vector2.RIGHT.rotated(randf_range(0, TAU))
-		var spawn_pos := player.global_position + dir * spawn_radius
+		var spawn_pos := player.global_position + dir * (spawn_radius + randf_range(0,20))
 		
 		var enemy = enemy_scene.instantiate()
 		get_parent().add_child.call_deferred(enemy)

@@ -100,7 +100,7 @@ position = Vector2(94, -177)
 position = Vector2(305, -132)
 
 [node name="RightWall" type="StaticBody2D" parent="." unique_id=601817653]
-collision_layer = 16
+collision_layer = 32
 collision_mask = 5
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RightWall" unique_id=677640972]
@@ -109,7 +109,7 @@ scale = Vector2(0.8609656, 0.7922032)
 polygon = PackedVector2Array(-1999.111, -128.79053, 1052.1144, 1614.449, 955.71106, 1667.4658, -1073.4061, 569.2627, -2200.048, -66.937744, -2087.384, -102.28223)
 
 [node name="NorthWall" type="StaticBody2D" parent="." unique_id=81506228]
-collision_layer = 16
+collision_layer = 32
 collision_mask = 5
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NorthWall" unique_id=35253655]
@@ -118,7 +118,7 @@ scale = Vector2(0.51792467, 0.32463345)
 polygon = PackedVector2Array(-1086.5892, 1242.1788, 987.0715, -384.271, 1054.6489, -301.10034, -646.3707, 1051.1942, -2165.897, 2240.2275, -2198.7202, 2200.1824)
 
 [node name="SouthWall" type="StaticBody2D" parent="." unique_id=1874628858]
-collision_layer = 16
+collision_layer = 32
 collision_mask = 5
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SouthWall" unique_id=1533851640]
@@ -127,7 +127,7 @@ scale = Vector2(0.83509594, 0.7034677)
 polygon = PackedVector2Array(-755.84674, 746.02246, 928.9895, -337.18286, 1036.7617, -263.26334, -545.0925, 734.65027, -680.4063, 819.942, -891.1606, 943.615, -886.37067, 861.1664)
 
 [node name="LeftWall" type="StaticBody2D" parent="." unique_id=2007586345]
-collision_layer = 16
+collision_layer = 32
 collision_mask = 5
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LeftWall" unique_id=206222407]
