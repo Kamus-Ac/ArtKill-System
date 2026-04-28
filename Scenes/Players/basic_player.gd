@@ -22,6 +22,11 @@ var health_component: Player_Health
 @export var character_data: CharacterData
 var character_loaded : Node2D
 
+@onready var audio_manager = $AudioManager
+var footstep_timer := 0.0
+@export var footstep_interval := 0.28
+var character_sound_played := false
+
 var current_dir : DIRECTION
 
 #Ulti
@@ -124,8 +129,17 @@ func _physics_process(delta: float) -> void:
 		knockback = Vector2.ZERO
 
 
+	# Si se está moviendo
+	if current_dir != DIRECTION.STILL:
+		footstep_timer += delta
 
-
+		if footstep_timer >= footstep_interval:
+			audio_manager.play_footstep()
+			footstep_timer = 0.0
+	else:
+		# si se detiene, reinicia el timer
+		footstep_timer = 0.0
+	
 	get_input()
 	set_direction()
 	match_states(delta)
@@ -204,6 +218,7 @@ func match_states(delta: float):
 				current_state = STATE.RUNNING
 			
 			elif Input.is_action_just_pressed("BasicAttack"):
+				character_sound_played = false
 				current_state = STATE.ATTACKING
 			
 			elif Input.is_action_just_pressed("Ulti") and isUltiAvailable:
@@ -217,6 +232,7 @@ func match_states(delta: float):
 				current_state = STATE.IDLE
 			
 			elif Input.is_action_just_pressed("BasicAttack"):
+				character_sound_played = false
 				current_state = STATE.ATTACKING
 			
 			elif Input.is_action_just_pressed("Ulti") and isUltiAvailable:
@@ -228,6 +244,11 @@ func match_states(delta: float):
 			move(delta)
 			anim.play("basicAttack")
 			player_hitbox_col.disabled = false
+			if !character_sound_played:
+				character_sound_played = true
+				match GameManager.selected_character.character_name:
+					"Dani":
+						audio_manager.play_idol_attack()
 			
 		STATE.ATTACKING_ULTI:
 			if !isUltiActive:
