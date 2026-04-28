@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6gc006dta2xn"
-path="res://.godot/imported/NewDonaTomi.png-1dfdc666895ef0c0b64e77500198ec36.ctex"
+uid="uid://cvgi1i5lp1apy"
+path="res://.godot/imported/Gus_Idle.png-d1947abc33e1d1205632bf2269642dcb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Players/Viejita/Animaciones/NewDonaTomi.png"
-dest_files=["res://.godot/imported/NewDonaTomi.png-1dfdc666895ef0c0b64e77500198ec36.ctex"]
+source_file="res://Scenes/Players/Gordo/Animaciones/Gus_Idle.png"
+dest_files=["res://.godot/imported/Gus_Idle.png-d1947abc33e1d1205632bf2269642dcb.ctex"]
 
 [params]
 

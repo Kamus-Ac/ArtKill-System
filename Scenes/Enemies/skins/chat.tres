@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" format=3 uid="uid://bln4bgg458q0p"]
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://bln4bgg458q0p"]
 
 [ext_resource type="Texture2D" uid="uid://5qwkmeq20kdt" path="res://Scenes/Enemies/skins/IA_Chatgpt.png" id="1_n4m5v"]
 

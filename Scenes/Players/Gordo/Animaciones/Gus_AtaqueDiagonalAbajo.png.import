@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c65qmck7nauk8"
-path="res://.godot/imported/Sprite-0005.png-caf1914ca18a8a95ca9b754d2cb3cff2.ctex"
+uid="uid://bqah73y1nuobf"
+path="res://.godot/imported/Gus_AtaqueDiagonalAbajo.png-fbcbcdd1c2f330ae8d369696ab781b2b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Players/Viejita/Animaciones/Sprite-0005.png"
-dest_files=["res://.godot/imported/Sprite-0005.png-caf1914ca18a8a95ca9b754d2cb3cff2.ctex"]
+source_file="res://Scenes/Players/Gordo/Animaciones/Gus_AtaqueDiagonalAbajo.png"
+dest_files=["res://.godot/imported/Gus_AtaqueDiagonalAbajo.png-fbcbcdd1c2f330ae8d369696ab781b2b.ctex"]
 
 [params]
 

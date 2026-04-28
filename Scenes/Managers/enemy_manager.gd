@@ -9,12 +9,15 @@ extends Node
 
 var current_wave := 1
 var enemies_alive := 0
+var player
 
 func _ready():
+	player = get_tree().get_first_node_in_group("player") as Node2D
 	start_wave()
 
 func start_wave():
 	print("=== STARTING WAVE", current_wave, "===")
+	
 	
 	var enemies_to_spawn = min(
 		initial_spawn_count + (current_wave - 1) * spawn_increase_per_wave,
@@ -27,14 +30,13 @@ func start_wave():
 	spawn_wave(enemies_to_spawn)
 
 func spawn_wave(count: int) -> void:
-	var player := get_tree().get_first_node_in_group("player") as Node2D
 	if not player:
 		push_warning("No player found in the scene!")
 		return
 
 	for i in range(count):
 		var dir := Vector2.RIGHT.rotated(randf_range(0, TAU))
-		var spawn_pos := player.global_position + dir * (spawn_radius + randf_range(0,20))
+		var spawn_pos = player.global_position + dir * (spawn_radius + randf_range(0,20))
 		
 		var enemy = enemy_scene.instantiate()
 		get_parent().add_child.call_deferred(enemy)
@@ -52,6 +54,6 @@ func _on_enemy_died():
 	enemies_alive -= 1
 	print("Enemy died. Alive:", enemies_alive)
 	
-	if enemies_alive <= 0:
+	if enemies_alive <= 0 and player:
 		current_wave += 1
 		start_wave()

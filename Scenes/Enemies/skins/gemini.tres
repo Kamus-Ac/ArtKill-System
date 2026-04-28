@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" format=3 uid="uid://73cq5fhpoxxi"]
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://73cq5fhpoxxi"]
 
 [ext_resource type="Texture2D" uid="uid://my8kdbrh07ys" path="res://Scenes/Enemies/skins/Gemini_IA.png" id="1_a0f1l"]
 

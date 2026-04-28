@@ -1,11 +1,11 @@
-[gd_resource type="SpriteFrames" load_steps=26 format=3 uid="uid://dlevfnbld3xxe"]
+[gd_resource type="SpriteFrames" load_steps=38 format=3 uid="uid://dlevfnbld3xxe"]
 
 [ext_resource type="Texture2D" uid="uid://gsf6h3fhs2l3" path="res://Scenes/Players/Viejita/Animaciones/Viejita_BasicAttack.png" id="1_oj281"]
 [ext_resource type="Texture2D" uid="uid://dbfxadh6kugkm" path="res://Scenes/Players/Viejita/Animaciones/Viejita_death.png" id="2_bx5wo"]
 [ext_resource type="Texture2D" uid="uid://n3mk4ofv0hds" path="res://Scenes/Players/Viejita/Animaciones/Viejita_Hurt.png" id="3_1buty"]
-[ext_resource type="Texture2D" uid="uid://c65qmck7nauk8" path="res://Scenes/Players/Viejita/Animaciones/Sprite-0005.png" id="3_t2jj7"]
+[ext_resource type="Texture2D" uid="uid://cl0xeknq1v0om" path="res://Scenes/Players/Viejita/Animaciones/Tomasa_Running_Horizontal.png" id="3_bx5wo"]
+[ext_resource type="Texture2D" uid="uid://c2oped417kt5l" path="res://Scenes/Players/Viejita/Animaciones/Tomasa_Running_3-4.png" id="3_t2jj7"]
 [ext_resource type="Texture2D" uid="uid://b4h2eibdjchcd" path="res://Scenes/Players/Viejita/Animaciones/Viejita_walking.png" id="4_t2jj7"]
-[ext_resource type="Texture2D" uid="uid://c6gc006dta2xn" path="res://Scenes/Players/Viejita/Animaciones/NewDonaTomi.png" id="4_vcnb0"]
 [ext_resource type="Texture2D" uid="uid://xndg4gyjq7qm" path="res://Scenes/Players/Viejita/Animaciones/Viejita_Ulti.png" id="5_vcnb0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oj281"]
@@ -40,13 +40,60 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("2_bx5wo")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7e0fr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mdl6"]
 atlas = ExtResource("3_t2jj7")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_deabd"]
-atlas = ExtResource("4_vcnb0")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dvgi"]
+atlas = ExtResource("3_t2jj7")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xjo5"]
+atlas = ExtResource("3_t2jj7")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4e2hx"]
+atlas = ExtResource("3_t2jj7")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nm0k3"]
+atlas = ExtResource("3_t2jj7")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwrme"]
+atlas = ExtResource("3_t2jj7")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1buty"]
+load_path = "res://.godot/imported/Sprite-0005.png-caf1914ca18a8a95ca9b754d2cb3cff2.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7e0fr"]
+atlas = SubResource("CompressedTexture2D_1buty")
 region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_deabd"]
+atlas = ExtResource("3_bx5wo")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icjm6"]
+atlas = ExtResource("3_bx5wo")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ye5li"]
+atlas = ExtResource("3_bx5wo")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rip61"]
+atlas = ExtResource("3_bx5wo")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usqxj"]
+atlas = ExtResource("3_bx5wo")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdo3t"]
+atlas = ExtResource("3_bx5wo")
+region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bcuxs"]
 atlas = ExtResource("3_1buty")
@@ -118,6 +165,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_3mdl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dvgi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xjo5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4e2hx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nm0k3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwrme")
+}],
+"loop": false,
+"name": &"diagonalAbajo",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_7e0fr")
 }],
 "loop": false,
@@ -127,10 +197,25 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_deabd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icjm6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ye5li")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rip61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usqxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdo3t")
 }],
 "loop": false,
 "name": &"horizontal",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,

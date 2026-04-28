@@ -84,7 +84,10 @@ var grabbing: bool = false
 func _ready() -> void:
 	if GameManager.selected_character:
 		MAX_SPEED = GameManager.selected_character.max_speed
-		anim.sprite_frames = GameManager.selected_character.sprite
+		if anim == null:
+			print("ERROR: anim es null")
+		else:
+			anim.sprite_frames = GameManager.selected_character.sprite
 		
 		load_character(GameManager.selected_character.character_scene)
 
@@ -183,8 +186,10 @@ func move(delta: float):
 				normal_velocity = cartesian_to_isometric(Vector2(0, -MAX_SPEED))
 			DIRECTION.DOWN_LEFT:
 				normal_velocity = cartesian_to_isometric(Vector2(0, MAX_SPEED))
+				anim.play("diagonalAbajo")
 			DIRECTION.DOWN_RIGHT:
 				normal_velocity = cartesian_to_isometric(Vector2(MAX_SPEED, 0))
+				anim.play("diagonalAbajo")
 			DIRECTION.STILL:
 				normal_velocity = Vector2(0,0)
 	
@@ -224,7 +229,10 @@ func match_states(delta: float):
 				
 		STATE.ATTACKING:
 			move(delta)
-			anim.play("basicAttack")
+			if DIRECTION.DOWN_LEFT:
+				anim.play("basicAttackDiagonalAbajo")
+			if DIRECTION.DOWN_RIGHT:
+				anim.play("basicAttackDiagonalAbajo")
 			player_hitbox_col.disabled = false
 			
 		STATE.ATTACKING_ULTI:
@@ -323,26 +331,13 @@ func _on_recolect_body_entered(body: Node2D) -> void:
 	if !object and body!=lastobject: #Esta linea se agregó para evitar el bug del throwobject
 		if body.is_in_group("objects"):
 			object = body
-			#print("nuevo objeto")
-		
-		
-	#print("ENTRÓ:", body)
-	#if body.is_in_group("objects"):
-		#object = body
+
 
 func _on_health_health_depleted():
 	current_state = STATE.DEAD
 	await animation_done
 	queue_free()
 
-"""func _on_enemy_killed():
-	kill_count += 1
-	SignalManager.kill_count.emit(kill_count)
-	print("Kills:", kill_count)
-
-	if kill_count >= GameManager.ulti_kills_required:
-		isUltiAvailable = true
-		print("ULTI LISTA")"""
 
 func _on_enemy_killed():
 	GameManager.timeToUlt += 1
