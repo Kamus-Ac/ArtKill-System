@@ -112,28 +112,28 @@ stretch_mode = 5
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Tomy2" type="PanelContainer" parent="MainPanel/VBox/CharactersBox"]
+[node name="Dani" type="PanelContainer" parent="MainPanel/VBox/CharactersBox"]
 custom_minimum_size = Vector2(180, 260)
 layout_mode = 2
 script = ExtResource("3_dieb8")
 character_data = ExtResource("6_pjomi")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/VBox/CharactersBox/Tomy2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/VBox/CharactersBox/Dani"]
 layout_mode = 2
 
-[node name="Shadow" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Tomy2/VBoxContainer"]
+[node name="Shadow" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Dani/VBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("2_d3lco")
 stretch_mode = 4
 
-[node name="Sprite" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Idol/VBoxContainer" unique_id=394639303]
+[node name="Sprite" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Dani/VBoxContainer"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="MainPanel/VBox/CharactersBox/Tomy2/VBoxContainer"]
+[node name="Name" type="Label" parent="MainPanel/VBox/CharactersBox/Dani/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
@@ -142,5 +142,10 @@ custom_minimum_size = Vector2(200, 48)
 layout_mode = 2
 disabled = true
 text = "Confirm"
+
+[node name="MainPanel_VBox_CharactersBox_Idol_VBoxContainer#Sprite" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
+stretch_mode = 5
 
 [connection signal="pressed" from="MainPanel/VBox/Confirm" to="." method="_on_confirm_pressed"]
