@@ -30,6 +30,8 @@ var knockback_decay:= 8.0
 
 var time: float
 var dur_timer : float
+@onready var nav = $NavigationAgent2D
+var player
 
 enum STATE {
 	RUNNING,
@@ -42,7 +44,7 @@ func _ready() -> void:
 	#SignalManager.isLaunching.connect(islaunching)
 	launchingArea.body_entered.connect(islaunching2)
 	assign_random_skin()
-	var player = get_tree().get_first_node_in_group("player")
+	player = get_tree().get_first_node_in_group("player")
 	if player:
 		# Conectar la señal "died" de esta instancia a la función del player
 		self.died.connect(player._on_enemy_killed)
@@ -116,7 +118,7 @@ func die(hit):
 func get_direction_to_player():
 	var player_node = get_tree().get_first_node_in_group("player") as Node2D
 	if player_node != null:
-		return (player_node.global_position - global_position).normalized()
+		return to_local(nav.get_next_path_position()).normalized()
 	return Vector2.ZERO
 
 
@@ -165,3 +167,7 @@ func _on_hit_lag_timeout() -> void:
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	pass # Replace with function body.
+
+
+func _on_timer_timeout() -> void:
+	nav.target_position= player.global_position
