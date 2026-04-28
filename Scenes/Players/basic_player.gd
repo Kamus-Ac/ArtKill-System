@@ -26,6 +26,7 @@ var character_loaded : Node2D
 var footstep_timer := 0.0
 @export var footstep_interval := 0.28
 var character_sound_played := false
+var ability_sound_played := false
 
 var current_dir : DIRECTION
 
@@ -222,6 +223,7 @@ func match_states(delta: float):
 				current_state = STATE.ATTACKING
 			
 			elif Input.is_action_just_pressed("Ulti") and isUltiAvailable:
+				ability_sound_played = false
 				current_state = STATE.ATTACKING_ULTI
 				
 		STATE.RUNNING:
@@ -258,6 +260,11 @@ func match_states(delta: float):
 			ulti_script.ulti_move(delta)
 			anim.play("ulti")
 			ulti_area.disabled = false
+			if !ability_sound_played:
+				ability_sound_played = true
+				match GameManager.selected_character.character_name:
+					"Dani":
+						audio_manager.play_idol_ability()
 				
 		STATE.HURTED:
 			anim.play("hurt")
@@ -377,6 +384,7 @@ func _on_health_health_depleted():
 		print("ULTI LISTA")"""
 
 func _on_enemy_killed():
+	audio_manager.play_punch()
 	GameManager.timeToUlt += 1
 	print("timeToUlt: %.2f" %GameManager.timeToUlt)
 
