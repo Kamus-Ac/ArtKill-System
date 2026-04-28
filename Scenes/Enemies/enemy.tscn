@@ -17,7 +17,7 @@ height = 24.0
 
 [node name="Enemy" type="CharacterBody2D" unique_id=358593171 groups=["enemies"]]
 collision_layer = 2
-collision_mask = 31
+collision_mask = 15
 script = ExtResource("1_x1rqp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=133299885]
@@ -46,7 +46,7 @@ shape = SubResource("CapsuleShape2D_7ubbs")
 
 [node name="EnemyHurtBox" type="Area2D" parent="." unique_id=2084333704]
 collision_layer = 2
-collision_mask = 7
+collision_mask = 23
 script = ExtResource("10_4bcle")
 metadata/_custom_type_script = "uid://ysn1i3gwaakr"
 
@@ -56,7 +56,7 @@ shape = SubResource("CapsuleShape2D_4bcle")
 
 [node name="LaunchingArea" type="Area2D" parent="." unique_id=715067017]
 collision_layer = 2
-collision_mask = 6
+collision_mask = 22
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LaunchingArea" unique_id=804058693]

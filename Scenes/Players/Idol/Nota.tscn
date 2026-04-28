@@ -7,7 +7,7 @@
 
 [node name="Nota" type="CharacterBody2D" unique_id=1418548160 groups=["notas"]]
 collision_layer = 16
-collision_mask = 0
+collision_mask = 2
 script = ExtResource("1_c8deg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1453261571]
