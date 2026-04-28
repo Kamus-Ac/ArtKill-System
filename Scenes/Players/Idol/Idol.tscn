@@ -20,7 +20,6 @@ height = 24.0
 [node name="Areas" type="Node2D" parent="." unique_id=185863002]
 
 [node name="Recolect" type="Area2D" parent="Areas" unique_id=882013311]
-visible = false
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Recolect" unique_id=800588834]
