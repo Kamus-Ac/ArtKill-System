@@ -24,6 +24,7 @@ offset_top = 0.52
 offset_right = -0.2401123
 offset_bottom = 0.51989746
 script = ExtResource("1_ahk0b")
+sdjajklgjlkdgjldlgjksdjlgksk
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1634539258]
 layout_mode = 1
