@@ -37,6 +37,7 @@ var up : bool = false
 var down : bool = false
 var left : bool = false
 var right : bool = false
+var look_dir: Vector2 = Vector2.ZERO
 
 enum DIRECTION{
 	UP,
@@ -142,6 +143,7 @@ func get_input():
 	down = Input.is_action_pressed("Down")
 	left = Input.is_action_pressed("Left")
 	right = Input.is_action_pressed("Right")
+	
 
 func set_direction():
 	if up:
@@ -279,7 +281,7 @@ func throw_object():
 	root.add_child(object)
 	object.get_node("CollisionTF").disabled = false
 	object.position = pos
-	object.apply_impulse(flip_position * -factor)
+	object.apply_impulse(look_dir * factor* 50)
 
 	lastobject= object
 	object = null
@@ -290,13 +292,21 @@ func throw_object():
 	factor = 1.0
 
 func flip_sprite():
-	mouse_position = get_global_mouse_position()
-	flip_position = position - mouse_position
-	areas.scale.x = 1 if flip_position.x < 0 else -1
-	flip.scale.x = 1 if flip_position.x < 0 else -1
+	areas.scale.x = 1 if look_dir.x > 0 else -1
+	flip.scale.x = 1 if look_dir.x > 0 else -1
 
 func rotate_object():
-	marker_2d.look_at(get_global_mouse_position())
+	if look_dir.length() > 0.0:
+		marker_2d.look_at(global_position + look_dir * 100.0)
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		if !event.relative.is_zero_approx():
+			look_dir = (get_global_mouse_position()-global_position).normalized()
+	if event is InputEventJoypadMotion:
+		if event.axis == JOY_AXIS_RIGHT_X or event.axis== JOY_AXIS_RIGHT_Y:
+			look_dir = Input.get_vector("LookLeft", "LookRight", "LookUp", "LookDown")
+
 
 func apply_knockback(from_position: Vector2, force := 180.0):
 	var direction = (global_position - from_position).normalized()
