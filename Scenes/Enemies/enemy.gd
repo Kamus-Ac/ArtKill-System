@@ -114,6 +114,8 @@ func die(hit):
 		isDead = true
 		current_state = STATE.DEAD
 		queue_free()
+		SignalManager.kill_count.emit()
+		GameManager.score+=100
 
 func get_direction_to_player():
 	var player_node = get_tree().get_first_node_in_group("player") as Node2D

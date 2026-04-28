@@ -364,7 +364,8 @@ func _on_recolect_body_entered(body: Node2D) -> void:
 func _on_health_health_depleted():
 	current_state = STATE.DEAD
 	await animation_done
-	queue_free()
+	SignalManager.gameOver.emit()
+	visible=false
 
 """func _on_enemy_killed():
 	kill_count += 1

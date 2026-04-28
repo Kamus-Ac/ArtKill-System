@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" format=3 uid="uid://dlrtmdnibpdba"]
+
+[ext_resource type="FontFile" uid="uid://5hkxjkks40r2" path="res://Scenes/UI/Puntuacion_Final/JetBrainsMono-Italic.ttf" id="1_3ra88"]
+
+[resource]
+base_font = ExtResource("1_3ra88")
