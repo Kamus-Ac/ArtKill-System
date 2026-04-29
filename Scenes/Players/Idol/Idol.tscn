@@ -103,3 +103,21 @@ stretch_mode = 5
 [node name="AnimatedSprite2D" parent="Heart_Bar/HBoxContainer/Heart3" unique_id=1756895298 instance=ExtResource("6_6d077")]
 scale = Vector2(6, 6)
 offset = Vector2(10, 10)
+
+[node name="Heart4" type="TextureRect" parent="Heart_Bar/HBoxContainer" unique_id=305683132]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+stretch_mode = 5
+
+[node name="AnimatedSprite2D" parent="Heart_Bar/HBoxContainer/Heart4" unique_id=1488496815 instance=ExtResource("6_6d077")]
+scale = Vector2(6, 6)
+offset = Vector2(10, 10)
+
+[node name="Heart5" type="TextureRect" parent="Heart_Bar/HBoxContainer" unique_id=697740880]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+stretch_mode = 5
+
+[node name="AnimatedSprite2D" parent="Heart_Bar/HBoxContainer/Heart5" unique_id=1441951739 instance=ExtResource("6_6d077")]
+scale = Vector2(6, 6)
+offset = Vector2(10, 10)

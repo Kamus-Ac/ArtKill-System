@@ -22,6 +22,12 @@ var health_component: Player_Health
 @export var character_data: CharacterData
 var character_loaded : Node2D
 
+@onready var audio_manager = $AudioManager
+var footstep_timer := 0.0
+@export var footstep_interval := 0.28
+var character_sound_played := false
+var ability_sound_played := false
+
 var current_dir : DIRECTION
 
 #Ulti
@@ -127,8 +133,17 @@ func _physics_process(delta: float) -> void:
 		knockback = Vector2.ZERO
 
 
+	# Si se está moviendo
+	if current_dir != DIRECTION.STILL:
+		footstep_timer += delta
 
-
+		if footstep_timer >= footstep_interval:
+			audio_manager.play_footstep()
+			footstep_timer = 0.0
+	else:
+		# si se detiene, reinicia el timer
+		footstep_timer = 0.0
+	
 	get_input()
 	set_direction()
 	match_states(delta)
@@ -209,9 +224,11 @@ func match_states(delta: float):
 				current_state = STATE.RUNNING
 			
 			elif Input.is_action_just_pressed("BasicAttack"):
+				character_sound_played = false
 				current_state = STATE.ATTACKING
 			
 			elif Input.is_action_just_pressed("Ulti") and isUltiAvailable:
+				ability_sound_played = false
 				current_state = STATE.ATTACKING_ULTI
 				
 		STATE.RUNNING:
@@ -222,6 +239,7 @@ func match_states(delta: float):
 				current_state = STATE.IDLE
 			
 			elif Input.is_action_just_pressed("BasicAttack"):
+				character_sound_played = false
 				current_state = STATE.ATTACKING
 			
 			elif Input.is_action_just_pressed("Ulti") and isUltiAvailable:
@@ -236,6 +254,11 @@ func match_states(delta: float):
 			if DIRECTION.DOWN_RIGHT:
 				anim.play("basicAttackDiagonalAbajo")
 			player_hitbox_col.disabled = false
+			if !character_sound_played:
+				character_sound_played = true
+				match GameManager.selected_character.character_name:
+					"Dani":
+						audio_manager.play_idol_attack()
 			
 		STATE.ATTACKING_ULTI:
 			if !isUltiActive:
@@ -245,6 +268,11 @@ func match_states(delta: float):
 			ulti_script.ulti_move(delta)
 			anim.play("ulti")
 			ulti_area.disabled = false
+			if !ability_sound_played:
+				ability_sound_played = true
+				match GameManager.selected_character.character_name:
+					"Dani":
+						audio_manager.play_idol_ability()
 				
 		STATE.HURTED:
 			anim.play("hurt")
@@ -346,10 +374,12 @@ func _on_recolect_body_entered(body: Node2D) -> void:
 func _on_health_health_depleted():
 	current_state = STATE.DEAD
 	await animation_done
-	queue_free()
+	SignalManager.gameOver.emit()
+	visible=false
 
 
 func _on_enemy_killed():
+	audio_manager.play_punch()
 	GameManager.timeToUlt += 1
 	print("timeToUlt: %.2f" %GameManager.timeToUlt)
 

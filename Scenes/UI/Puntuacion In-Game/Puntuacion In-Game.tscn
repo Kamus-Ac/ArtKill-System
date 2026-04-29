@@ -68,6 +68,16 @@ theme_override_font_sizes/font_size = 32
 text = "Puntos"
 vertical_alignment = 1
 
+[node name="Final_Score" type="Label" parent="Label" unique_id=618633934]
+layout_mode = 0
+offset_left = 469.99997
+offset_right = 578.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Label2" type="Label" parent="." unique_id=1102013204]
 layout_mode = 0
 offset_left = 566.0
