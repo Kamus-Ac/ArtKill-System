@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cf7lerr5iojfs" path="res://Scenes/UI/Pause/Pausa.png" id="8_8lm4w"]
 
 [node name="pause_menu" type="Control" unique_id=1040893944]
+process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
