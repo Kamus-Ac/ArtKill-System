@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cf7lerr5iojfs" path="res://Scenes/UI/Pause/Pausa.png" id="8_8lm4w"]
 
 [node name="pause_menu" type="Control" unique_id=1040893944]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,6 +51,7 @@ grow_vertical = 2
 texture_normal = ExtResource("6_8lm4w")
 texture_pressed = ExtResource("4_fw2d7")
 texture_hover = ExtResource("3_k5mxc")
+texture_focused = ExtResource("3_k5mxc")
 
 [node name="menu principal" type="TextureButton" parent="CenterContainer/TextureRect/resumen" unique_id=1238074071]
 custom_minimum_size = Vector2(350, 120)
@@ -61,6 +63,7 @@ offset_bottom = 807.0
 texture_normal = ExtResource("3_bnb0t")
 texture_pressed = ExtResource("3_fw2d7")
 texture_hover = ExtResource("2_pklis")
+texture_focused = ExtResource("2_pklis")
 
 [connection signal="pressed" from="CenterContainer/TextureRect/resumen" to="." method="_on_resumen_pressed"]
 [connection signal="pressed" from="CenterContainer/TextureRect/resumen/menu principal" to="." method="_on_menu_principal_pressed"]
