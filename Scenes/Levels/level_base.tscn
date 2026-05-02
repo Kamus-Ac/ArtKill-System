@@ -5,10 +5,21 @@
 [ext_resource type="PackedScene" uid="uid://b7eo22rbdtbwl" path="res://Scenes/UI/Pause/pause_menu.tscn" id="3_4f6dp"]
 [ext_resource type="PackedScene" uid="uid://dmruwmswylq0o" path="res://Scenes/Managers/enemy_manager.tscn" id="3_614yd"]
 [ext_resource type="PackedScene" uid="uid://o611ga5dcuxt" path="res://Scenes/GameCamera/game_camera.tscn" id="3_m7m8v"]
+[ext_resource type="PackedScene" uid="uid://bmr1g4fj71s5p" path="res://Scenes/UI/Puntuacion In-Game/Puntuacion In-Game.tscn" id="4_w4ad0"]
 [ext_resource type="Texture2D" uid="uid://8myba8fjb41q" path="res://Scenes/UI/istockphoto-1440114432-612x612.jpg" id="5_ej2hx"]
 [ext_resource type="Texture2D" uid="uid://bjea3nnpk2npk" path="res://Scenes/UI/marco_negro.png" id="6_614yd"]
 [ext_resource type="PackedScene" uid="uid://bvqgi43nkhtrb" path="res://Scenes/Players/basic_player.tscn" id="7_614yd"]
 [ext_resource type="PackedScene" uid="uid://b2gft8tdpey3f" path="res://Scenes/Objects/object.tscn" id="7_ej2hx"]
+[ext_resource type="Script" uid="uid://bt0hj7weg6qe3" path="res://Scenes/UI/Puntuacion_Final/BBCode_Matrix.gd" id="8_ls6f5"]
+[ext_resource type="Script" uid="uid://2o45m0yrk8dm" path="res://Scenes/UI/Puntuacion_Final/BBCode_Ghost.gd" id="9_w4ad0"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_ls6f5"]
+script = ExtResource("8_ls6f5")
+metadata/_custom_type_script = "uid://bt0hj7weg6qe3"
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_w4ad0"]
+script = ExtResource("9_w4ad0")
+metadata/_custom_type_script = "uid://2o45m0yrk8dm"
 
 [node name="Level base" type="Node2D" unique_id=779753199]
 script = ExtResource("1_8s78d")
@@ -25,6 +36,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 scale = Vector2(0.5, 0.5)
+
+[node name="PuntuacionInGame" parent="GameCamera/CanvasLayer2" unique_id=66172300 instance=ExtResource("4_w4ad0")]
+visible = false
+offset_top = -5.96
+offset_bottom = -5.960083
 
 [node name="EnemyManager" parent="." unique_id=1902379502 instance=ExtResource("3_614yd")]
 
@@ -49,13 +65,6 @@ tile_set = ExtResource("2_rnfvs")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=511053110]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=1157063657]
-offset_left = 60.0
-offset_top = 40.0
-offset_right = 160.0
-offset_bottom = 140.0
-theme_override_constants/separation = 32
-
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=551965813]
 anchors_preset = 2
 anchor_top = 1.0
@@ -76,6 +85,21 @@ offset_right = 244.0
 grow_vertical = 0
 texture = ExtResource("6_614yd")
 expand_mode = 1
+
+[node name="Score" type="RichTextLabel" parent="CanvasLayer" unique_id=1437044057]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -220.0
+offset_top = 28.99
+offset_right = -43.0
+offset_bottom = 130.0
+grow_horizontal = 0
+bbcode_enabled = true
+text = "[center]
+[font=res://Scenes/UI/Puntuacion_Final/JetBrainsMono-Italic.ttf][font_size=64][matrix]0[/matrix] [/font_size][/font][/center]"
+fit_content = true
+custom_effects = [SubResource("RichTextEffect_ls6f5"), SubResource("RichTextEffect_w4ad0")]
 
 [node name="BasicPlayer" parent="." unique_id=344540371 instance=ExtResource("7_614yd")]
 
@@ -111,7 +135,7 @@ collision_layer = 32
 collision_mask = 5
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RightWall" unique_id=677640972]
-position = Vector2(1398.1658, -970.97174)
+position = Vector2(1402, -962.99994)
 scale = Vector2(0.8609656, 0.7922032)
 polygon = PackedVector2Array(-1999.111, -128.79053, 1052.1144, 1614.449, 955.71106, 1667.4658, -1073.4061, 569.2627, -2200.048, -66.937744, -2087.384, -102.28223)
 

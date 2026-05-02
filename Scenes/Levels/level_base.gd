@@ -4,12 +4,19 @@ var i = 0
 @onready var texture_rect: TextureRect = $CanvasLayer/TextureRect
 var percentage_ult: float = 0
 var ult_bar_scale: float = 244.0
+@onready var label_score: RichTextLabel = $CanvasLayer/Score
+var reload:bool = false
+var timer:Timer
 # Called when the node enters the scene tree for the first time.
 
 func _ready() -> void:
 	#var player = get_tree().get_first_node_in_group("player")
 	SignalManager.ult_used.connect(ult_reset)
+	SignalManager.kill_count.connect(reloadScore)
 	pause_menu.hide()
+	label_score.process_mode = Node.PROCESS_MODE_DISABLED
+	
+	
 	
 func _process(_delta: float) -> void:
 	ult_bar()
@@ -43,5 +50,31 @@ func pauseMenu():
 	
 			
 	
+	paused = !paused
+
+func reloadScore()-> void:
+	if !timer:
+		label_score.process_mode= Node.PROCESS_MODE_INHERIT
+		label_score.text= """[center] [font=res://Scenes/UI/Puntuacion_Final/JetBrainsMono-Italic.ttf][font_size=64] [matrix]%d[/matrix]
+		[/font_size] 
+		[/font]
+		[/center]"""%[GameManager.score]
+		timer = Timer.new()
+		add_child(timer)
+		timer.timeout.connect(_on_timer_timeout)
+		timer.one_shot = true
+		timer.start(3.0)
+
+func activeScore()->void:
+	reload=true
+
+func _on_timer_timeout():
+	label_score.text= """[center] [font=res://Scenes/UI/Puntuacion_Final/JetBrainsMono-Italic.ttf][font_size=64]%d[/font_size]
+	[/font]
+	[/center]"""%[GameManager.score]
+	label_score.process_mode=Node.PROCESS_MODE_DISABLED
+	timer.queue_free()
+
+		
 	
 	
