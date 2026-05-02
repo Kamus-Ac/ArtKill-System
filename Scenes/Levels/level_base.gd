@@ -46,11 +46,6 @@ func pauseMenu():
 	else:
 		pause_menu.hide()
 		get_tree().paused = false
-		
-	
-			
-	
-	paused = !paused
 
 func reloadScore()-> void:
 	if !timer:

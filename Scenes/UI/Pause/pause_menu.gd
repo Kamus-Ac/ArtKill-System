@@ -1,6 +1,6 @@
 extends Control
 
-@onready var level_base = $"../../.."
+@onready var level_base: Node2D = $"../../.."
 
 func _on_menu_principal_pressed() -> void:
 	get_tree().paused = false
