@@ -29,6 +29,7 @@ script = ExtResource("1_8s78d")
 [node name="CanvasLayer2" type="CanvasLayer" parent="GameCamera" unique_id=1600422208]
 
 [node name="pause_menu" parent="GameCamera/CanvasLayer2" unique_id=1040893944 instance=ExtResource("3_4f6dp")]
+process_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
