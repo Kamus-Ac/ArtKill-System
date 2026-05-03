@@ -49,9 +49,11 @@ offset_right = 452.5
 offset_bottom = 616.5
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_bottom = NodePath("menu principal")
 texture_normal = ExtResource("6_8lm4w")
 texture_pressed = ExtResource("4_fw2d7")
 texture_hover = ExtResource("3_k5mxc")
+texture_focused = ExtResource("3_k5mxc")
 
 [node name="menu principal" type="TextureButton" parent="CenterContainer/TextureRect/resumen" unique_id=1238074071]
 process_mode = 2
@@ -61,9 +63,11 @@ offset_left = -0.5
 offset_top = 412.0
 offset_right = 885.5
 offset_bottom = 807.0
+focus_neighbor_top = NodePath("..")
 texture_normal = ExtResource("3_bnb0t")
 texture_pressed = ExtResource("3_fw2d7")
 texture_hover = ExtResource("2_pklis")
+texture_focused = ExtResource("2_pklis")
 
 [connection signal="pressed" from="CenterContainer/TextureRect/resumen" to="." method="_on_resumen_pressed"]
 [connection signal="pressed" from="CenterContainer/TextureRect/resumen/menu principal" to="." method="_on_menu_principal_pressed"]
