@@ -10,6 +10,10 @@ var ulti_area: CollisionShape2D #Player Hitbox de la Ulti
 var damage_area: Area2D #Player Hurtbox
 var recolect: Area2D #Recolección de Objetos
 
+#Particles
+var dashParticles: GPUParticles2D
+
+
 #Vida
 var health_component: Player_Health
 
@@ -19,8 +23,11 @@ var health_component: Player_Health
 @onready var flip: Node2D = $Flip
 @onready var marker_2d: Marker2D = $Marker2D
 @onready var character_holder: Node2D = $CharacterScene
+@onready var dust_particles_position: Marker2D = $ParticlesPosition
 @export var character_data: CharacterData
+var dust_particles_scene = preload("res://Scenes/Particles/DustStepParticles.tscn")
 var character_loaded : Node2D
+
 
 @onready var audio_manager = $AudioManager
 var footstep_timer := 0.0
@@ -109,6 +116,10 @@ func _ready() -> void:
 	
 func load_character(module_scene: PackedScene):
 	character_loaded = module_scene.instantiate()
+	
+	dashParticles = character_loaded.get_node("UltiParticles")
+	if dashParticles:
+		dashParticles.emitting = false
 	character_holder.add_child(character_loaded)
 	health_component = character_loaded.get_node("Player_Health")
 	health_component.health_depleted.connect(_on_health_health_depleted)
@@ -140,6 +151,12 @@ func _physics_process(delta: float) -> void:
 		if footstep_timer >= footstep_interval:
 			audio_manager.play_footstep()
 			footstep_timer = 0.0
+			
+			#particulas
+			var particles_instance = dust_particles_scene.instantiate()
+			particles_instance.global_position = dust_particles_position.global_position
+			get_tree().current_scene.add_child(particles_instance)
+			
 	else:
 		# si se detiene, reinicia el timer
 		footstep_timer = 0.0
@@ -199,8 +216,10 @@ func move(delta: float):
 				anim.play("horizontal")
 			DIRECTION.UP_LEFT:
 				normal_velocity = cartesian_to_isometric(Vector2(-MAX_SPEED, 0))
+				anim.play("diagonalArriba")
 			DIRECTION.UP_RIGHT:
 				normal_velocity = cartesian_to_isometric(Vector2(0, -MAX_SPEED))
+				anim.play("diagonalArriba")
 			DIRECTION.DOWN_LEFT:
 				normal_velocity = cartesian_to_isometric(Vector2(0, MAX_SPEED))
 				anim.play("diagonalAbajo")
@@ -244,6 +263,8 @@ func match_states(delta: float):
 			
 			elif Input.is_action_just_pressed("Ulti") and isUltiAvailable:
 				current_state = STATE.ATTACKING_ULTI
+				
+			
 			
 
 				
@@ -253,6 +274,7 @@ func match_states(delta: float):
 				anim.play("basicAttackDiagonalAbajo")
 			if DIRECTION.DOWN_RIGHT:
 				anim.play("basicAttackDiagonalAbajo")
+			
 			player_hitbox_col.disabled = false
 			if !character_sound_played:
 				character_sound_played = true
@@ -265,6 +287,9 @@ func match_states(delta: float):
 				isUltiActive = true
 				isUltiAvailable = false
 				ulti_script.start(self)
+				if dashParticles:
+					dashParticles.emitting = true
+				
 			ulti_script.ulti_move(delta)
 			anim.play("ulti")
 			ulti_area.disabled = false
@@ -321,8 +346,6 @@ func throw_object():
 
 	lastobject= object
 	object = null
-	"""print("objeto puesto nulo") sucedia que el objeto volvia a entrar por ciertos frames al area2d 
-	haciendo que otra vez se añadiera al jugador porque aun se detectaba el input antes del lastclickstate"""
 	grabbing = false
 	lastClickState = false
 	factor = 1.0
@@ -356,6 +379,8 @@ func _on_anim_finished():
 		isUltiActive = false
 		isUltiAvailable = false
 		ulti_area.disabled = true
+		if dashParticles:
+			dashParticles.emitting = false
 		kill_count = 0
 		GameManager.timeToUlt = 0
 		SignalManager.ult_used.emit()

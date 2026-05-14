@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" format=3 uid="uid://dlevfnbld3xxe"]
+[gd_resource type="SpriteFrames" load_steps=45 format=3 uid="uid://dlevfnbld3xxe"]
 
 [ext_resource type="Texture2D" uid="uid://gsf6h3fhs2l3" path="res://Scenes/Players/Viejita/Animaciones/Viejita_BasicAttack.png" id="1_oj281"]
 [ext_resource type="Texture2D" uid="uid://dbfxadh6kugkm" path="res://Scenes/Players/Viejita/Animaciones/Viejita_death.png" id="2_bx5wo"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cl0xeknq1v0om" path="res://Scenes/Players/Viejita/Animaciones/Tomasa_Running_Horizontal.png" id="3_bx5wo"]
 [ext_resource type="Texture2D" uid="uid://c2oped417kt5l" path="res://Scenes/Players/Viejita/Animaciones/Tomasa_Running_3-4.png" id="3_t2jj7"]
 [ext_resource type="Texture2D" uid="uid://b4h2eibdjchcd" path="res://Scenes/Players/Viejita/Animaciones/Viejita_walking.png" id="4_t2jj7"]
+[ext_resource type="Texture2D" uid="uid://cner2kyb0l4x7" path="res://Scenes/Players/Viejita/Animaciones/Tomasa_RunningDiagonalArriba.png" id="4_vcnb0"]
 [ext_resource type="Texture2D" uid="uid://xndg4gyjq7qm" path="res://Scenes/Players/Viejita/Animaciones/Viejita_Ulti.png" id="5_vcnb0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oj281"]
@@ -64,8 +65,31 @@ region = Rect2(256, 0, 64, 64)
 atlas = ExtResource("3_t2jj7")
 region = Rect2(320, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_502xd"]
+atlas = ExtResource("4_vcnb0")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3m78"]
+atlas = ExtResource("4_vcnb0")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehcmu"]
+atlas = ExtResource("4_vcnb0")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epcd0"]
+atlas = ExtResource("4_vcnb0")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfy0a"]
+atlas = ExtResource("4_vcnb0")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5753x"]
+atlas = ExtResource("4_vcnb0")
+region = Rect2(320, 0, 64, 64)
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1buty"]
-load_path = "res://.godot/imported/Sprite-0005.png-caf1914ca18a8a95ca9b754d2cb3cff2.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7e0fr"]
 atlas = SubResource("CompressedTexture2D_1buty")
@@ -185,6 +209,29 @@ animations = [{
 "loop": false,
 "name": &"diagonalAbajo",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_502xd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3m78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehcmu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epcd0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfy0a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5753x")
+}],
+"loop": false,
+"name": &"diagonalArriba",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
