@@ -37,16 +37,15 @@ func ult_reset():
 @onready var pause_menu: Control = $GameCamera/CanvasLayer2/pause_menu
 
 var paused = false
-			
+	
 func pauseMenu():
-	if paused:
-		pause_menu.hide()
-		Engine.time_scale = 1
-	else:
-		pause_menu.show()
-		Engine.time_scale = 0
-		
 	paused = !paused
+	if paused:
+		pause_menu.show()
+		get_tree().paused = true
+	else:
+		pause_menu.hide()
+		get_tree().paused = false
 
 func reloadScore()-> void:
 	if !timer:

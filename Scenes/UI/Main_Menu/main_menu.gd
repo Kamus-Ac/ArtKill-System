@@ -1,24 +1,23 @@
 extends Control
 
+# Referencias a tus botones dentro del VBoxContainer
+@onready var yugar: TextureButton = $Fondo/VBoxContainer/YUGAR
+@onready var ajustes: TextureButton = $Fondo/VBoxContainer/AJUSTES
+@onready var zalir: TextureButton = $Fondo/VBoxContainer/ZALIR
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# Aseguramos que el ratón sea visible si vienes de un juego en 3D/FPS
+	#Aseguramos que el ratón sea visible
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+	
+	# Intentamos dar el foco al arrancar
+	if yugar:
+		yugar.grab_focus()
 
 func _on_yugar_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/UI/character_select.tscn")
 
-
 func _on_zalir_pressed() -> void:
 	get_tree().quit()
 
-
 func _on_ajustes_pressed() -> void:
-	pass # Replace with function body.
+	pass # Aquí irá tu lógica de ajustes
