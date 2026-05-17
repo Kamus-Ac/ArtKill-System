@@ -15,7 +15,7 @@ func _ready() -> void:
 	SignalManager.kill_count.connect(reloadScore)
 	pause_menu.hide()
 	label_score.process_mode = Node.PROCESS_MODE_DISABLED
-	
+	GameManager.score = 0
 	
 	
 func _process(_delta: float) -> void:
@@ -74,4 +74,4 @@ func _on_timer_timeout():
 	
 	
 func reset_gamedata():
-	pass
+		pass
