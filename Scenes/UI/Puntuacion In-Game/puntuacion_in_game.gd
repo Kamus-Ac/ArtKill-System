@@ -21,11 +21,13 @@ func gameOver()->void:
 
 
 func _on_button_pressed() -> void:
-	GameManager.reset_gamedata()
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/UI/character_select.tscn")
 	
 
 
 func _on_button_2_pressed() -> void:
-	GameManager.reset_gamedata()
+	get_tree().paused = false
+	GameManager.score=0
+	#GameManager.percentage_ult = 0
 	get_tree().reload_current_scene()
