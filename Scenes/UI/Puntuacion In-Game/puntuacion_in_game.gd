@@ -18,3 +18,14 @@ func _unhandled_input(event):
 func gameOver()->void:
 	final_score.text = "%d"%[GameManager.score]
 	scoreboard_panel.visible = true
+
+
+func _on_button_pressed() -> void:
+	GameManager.reset_gamedata()
+	get_tree().change_scene_to_file("res://Scenes/UI/character_select.tscn")
+	
+
+
+func _on_button_2_pressed() -> void:
+	GameManager.reset_gamedata()
+	get_tree().reload_current_scene()

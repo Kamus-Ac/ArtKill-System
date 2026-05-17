@@ -24,9 +24,11 @@ func _on_visibility_changed() -> void:
 
 # --- FUNCIONES DE LOS BOTONES ---
 
+
 func _on_menu_principal_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/UI/Main_Menu/main_menu.tscn")
 	
 func _on_resumen_pressed() -> void:
+	Engine.time_scale = 0
 	level_base.pauseMenu()
