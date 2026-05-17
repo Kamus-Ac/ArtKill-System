@@ -74,3 +74,5 @@ func _on_timer_timeout():
 		
 	
 	
+func reset_gamedata():
+	pass
