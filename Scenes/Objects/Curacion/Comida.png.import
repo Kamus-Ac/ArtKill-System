@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c65qmck7nauk8"
-path="res://.godot/imported/Sprite-0005.png-caf1914ca18a8a95ca9b754d2cb3cff2.ctex"
+uid="uid://rsosjxjdsjmj"
+path="res://.godot/imported/Comida.png-d3effac848ba4787bf8dbb896498831f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Players/Viejita/Animaciones/Sprite-0005.png"
-dest_files=["res://.godot/imported/Sprite-0005.png-caf1914ca18a8a95ca9b754d2cb3cff2.ctex"]
+source_file="res://Scenes/Objects/Curacion/Comida.png"
+dest_files=["res://.godot/imported/Comida.png-d3effac848ba4787bf8dbb896498831f.ctex"]
 
 [params]
 

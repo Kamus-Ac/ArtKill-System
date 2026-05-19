@@ -10,6 +10,10 @@ var ulti_area: CollisionShape2D #Player Hitbox de la Ulti
 var damage_area: Area2D #Player Hurtbox
 var recolect: Area2D #Recolección de Objetos
 
+#Particles
+var dashParticles: GPUParticles2D
+
+
 #Vida
 var health_component: Player_Health
 
@@ -19,8 +23,11 @@ var health_component: Player_Health
 @onready var flip: Node2D = $Flip
 @onready var marker_2d: Marker2D = $Marker2D
 @onready var character_holder: Node2D = $CharacterScene
+@onready var dust_particles_position: Marker2D = $ParticlesPosition
 @export var character_data: CharacterData
+var dust_particles_scene = preload("res://Scenes/Particles/DustStepParticles.tscn")
 var character_loaded : Node2D
+
 
 @onready var audio_manager = $AudioManager
 var footstep_timer := 0.0
@@ -91,7 +98,10 @@ var grabbing: bool = false
 func _ready() -> void:
 	if GameManager.selected_character:
 		MAX_SPEED = GameManager.selected_character.max_speed
-		anim.sprite_frames = GameManager.selected_character.sprite
+		if anim == null:
+			print("ERROR: anim es null")
+		else:
+			anim.sprite_frames = GameManager.selected_character.sprite
 		
 		load_character(GameManager.selected_character.character_scene)
 
@@ -106,6 +116,10 @@ func _ready() -> void:
 	
 func load_character(module_scene: PackedScene):
 	character_loaded = module_scene.instantiate()
+	
+	dashParticles = character_loaded.get_node("UltiParticles")
+	if dashParticles:
+		dashParticles.emitting = false
 	character_holder.add_child(character_loaded)
 	health_component = character_loaded.get_node("Player_Health")
 	health_component.health_depleted.connect(_on_health_health_depleted)
@@ -120,8 +134,7 @@ func load_character(module_scene: PackedScene):
 
 
 func _physics_process(delta: float) -> void:
-	#var input_dir := Input.get_vector("Left", "Right", "Up", "Down")
-	#var iso_dir = cartesian_to_isometric(input_dir)
+
 	
 # knockback siempre suma fuerza, no cancela movimiento
 	if knockback.length() > 10:
@@ -137,6 +150,12 @@ func _physics_process(delta: float) -> void:
 		if footstep_timer >= footstep_interval:
 			audio_manager.play_footstep()
 			footstep_timer = 0.0
+			
+			#particulas
+			var particles_instance = dust_particles_scene.instantiate()
+			particles_instance.global_position = dust_particles_position.global_position
+			get_tree().current_scene.add_child(particles_instance)
+			
 	else:
 		# si se detiene, reinicia el timer
 		footstep_timer = 0.0
@@ -196,12 +215,16 @@ func move(delta: float):
 				anim.play("horizontal")
 			DIRECTION.UP_LEFT:
 				normal_velocity = cartesian_to_isometric(Vector2(-MAX_SPEED, 0))
+				anim.play("diagonalArriba")
 			DIRECTION.UP_RIGHT:
 				normal_velocity = cartesian_to_isometric(Vector2(0, -MAX_SPEED))
+				anim.play("diagonalArriba")
 			DIRECTION.DOWN_LEFT:
 				normal_velocity = cartesian_to_isometric(Vector2(0, MAX_SPEED))
+				anim.play("diagonalAbajo")
 			DIRECTION.DOWN_RIGHT:
 				normal_velocity = cartesian_to_isometric(Vector2(MAX_SPEED, 0))
+				anim.play("diagonalAbajo")
 			DIRECTION.STILL:
 				normal_velocity = Vector2(0,0)
 	
@@ -239,12 +262,18 @@ func match_states(delta: float):
 			
 			elif Input.is_action_just_pressed("Ulti") and isUltiAvailable:
 				current_state = STATE.ATTACKING_ULTI
+				
+			
 			
 
 				
 		STATE.ATTACKING:
 			move(delta)
-			anim.play("basicAttack")
+			if DIRECTION.DOWN_LEFT:
+				anim.play("basicAttackDiagonalAbajo")
+			if DIRECTION.DOWN_RIGHT:
+				anim.play("basicAttackDiagonalAbajo")
+			
 			player_hitbox_col.disabled = false
 			if !character_sound_played:
 				character_sound_played = true
@@ -257,6 +286,9 @@ func match_states(delta: float):
 				isUltiActive = true
 				isUltiAvailable = false
 				ulti_script.start(self)
+				if dashParticles:
+					dashParticles.emitting = true
+				
 			ulti_script.ulti_move(delta)
 			anim.play("ulti")
 			ulti_area.disabled = false
@@ -313,8 +345,6 @@ func throw_object():
 
 	lastobject= object
 	object = null
-	"""print("objeto puesto nulo") sucedia que el objeto volvia a entrar por ciertos frames al area2d 
-	haciendo que otra vez se añadiera al jugador porque aun se detectaba el input antes del lastclickstate"""
 	grabbing = false
 	lastClickState = false
 	factor = 1.0
@@ -322,6 +352,7 @@ func throw_object():
 func flip_sprite():
 	areas.scale.x = 1 if look_dir.x > 0 else -1
 	flip.scale.x = 1 if look_dir.x > 0 else -1
+	dashParticles.scale.x = 1 if look_dir.x > 0 else -1
 
 func rotate_object():
 	if look_dir.length() > 0.0:
@@ -348,6 +379,8 @@ func _on_anim_finished():
 		isUltiActive = false
 		isUltiAvailable = false
 		ulti_area.disabled = true
+		if dashParticles:
+			dashParticles.emitting = false
 		kill_count = 0
 		GameManager.timeToUlt = 0
 		SignalManager.ult_used.emit()
@@ -361,12 +394,7 @@ func _on_recolect_body_entered(body: Node2D) -> void:
 	if !object and body!=lastobject: #Esta linea se agregó para evitar el bug del throwobject
 		if body.is_in_group("objects"):
 			object = body
-			#print("nuevo objeto")
-		
-		
-	#print("ENTRÓ:", body)
-	#if body.is_in_group("objects"):
-		#object = body
+
 
 func _on_health_health_depleted():
 	current_state = STATE.DEAD
@@ -374,14 +402,6 @@ func _on_health_health_depleted():
 	SignalManager.gameOver.emit()
 	visible=false
 
-"""func _on_enemy_killed():
-	kill_count += 1
-	SignalManager.kill_count.emit(kill_count)
-	print("Kills:", kill_count)
-
-	if kill_count >= GameManager.ulti_kills_required:
-		isUltiAvailable = true
-		print("ULTI LISTA")"""
 
 func _on_enemy_killed():
 	audio_manager.play_punch()

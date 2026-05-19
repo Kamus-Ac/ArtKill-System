@@ -30,20 +30,18 @@ func ulti_move(delta: float) -> void:
 	if player == null or not isActive:
 		return
 
+
 	elapsed += delta
 
 	var perpendicular = dash_direction.orthogonal()
 
-	# 🔹 avance acumulado
 	var forward = dash_direction * dash_speed * elapsed
 
-	# 🔹 zigzag 
 	var zigzag := Vector2.ZERO
 
 	if elapsed > zigzag_start_time:
 		var t = elapsed - zigzag_start_time
 		zigzag = perpendicular * sin(t * waves * PI * 2) * amplitude
-
 
 	player.global_position = start_position + forward + zigzag
 

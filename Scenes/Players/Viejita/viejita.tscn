@@ -1,11 +1,39 @@
-[gd_scene load_steps=11 format=3 uid="uid://cqpvwgr5lusyp"]
+[gd_scene load_steps=17 format=3 uid="uid://cqpvwgr5lusyp"]
 
 [ext_resource type="Script" uid="uid://bj5kql8nbtmmv" path="res://Scenes/Players/Viejita/viejita.gd" id="1_cvnl6"]
+[ext_resource type="Texture2D" uid="uid://dh1mpqt4l7yp0" path="res://Scenes/Particles/dust.png" id="1_fp47h"]
 [ext_resource type="Script" uid="uid://crea02gg0i2qu" path="res://Scenes/Colision Shape/hitbox.gd" id="2_46q1k"]
 [ext_resource type="Shape2D" uid="uid://drewp4ag3n1u7" path="res://Scenes/Colision Shape/colision_recolect.tres" id="2_cvnl6"]
 [ext_resource type="Script" uid="uid://c2u602qug3hko" path="res://Scenes/Colision Shape/hurtbox.gd" id="3_afnxa"]
 [ext_resource type="Script" uid="uid://bs8j4dudypi2y" path="res://Scenes/Players/health.gd" id="5_fp47h"]
 [ext_resource type="PackedScene" uid="uid://b5xdnwpiu4oxx" path="res://Scenes/UI/heart.tscn" id="6_rmq0a"]
+
+[sub_resource type="Gradient" id="Gradient_fp47h"]
+offsets = PackedFloat32Array(0, 0.13108614, 0.4456929, 0.7790262, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.49019608, 0.9764706, 1, 1, 0, 0.7176471, 1, 1, 0, 0.4, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rmq0a"]
+gradient = SubResource("Gradient_fp47h")
+
+[sub_resource type="Curve" id="Curve_fp47h"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9947183, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rmq0a"]
+curve = SubResource("Curve_fp47h")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_afnxa"]
+particle_flag_disable_z = true
+spread = 30.0
+initial_velocity_min = 10.0
+initial_velocity_max = 25.0
+radial_velocity_min = -2.2351742e-05
+radial_velocity_max = 24.999977
+gravity = Vector3(0, 0, 0)
+scale_min = 0.14999999
+scale_max = 0.29999998
+scale_curve = SubResource("CurveTexture_rmq0a")
+color_ramp = SubResource("GradientTexture1D_rmq0a")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1y8b1"]
 
@@ -20,7 +48,17 @@ size = Vector2(31.973684, 16.210526)
 
 [node name="Viejita" type="Node2D"]
 
+[node name="UltiParticles" type="GPUParticles2D" parent="."]
+texture_filter = 1
+amount = 60
+texture = ExtResource("1_fp47h")
+lifetime = 0.8
+explosiveness = 0.25
+randomness = 0.3
+process_material = SubResource("ParticleProcessMaterial_afnxa")
+
 [node name="Areas" type="Node2D" parent="."]
+visible = false
 
 [node name="Recolect" type="Area2D" parent="Areas"]
 visible = false
