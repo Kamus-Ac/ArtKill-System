@@ -353,6 +353,7 @@ func throw_object():
 func flip_sprite():
 	areas.scale.x = 1 if look_dir.x > 0 else -1
 	flip.scale.x = 1 if look_dir.x > 0 else -1
+	dashParticles.scale.x = 1 if look_dir.x > 0 else -1
 
 func rotate_object():
 	if look_dir.length() > 0.0:

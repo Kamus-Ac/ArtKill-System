@@ -42,17 +42,20 @@ func _ready() -> void:
 		self.died.connect(player._on_enemy_killed)
 
 
+
+
 func _physics_process(delta):
 
 	match current_state:
 
 		STATE.RUNNING:
 
-			if anim_sprite.animation != "idle":
+			if anim_sprite.animation != "idle" or !anim_sprite.is_playing():
 				anim_sprite.play("idle")
 
 			var direction = get_direction_to_player()
-
+			if anim_sprite.sprite_frames:	
+				anim_sprite.scale.x = 1 if direction.x > 0 else -1
 			# MOVIMIENTO
 			if not hitting:
 				velocity += direction * SPEED
@@ -99,6 +102,7 @@ func assign_random_skin():
 		var random_skin = skins[randi() % skins.size()]
 
 		anim_sprite.sprite_frames = random_skin
+		print(anim_sprite.sprite_frames.get_animation_names())
 
 
 func die(hit):

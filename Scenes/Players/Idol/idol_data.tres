@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://cpn0itqsdlwgo"]
+[gd_resource type="Resource" script_class="CharacterData" load_steps=4 format=3 uid="uid://cpn0itqsdlwgo"]
 
 [ext_resource type="Script" uid="uid://cykrf8nfa65dj" path="res://Scenes/Players/characters_data.gd" id="1_3v3uf"]
 [ext_resource type="PackedScene" uid="uid://dnv3x3k1xxw5o" path="res://Scenes/Players/Idol/Idol.tscn" id="1_pl3g3"]
