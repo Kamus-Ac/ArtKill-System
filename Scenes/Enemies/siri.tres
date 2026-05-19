@@ -1,0 +1,59 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://cf2vuneqgb4w2"]
+
+[ext_resource type="Texture2D" uid="uid://dk3qkn1cuiy6x" path="res://Scenes/Enemies/skins/IA_Siri_Iddle.png" id="1_ajh5w"]
+[ext_resource type="Texture2D" uid="uid://ultdncbe7m6t" path="res://Scenes/Enemies/Deaths/IA_Siri_Death.png" id="1_irvjx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbrr0"]
+atlas = ExtResource("1_irvjx")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sa7y2"]
+atlas = ExtResource("1_irvjx")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b23tf"]
+atlas = ExtResource("1_irvjx")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpkmn"]
+atlas = ExtResource("1_irvjx")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uao6s"]
+atlas = ExtResource("1_ajh5w")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yolc0"]
+atlas = ExtResource("1_ajh5w")
+region = Rect2(64, 64, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbrr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sa7y2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b23tf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jpkmn")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uao6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yolc0")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]

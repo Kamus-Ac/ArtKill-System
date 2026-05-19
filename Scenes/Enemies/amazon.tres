@@ -1,0 +1,60 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://bnyc2lnu3dq4k"]
+
+[ext_resource type="Texture2D" uid="uid://dexhqchkwn8ws" path="res://Scenes/Enemies/skins/amazon.png" id="1_bjmfy"]
+[ext_resource type="Texture2D" uid="uid://ctrd3okhwo7de" path="res://Scenes/Enemies/Deaths/amazon1.png" id="1_fhh1p"]
+[ext_resource type="Texture2D" uid="uid://5bet4q6sgt7h" path="res://Scenes/Enemies/Deaths/amazon3.png" id="2_ai6dq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usg0k"]
+atlas = ExtResource("1_fhh1p")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emgk6"]
+atlas = ExtResource("1_fhh1p")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6esxl"]
+atlas = ExtResource("2_ai6dq")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u70ny"]
+atlas = ExtResource("2_ai6dq")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8jrs"]
+atlas = ExtResource("1_bjmfy")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5jfh"]
+atlas = ExtResource("1_bjmfy")
+region = Rect2(64, 64, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usg0k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emgk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6esxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u70ny")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8jrs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5jfh")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
