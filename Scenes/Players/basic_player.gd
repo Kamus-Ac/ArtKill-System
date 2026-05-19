@@ -134,8 +134,7 @@ func load_character(module_scene: PackedScene):
 
 
 func _physics_process(delta: float) -> void:
-	#var input_dir := Input.get_vector("Left", "Right", "Up", "Down")
-	#var iso_dir = cartesian_to_isometric(input_dir)
+
 	
 # knockback siempre suma fuerza, no cancela movimiento
 	if knockback.length() > 10:

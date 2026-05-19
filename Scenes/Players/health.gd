@@ -63,6 +63,12 @@ func apply_damage(damage: int):
 	set_health(health - damage)
 	update_hearts_visual()
 
+func heal(amount: int):
+
+	set_health(health + amount)
+
+	update_hearts_visual()
+
 func update_hearts_visual():
 	for i in range(hearts_list.size()):
 		hearts_list[i].visible = i < health

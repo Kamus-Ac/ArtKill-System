@@ -102,7 +102,6 @@ func assign_random_skin():
 		var random_skin = skins[randi() % skins.size()]
 
 		anim_sprite.sprite_frames = random_skin
-		print(anim_sprite.sprite_frames.get_animation_names())
 
 
 func die(hit):
