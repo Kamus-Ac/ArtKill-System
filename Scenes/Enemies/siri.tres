@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://cf2vuneqgb4w2"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://cf2vuneqgb4w2"]
 
 [ext_resource type="Texture2D" uid="uid://dk3qkn1cuiy6x" path="res://Scenes/Enemies/skins/IA_Siri_Iddle.png" id="1_ajh5w"]
 [ext_resource type="Texture2D" uid="uid://ultdncbe7m6t" path="res://Scenes/Enemies/Deaths/IA_Siri_Death.png" id="1_irvjx"]

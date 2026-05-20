@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b2tn456qw57k1"]
+[gd_scene format=3 uid="uid://b2tn456qw57k1"]
 
 [ext_resource type="Texture2D" uid="uid://gn4p6hbfygrd" path="res://Scenes/UI/fondo.png" id="1_06t4h"]
 [ext_resource type="Script" uid="uid://dopk8g8xjbfd2" path="res://Scenes/UI/Main_Menu/main_menu.gd" id="1_br04u"]
@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bu24i6ftw7qpu" path="res://Scenes/UI/Main_Menu/AJUSTES2.png" id="10_g3pcc"]
 [ext_resource type="Texture2D" uid="uid://toht7q7lhg60" path="res://Scenes/UI/Main_Menu/AJUSTES3.png" id="12_ytfuy"]
 
-[node name="Main_Menu" type="Control"]
+[node name="Main_Menu" type="Control" unique_id=276557989]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,7 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_br04u")
 
-[node name="Fondo" type="TextureRect" parent="."]
+[node name="Fondo" type="TextureRect" parent="." unique_id=208101085]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -32,7 +32,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_06t4h")
 
-[node name="TextureRect" type="TextureRect" parent="Fondo"]
+[node name="TextureRect" type="TextureRect" parent="Fondo" unique_id=1688862236]
 layout_mode = 0
 offset_left = 581.0
 offset_top = 225.0
@@ -41,12 +41,12 @@ offset_bottom = 478.5
 texture = ExtResource("2_ksfd3")
 expand_mode = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="Fondo"]
+[node name="Sprite2D" type="Sprite2D" parent="Fondo" unique_id=353742211]
 position = Vector2(697, 155)
 scale = Vector2(0.1260376, 0.12612915)
 texture = ExtResource("2_2fw6m")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Fondo"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Fondo" unique_id=356484281]
 layout_mode = 0
 offset_left = 777.0
 offset_top = 495.0
@@ -54,21 +54,21 @@ offset_right = 1659.0
 offset_bottom = 1678.0
 scale = Vector2(0.45, 0.45)
 
-[node name="YUGAR" type="TextureButton" parent="Fondo/VBoxContainer"]
+[node name="YUGAR" type="TextureButton" parent="Fondo/VBoxContainer" unique_id=976210974]
 layout_mode = 2
 texture_normal = ExtResource("5_7bj1q")
 texture_pressed = ExtResource("6_nipkv")
 texture_hover = ExtResource("6_m4jla")
 texture_focused = ExtResource("6_m4jla")
 
-[node name="AJUSTES" type="TextureButton" parent="Fondo/VBoxContainer"]
+[node name="AJUSTES" type="TextureButton" parent="Fondo/VBoxContainer" unique_id=1666127448]
 layout_mode = 2
 texture_normal = ExtResource("9_dxhfe")
 texture_pressed = ExtResource("12_ytfuy")
 texture_hover = ExtResource("10_g3pcc")
 texture_focused = ExtResource("10_g3pcc")
 
-[node name="ZALIR" type="TextureButton" parent="Fondo/VBoxContainer"]
+[node name="ZALIR" type="TextureButton" parent="Fondo/VBoxContainer" unique_id=1190869192]
 layout_mode = 2
 texture_normal = ExtResource("7_tom6x")
 texture_pressed = ExtResource("9_g3pcc")

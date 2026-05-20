@@ -7,20 +7,21 @@ extends Node
 @export var max_enemies_per_wave := 105 #cuantos puede haber por ronda 
 @export var spawn_delay := 0.4  # timpo entre cada spawn
 
-var current_wave := 1
+#var current_wave := 1
 var enemies_alive := 0
 var player
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player") as Node2D
+	GameManager.current_wave = 1
 	start_wave()
 
 func start_wave():
-	print("=== STARTING WAVE", current_wave, "===")
+	print("=== STARTING WAVE", GameManager.current_wave, "===")
 	
 	
 	var enemies_to_spawn = min(
-		initial_spawn_count + (current_wave - 1) * spawn_increase_per_wave,
+		initial_spawn_count + (GameManager.current_wave - 1) * spawn_increase_per_wave,
 		max_enemies_per_wave
 	)
 	
@@ -55,5 +56,7 @@ func _on_enemy_died():
 	print("Enemy died. Alive:", enemies_alive)
 	
 	if enemies_alive <= 0 and player:
-		current_wave += 1
+		GameManager.current_wave += 1
+		if GameManager.current_wave <4:
+			SignalManager.unlockedzones.emit(GameManager.current_wave)
 		start_wave()
