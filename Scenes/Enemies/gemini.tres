@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://5axj7l2xgk6j"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://5axj7l2xgk6j"]
 
 [ext_resource type="Texture2D" uid="uid://my8kdbrh07ys" path="res://Scenes/Enemies/skins/Gemini_IA.png" id="1_a0f1l"]
 [ext_resource type="Texture2D" uid="uid://cvk43qxhumdwk" path="res://Scenes/Enemies/Deaths/Gemini_Death.png" id="1_k6gte"]
