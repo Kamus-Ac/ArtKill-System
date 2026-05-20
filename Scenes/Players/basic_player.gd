@@ -43,7 +43,10 @@ var isUltiActive : bool = false
 var isUltiAvailable : bool = false
 var kill_count : int = 0
 const ULT_COOLDOWN := 10.0 #tiempo en segundos
-
+var isInvulnerable : bool = false
+var state_locked : bool = false
+var is_ulti_recovery := false
+var ulti_in_progress := false
 
 #No estoy de acuerdo con esto que voy a hacer, pero es lo más rápido.
 var up : bool = false
@@ -136,6 +139,9 @@ func load_character(module_scene: PackedScene):
 
 func _physics_process(delta: float) -> void:
 	
+	if isUltiActive:
+		ulti_script.ulti_move(delta)
+		
 	if current_state == STATE.DEAD:
 		return
 	
@@ -144,8 +150,7 @@ func _physics_process(delta: float) -> void:
 		knockback = knockback.move_toward(Vector2.ZERO, knockback_decay* delta)
 	else:
 		knockback = Vector2.ZERO
-
-
+	
 	# Si se está moviendo
 	if current_dir != DIRECTION.STILL:
 		footstep_timer += delta
@@ -236,7 +241,8 @@ func move(delta: float):
 	velocity += knockback
 	move_and_slide()
 
-func match_states(delta: float):
+func match_states(delta: float):	
+		
 	match current_state:
 		STATE.IDLE:
 			anim.play("idle")
@@ -248,7 +254,8 @@ func match_states(delta: float):
 				character_sound_played = false
 				current_state = STATE.ATTACKING
 			
-			elif Input.is_action_just_pressed("Ulti") and isUltiAvailable:
+			elif Input.is_action_just_pressed("Ulti") and isUltiAvailable and !ulti_in_progress:
+				ulti_in_progress = true
 				ability_sound_played = false
 				current_state = STATE.ATTACKING_ULTI
 				
@@ -261,13 +268,15 @@ func match_states(delta: float):
 				character_sound_played = false
 				current_state = STATE.ATTACKING
 			
-			elif Input.is_action_just_pressed("Ulti") and isUltiAvailable:
+			elif Input.is_action_just_pressed("Ulti") and isUltiAvailable and !ulti_in_progress:
+				ulti_in_progress = true
+				ability_sound_played = false
 				current_state = STATE.ATTACKING_ULTI
 				
 		STATE.ATTACKING:
-			if DIRECTION.DOWN_LEFT:
+			if current_dir == DIRECTION.DOWN_LEFT:
 				anim.play("basicAttackDiagonalAbajo")
-			if DIRECTION.DOWN_RIGHT:
+			if current_dir == DIRECTION.DOWN_RIGHT:
 				anim.play("basicAttackDiagonalAbajo")
 			
 			player_hitbox_col.disabled = false
@@ -278,22 +287,34 @@ func match_states(delta: float):
 						audio_manager.play_idol_attack()
 			
 		STATE.ATTACKING_ULTI:
+
 			if !isUltiActive:
+			
 				isUltiActive = true
 				isUltiAvailable = false
+	
 				ulti_script.start(self)
+			
+				# invulnerabilidad
+				isInvulnerable = true
+				# evitar movimiento normal
+				normal_velocity = Vector2.ZERO
+				velocity = Vector2.ZERO
+				
 				if dashParticles:
 					dashParticles.emitting = true
-				
-			ulti_script.ulti_move(delta)
-			anim.play("ulti")
-			ulti_area.disabled = false
-			if !ability_sound_played:
-				ability_sound_played = true
-				match GameManager.selected_character.character_name:
-					"Dani":
-						audio_manager.play_idol_ability()
-				
+
+				ulti_area.disabled = false
+
+				if !ability_sound_played:
+					ability_sound_played = true
+
+					match GameManager.selected_character.character_name:
+						"Dani":
+							audio_manager.play_idol_ability()
+			
+				anim.play("ulti")
+			
 		STATE.HURTED:
 			pass
 			
@@ -369,24 +390,48 @@ func apply_knockback(from_position: Vector2, force := 180.0):
 	var direction = (global_position - from_position).normalized()
 	knockback = direction * force
 
+
+func _finish_ulti_recovery():
+	isInvulnerable = false
+	state_locked = false
+	is_ulti_recovery = false
+	isUltiActive = false
+	ulti_area.disabled = true
+	if dashParticles:
+		dashParticles.emitting = false
+
+	kill_count = 0
+	GameManager.timeToUlt = 0
+	SignalManager.ult_used.emit()
+	current_state = STATE.IDLE
+	anim.play("idle")
+
 #---SEÑALES---#
+
 func _on_anim_finished():
 	emit_signal("animation_done")
-	
+
 	if current_state == STATE.ATTACKING_ULTI:
 		isUltiActive = false
-		isUltiAvailable = false
 		ulti_area.disabled = true
+		
 		if dashParticles:
 			dashParticles.emitting = false
+		
 		kill_count = 0
 		GameManager.timeToUlt = 0
+		isUltiAvailable = false
+		ulti_in_progress = false
 		SignalManager.ult_used.emit()
+		
 		current_state = STATE.IDLE
-	
+		await get_tree().create_timer(2.0).timeout
+		isInvulnerable = false
+		
 	elif current_state in [STATE.ATTACKING, STATE.HURTED]:
 		player_hitbox_col.disabled = true
 		current_state = STATE.IDLE
+
 
 func _on_recolect_body_entered(body: Node2D) -> void:
 	if !object and body!=lastobject: #Esta linea se agregó para evitar el bug del throwobject
@@ -396,6 +441,9 @@ func _on_recolect_body_entered(body: Node2D) -> void:
 
 func _on_health_health_depleted():
 
+	if isInvulnerable:
+		return
+	
 	if current_state == STATE.DEAD:
 		return
 
@@ -412,6 +460,9 @@ func _on_health_health_depleted():
 	visible = false
 
 func _on_player_received_damage(_damage: int, from_position: Vector2):
+
+	if isInvulnerable:
+		return
 
 	apply_knockback(from_position)
 

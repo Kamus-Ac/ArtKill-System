@@ -5,11 +5,10 @@ signal received_damage(damage: int, from_position: Vector2)
 
 @export var health: Player_Health
 
-var invulnerable := false
+@onready var player = get_tree().get_first_node_in_group("player")
 
 
 func _ready() -> void:
-
 	area_entered.connect(_on_area_entered)
 
 	monitorable = false
@@ -20,24 +19,14 @@ func _ready() -> void:
 func _on_area_entered(hitbox: Area2D) -> void:
 
 	# si es invulnerable, ignora el golpe
-	if invulnerable:
+	if player.isInvulnerable or health.invulnerable:
 		return
 
 	if hitbox != null and hitbox is Enemy_Hitbox:
 
-		invulnerable = true
-
 		health.apply_damage(hitbox.damage)
-
+		health.set_temporary_invulnerable(3.0)
 		received_damage.emit(
 			hitbox.damage,
 			hitbox.global_position
 		)
-
-		print("INVULNERABLE")
-
-		await get_tree().create_timer(3.0).timeout
-
-		invulnerable = false
-
-		print("YA PUEDE RECIBIR DAÑO")
