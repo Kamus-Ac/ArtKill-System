@@ -4,7 +4,9 @@ var i = 0
 
 @onready var texture_rect: TextureRect = $CanvasLayer/TextureRect
 @onready var label_score: RichTextLabel = $CanvasLayer/Score
-
+@onready var label_combo: RichTextLabel = $CanvasLayer/Combo
+@onready var first_wall: StaticBody2D = $NorthWall
+@onready var mini_map: TextureRect = $CanvasLayer/MiniMap
 @onready var pause_menu: Control = $GameCamera/CanvasLayer2/pause_menu
 
 @export var point1: Vector2 = Vector2(-550,-150)
@@ -17,8 +19,14 @@ var ult_bar_scale: float = 244.0
 
 var reload: bool = false
 var timer: Timer
+var dynamictimer: Timer 
+var tween_combo : Tween
 
 var paused = false
+var kill_acumulated : int
+var time_forCombo: float = 4.0
+var dynamic_score : float
+var previous_score: float
 
 # NUEVO
 var spawn_timer: Timer
@@ -41,7 +49,9 @@ func _ready() -> void:
 	randomize()
 
 	SignalManager.ult_used.connect(ult_reset)
-	SignalManager.kill_count.connect(reloadScore)
+	SignalManager.score_update.connect(reloadScore)
+	SignalManager.kill_count.connect(kill_score)
+	SignalManager.unlockedzones.connect(unlock_zones)
 
 	pause_menu.hide()
 
@@ -60,6 +70,8 @@ func _ready() -> void:
 	spawn_timer.timeout.connect(spawn_curacion)
 
 	spawn_timer.start()
+
+	get_viewport().canvas_cull_mask = 1
 
 
 
@@ -130,14 +142,18 @@ func pauseMenu():
 
 func reloadScore() -> void:
 
+	
 	if !timer:
 
+		kill_acumulated=0
+		dynamic_score = 0
+		label_combo.visible = false
 		label_score.process_mode = Node.PROCESS_MODE_INHERIT
 
-		label_score.text = """[center] [font=res://Scenes/UI/Puntuacion_Final/JetBrainsMono-Italic.ttf][font_size=64] [matrix]%d[/matrix]
+		label_score.text = """ [font=res://Scenes/UI/Puntuacion_Final/JetBrainsMono-Italic.ttf][font_size=64] [matrix]%d[/matrix]
 		[/font_size] 
 		[/font]
-		[/center]""" % [GameManager.score]
+		""" % previous_score
 
 		timer = Timer.new()
 
@@ -155,10 +171,9 @@ func activeScore() -> void:
 
 
 func _on_timer_timeout():
-
-	label_score.text = """[center] [font=res://Scenes/UI/Puntuacion_Final/JetBrainsMono-Italic.ttf][font_size=64]%d[/font_size]
+	label_score.text = """[font=res://Scenes/UI/Puntuacion_Final/JetBrainsMono-Italic.ttf][font_size=64]%d[/font_size]
 	[/font]
-	[/center]""" % [GameManager.score]
+	""" % [GameManager.score]
 
 	label_score.process_mode = Node.PROCESS_MODE_DISABLED
 
@@ -166,6 +181,61 @@ func _on_timer_timeout():
 
 	timer = null
 
+func kill_score()->void:
+	if dynamictimer:
+		dynamictimer.stop()
+		dynamictimer.queue_free()
+		dynamictimer = null
+	kill_acumulated+=1
+	dynamictimer = Timer.new()
+	add_child(dynamictimer)
+	dynamictimer.timeout.connect(making_dynamic_score)
+	dynamictimer.one_shot = true
+	dynamictimer.start(time_forCombo)
+
+	label_combo.visible = true
+	label_combo.text = """[center][font=res://Scenes/UI/Puntuacion_Final/JetBrainsMono-Italic.ttf][font_size=64]
+	[color=gold][shake]Combo= %d[/shake][/color][/font_size][/font][/center]""" %[kill_acumulated]
+	update_combo_tween()
+
+
+func making_dynamic_score()->void:
+	tween_combo.kill()
+	label_combo.modulate.a = 1.0
+	for j in range(kill_acumulated):
+		if j ==0:
+			dynamic_score = 100
+		else:
+			dynamic_score = dynamic_score*2
+	previous_score = GameManager.score
+	GameManager.score += dynamic_score
+	SignalManager.score_update.emit()
+
+func update_combo_tween()->void:
+	if tween_combo:
+		tween_combo.kill()
+		
+	if not dynamictimer or dynamictimer.is_stopped():
+		return
+	
+	var t = dynamictimer.time_left / time_forCombo         
+	var speed = lerp(0.05, 0.4, t)
+	
+	tween_combo = create_tween()
+	tween_combo.tween_property(label_combo, "modulate:a", 0.1, speed)
+	tween_combo.tween_property(label_combo, "modulate:a", 1.0, speed)
+	tween_combo.tween_callback(update_combo_tween)          
 
 func reset_gamedata():
 	pass
+
+func unlock_zones(zone:int):
+	match zone:
+		2:
+			mini_map.visible=false
+			first_wall.get_child(0).get_child(0).visible = true
+			await get_tree().create_timer(8.0).timeout
+			first_wall.queue_free()
+			mini_map.visible = true
+			print("primera zona liberada")
+

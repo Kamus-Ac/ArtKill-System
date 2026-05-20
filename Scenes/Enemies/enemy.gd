@@ -117,7 +117,6 @@ func die(hit):
 		emit_signal("died")
 
 		SignalManager.kill_count.emit()
-		GameManager.score += 100
 
 		velocity = Vector2.ZERO
 

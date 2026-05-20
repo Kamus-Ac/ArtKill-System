@@ -31,4 +31,4 @@ func _on_confirm_pressed():
 
 	GameManager.selected_character = selected_card.character_data
 	print("Guardado en GameManager:", GameManager.selected_character.character_name)
-	get_tree().change_scene_to_file("res://Scenes/Levels/level_base.tscn")
+	get_tree().change_scene_to_file("res://Scenes/assets/loadscene/scene/LoadScene.tscn")
