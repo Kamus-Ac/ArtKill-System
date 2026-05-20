@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c0wkpcjt78ug2"]
+
+[ext_resource type="Script" uid="uid://bblehdatnmkvl" path="res://Scenes/Enemies/Boss/boss.gd" id="1_7x7wj"]
+[ext_resource type="Script" uid="uid://ysn1i3gwaakr" path="res://Scenes/Enemies/hurtbox_enemy.gd" id="2_gi0e2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b1kuf"]
+radius = 10.440307
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7x7wj"]
+
+[node name="Boss" type="CharacterBody2D" unique_id=141464151 groups=["enemies"]]
+collision_layer = 2
+collision_mask = 15
+script = ExtResource("1_7x7wj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1728375709]
+shape = SubResource("CircleShape2D_b1kuf")
+
+[node name="EnemyHurtBox" type="Area2D" parent="." unique_id=57136284]
+script = ExtResource("2_gi0e2")
+metadata/_custom_type_script = "uid://ysn1i3gwaakr"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHurtBox" unique_id=1645421288]
+shape = SubResource("CapsuleShape2D_7x7wj")
+
+[node name="Timer" type="Timer" parent="." unique_id=1456680718]
