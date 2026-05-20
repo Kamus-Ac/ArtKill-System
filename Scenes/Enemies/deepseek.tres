@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" format=3 uid="uid://2u4su22auv56"]
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://2u4su22auv56"]
 
 [ext_resource type="Texture2D" uid="uid://b62fv7xjpr681" path="res://Scenes/Enemies/skins/IA_DeepSeek_Iddle.png" id="1_16sfr"]
 [ext_resource type="Texture2D" uid="uid://7n0ntrjx0r4d" path="res://Scenes/Enemies/Deaths/IA_DeepSeek_Death.png" id="1_t40gp"]

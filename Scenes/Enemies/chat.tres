@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" format=3 uid="uid://c8weo0sshd0wq"]
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://c8weo0sshd0wq"]
 
 [ext_resource type="Texture2D" uid="uid://us6awn8gpflb" path="res://Scenes/Enemies/Deaths/chat1_d.png" id="1_8a8qj"]
 [ext_resource type="Texture2D" uid="uid://5qwkmeq20kdt" path="res://Scenes/Enemies/skins/IA_Chatgpt.png" id="1_n4m5v"]

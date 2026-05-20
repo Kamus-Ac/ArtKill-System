@@ -58,10 +58,8 @@ randomness = 0.3
 process_material = SubResource("ParticleProcessMaterial_afnxa")
 
 [node name="Areas" type="Node2D" parent="."]
-visible = false
 
 [node name="Recolect" type="Area2D" parent="Areas"]
-visible = false
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Recolect"]

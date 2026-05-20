@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://j7kfry2ifdx1" path="res://Scenes/Players/Gordo/gordo_data.tres" id="4_apj1b"]
 [ext_resource type="Texture2D" uid="uid://odbgxs2eg5ub" path="res://Scenes/UI/pixil-frame-0_13.png" id="5_jjfpe"]
 [ext_resource type="Resource" uid="uid://godl0fknqbqb" path="res://Scenes/Players/Viejita/viejita_data.tres" id="6_dieb8"]
-[ext_resource type="PackedScene" uid="uid://dr4tspb0xelhe" path="res://Scenes/Players/Gordo/gordo.tscn" id="7_qsthy"]
+[ext_resource type="PackedScene" uid="uid://dnv3x3k1xxw5o" path="res://Scenes/Players/Idol/Idol.tscn" id="7_qsthy"]
 [ext_resource type="Script" uid="uid://cykrf8nfa65dj" path="res://Scenes/Players/characters_data.gd" id="8_jjfpe"]
 [ext_resource type="SpriteFrames" uid="uid://oygggrhhee65" path="res://Scenes/Players/Idol/Animaciones/idol.tres" id="9_nefin"]
 
@@ -121,10 +121,5 @@ custom_minimum_size = Vector2(200, 48)
 layout_mode = 2
 disabled = true
 text = "Confirm"
-
-[node name="MainPanel_VBox_CharactersBox_Idol_VBoxContainer#Sprite" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 0
-stretch_mode = 5
 
 [connection signal="pressed" from="MainPanel/VBox/Confirm" to="." method="_on_confirm_pressed"]
