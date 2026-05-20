@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://by2o64bro0sgc"]
+
+[ext_resource type="Texture2D" uid="uid://drrvrouwtqm6c" path="res://Scenes/assets/objects/ball.png" id="1_3kvyr"]
+[ext_resource type="Script" uid="uid://cuv1inphbx2q1" path="res://Scenes/assets/tiles/objective_point.gd" id="2_arw5w"]
+
+[node name="ObjectivePoint" type="Sprite2D" unique_id=1048271313]
+z_index = 2000
+texture = ExtResource("1_3kvyr")
+script = ExtResource("2_arw5w")

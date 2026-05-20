@@ -48,3 +48,4 @@ func ulti_move(delta: float) -> void:
 	if elapsed >= dash_time:
 		isActive = false
 		player.velocity = Vector2.ZERO
+		player._finish_ulti_recovery()

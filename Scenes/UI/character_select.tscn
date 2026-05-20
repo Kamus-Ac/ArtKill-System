@@ -1,12 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://536btmvjhqi5"]
+[gd_scene load_steps=11 format=3 uid="uid://536btmvjhqi5"]
 
-[ext_resource type="Texture2D" uid="uid://b345jca3bjnks" path="res://Scenes/UI/gordo.png" id="2_d3lco"]
 [ext_resource type="Texture2D" uid="uid://gn4p6hbfygrd" path="res://Scenes/UI/fondo.png" id="2_dieb8"]
 [ext_resource type="Script" uid="uid://fhn4v6qc8lrn" path="res://Scenes/UI/character_select.gd" id="2_whe0c"]
 [ext_resource type="Script" uid="uid://c127btfvcob36" path="res://Scenes/UI/character_card.gd" id="3_dieb8"]
 [ext_resource type="Resource" uid="uid://j7kfry2ifdx1" path="res://Scenes/Players/Gordo/gordo_data.tres" id="4_apj1b"]
+[ext_resource type="Texture2D" uid="uid://odbgxs2eg5ub" path="res://Scenes/UI/pixil-frame-0_13.png" id="5_jjfpe"]
 [ext_resource type="Resource" uid="uid://godl0fknqbqb" path="res://Scenes/Players/Viejita/viejita_data.tres" id="6_dieb8"]
-[ext_resource type="Resource" uid="uid://cpn0itqsdlwgo" path="res://Scenes/Players/Idol/idol_data.tres" id="6_pjomi"]
+[ext_resource type="PackedScene" uid="uid://dnv3x3k1xxw5o" path="res://Scenes/Players/Idol/Idol.tscn" id="7_qsthy"]
+[ext_resource type="Script" uid="uid://cykrf8nfa65dj" path="res://Scenes/Players/characters_data.gd" id="8_jjfpe"]
+[ext_resource type="SpriteFrames" uid="uid://oygggrhhee65" path="res://Scenes/Players/Idol/Animaciones/idol.tres" id="9_nefin"]
+
+[sub_resource type="Resource" id="Resource_yn15k"]
+script = ExtResource("8_jjfpe")
+id = "Idol"
+character_name = "Dani"
+max_speed = 100
+max_health = 5
+sprite = ExtResource("9_nefin")
+character_scene = ExtResource("7_qsthy")
+metadata/_custom_type_script = "uid://cykrf8nfa65dj"
 
 [node name="CharacterSelect" type="Control"]
 layout_mode = 3
@@ -71,21 +83,10 @@ character_data = ExtResource("4_apj1b")
 [node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/VBox/CharactersBox/Gus"]
 layout_mode = 2
 
-[node name="Shadow" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Gus/VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-texture = ExtResource("2_d3lco")
-stretch_mode = 5
-
-[node name="Sprite" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Gus/VBoxContainer"]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-stretch_mode = 5
-
-[node name="Name" type="Label" parent="MainPanel/VBox/CharactersBox/Gus/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
+[node name="Sprite" type="Sprite2D" parent="MainPanel/VBox/CharactersBox/Gus/VBoxContainer"]
+position = Vector2(98.21531, 105.071396)
+scale = Vector2(0.09477265, 0.1)
+texture = ExtResource("5_jjfpe")
 
 [node name="Tomy" type="PanelContainer" parent="MainPanel/VBox/CharactersBox"]
 custom_minimum_size = Vector2(180, 260)
@@ -96,56 +97,29 @@ character_data = ExtResource("6_dieb8")
 [node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/VBox/CharactersBox/Tomy"]
 layout_mode = 2
 
-[node name="Shadow" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Tomy/VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-texture = ExtResource("2_d3lco")
-stretch_mode = 4
-
-[node name="Sprite" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Tomy/VBoxContainer"]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-stretch_mode = 5
-
-[node name="Name" type="Label" parent="MainPanel/VBox/CharactersBox/Tomy/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
+[node name="Sprite" type="Sprite2D" parent="MainPanel/VBox/CharactersBox/Tomy/VBoxContainer"]
+position = Vector2(89.23163, 106.01228)
+scale = Vector2(0.09477265, 0.1)
+texture = ExtResource("5_jjfpe")
 
 [node name="Dani" type="PanelContainer" parent="MainPanel/VBox/CharactersBox"]
-custom_minimum_size = Vector2(180, 260)
+custom_minimum_size = Vector2(200, 260)
 layout_mode = 2
 script = ExtResource("3_dieb8")
-character_data = ExtResource("6_pjomi")
+character_data = SubResource("Resource_yn15k")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/VBox/CharactersBox/Dani"]
 layout_mode = 2
 
-[node name="Shadow" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Dani/VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-texture = ExtResource("2_d3lco")
-stretch_mode = 4
-
-[node name="Sprite" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Dani/VBoxContainer"]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-stretch_mode = 5
-
-[node name="Name" type="Label" parent="MainPanel/VBox/CharactersBox/Dani/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
+[node name="Sprite" type="Sprite2D" parent="MainPanel/VBox/CharactersBox/Dani/VBoxContainer"]
+position = Vector2(89.23163, 106.01228)
+scale = Vector2(0.09477265, 0.1)
+texture = ExtResource("5_jjfpe")
 
 [node name="Confirm" type="Button" parent="MainPanel/VBox"]
 custom_minimum_size = Vector2(200, 48)
 layout_mode = 2
 disabled = true
 text = "Confirm"
-
-[node name="MainPanel_VBox_CharactersBox_Idol_VBoxContainer#Sprite" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 0
-stretch_mode = 5
 
 [connection signal="pressed" from="MainPanel/VBox/Confirm" to="." method="_on_confirm_pressed"]
