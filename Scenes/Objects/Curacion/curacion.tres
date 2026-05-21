@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://dd2dtcwj77upk"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://dd2dtcwj77upk"]
 
 [ext_resource type="Texture2D" uid="uid://rsosjxjdsjmj" path="res://Scenes/Objects/Curacion/Comida.png" id="1_a86e6"]
 
