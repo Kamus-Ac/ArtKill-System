@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=27 format=3 uid="uid://oygggrhhee65"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://oygggrhhee65"]
 
 [ext_resource type="Texture2D" uid="uid://d2ajrvm4tgud8" path="res://Scenes/Players/Idol/Animaciones/Idol_Attacking_BasicAttack.png" id="1_h2mkh"]
 [ext_resource type="Texture2D" uid="uid://db35lifls2qpq" path="res://Scenes/Players/Idol/Animaciones/loli_death.png" id="2_3a4a7"]
