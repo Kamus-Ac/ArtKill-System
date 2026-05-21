@@ -2,7 +2,7 @@ extends Node2D
 
 var i = 0
 
-@onready var texture_rect: TextureRect = $CanvasLayer/TextureRect
+@onready var texture_progress_bar: TextureProgressBar = $CanvasLayer/MarcodeVida/TextureProgressBar
 @onready var label_score: RichTextLabel = $CanvasLayer/Score
 @onready var label_combo: RichTextLabel = $CanvasLayer/Combo
 @onready var first_wall: StaticBody2D = $NorthWall
@@ -46,6 +46,7 @@ func get_random_point(p1: Vector2, p2: Vector2) -> Vector2:
 
 func _ready() -> void:
 	
+	reset_gamedata()
 	randomize()
 
 	SignalManager.ult_used.connect(ult_reset)
@@ -112,16 +113,16 @@ func spawn_curacion():
 
 func ult_bar():
 
-	if percentage_ult < 244.0:
+	if percentage_ult < 100:
 
-		percentage_ult = GameManager.timeToUlt / GameManager.ulti_kills_required * ult_bar_scale
+		percentage_ult = GameManager.timeToUlt / GameManager.ulti_kills_required * 100
 
-		texture_rect.size.x = percentage_ult
+		texture_progress_bar.value = percentage_ult
 
 
 func ult_reset():
 
-	texture_rect.size.x = 0
+	texture_progress_bar.value = 0
 	percentage_ult = 0
 
 
@@ -227,7 +228,9 @@ func update_combo_tween()->void:
 	tween_combo.tween_callback(update_combo_tween)          
 
 func reset_gamedata():
-	pass
+	GameManager.timeToUlt=0
+	GameManager.current_wave=1
+	GameManager.score=0
 
 func unlock_zones(zone:int):
 	match zone:

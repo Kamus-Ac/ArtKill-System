@@ -112,7 +112,6 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 step = 0.0
-value = 100.0
 texture_progress = ExtResource("10_q52rl")
 
 [node name="Score" type="RichTextLabel" parent="CanvasLayer" unique_id=624404457]
