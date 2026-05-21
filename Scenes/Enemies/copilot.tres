@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" format=3 uid="uid://btokw8ca0kpxg"]
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://btokw8ca0kpxg"]
 
 [ext_resource type="Texture2D" uid="uid://j41mlbn20g2c" path="res://Scenes/Enemies/skins/Copilot_IA.png" id="1_3xi32"]
 [ext_resource type="Texture2D" uid="uid://d08gq3bttq4d6" path="res://Scenes/Enemies/Deaths/Copilot_D.png" id="1_wp2sm"]

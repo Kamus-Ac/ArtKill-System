@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" format=3 uid="uid://br7xt2y25rru3"]
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://br7xt2y25rru3"]
 
 [ext_resource type="Texture2D" uid="uid://d2cbqn78xv3e2" path="res://Scenes/Enemies/Deaths/Death_yarbis.png" id="1_wb2se"]
 [ext_resource type="Texture2D" uid="uid://dunj7ewd883p7" path="res://Scenes/Enemies/skins/Yarbis_IA.png" id="1_x52c6"]

@@ -11,7 +11,7 @@ var health: int
 var invulnerable: bool = false : set = set_invulnerable, get = get_invulnerable 
 var invulnerable_timer: Timer = null
 
-var hearts_list : Array[TextureRect]
+var hearts_list : Array
 
 func _ready() -> void:
 	max_health = GameManager.selected_character.max_health
@@ -22,6 +22,7 @@ func _ready() -> void:
 	for child in hearts_parent.get_children():
 		hearts_list.append(child)
 	
+	update_hearts_visual()
 	
 	
 func set_max_health(value: int):
@@ -70,8 +71,18 @@ func heal(amount: int):
 	update_hearts_visual()
 
 func update_hearts_visual():
+
 	for i in range(hearts_list.size()):
-		hearts_list[i].visible = i < health
+
+		var full_heart = hearts_list[i].get_node("FullHeart")
+		var empty_heart = hearts_list[i].get_node("EmptyHeart")
+
+		if i < health:
+			full_heart.visible = true
+			empty_heart.visible = false
+		else:
+			full_heart.visible = false
+			empty_heart.visible = true
 
 func set_temporary_invulnerable(time: float):
 	if invulnerable_timer == null:

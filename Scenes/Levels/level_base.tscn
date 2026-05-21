@@ -149,9 +149,9 @@ custom_effects = [SubResource("RichTextEffect_ls6f5"), SubResource("RichTextEffe
 [node name="MiniMap" type="TextureRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_ankfj")
 offset_left = 50.0
-offset_top = 100.0
+offset_top = 120.0
 offset_right = 250.0
-offset_bottom = 300.0
+offset_bottom = 319.99985
 texture = SubResource("ViewportTexture_updk7")
 expand_mode = 1
 stretch_mode = 6
