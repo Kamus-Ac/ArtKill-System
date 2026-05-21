@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2it36v8ehl58"
-path="res://.godot/imported/pixilart-sprite.png-eabe9b85f6cd5a4b305c6c68a28ff158.ctex"
+uid="uid://c447g2samph1t"
+path="res://.godot/imported/Tomasa_Attacking_DiagonalArriba.png-91fc97c2b3f5cbdd94419e2c88093d24.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/assets/ui/pixilart-sprite.png"
-dest_files=["res://.godot/imported/pixilart-sprite.png-eabe9b85f6cd5a4b305c6c68a28ff158.ctex"]
+source_file="res://Scenes/Players/Viejita/Animaciones/Tomasa_Attacking_DiagonalArriba.png"
+dest_files=["res://.godot/imported/Tomasa_Attacking_DiagonalArriba.png-91fc97c2b3f5cbdd94419e2c88093d24.ctex"]
 
 [params]
 

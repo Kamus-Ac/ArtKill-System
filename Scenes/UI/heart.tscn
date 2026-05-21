@@ -1,7 +1,17 @@
 [gd_scene load_steps=2 format=3 uid="uid://b5xdnwpiu4oxx"]
 
-[ext_resource type="SpriteFrames" uid="uid://b6e6oqvokyycn" path="res://Scenes/UI/heart.tres" id="1_3r3sn"]
+[ext_resource type="Texture2D" uid="uid://b2it36v8ehl58" path="res://Scenes/assets/ui/Corazones.png" id="1_3r3sn"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
-sprite_frames = ExtResource("1_3r3sn")
-animation = &"muerto"
+[node name="Heart" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="FullHeart" type="Sprite2D" parent="."]
+texture = ExtResource("1_3r3sn")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="EmptyHeart" type="Sprite2D" parent="."]
+texture = ExtResource("1_3r3sn")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)

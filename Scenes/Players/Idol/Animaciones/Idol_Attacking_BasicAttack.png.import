@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs4jxh7ys1uux"
-path="res://.godot/imported/ataque_basico-Sheet.png-3c04aa36334739bfa2f8857872be14cf.ctex"
+uid="uid://d2ajrvm4tgud8"
+path="res://.godot/imported/Idol_Attacking_BasicAttack.png-21d51ebb96c62a0578933a624771bf22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Players/Idol/Animaciones/ataque_basico-Sheet.png"
-dest_files=["res://.godot/imported/ataque_basico-Sheet.png-3c04aa36334739bfa2f8857872be14cf.ctex"]
+source_file="res://Scenes/Players/Idol/Animaciones/Idol_Attacking_BasicAttack.png"
+dest_files=["res://.godot/imported/Idol_Attacking_BasicAttack.png-21d51ebb96c62a0578933a624771bf22.ctex"]
 
 [params]
 

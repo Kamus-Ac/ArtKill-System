@@ -207,11 +207,11 @@ func set_direction():
 	else: current_dir = DIRECTION.STILL
 
 func move(delta: float):
-	if current_state != STATE.HURTED and !isUltiActive:
+	if current_state != STATE.HURTED and current_state != STATE.ATTACKING and !isUltiActive:
 		match current_dir:
 			DIRECTION.UP:
 				normal_velocity = Vector2(0,-MAX_SPEED)
-				#anim.play
+				anim.play("up")
 			DIRECTION.DOWN:
 				normal_velocity = Vector2(0,MAX_SPEED)
 				anim.play("down")
@@ -274,12 +274,19 @@ func match_states(delta: float):
 				current_state = STATE.ATTACKING_ULTI
 				
 		STATE.ATTACKING:
-			if current_dir == DIRECTION.DOWN_LEFT:
-				anim.play("basicAttackDiagonalAbajo")
-			if current_dir == DIRECTION.DOWN_RIGHT:
-				anim.play("basicAttackDiagonalAbajo")
 			
+			match current_dir:
+				DIRECTION.UP, DIRECTION.UP_LEFT, DIRECTION.UP_RIGHT:
+					anim.play("basicAttackDiagonalArriba")
+			
+				DIRECTION.DOWN, DIRECTION.DOWN_LEFT, DIRECTION.DOWN_RIGHT:
+					anim.play("basicAttackDiagonalAbajo")
+				
+				DIRECTION.LEFT, DIRECTION.RIGHT, DIRECTION.STILL:
+					anim.play("basicAttack")
+						
 			player_hitbox_col.disabled = false
+			
 			if !character_sound_played:
 				character_sound_played = true
 				match GameManager.selected_character.character_name:

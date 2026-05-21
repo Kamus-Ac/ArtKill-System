@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://b5xdnwpiu4oxx" path="res://Scenes/UI/heart.tscn" id="6_rmq0a"]
 
 [sub_resource type="Gradient" id="Gradient_fp47h"]
-offsets = PackedFloat32Array(0, 0.13108614, 0.4456929, 0.7790262, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.49019608, 0.9764706, 1, 1, 0, 0.7176471, 1, 1, 0, 0.4, 1, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.13544668, 0.4409222, 0.7867435, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.96862745, 0.6901961, 1, 1, 0.6509804, 0.1882353, 1, 1, 0.3529412, 0.21176471, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_rmq0a"]
 gradient = SubResource("Gradient_fp47h")
@@ -50,14 +50,16 @@ size = Vector2(31.973684, 16.210526)
 
 [node name="UltiParticles" type="GPUParticles2D" parent="."]
 texture_filter = 1
-amount = 60
+position = Vector2(0, 25)
+amount = 200
 texture = ExtResource("1_fp47h")
-lifetime = 0.8
+lifetime = 0.7
 explosiveness = 0.25
 randomness = 0.3
 process_material = SubResource("ParticleProcessMaterial_afnxa")
 
 [node name="Areas" type="Node2D" parent="."]
+visible = false
 
 [node name="Recolect" type="Area2D" parent="Areas"]
 collision_mask = 4
@@ -117,42 +119,21 @@ metadata/_custom_type_script = "uid://bs8j4dudypi2y"
 [node name="Heart_Bar" type="CanvasLayer" parent="."]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Heart_Bar"]
-offset_left = -20.0
-offset_right = 273.0
-offset_bottom = 50.0
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 128.0
+offset_bottom = 80.0
+scale = Vector2(7, 7)
+theme_override_constants/separation = 16
 
-[node name="Heart" type="TextureRect" parent="Heart_Bar/HBoxContainer"]
-custom_minimum_size = Vector2(95, 0)
+[node name="Heart" parent="Heart_Bar/HBoxContainer" instance=ExtResource("6_rmq0a")]
 layout_mode = 2
-stretch_mode = 5
 
-[node name="AnimatedSprite2D" parent="Heart_Bar/HBoxContainer/Heart" instance=ExtResource("6_rmq0a")]
-scale = Vector2(6, 6)
-offset = Vector2(10, 10)
-
-[node name="Heart2" type="TextureRect" parent="Heart_Bar/HBoxContainer"]
-custom_minimum_size = Vector2(95, 0)
+[node name="Heart2" parent="Heart_Bar/HBoxContainer" instance=ExtResource("6_rmq0a")]
 layout_mode = 2
-stretch_mode = 5
 
-[node name="AnimatedSprite2D" parent="Heart_Bar/HBoxContainer/Heart2" instance=ExtResource("6_rmq0a")]
-scale = Vector2(6, 6)
-offset = Vector2(10, 10)
-
-[node name="Heart3" type="TextureRect" parent="Heart_Bar/HBoxContainer"]
-custom_minimum_size = Vector2(95, 0)
+[node name="Heart3" parent="Heart_Bar/HBoxContainer" instance=ExtResource("6_rmq0a")]
 layout_mode = 2
-stretch_mode = 5
 
-[node name="AnimatedSprite2D" parent="Heart_Bar/HBoxContainer/Heart3" instance=ExtResource("6_rmq0a")]
-scale = Vector2(6, 6)
-offset = Vector2(10, 10)
-
-[node name="Heart4" type="TextureRect" parent="Heart_Bar/HBoxContainer"]
-custom_minimum_size = Vector2(95, 0)
+[node name="Heart4" parent="Heart_Bar/HBoxContainer" instance=ExtResource("6_rmq0a")]
 layout_mode = 2
-stretch_mode = 5
-
-[node name="AnimatedSprite2D" parent="Heart_Bar/HBoxContainer/Heart4" instance=ExtResource("6_rmq0a")]
-scale = Vector2(6, 6)
-offset = Vector2(10, 10)

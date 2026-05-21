@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cner2kyb0l4x7"
-path="res://.godot/imported/Tomasa_RunningDiagonalArriba.png-88a14b52970a11ff1cc202f2c6d0eadf.ctex"
+uid="uid://ck6rohc8kjjtu"
+path="res://.godot/imported/Tomasa_Ulti.png-fb16e6baba8c806ddb6a6ab492349daa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Players/Viejita/Animaciones/Tomasa_RunningDiagonalArriba.png"
-dest_files=["res://.godot/imported/Tomasa_RunningDiagonalArriba.png-88a14b52970a11ff1cc202f2c6d0eadf.ctex"]
+source_file="res://Scenes/Players/Viejita/Animaciones/Tomasa_Ulti.png"
+dest_files=["res://.godot/imported/Tomasa_Ulti.png-fb16e6baba8c806ddb6a6ab492349daa.ctex"]
 
 [params]
 
