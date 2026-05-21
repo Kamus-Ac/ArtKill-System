@@ -238,4 +238,22 @@ func unlock_zones(zone:int):
 			first_wall.queue_free()
 			mini_map.visible = true
 			print("primera zona liberada")
-
+			#despawn de enemigos
+			var all_enemies = get_tree().get_nodes_in_group("enemies")
+			for enemy in all_enemies:
+				if "skins" in enemy:
+					enemy.queue_free()
+			#manda el aviso para que pause horda
+			SignalManager.boss_spawned.emit()
+			#aqui spawnea el boss
+			var boss_scene = preload("res://Scenes/Enemies/Boss/boss.tscn")
+			var boss = boss_scene.instantiate()
+			#lo agregamos al nivel
+			add_child.call_deferred(boss)
+			#posicionamos al boss
+			var player = get_tree().get_first_node_in_group("player")
+			if player:
+				boss.global_position = player.global_position + Vector2(250,0)
+			else:
+				boss.global_position = Vector2(500,300)
+			

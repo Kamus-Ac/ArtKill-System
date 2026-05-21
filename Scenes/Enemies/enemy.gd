@@ -178,10 +178,11 @@ func islaunching2(body: Node2D):
 		var enemy_impulse = dir_to_enemy * IMPULSE
 
 		knockback = -enemy_impulse
-
-		body2.hit_lag.start(1.0)
-		body2.hitting = true
-		body2.knockback = enemy_impulse
+		#validar q no sea el boss porq no tiene hit_lag
+		if "hit_lag" in body2 and "hitting" in body2:
+			body2.hit_lag.start(1.0)
+			body2.hitting = true
+			body2.knockback = enemy_impulse
 
 
 	if body2 and body2.is_in_group("notas"):
