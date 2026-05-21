@@ -211,7 +211,7 @@ func move(delta: float):
 		match current_dir:
 			DIRECTION.UP:
 				normal_velocity = Vector2(0,-MAX_SPEED)
-				#anim.play
+				anim.play("up")
 			DIRECTION.DOWN:
 				normal_velocity = Vector2(0,MAX_SPEED)
 				anim.play("down")
