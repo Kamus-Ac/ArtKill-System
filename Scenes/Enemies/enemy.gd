@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var hit_lag: Timer = $HitLag
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var launchingArea: Area2D = $LaunchingArea
+@onready var hitboxColision: CollisionShape2D = $Enemy_Hitbox/CollisionShape2D
 @onready var hitParticles: CPUParticles2D = $HitParticles
 @onready var nav = $NavigationAgent2D
 
@@ -112,7 +113,9 @@ func die(hit):
 	if hit is Player_Hitbox or hit.is_in_group("notas"):
 
 		isDead = true
+		hitboxColision.disabled = true
 		current_state = STATE.DEAD
+		
 
 		emit_signal("died")
 

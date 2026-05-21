@@ -282,7 +282,7 @@ func match_states(delta: float):
 				DIRECTION.DOWN, DIRECTION.DOWN_LEFT, DIRECTION.DOWN_RIGHT:
 					anim.play("basicAttackDiagonalAbajo")
 				
-				DIRECTION.LEFT, DIRECTION.RIGHT:
+				DIRECTION.LEFT, DIRECTION.RIGHT, DIRECTION.STILL:
 					anim.play("basicAttack")
 						
 			player_hitbox_col.disabled = false
