@@ -7,12 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://dmruwmswylq0o" path="res://Scenes/Managers/enemy_manager.tscn" id="3_614yd"]
 [ext_resource type="PackedScene" uid="uid://o611ga5dcuxt" path="res://Scenes/GameCamera/game_camera.tscn" id="3_m7m8v"]
 [ext_resource type="PackedScene" uid="uid://bmr1g4fj71s5p" path="res://Scenes/UI/Puntuacion In-Game/Puntuacion In-Game.tscn" id="4_w4ad0"]
-[ext_resource type="Texture2D" uid="uid://8myba8fjb41q" path="res://Scenes/UI/istockphoto-1440114432-612x612.jpg" id="5_ej2hx"]
-[ext_resource type="Texture2D" uid="uid://bjea3nnpk2npk" path="res://Scenes/UI/marco_negro.png" id="6_614yd"]
 [ext_resource type="PackedScene" uid="uid://bvqgi43nkhtrb" path="res://Scenes/Players/basic_player.tscn" id="7_614yd"]
 [ext_resource type="PackedScene" uid="uid://b2gft8tdpey3f" path="res://Scenes/Objects/object.tscn" id="7_ej2hx"]
 [ext_resource type="Script" uid="uid://bt0hj7weg6qe3" path="res://Scenes/UI/Puntuacion_Final/BBCode_Matrix.gd" id="8_ls6f5"]
+[ext_resource type="Texture2D" uid="uid://b4e42bxbjn8kw" path="res://Scenes/UI/MarcoDeUlti.png" id="9_ankfj"]
 [ext_resource type="Script" uid="uid://2o45m0yrk8dm" path="res://Scenes/UI/Puntuacion_Final/BBCode_Ghost.gd" id="9_w4ad0"]
+[ext_resource type="Texture2D" uid="uid://do4wx14dml60h" path="res://Scenes/UI/BarradeUlti.png" id="10_q52rl"]
 [ext_resource type="Shader" uid="uid://b0b6kacj31nib" path="res://Scenes/Levels/Minimapcircular.gdshader" id="13_q678k"]
 [ext_resource type="Script" uid="uid://bjqdaw2yt6ev4" path="res://Scenes/Levels/minimap_camera.gd" id="13_s4hme"]
 [ext_resource type="PackedScene" uid="uid://by2o64bro0sgc" path="res://Scenes/assets/tiles/objective_point.tscn" id="16_ankfj"]
@@ -93,28 +93,27 @@ tile_set = ExtResource("2_rnfvs")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1727614849]
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1143997475]
+[node name="MarcodeVida" type="TextureRect" parent="CanvasLayer" unique_id=695547913]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -26.0
+offset_left = 9.0
+offset_top = -80.0
+offset_right = 621.0
+offset_bottom = 195.0
 grow_vertical = 0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("5_ej2hx")
+scale = Vector2(1, 0.2)
+texture = ExtResource("9_ankfj")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer" unique_id=695547913]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -30.0
-offset_right = 244.0
-grow_vertical = 0
-texture = ExtResource("6_614yd")
-expand_mode = 1
-metadata/_edit_use_anchors_ = true
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/MarcodeVida" unique_id=1660102942]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+step = 0.0
+value = 100.0
+texture_progress = ExtResource("10_q52rl")
 
 [node name="Score" type="RichTextLabel" parent="CanvasLayer" unique_id=624404457]
 anchors_preset = 1
