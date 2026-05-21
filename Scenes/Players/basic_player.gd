@@ -274,6 +274,11 @@ func match_states(delta: float):
 				current_state = STATE.ATTACKING_ULTI
 				
 		STATE.ATTACKING:
+			
+			if current_dir == DIRECTION.UP_LEFT:
+				anim.play("basicAttackDiagonalArriba")
+			if current_dir == DIRECTION.UP_RIGHT:
+				anim.play("basicAttackDiagonalArriba")
 			if current_dir == DIRECTION.DOWN_LEFT:
 				anim.play("basicAttackDiagonalAbajo")
 			if current_dir == DIRECTION.DOWN_RIGHT:
