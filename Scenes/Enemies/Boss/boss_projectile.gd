@@ -8,7 +8,7 @@ const CONTACT_DISTANCE := 30.0
 const EXPLOSION_DAMAGE := 1
 
 @onready var life_timer: Timer = $LifeTimer
-
+@onready var proyectil: Sprite2D = $Sprite2D
 var is_exploded: bool = false
 
 func _ready():
@@ -67,15 +67,14 @@ func explode():
 	await get_tree().create_timer(0.4).timeout
 	queue_free()
 
-#prueba quitar al poner sprites
 func _draw():
 	if is_exploded:
 		# Explosión - círculos concéntricos naranjas/amarillos
 		draw_circle(Vector2.ZERO, EXPLOSION_RADIUS, Color(1.0, 0.4, 0.0, 0.3))
 		draw_circle(Vector2.ZERO, EXPLOSION_RADIUS * 0.65, Color(1.0, 0.6, 0.0, 0.5))
 		draw_circle(Vector2.ZERO, EXPLOSION_RADIUS * 0.35, Color(1.0, 0.9, 0.3, 0.8))
-	else:
-		# Proyectil - orbe morado con brillo
-		draw_circle(Vector2.ZERO, 12, Color(0.5, 0.0, 0.7, 0.3))
-		draw_circle(Vector2.ZERO, 8, Color(0.6, 0.0, 0.8, 0.7))
-		draw_circle(Vector2.ZERO, 5, Color(0.9, 0.3, 1.0, 1.0))
+		
+func set_projectile_texture(texture):
+	$Sprite2D.texture = texture
+	
+	

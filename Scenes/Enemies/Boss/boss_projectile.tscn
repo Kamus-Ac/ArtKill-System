@@ -5,4 +5,6 @@
 [node name="BossProjectile" type="Node2D" unique_id=1219331630]
 script = ExtResource("1_jlrcw")
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=480035415]
+
 [node name="LifeTimer" type="Timer" parent="." unique_id=1486149497]
