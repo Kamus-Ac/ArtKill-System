@@ -8,6 +8,33 @@
 [ext_resource type="Texture2D" uid="uid://btb88rh7pbqrp" path="res://Scenes/UI/Pause/Reanudar2.png" id="4_fw2d7"]
 [ext_resource type="Texture2D" uid="uid://3txlpq7jbc56" path="res://Scenes/UI/Pause/Reanudar3.png" id="6_8lm4w"]
 [ext_resource type="Texture2D" uid="uid://cf7lerr5iojfs" path="res://Scenes/UI/Pause/Pausa.png" id="8_8lm4w"]
+[ext_resource type="FontFile" uid="uid://cyiarpmaku8le" path="res://Scenes/UI/Vermin Vibes 1989.ttf" id="9_72x3g"]
+[ext_resource type="Texture2D" uid="uid://c6sbhgmotb3kf" path="res://Scenes/UI/Main_Menu/Boton rosa.png" id="10_03q4b"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_03q4b"]
+texture = ExtResource("10_03q4b")
+
+[sub_resource type="Theme" id="Theme_03q4b"]
+default_font = ExtResource("9_72x3g")
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 16
+Button/styles/normal = SubResource("StyleBoxTexture_03q4b")
 
 [node name="pause_menu" type="Control" unique_id=1040893944]
 process_mode = 2
@@ -68,6 +95,34 @@ texture_normal = ExtResource("3_bnb0t")
 texture_pressed = ExtResource("3_fw2d7")
 texture_hover = ExtResource("2_pklis")
 texture_focused = ExtResource("2_pklis")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2090455015]
+layout_mode = 0
+offset_right = 258.0
+offset_bottom = 304.0
+scale = Vector2(6, 6)
+
+[node name="Pausa" type="Label" parent="VBoxContainer" unique_id=1585531854]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_72x3g")
+theme_override_font_sizes/font_size = 29
+text = "PAUSA"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=111929713]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_72x3g")
+text = "RESUMEN"
+flat = true
+
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=50254506]
+layout_mode = 2
+theme = SubResource("Theme_03q4b")
+theme_override_fonts/font = ExtResource("9_72x3g")
+text = "MENU 
+PRINCIPAL"
+flat = true
 
 [connection signal="pressed" from="CenterContainer/TextureRect/resumen" to="." method="_on_resumen_pressed"]
 [connection signal="pressed" from="CenterContainer/TextureRect/resumen/menu principal" to="." method="_on_menu_principal_pressed"]

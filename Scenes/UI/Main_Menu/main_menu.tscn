@@ -1,18 +1,25 @@
 [gd_scene format=3 uid="uid://b2tn456qw57k1"]
 
-[ext_resource type="Texture2D" uid="uid://gn4p6hbfygrd" path="res://Scenes/UI/fondo.png" id="1_06t4h"]
 [ext_resource type="Script" uid="uid://dopk8g8xjbfd2" path="res://Scenes/UI/Main_Menu/main_menu.gd" id="1_br04u"]
 [ext_resource type="Texture2D" uid="uid://odbgxs2eg5ub" path="res://Scenes/UI/pixil-frame-0_13.png" id="2_2fw6m"]
-[ext_resource type="Texture2D" uid="uid://dnb7ci4xaj18h" path="res://Scenes/UI/Main_Menu/Art-Kill.png" id="2_ksfd3"]
-[ext_resource type="Texture2D" uid="uid://yxeh0cjsks7s" path="res://Scenes/UI/Main_Menu/JUGAR1.png" id="5_7bj1q"]
-[ext_resource type="Texture2D" uid="uid://cseftxotfcwpc" path="res://Scenes/UI/Main_Menu/JUGAR2.png" id="6_m4jla"]
-[ext_resource type="Texture2D" uid="uid://54qujjoodvhu" path="res://Scenes/UI/Main_Menu/JUGAR3.png" id="6_nipkv"]
-[ext_resource type="Texture2D" uid="uid://s60rlous4wl6" path="res://Scenes/UI/Main_Menu/SALIR1.png" id="7_tom6x"]
-[ext_resource type="Texture2D" uid="uid://bbtmygvwictlw" path="res://Scenes/UI/Main_Menu/SALIR2.png" id="8_nipkv"]
-[ext_resource type="Texture2D" uid="uid://bq0kt4fdyhmv" path="res://Scenes/UI/Main_Menu/AJUSTES1.png" id="9_dxhfe"]
-[ext_resource type="Texture2D" uid="uid://bepkqqiwa30lh" path="res://Scenes/UI/Main_Menu/SALIR3.png" id="9_g3pcc"]
-[ext_resource type="Texture2D" uid="uid://bu24i6ftw7qpu" path="res://Scenes/UI/Main_Menu/AJUSTES2.png" id="10_g3pcc"]
-[ext_resource type="Texture2D" uid="uid://toht7q7lhg60" path="res://Scenes/UI/Main_Menu/AJUSTES3.png" id="12_ytfuy"]
+[ext_resource type="Texture2D" uid="uid://bakw3n2yw1iwi" path="res://Scenes/UI/Main_Menu/Fondin.jpeg" id="2_ac8cp"]
+[ext_resource type="Texture2D" uid="uid://jhudau4d7c62" path="res://Scenes/UI/Main_Menu/Edificiosatras .png" id="3_4cysq"]
+[ext_resource type="Script" uid="uid://cegsryevwxdex" path="res://Scenes/UI/Main_Menu/edifi_atras.gd" id="4_tew2s"]
+[ext_resource type="Texture2D" uid="uid://dvm7odk80cocb" path="res://Scenes/UI/Main_Menu/Edificios .png" id="5_63vpu"]
+[ext_resource type="Texture2D" uid="uid://dgbj0u1ws30sc" path="res://Scenes/UI/Main_Menu/Cesped.png" id="6_2lvlm"]
+[ext_resource type="Script" uid="uid://66f1hnuhmi5s" path="res://Scenes/UI/Main_Menu/edifi.gd" id="6_5opu3"]
+[ext_resource type="Texture2D" uid="uid://bnh46v0fu4iu8" path="res://Scenes/UI/Main_Menu/Estrellas.png" id="7_5opu3"]
+[ext_resource type="Script" uid="uid://cv6oylj5vv5s6" path="res://Scenes/UI/Main_Menu/cesped.gd" id="8_xx24g"]
+[ext_resource type="Texture2D" uid="uid://dcfybyq3ovyam" path="res://Scenes/UI/Main_Menu/Luna.png" id="8_yd5ex"]
+[ext_resource type="Texture2D" uid="uid://dnl80d6hda0qo" path="res://Scenes/UI/Main_Menu/particulas.png" id="9_xx24g"]
+[ext_resource type="Texture2D" uid="uid://co0ey0yx3uq0i" path="res://Scenes/UI/Main_Menu/TeleFondo.png" id="10_1hlvv"]
+[ext_resource type="Script" uid="uid://bs4nrivc4k7sx" path="res://Scenes/UI/Main_Menu/estrellas.gd" id="10_8y8w7"]
+[ext_resource type="Script" uid="uid://1emrd6ah0vbb" path="res://Scenes/UI/Main_Menu/luna.gd" id="12_fye2e"]
+[ext_resource type="Script" uid="uid://ds3cs0fq20qtp" path="res://Scenes/UI/Main_Menu/naruto.gd" id="14_mf5kc"]
+[ext_resource type="Texture2D" uid="uid://duv45twk2m6q" path="res://Scenes/UI/Main_Menu/Mancha pintura azul.png" id="17_yd5ex"]
+[ext_resource type="Texture2D" uid="uid://dxr5atw4dxwln" path="res://Scenes/UI/Main_Menu/Mancha pintura rosa.png" id="18_xx24g"]
+[ext_resource type="Texture2D" uid="uid://dvt6iv3icyp8f" path="res://Scenes/UI/Main_Menu/Mancha pintura amarilla.png" id="19_1hlvv"]
+[ext_resource type="FontFile" uid="uid://cyiarpmaku8le" path="res://Scenes/UI/Vermin Vibes 1989.ttf" id="24_2lvlm"]
 
 [node name="Main_Menu" type="Control" unique_id=276557989]
 layout_mode = 3
@@ -23,58 +30,143 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_br04u")
 
+[node name="Node2D" type="Node2D" parent="." unique_id=1608166424]
+position = Vector2(960, 540)
+scale = Vector2(3.265, 3.265)
+
+[node name="Fondo" type="Sprite2D" parent="Node2D" unique_id=1938225364]
+texture_filter = 1
+texture = ExtResource("2_ac8cp")
+
+[node name="Edifi_atras" type="Sprite2D" parent="Node2D" unique_id=748221823]
+texture_filter = 1
+texture = ExtResource("3_4cysq")
+script = ExtResource("4_tew2s")
+
+[node name="Edifi" type="Sprite2D" parent="Node2D" unique_id=2013364900]
+texture_filter = 1
+texture = ExtResource("5_63vpu")
+script = ExtResource("6_5opu3")
+
+[node name="Cesped" type="Sprite2D" parent="Node2D" unique_id=1151002750]
+texture_filter = 1
+texture = ExtResource("6_2lvlm")
+script = ExtResource("8_xx24g")
+
+[node name="Estrellas" type="Sprite2D" parent="Node2D" unique_id=1042867889]
+texture_filter = 1
+texture = ExtResource("7_5opu3")
+script = ExtResource("10_8y8w7")
+
+[node name="Luna" type="Sprite2D" parent="Node2D" unique_id=1065663562]
+texture_filter = 1
+texture = ExtResource("8_yd5ex")
+script = ExtResource("12_fye2e")
+
+[node name="Naruto" type="Sprite2D" parent="Node2D" unique_id=1585271931]
+texture_filter = 1
+texture = ExtResource("9_xx24g")
+script = ExtResource("14_mf5kc")
+
+[node name="Tele" type="Sprite2D" parent="Node2D" unique_id=129843621]
+texture_filter = 1
+texture = ExtResource("10_1hlvv")
+
+[node name="Idol" type="Sprite2D" parent="Node2D" unique_id=353742211]
+position = Vector2(119.142426, -132.3124)
+scale = Vector2(0.029, 0.029)
+texture = ExtResource("2_2fw6m")
+
+[node name="Azul" type="Sprite2D" parent="Node2D" unique_id=1626374937]
+position = Vector2(-47.779488, -86.67687)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("17_yd5ex")
+
+[node name="Roja" type="Sprite2D" parent="Node2D" unique_id=1865501749]
+position = Vector2(53.598778, -83.307816)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("18_xx24g")
+
+[node name="Amarillo" type="Sprite2D" parent="Node2D" unique_id=1710717388]
+position = Vector2(10.719788, -100.15314)
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("19_1hlvv")
+
 [node name="Fondo" type="TextureRect" parent="." unique_id=208101085]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -595.0
+offset_top = -273.0
+offset_right = -789.0
+offset_bottom = -401.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_06t4h")
 
-[node name="TextureRect" type="TextureRect" parent="Fondo" unique_id=1688862236]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=872798939]
 layout_mode = 0
-offset_left = 581.0
-offset_top = 225.0
-offset_right = 1345.0
-offset_bottom = 478.5
-texture = ExtResource("2_ksfd3")
-expand_mode = 1
+offset_left = 689.0
+offset_top = 422.0
+offset_right = 789.0
+offset_bottom = 522.0
+rotation = -0.05235988
+scale = Vector2(3.99, 3.99)
 
-[node name="Sprite2D" type="Sprite2D" parent="Fondo" unique_id=353742211]
-position = Vector2(697, 155)
-scale = Vector2(0.1260376, 0.12612915)
-texture = ExtResource("2_2fw6m")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Fondo" unique_id=356484281]
-layout_mode = 0
-offset_left = 777.0
-offset_top = 495.0
-offset_right = 1659.0
-offset_bottom = 1678.0
-scale = Vector2(0.45, 0.45)
-
-[node name="YUGAR" type="TextureButton" parent="Fondo/VBoxContainer" unique_id=976210974]
+[node name="Jugar" type="Button" parent="VBoxContainer" unique_id=617137280]
 layout_mode = 2
-texture_normal = ExtResource("5_7bj1q")
-texture_pressed = ExtResource("6_nipkv")
-texture_hover = ExtResource("6_m4jla")
-texture_focused = ExtResource("6_m4jla")
+focus_neighbor_bottom = NodePath("../Ajustes")
+theme_override_fonts/font = ExtResource("24_2lvlm")
+text = "JUGAR"
+flat = true
 
-[node name="AJUSTES" type="TextureButton" parent="Fondo/VBoxContainer" unique_id=1666127448]
+[node name="Ajustes" type="Button" parent="VBoxContainer" unique_id=1061184701]
 layout_mode = 2
-texture_normal = ExtResource("9_dxhfe")
-texture_pressed = ExtResource("12_ytfuy")
-texture_hover = ExtResource("10_g3pcc")
-texture_focused = ExtResource("10_g3pcc")
+focus_neighbor_top = NodePath("../Jugar")
+focus_neighbor_bottom = NodePath("../Salir")
+theme_override_fonts/font = ExtResource("24_2lvlm")
+text = "AJUSTES"
+flat = true
 
-[node name="ZALIR" type="TextureButton" parent="Fondo/VBoxContainer" unique_id=1190869192]
+[node name="Salir" type="Button" parent="VBoxContainer" unique_id=1559768802]
 layout_mode = 2
-texture_normal = ExtResource("7_tom6x")
-texture_pressed = ExtResource("9_g3pcc")
-texture_hover = ExtResource("8_nipkv")
-texture_focused = ExtResource("8_nipkv")
+focus_neighbor_top = NodePath("../Ajustes")
+theme_override_fonts/font = ExtResource("24_2lvlm")
+text = "SALIR"
+flat = true
 
-[connection signal="pressed" from="Fondo/VBoxContainer/YUGAR" to="." method="_on_yugar_pressed"]
-[connection signal="pressed" from="Fondo/VBoxContainer/AJUSTES" to="." method="_on_ajustes_pressed"]
-[connection signal="pressed" from="Fondo/VBoxContainer/ZALIR" to="." method="_on_zalir_pressed"]
+[node name="Welcome" type="Label" parent="." unique_id=1508906163]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -340.0
+offset_top = 45.0
+offset_right = -230.0
+offset_bottom = 68.0
+grow_horizontal = 2
+scale = Vector2(6.5, 6.5)
+theme_override_fonts/font = ExtResource("24_2lvlm")
+text = "WELCOME TO "
+horizontal_alignment = 3
+vertical_alignment = 1
+
+[node name="Art Kill" type="Label" parent="." unique_id=2082677083]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -360.0
+offset_top = 160.0
+offset_right = -229.0
+offset_bottom = 183.0
+grow_horizontal = 2
+scale = Vector2(6.5, 6.5)
+theme_override_fonts/font = ExtResource("24_2lvlm")
+text = "ART KILL SYSTEM"
+horizontal_alignment = 3
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
+[connection signal="pressed" from="VBoxContainer/Ajustes" to="." method="_on_ajustes_pressed"]
+[connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_salir_pressed"]
