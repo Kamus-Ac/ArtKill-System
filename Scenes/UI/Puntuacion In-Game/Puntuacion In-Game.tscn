@@ -59,28 +59,6 @@ bbcode_enabled = true
 text = "[wave][center]Puntuacion[/center][/wave]"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="." unique_id=9463747]
-layout_mode = 0
-offset_left = 655.0
-offset_top = 435.0
-offset_right = 763.0
-offset_bottom = 480.0
-theme_override_colors/font_color = Color(0, 1, 0, 1)
-theme_override_font_sizes/font_size = 32
-text = "Puntos"
-vertical_alignment = 1
-
-[node name="Final_Score" type="Label" parent="Label" unique_id=618633934]
-layout_mode = 0
-offset_left = 469.99997
-offset_right = 578.0
-offset_bottom = 45.0
-theme_override_colors/font_color = Color(0, 1, 0, 1)
-theme_override_font_sizes/font_size = 32
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Label2" type="Label" parent="." unique_id=1102013204]
 layout_mode = 0
 offset_left = 566.0
@@ -104,36 +82,34 @@ theme_override_font_sizes/font_size = 32
 text = "Tiempo Sobrevivido"
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="." unique_id=389059241]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.38500002
-anchor_top = 0.757
-anchor_right = 0.38500002
-anchor_bottom = 0.757
-offset_left = -134.20001
-offset_top = -42.56006
-offset_right = 133.79999
-offset_bottom = 43.43994
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 24
-text = "Regresar a seleccion 
-de personaje"
+[node name="Tiempo_jugado" type="Label" parent="Label3" unique_id=1595486297]
+layout_mode = 0
+offset_left = 568.0
+offset_top = 11.0
+offset_right = 768.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
 
-[node name="Button2" type="Button" parent="." unique_id=1687174071]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.62100005
-anchor_top = 0.75100005
-anchor_right = 0.62100005
-anchor_bottom = 0.75100005
-offset_left = -112.32007
-offset_top = -35.08008
-offset_right = 111.67993
-offset_bottom = 34.91992
-theme_override_font_sizes/font_size = 24
-text = "Reintentar"
+[node name="Label" type="Label" parent="." unique_id=9463747]
+layout_mode = 0
+offset_left = 655.0
+offset_top = 435.0
+offset_right = 763.0
+offset_bottom = 480.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Puntos"
+vertical_alignment = 1
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[node name="Puntuacion_Actual" type="Label" parent="Label" unique_id=618633934]
+layout_mode = 0
+offset_left = 469.99997
+offset_right = 670.0
+offset_bottom = 45.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://o611ga5dcuxt" path="res://Scenes/GameCamera/game_camera.tscn" id="3_m7m8v"]
 [ext_resource type="PackedScene" uid="uid://bmr1g4fj71s5p" path="res://Scenes/UI/Puntuacion In-Game/Puntuacion In-Game.tscn" id="4_w4ad0"]
 [ext_resource type="Texture2D" uid="uid://8myba8fjb41q" path="res://Scenes/UI/istockphoto-1440114432-612x612.jpg" id="5_ej2hx"]
+[ext_resource type="PackedScene" uid="uid://dv1uvtwehl8no" path="res://Scenes/UI/Puntuacion_Final/Game Over.tscn" id="5_s4hme"]
 [ext_resource type="Texture2D" uid="uid://bjea3nnpk2npk" path="res://Scenes/UI/marco_negro.png" id="6_614yd"]
 [ext_resource type="PackedScene" uid="uid://bvqgi43nkhtrb" path="res://Scenes/Players/basic_player.tscn" id="7_614yd"]
 [ext_resource type="PackedScene" uid="uid://b2gft8tdpey3f" path="res://Scenes/Objects/object.tscn" id="7_ej2hx"]
@@ -41,6 +42,9 @@ scale = Vector2(0.5, 0.5)
 visible = false
 offset_top = -5.96
 offset_bottom = -5.960083
+
+[node name="GameOver" parent="GameCamera/CanvasLayer2" unique_id=1110839108 instance=ExtResource("5_s4hme")]
+visible = false
 
 [node name="EnemyManager" parent="." unique_id=1902379502 instance=ExtResource("3_614yd")]
 
