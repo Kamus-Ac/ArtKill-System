@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvhu1nvs7kpek"
-path="res://.godot/imported/Gus_Death.png-d7bd25818492cd313995edf5c122ce96.ctex"
+uid="uid://cmyh6q5ouqdvs"
+path="res://.godot/imported/Tomasa_Idle.png-f68b6465e0b1da27831ae44a73950249.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Players/Gordo/Animaciones/Gus_Death.png"
-dest_files=["res://.godot/imported/Gus_Death.png-d7bd25818492cd313995edf5c122ce96.ctex"]
+source_file="res://Scenes/Players/Viejita/Animaciones/Tomasa_Idle.png"
+dest_files=["res://.godot/imported/Tomasa_Idle.png-f68b6465e0b1da27831ae44a73950249.ctex"]
 
 [params]
 
