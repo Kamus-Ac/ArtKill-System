@@ -26,8 +26,8 @@ func _ready() -> void:
 	shoot_timer.timeout.connect(_on_shoot_timer_timeout)
 	anim.play("Idle")
 	var player  = get_tree().get_first_node_in_group("player")
-	if player:
-		self.died.connect(player._on_enemy_killed)
+	#if player:
+		#self.died.connect(player._on_enemy_killed)
 
 func _physics_process(_delta):
 	match current_state:
@@ -64,11 +64,14 @@ func shoot_projectile():
 func die(hit):
 	if hit is Player_Hitbox and !is_dead:
 		health -= 1
+		if player:
+			player.audio_manager.play_punch()
 		flash_damage()
 		queue_redraw()
 		
 		if health <= 0:
 			is_dead = true
+			GameManager.timeToUlt += 1
 			current_state = STATE.DEAD
 			shoot_timer.stop()
 			velocity = Vector2.ZERO
@@ -83,7 +86,7 @@ func flash_damage():
 	var tween = create_tween()
 	tween.tween_property(self, "modulate", Color.WHITE, 0.3)
 	
-func _process(delta)	:
+func _process(delta):
 	if current_state != STATE.DEAD:
 		flip_sprite()
 	
