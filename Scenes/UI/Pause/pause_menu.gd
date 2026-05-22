@@ -3,12 +3,14 @@ extends Control
 @onready var level_base: Node2D = $"../../.."
 
 # 1. Referencias a los botones (usamos $"..." en el segundo por el espacio en el nombre)
-@onready var resumen_btn: TextureButton = $CenterContainer/TextureRect/resumen
-@onready var menu_principal_btn: TextureButton = $"CenterContainer/TextureRect/menu principal"
+@onready var resumen_btn: TextureButton = $CenterContainer/Label/resumen
+@onready var menu_principal_btn: TextureButton = $"CenterContainer/Label/menu principal"
 
 func _ready() -> void:
 	
-	#Raza, y estos comentarios de Claude?
+	#Raza, y estos comentarios de Claude? 
+	#JSJSJSJSJ AY Manuelin pss q te digo, no encontraba el eror, solo era q no
+	#Me acordaba q se modifico el como se pone pausa XDDDDD
 
 	# ¡TRUCO A PRUEBA DE FALLOS!
 	# Forzamos por código que este menú nunca se congele aunque el juego esté pausado.

@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=70 format=3 uid="uid://dlevfnbld3xxe"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://dlevfnbld3xxe"]
 
 [ext_resource type="Texture2D" uid="uid://gsf6h3fhs2l3" path="res://Scenes/Players/Viejita/Animaciones/Viejita_BasicAttack.png" id="1_oj281"]
 [ext_resource type="Texture2D" uid="uid://vallmpm3644b" path="res://Scenes/Players/Viejita/Animaciones/Tomasa_Attacking_DiagonalAbajo.png" id="2_4r4jp"]
