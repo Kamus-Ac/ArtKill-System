@@ -66,6 +66,7 @@ enum DIRECTION{
 	RIGHT,
 	STILL
 }
+var attack_dir: DIRECTION
 
 enum STATE {
 	IDLE,
@@ -96,7 +97,6 @@ var objectPosition: Vector2 = Vector2.ZERO
 var object: RigidBody2D = null
 var lastobject: RigidBody2D = null
 var grabbing: bool = false
-
 
 func _ready() -> void:
 	if GameManager.selected_character:
@@ -207,32 +207,40 @@ func set_direction():
 	else: current_dir = DIRECTION.STILL
 
 func move(delta: float):
-	if current_state != STATE.HURTED and current_state != STATE.ATTACKING and !isUltiActive:
+	if current_state != STATE.HURTED and !isUltiActive:
 		match current_dir:
 			DIRECTION.UP:
 				normal_velocity = Vector2(0,-MAX_SPEED)
-				anim.play("up")
+				if current_state != STATE.ATTACKING:
+					anim.play("up")
 			DIRECTION.DOWN:
 				normal_velocity = Vector2(0,MAX_SPEED)
-				anim.play("down")
+				if current_state != STATE.ATTACKING:
+					anim.play("down")
 			DIRECTION.LEFT:
 				normal_velocity = Vector2(-MAX_SPEED, 0)
-				anim.play("horizontal")
+				if current_state != STATE.ATTACKING:
+					anim.play("horizontal")
 			DIRECTION.RIGHT:
 				normal_velocity = Vector2(MAX_SPEED, 0)
-				anim.play("horizontal")
+				if current_state != STATE.ATTACKING:
+					anim.play("horizontal")
 			DIRECTION.UP_LEFT:
 				normal_velocity = cartesian_to_isometric(Vector2(-MAX_SPEED, 0))
-				anim.play("diagonalArriba")
+				if current_state != STATE.ATTACKING:
+					anim.play("diagonalArriba")
 			DIRECTION.UP_RIGHT:
 				normal_velocity = cartesian_to_isometric(Vector2(0, -MAX_SPEED))
-				anim.play("diagonalArriba")
+				if current_state != STATE.ATTACKING:
+					anim.play("diagonalArriba")
 			DIRECTION.DOWN_LEFT:
 				normal_velocity = cartesian_to_isometric(Vector2(0, MAX_SPEED))
-				anim.play("diagonalAbajo")
+				if current_state != STATE.ATTACKING:
+					anim.play("diagonalAbajo")
 			DIRECTION.DOWN_RIGHT:
 				normal_velocity = cartesian_to_isometric(Vector2(MAX_SPEED, 0))
-				anim.play("diagonalAbajo")
+				if current_state != STATE.ATTACKING:
+					anim.play("diagonalAbajo")
 			DIRECTION.STILL:
 				normal_velocity = Vector2(0,0)
 	
@@ -252,6 +260,7 @@ func match_states(delta: float):
 			
 			elif Input.is_action_just_pressed("BasicAttack"):
 				character_sound_played = false
+				attack_dir = current_dir
 				current_state = STATE.ATTACKING
 			
 			elif Input.is_action_just_pressed("Ulti") and isUltiAvailable and !ulti_in_progress:
@@ -266,16 +275,18 @@ func match_states(delta: float):
 			
 			elif Input.is_action_just_pressed("BasicAttack"):
 				character_sound_played = false
+				attack_dir = current_dir
 				current_state = STATE.ATTACKING
 			
 			elif Input.is_action_just_pressed("Ulti") and isUltiAvailable and !ulti_in_progress:
 				ulti_in_progress = true
 				ability_sound_played = false
+				attack_dir = current_dir
 				current_state = STATE.ATTACKING_ULTI
 				
 		STATE.ATTACKING:
 			
-			match current_dir:
+			match attack_dir:
 				DIRECTION.UP, DIRECTION.UP_LEFT, DIRECTION.UP_RIGHT:
 					anim.play("basicAttackDiagonalArriba")
 			

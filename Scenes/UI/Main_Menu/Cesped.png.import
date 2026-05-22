@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvhu1nvs7kpek"
-path="res://.godot/imported/Gus_Death.png-d7bd25818492cd313995edf5c122ce96.ctex"
+uid="uid://dgbj0u1ws30sc"
+path="res://.godot/imported/Cesped.png-7aeb7d10e4d9469f9e6270e8a38c7789.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Players/Gordo/Animaciones/Gus_Death.png"
-dest_files=["res://.godot/imported/Gus_Death.png-d7bd25818492cd313995edf5c122ce96.ctex"]
+source_file="res://Scenes/UI/Main_Menu/Cesped.png"
+dest_files=["res://.godot/imported/Cesped.png-7aeb7d10e4d9469f9e6270e8a38c7789.ctex"]
 
 [params]
 
