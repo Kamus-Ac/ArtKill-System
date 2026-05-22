@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var hit_lag: Timer = $HitLag
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var launchingArea: Area2D = $LaunchingArea
+@onready var hitboxColision: CollisionShape2D = $Enemy_Hitbox/CollisionShape2D
 @onready var hitParticles: CPUParticles2D = $HitParticles
 @onready var nav = $NavigationAgent2D
 
@@ -42,17 +43,20 @@ func _ready() -> void:
 		self.died.connect(player._on_enemy_killed)
 
 
+
+
 func _physics_process(delta):
 
 	match current_state:
 
 		STATE.RUNNING:
 
-			if anim_sprite.animation != "idle":
+			if anim_sprite.animation != "idle" or !anim_sprite.is_playing():
 				anim_sprite.play("idle")
 
 			var direction = get_direction_to_player()
-
+			if anim_sprite.sprite_frames:	
+				anim_sprite.scale.x = 1 if direction.x > 0 else -1
 			# MOVIMIENTO
 			if not hitting:
 				velocity += direction * SPEED
@@ -109,12 +113,13 @@ func die(hit):
 	if hit is Player_Hitbox or hit.is_in_group("notas"):
 
 		isDead = true
+		hitboxColision.disabled = true
 		current_state = STATE.DEAD
+		
 
 		emit_signal("died")
 
 		SignalManager.kill_count.emit()
-		GameManager.score += 100
 
 		velocity = Vector2.ZERO
 
@@ -176,10 +181,11 @@ func islaunching2(body: Node2D):
 		var enemy_impulse = dir_to_enemy * IMPULSE
 
 		knockback = -enemy_impulse
-
-		body2.hit_lag.start(1.0)
-		body2.hitting = true
-		body2.knockback = enemy_impulse
+		#validar q no sea el boss porq no tiene hit_lag
+		if "hit_lag" in body2 and "hitting" in body2:
+			body2.hit_lag.start(1.0)
+			body2.hitting = true
+			body2.knockback = enemy_impulse
 
 
 	if body2 and body2.is_in_group("notas"):

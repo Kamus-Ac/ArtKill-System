@@ -7,6 +7,9 @@ extends Control
 @onready var menu_principal_btn: TextureButton = $"CenterContainer/TextureRect/menu principal"
 
 func _ready() -> void:
+	
+	#Raza, y estos comentarios de Claude?
+
 	# ¡TRUCO A PRUEBA DE FALLOS!
 	# Forzamos por código que este menú nunca se congele aunque el juego esté pausado.
 	# Así no tienes que buscar la opción en el Inspector y el mando siempre funcionará.

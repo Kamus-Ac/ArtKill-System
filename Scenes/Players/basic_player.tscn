@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvqgi43nkhtrb"]
+[gd_scene load_steps=6 format=3 uid="uid://bvqgi43nkhtrb"]
 
 [ext_resource type="Script" uid="uid://dan1nkfvkil6u" path="res://Scenes/Players/basic_player.gd" id="1_qdrsv"]
 [ext_resource type="SpriteFrames" uid="uid://oygggrhhee65" path="res://Scenes/Players/Idol/Animaciones/idol.tres" id="2_8i48k"]
 [ext_resource type="Script" uid="uid://b66ij71ir7cxs" path="res://Scenes/Audio/AudioManager.gd" id="3_xkohv"]
+[ext_resource type="Texture2D" uid="uid://dh1mpqt4l7yp0" path="res://Scenes/Particles/dust.png" id="4_fty27"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fty27"]
 radius = 7.0
 
 [node name="BasicPlayer" type="CharacterBody2D" groups=["player"]]
+visibility_layer = 3
 y_sort_enabled = true
 collision_mask = 43
 script = ExtResource("1_qdrsv")
@@ -52,5 +54,11 @@ volume_db = -4.0
 volume_db = -4.0
 
 [node name="PunchSoundPlayer" type="AudioStreamPlayer" parent="AudioManager"]
+
+[node name="MarcaPlayer" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 1, 1)
+visibility_layer = 2
+scale = Vector2(5.245, 5.245)
+texture = ExtResource("4_fty27")
 
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

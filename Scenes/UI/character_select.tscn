@@ -1,12 +1,24 @@
 [gd_scene format=3 uid="uid://536btmvjhqi5"]
 
-[ext_resource type="Texture2D" uid="uid://b345jca3bjnks" path="res://Scenes/UI/gordo.png" id="2_d3lco"]
 [ext_resource type="Texture2D" uid="uid://gn4p6hbfygrd" path="res://Scenes/UI/fondo.png" id="2_dieb8"]
 [ext_resource type="Script" uid="uid://fhn4v6qc8lrn" path="res://Scenes/UI/character_select.gd" id="2_whe0c"]
 [ext_resource type="Script" uid="uid://c127btfvcob36" path="res://Scenes/UI/character_card.gd" id="3_dieb8"]
 [ext_resource type="Resource" uid="uid://j7kfry2ifdx1" path="res://Scenes/Players/Gordo/gordo_data.tres" id="4_apj1b"]
+[ext_resource type="Texture2D" uid="uid://odbgxs2eg5ub" path="res://Scenes/UI/pixil-frame-0_13.png" id="5_jjfpe"]
 [ext_resource type="Resource" uid="uid://godl0fknqbqb" path="res://Scenes/Players/Viejita/viejita_data.tres" id="6_dieb8"]
-[ext_resource type="Resource" uid="uid://cpn0itqsdlwgo" path="res://Scenes/Players/Idol/idol_data.tres" id="6_pjomi"]
+[ext_resource type="PackedScene" uid="uid://dnv3x3k1xxw5o" path="res://Scenes/Players/Idol/Idol.tscn" id="7_qsthy"]
+[ext_resource type="Script" uid="uid://cykrf8nfa65dj" path="res://Scenes/Players/characters_data.gd" id="8_jjfpe"]
+[ext_resource type="SpriteFrames" uid="uid://oygggrhhee65" path="res://Scenes/Players/Idol/Animaciones/idol.tres" id="9_nefin"]
+
+[sub_resource type="Resource" id="Resource_yn15k"]
+script = ExtResource("8_jjfpe")
+id = "Idol"
+character_name = "Dani"
+max_speed = 100
+max_health = 5
+sprite = ExtResource("9_nefin")
+character_scene = ExtResource("7_qsthy")
+metadata/_custom_type_script = "uid://cykrf8nfa65dj"
 
 [node name="CharacterSelect" type="Control" unique_id=1801082344]
 layout_mode = 3
@@ -116,7 +128,7 @@ size_flags_horizontal = 4
 custom_minimum_size = Vector2(180, 260)
 layout_mode = 2
 script = ExtResource("3_dieb8")
-character_data = ExtResource("6_pjomi")
+character_data = SubResource("Resource_yn15k")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/VBox/CharactersBox/Dani" unique_id=260581408]
 layout_mode = 2

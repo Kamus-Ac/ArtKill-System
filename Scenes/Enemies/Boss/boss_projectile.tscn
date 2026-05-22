@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cweqrq6i1aw4u"]
+
+[ext_resource type="Script" uid="uid://b1f4sb0x51o66" path="res://Scenes/Enemies/Boss/boss_projectile.gd" id="1_jlrcw"]
+
+[node name="BossProjectile" type="Node2D" unique_id=1219331630]
+script = ExtResource("1_jlrcw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=480035415]
+
+[node name="LifeTimer" type="Timer" parent="." unique_id=1486149497]
