@@ -11,27 +11,51 @@
 [ext_resource type="Texture2D" uid="uid://edvs0reuflv0" path="res://Scenes/Players/Gordo/Animaciones/Gus_Ulti.png" id="7_i484e"]
 [ext_resource type="Texture2D" uid="uid://dsu3hmt4ypcm1" path="res://Scenes/Players/Gordo/Animaciones/Gus_Running_Up.png" id="8_iyfu5"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kqrfl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nc2sx"]
 atlas = ExtResource("1_nc2sx")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_887u2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_i484e"]
 atlas = ExtResource("1_nc2sx")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_24d4p"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqrfl"]
 atlas = ExtResource("1_nc2sx")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xkghw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_887u2"]
 atlas = ExtResource("1_nc2sx")
 region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3su15"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_24d4p"]
 atlas = ExtResource("1_nc2sx")
 region = Rect2(256, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkghw"]
+atlas = ExtResource("1_nc2sx")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3su15"]
+atlas = ExtResource("1_nc2sx")
+region = Rect2(0, 0, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_h8yah"]
+atlas = ExtResource("1_nc2sx")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0b3a6"]
+atlas = ExtResource("1_nc2sx")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4v0r"]
+atlas = ExtResource("1_nc2sx")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4jv3"]
+atlas = ExtResource("1_nc2sx")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_he1ob"]
 atlas = ExtResource("1_nc2sx")
 region = Rect2(320, 0, 64, 64)
 
@@ -277,12 +301,13 @@ region = Rect2(320, 0, 64, 64)
 
 [resource]
 animations = [{
-"frames": [],
-"loop": false,
-"name": &"basicAttack",
-"speed": 5.0
-}, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nc2sx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i484e")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kqrfl")
 }, {
@@ -294,12 +319,29 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xkghw")
+}],
+"loop": false,
+"name": &"basicAttack",
+"speed": 5.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3su15")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_h8yah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0b3a6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4v0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4jv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_he1ob")
 }],
 "loop": false,
 "name": &"basicAttackDiagonalAbajo",
