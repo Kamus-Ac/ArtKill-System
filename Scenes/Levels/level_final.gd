@@ -13,8 +13,8 @@ var i = 0
 @onready var primer_zona:Node2D = $Bordes/Bordes1erZona
 @onready var segunda_zona:Node2D = $Bordes/Bordes2daZona
 
-@export var point1: Vector2 = Vector2(-550,-150)
-@export var point2: Vector2 = Vector2(-30,115)
+@export var point1: Vector2 = Vector2(451, 57)
+@export var point2: Vector2 = Vector2(1893,931)
 
 var curacion = preload("res://Scenes/Objects/Curacion/Curacion.tscn")
 
