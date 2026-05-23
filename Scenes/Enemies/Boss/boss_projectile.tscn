@@ -1,6 +1,57 @@
 [gd_scene format=3 uid="uid://cweqrq6i1aw4u"]
 
 [ext_resource type="Script" uid="uid://b1f4sb0x51o66" path="res://Scenes/Enemies/Boss/boss_projectile.gd" id="1_jlrcw"]
+[ext_resource type="Texture2D" uid="uid://cnjr5ugg3qdr2" path="res://Scenes/Enemies/Boss/Explosion_de_jeta.png" id="2_ebybx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0toso"]
+atlas = ExtResource("2_ebybx")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rbge"]
+atlas = ExtResource("2_ebybx")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxt2r"]
+atlas = ExtResource("2_ebybx")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1r63"]
+atlas = ExtResource("2_ebybx")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsbjr"]
+atlas = ExtResource("2_ebybx")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvakl"]
+atlas = ExtResource("2_ebybx")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dffu3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0toso")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rbge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxt2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1r63")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsbjr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvakl")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 5.0
+}]
 
 [node name="BossProjectile" type="Node2D" unique_id=1219331630]
 script = ExtResource("1_jlrcw")
@@ -8,3 +59,8 @@ script = ExtResource("1_jlrcw")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=480035415]
 
 [node name="LifeTimer" type="Timer" parent="." unique_id=1486149497]
+
+[node name="ExplosionAnim" type="AnimatedSprite2D" parent="." unique_id=1009234021]
+visible = false
+sprite_frames = SubResource("SpriteFrames_dffu3")
+animation = &"explode"

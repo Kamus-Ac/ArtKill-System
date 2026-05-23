@@ -9,6 +9,7 @@ const EXPLOSION_DAMAGE := 1
 
 @onready var life_timer: Timer = $LifeTimer
 @onready var proyectil: Sprite2D = $Sprite2D
+@onready var explosion_anim: AnimatedSprite2D = $ExplosionAnim
 var is_exploded: bool = false
 
 func _ready():
@@ -48,7 +49,6 @@ func explode():
 	is_exploded = true
 	visible = true
 	set_physics_process(false)
-
 	#verificar si el jugador está dentro del radio de explosión y aplicar daño
 	var player = get_tree().get_first_node_in_group("player") as Node2D
 	if player:
@@ -61,19 +61,12 @@ func explode():
 				health_comp.set_temporary_invulnerable(1.5)
 				player.apply_knockback(global_position, 250.0)
 				print("Proyectil del Boss hizo daño al jugador")
-
-	#mostrar la explosión visual y luego destruirse
-	queue_redraw()
-	await get_tree().create_timer(0.4).timeout
+	proyectil.visible = false 
+	explosion_anim.visible = true
+	explosion_anim.play("explode")
+	await explosion_anim.animation_finished
 	queue_free()
-
-func _draw():
-	if is_exploded:
-		# Explosión - círculos concéntricos naranjas/amarillos
-		draw_circle(Vector2.ZERO, EXPLOSION_RADIUS, Color(1.0, 0.4, 0.0, 0.3))
-		draw_circle(Vector2.ZERO, EXPLOSION_RADIUS * 0.65, Color(1.0, 0.6, 0.0, 0.5))
-		draw_circle(Vector2.ZERO, EXPLOSION_RADIUS * 0.35, Color(1.0, 0.9, 0.3, 0.8))
-		
+	
 func set_projectile_texture(texture):
 	$Sprite2D.texture = texture
 	
