@@ -131,6 +131,7 @@ horizontal_alignment = 2
 custom_effects = [SubResource("RichTextEffect_ls6f5"), SubResource("RichTextEffect_w4ad0")]
 
 [node name="Combo" type="RichTextLabel" parent="CanvasLayer" unique_id=2066465372]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0

@@ -23,6 +23,7 @@ var dynamictimer: Timer
 var tween_combo : Tween
 
 var paused = false
+var gameOver = false
 var kill_acumulated : int
 var time_forCombo: float = 4.0
 var dynamic_score : float
@@ -53,6 +54,7 @@ func _ready() -> void:
 	SignalManager.score_update.connect(reloadScore)
 	SignalManager.kill_count.connect(kill_score)
 	SignalManager.unlockedzones.connect(unlock_zones)
+	SignalManager.gameOver.connect(gameover_function)
 
 	pause_menu.hide()
 
@@ -83,7 +85,12 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Pausa"):
 		pauseMenu()
 
+func _physics_process(delta: float) -> void:
+	if !gameOver:
+		GameManager.playtime+=delta
 
+func gameover_function()->void:
+	gameOver = true
 
 func spawn_curacion():
 
@@ -207,7 +214,7 @@ func making_dynamic_score()->void:
 		if j ==0:
 			dynamic_score = 100
 		else:
-			dynamic_score = dynamic_score*2
+			dynamic_score = dynamic_score*1.2
 	previous_score = GameManager.score
 	GameManager.score += dynamic_score
 	SignalManager.score_update.emit()
@@ -231,6 +238,8 @@ func reset_gamedata():
 	GameManager.timeToUlt=0
 	GameManager.current_wave=1
 	GameManager.score=0
+	GameManager.playtime=0
+	GameManager.ult_tries=0
 
 func unlock_zones(zone:int):
 	match zone:
