@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://c8g1fxsd48bge"]
 
-[ext_resource type="Script" uid="uid://by4w2pqjciigh" path="res://Scenes/Levels/level_base.gd" id="1_mrdxy"]
+[ext_resource type="Script" uid="uid://de0r5xvhv8vio" path="res://Scenes/Levels/level_final.gd" id="1_x5psd"]
 [ext_resource type="Script" uid="uid://7wtigip5huqu" path="res://Scenes/Levels/Subview_minimap.gd" id="2_atoaq"]
 [ext_resource type="Script" uid="uid://bjqdaw2yt6ev4" path="res://Scenes/Levels/minimap_camera.gd" id="3_x5psd"]
 [ext_resource type="PackedScene" uid="uid://o611ga5dcuxt" path="res://Scenes/GameCamera/game_camera.tscn" id="4_ef4yo"]
@@ -34,7 +34,8 @@ shader = ExtResource("13_ubikb")
 viewport_path = NodePath("SubViewport")
 
 [node name="Level base" type="Node2D" unique_id=1171372356]
-script = ExtResource("1_mrdxy")
+y_sort_enabled = true
+script = ExtResource("1_x5psd")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=41910746]
 disable_3d = true
@@ -84,7 +85,7 @@ z_index = 1
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAD8//r/FgAIAAAAAAD7//v/FgACAAAAAAD7//z/FgAAAAAAAAD6//3/FgAIAAAAAAD6//7/FgAIAAAAAAD5////FgACAAAAAAD5/wAAFgAAAAAAAAD4/wEAFgAFAAAAAAD4/wIAFgACAAAAAAD3/wMAFgAAAAAAAAD3/wQAFgAKAAAAAAD2/wUAFgAFAAAAAAD2/wYAFgAFAAAAAAD1/wcAFgAEAAAAAAD1/wYAFgACAAAAAAD0/wUAFgABAAAAAAD0/wQAFgAIAAAAAADz/wMAFgAIAAAAAADz/wIAFgAHAAAAAADy/wEAFgAJAAAAAADy/wAAFgAFAAAAAADx////FgACAAAAAADx//7/FgAFAAAAAADw//3/FgAHAAAAAADw//z/FgAFAAAAAADv//v/FgAKAAAAAADv//z/FgAAAAAAAADu//3/FgAGAAAAAADu//7/FgAJAAAAAADt////FgACAAAAAADt/wAAFgAEAAAAAADs/wEAFgABAAAAAADs/wIAFgAAAAAAAADr/wMAFgACAAAAAADr/wQAFgAHAAAAAADq/wUAFgAFAAAAAADq/wYAFgAJAAAAAADp/wcAFgAFAAAAAADp/wgAFgAKAAAAAADp/wkAFgABAAAAAADq/woAFgAAAAAAAADq/wsAFgAIAAAAAADr/wwAFgAGAAAAAADr/w0AFgAGAAAAAADs/w4AFgAGAAAAAADr/w8AFgAHAAAAAADr/xAAFgAEAAAAAADq/xEAFgAEAAAAAADq/xIAFgAJAAAAAADp/xMAFgAAAAAAAADp/xIAFgAEAAAAAADo/xEAFgAKAAAAAADo/xAAFgABAAAAAADn/w8AFgAKAAAAAADn/w4AFgAJAAAAAADm/w0AFgALAAAAAADm/w4AFgADAAAAAADl/w8AFgAJAAAAAADl/xAAFgALAAAAAADk/xEAFgAKAAAAAADk/xIAFgALAAAAAADj/xMAFgAHAAAAAADj/xQAFgAEAAAAAADi/xUAFgAJAAAAAADj/xYAFgAKAAAAAADj/xcAFgAIAAAAAADk/xgAFgACAAAAAADk/xkAFgAFAAAAAAD9/wQAFgALAAAAAAD8/wUAFgAIAAAAAAD8/wYAFgALAAAAAAD7/wcAFgAIAAAAAAD7/wgAFgAIAAAAAAD6/wkAFgALAAAAAAD6/woAFgAJAAAAAAD6/wsAFgAIAAAAAAD7/wwAFgAJAAAAAAD7/w0AFgAKAAAAAAD7/w4AFgALAAAAAAD6/w8AFgALAAAAAAD6/xAAFgAIAAAAAAD5/xEAFgAIAAAAAAD5/xIAFgAIAAAAAAD4/xMAFgAKAAAAAAD4/xQAFgAKAAAAAAD3/xUAFgAJAAAAAAD3/xYAFgALAAAAAAD2/xcAFgAIAAAAAAD3/xgAFgAIAAAAAAD3/xkAFgAIAAAAAAD4/xoAFgAGAAAAAAD4/xkAFgAGAAAAAAD5/xgAFgADAAAAAAD5/xcAFgACAAAAAAD6/xYAFgACAAAAAAD6/xUAFgAGAAAAAAD7/xQAFgAAAAAAAAD7/xMAFgAEAAAAAAD8/xIAFgADAAAAAAD8/xEAFgABAAAAAAD9/xAAFgADAAAAAAD9/w8AFgADAAAAAAD+/w4AFgABAAAAAAD9/w0AFgAGAAAAAAD9/wwAFgAEAAAAAAD8/wsAFgABAAAAAAD9/woAFgAGAAAAAAD9/wkAFgALAAAAAAD+/wgAFgAKAAAAAAD+/wcAFgAIAAAAAAD//wYAFgAJAAAAAAD+/wUAFgALAAAAAAD+/wQAFgALAAAAAAD9/wMAFgAKAAAAAADw/xUAFgAKAAAAAADw/xYAFgAIAAAAAADv/xcAFgAIAAAAAADv/xgAFgAJAAAAAADu/xkAFgALAAAAAADv/xoAFgALAAAAAADv/xsAFgAJAAAAAADw/xwAFgAIAAAAAADw/x0AFgALAAAAAADx/x4AFgALAAAAAADx/x8AFgAKAAAAAADy/yAAFgAJAAAAAADy/yEAFgAIAAAAAADz/yIAFgAJAAAAAADz/yMAFgAKAAAAAAD0/yQAFgAKAAAAAAD0/yUAFgAKAAAAAAD1/yYAFgAIAAAAAAD1/ycAFgAKAAAAAAD2/ygAFgAIAAAAAAD2/ykAFgAIAAAAAAD3/yoAFgAKAAAAAAD3/ysAFgAKAAAAAAD4/ywAFgAIAAAAAAD4/y0AFgAIAAAAAAD5/y4AFgAKAAAAAAD5/y8AFgALAAAAAAD6/zAAFgAJAAAAAAD6/zEAFgAJAAAAAAD7/zIAFgALAAAAAAD7/zMAFgAIAAAAAAD8/zQAFgAJAAAAAAD8/zUAFgAIAAAAAAD9/zYAFgAIAAAAAAD9/zcAFgAKAAAAAAD+/zgAFgAJAAAAAAD+/zkAFgALAAAAAAD//zoAFgALAAAAAAD//zsAFgALAAAAAAAAADwAFgALAAAAAAAAAD0AFgAKAAAAAAD6/y8AFgAIAAAAAAD7/y4AFgAJAAAAAAD7/y0AFgALAAAAAAD8/ywAFgAJAAAAAAD8/ysAFgAIAAAAAAD9/yoAFgAJAAAAAAD9/ykAFgAJAAAAAAD+/ygAFgAJAAAAAAD+/ycAFgALAAAAAAD//yYAFgAIAAAAAAD//yUAFgALAAAAAAAAACQAFgAJAAAAAAAAACMAFgAKAAAAAAABACIAFgAKAAAAAAABACEAFgAJAAAAAAACACAAFgALAAAAAAD7/zEAFgAIAAAAAAD8/zAAFgALAAAAAAD8/y8AFgALAAAAAAD9/y4AFgAJAAAAAAD9/y0AFgAIAAAAAAD+/ywAFgAJAAAAAAD+/ysAFgAKAAAAAAD//yoAFgAKAAAAAAD//ykAFgAIAAAAAAAAACgAFgAKAAAAAAAAACcAFgAIAAAAAAABACYAFgAKAAAAAAABACUAFgAKAAAAAAACACQAFgAIAAAAAAACACMAFgAJAAAAAAADACIAFgAKAAAAAAACACEAFgAIAAAAAAABAD4AFgALAAAAAAABAD8AFgAJAAAAAAACAEAAFgAJAAAAAAACAEEAFgAJAAAAAAADAEIAFgAJAAAAAAADAEMAFgAKAAAAAAAEAEQAFgALAAAAAAAEAEUAFgAIAAAAAAAFAEYAFgAIAAAAAAAFAEcAFgAIAAAAAAAGAEgAFgAJAAAAAAAGAEkAFgAIAAAAAAAHAEoAFgALAAAAAAAHAEsAFgAJAAAAAAAIAEwAFgAKAAAAAAAIAE0AFgALAAAAAAAJAEwAFgALAAAAAAAJAEsAFgAJAAAAAAAKAEoAFgAKAAAAAAAKAEkAFgAJAAAAAAALAEgAFgAIAAAAAAALAEcAFgAKAAAAAAAMAEYAFgAKAAAAAAAMAEUAFgAIAAAAAAANAEQAFgALAAAAAAANAEMAFgAJAAAAAAAOAEIAFgAIAAAAAAAOAEEAFgAIAAAAAAAPAEAAFgALAAAAAAAPAD8AFgAKAAAAAAAQAD4AFgAKAAAAAAAQAD8AFgALAAAAAAARAEAAFgAKAAAAAAARAEEAFgAIAAAAAAASAEIAFgAKAAAAAAASAEEAFgAIAAAAAAATAEAAFgAJAAAAAAATAD8AFgAJAAAAAAAUAD4AFgALAAAAAAAUADoAFgAJAAAAAAATADkAFgAJAAAAAAATADgAFgALAAAAAAASADcAFgAJAAAAAAASADYAFgAKAAAAAAARADUAFgAIAAAAAAARADQAFgAJAAAAAAAQADMAFgAKAAAAAAAQADIAFgAKAAAAAAAPADEAFgAJAAAAAAAPADAAFgAIAAAAAAAOAC8AFgALAAAAAAAUADsAFgALAAAAAAAVADwAFgAIAAAAAAAUAD0AFgALAAAAAAAOADAAFgALAAAAAAANADEAFgAJAAAAAAANADIAFgAJAAAAAAAMADMAFgALAAAAAAAMADQAFgAKAAAAAAALADUAFgAIAAAAAAALADYAFgALAAAAAAAKADcAFgALAAAAAAAKADgAFgAIAAAAAAAMABcAFgAKAAAAAAAMABYAFgAKAAAAAAALABUAFgALAAAAAAALABQAFgAIAAAAAAAKABMAFgALAAAAAAAKABIAFgAIAAAAAAAJABEAFgAIAAAAAAANABgAFgAJAAAAAAANABkAFgAJAAAAAAAOABoAFgAJAAAAAAANABsAFgAKAAAAAAANABwAFgAKAAAAAAAMAB0AFgAIAAAAAAAMAB4AFgALAAAAAAALAB8AFgALAAAAAAALACAAFgAJAAAAAAAKACEAFgALAAAAAAAKACIAFgAIAAAAAAAJACMAFgAJAAAAAAAJACQAFgAKAAAAAAAIACUAFgAIAAAAAAAIACYAFgALAAAAAAAHACcAFgAKAAAAAAAHACgAFgAKAAAAAAAGACkAFgAKAAAAAAAGACoAFgALAAAAAAAFACsAFgALAAAAAAAFACwAFgAIAAAAAAAEAC0AFgALAAAAAAAEAC4AFgAKAAAAAAD8//n/FgAGAAAAAAD9//j/FgAEAAAAAAD9//f/FgACAAAAAAD+//b/FgACAAAAAAD+//X/FgAFAAAAAAD///T/FgAFAAAAAAD///P/FgAHAAAAAAAAAPL/FgAEAAAAAAD8/wgAFgAFAAAAAAD8/wkAFgAAAAAAAAA=")
 tile_set = ExtResource("9_atoaq")
-y_sort_origin = 1
+y_sort_origin = -9
 
 [node name="Edificio 2" type="TileMapLayer" parent="." unique_id=1458691190]
 visibility_layer = 3
@@ -164,61 +165,88 @@ metadata/_edit_use_anchors_ = true
 
 [node name="BasicPlayer" parent="." unique_id=1601830685 instance=ExtResource("14_diaje")]
 z_index = 1
+position = Vector2(36, -23)
 
 [node name="Object" parent="." unique_id=1723418791 instance=ExtResource("15_2ccxo")]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(-55, 23)
 
 [node name="Object2" parent="." unique_id=1205574659 instance=ExtResource("15_2ccxo")]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(548, 1002)
 
 [node name="Object3" parent="." unique_id=1317996670 instance=ExtResource("15_2ccxo")]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(-925, 628)
 
 [node name="Object4" parent="." unique_id=637027799 instance=ExtResource("15_2ccxo")]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(227, 342)
 
 [node name="Object6" parent="." unique_id=720453911 instance=ExtResource("15_2ccxo")]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(-147, 82)
 
 [node name="Object8" parent="." unique_id=25361229 instance=ExtResource("15_2ccxo")]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(501, 436)
 
 [node name="Object9" parent="." unique_id=2039423426 instance=ExtResource("15_2ccxo")]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(-159, -176)
 
 [node name="Object10" parent="." unique_id=1639174130 instance=ExtResource("15_2ccxo")]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(-847, 247)
 
 [node name="Object12" parent="." unique_id=1691364758 instance=ExtResource("15_2ccxo")]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(-372, 947)
 
 [node name="Bordes" type="Node2D" parent="." unique_id=164431180]
+z_index = 1
+y_sort_enabled = true
 
-[node name="BorderAlto" parent="Bordes" unique_id=2023302628 instance=ExtResource("16_x5psd")]
-position = Vector2(982, 407)
-scale = Vector2(0.83, 0.83)
+[node name="Bordes1erZona" type="Node2D" parent="Bordes" unique_id=1813870993]
 
-[node name="Border2doDesbloqueo" parent="Bordes" unique_id=981476880 instance=ExtResource("16_x5psd")]
-position = Vector2(811.00006, 607)
-rotation = 0.9599311
-scale = Vector2(0.65, 0.65)
-
-[node name="Border2doDesbloqueo2" parent="Bordes" unique_id=246061048 instance=ExtResource("16_x5psd")]
-position = Vector2(1515, 1045.9999)
-rotation = 0.9599311
-scale = Vector2(0.695, 0.695)
-
-[node name="Border1erDesbloqueo3" parent="Bordes" unique_id=1853857573 instance=ExtResource("16_x5psd")]
+[node name="Border1erDesbloqueo3" parent="Bordes/Bordes1erZona" unique_id=1853857573 instance=ExtResource("16_x5psd")]
 position = Vector2(-1243, 358)
-rotation = 0.9599311
+rotation = 0.95993114
 scale = Vector2(0.65, 0.65)
 
-[node name="Border1erDesbloqueo2" parent="Bordes" unique_id=2123090936 instance=ExtResource("16_x5psd")]
+[node name="Border1erDesbloqueo2" parent="Bordes/Bordes1erZona" unique_id=2123090936 instance=ExtResource("16_x5psd")]
 position = Vector2(-344, 511)
 rotation = 0.9599311
 scale = Vector2(0.85, 0.85)
 
+[node name="Bordes2daZona" type="Node2D" parent="Bordes" unique_id=315845976]
+
+[node name="BorderAlto" parent="Bordes/Bordes2daZona" unique_id=2023302628 instance=ExtResource("16_x5psd")]
+position = Vector2(982, 407)
+scale = Vector2(0.83, 0.83)
+
+[node name="Border2doDesbloqueo" parent="Bordes/Bordes2daZona" unique_id=981476880 instance=ExtResource("16_x5psd")]
+position = Vector2(811.00006, 607)
+rotation = 0.95993114
+scale = Vector2(0.65, 0.65)
+
+[node name="Border2doDesbloqueo2" parent="Bordes/Bordes2daZona" unique_id=246061048 instance=ExtResource("16_x5psd")]
+position = Vector2(1515, 1045.9999)
+rotation = 0.9599311
+scale = Vector2(0.695, 0.695)
+
 [node name="ObjetosEstaticos" type="Node2D" parent="." unique_id=59666315]
+z_index = 1
+y_sort_enabled = true
 
 [node name="Camion" parent="ObjetosEstaticos" unique_id=1117234417 instance=ExtResource("16_mrdxy")]
 position = Vector2(-1177, 504)
