@@ -12,6 +12,8 @@ var current_score:int
 var current_name: String
 var current_position: int
 func _ready() -> void:
+	if ScoresSaved.save_exists():
+		score_save = ScoresSaved.load_savegame()
 	SignalManager.gameOver.connect(gameOver)
 	if scoreboard_panel:
 		scoreboard_panel.visible = false
@@ -93,4 +95,5 @@ func score_save_file2() -> void:
 
 	print(score_save.scores)
 	print(score_save.names)
+	print(ScoresSaved.get_save_path())
 		

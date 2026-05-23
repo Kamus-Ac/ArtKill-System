@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://bakw3n2yw1iwi" path="res://Scenes/UI/Main_Menu/Fondin.jpeg" id="1_edu5r"]
 [ext_resource type="Script" uid="uid://cpsabsh7xq6ev" path="res://Scenes/ScoreScene/score_scene.gd" id="1_mpgc6"]
-[ext_resource type="Resource" uid="uid://b8l6fgqcpwywl" path="res://Scenes/ScoreScene/SaveFile.tres" id="2_oq1ef"]
 [ext_resource type="Shader" uid="uid://v3qjlx65x0b5" path="res://Scenes/ScoreScene/Blur.gdshader" id="2_y36p7"]
 [ext_resource type="Script" uid="uid://bt0hj7weg6qe3" path="res://Scenes/UI/Puntuacion_Final/BBCode_Matrix.gd" id="3_y36p7"]
 [ext_resource type="Script" uid="uid://2o45m0yrk8dm" path="res://Scenes/UI/Puntuacion_Final/BBCode_Ghost.gd" id="4_ohcb4"]
@@ -29,7 +28,6 @@ grow_vertical = 2
 script = ExtResource("1_mpgc6")
 Names = [NodePath("Panel/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer3/HBoxContainer4/NameContainer/Jugador1/RichTextLabel"), NodePath("Panel/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer3/HBoxContainer4/NameContainer/Jugador2/RichTextLabel"), NodePath("Panel/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer3/HBoxContainer4/NameContainer/Jugador3/RichTextLabel"), NodePath("Panel/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer3/HBoxContainer4/NameContainer/Jugador4/RichTextLabel"), NodePath("Panel/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer3/HBoxContainer4/NameContainer/Jugador5/RichTextLabel"), NodePath("Panel/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer3/HBoxContainer4/NameContainer/Jugador6/RichTextLabel"), NodePath("Panel/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer3/HBoxContainer4/NameContainer/Jugador7/RichTextLabel"), NodePath("Panel/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer3/HBoxContainer4/NameContainer/Jugador8/RichTextLabel")]
 Scores = [NodePath("Panel/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer3/ScoreContainer/VBoxContainer/Score1/RichTextLabel"), NodePath("Panel/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer3/ScoreContainer/VBoxContainer/Score2/RichTextLabel"), NodePath("Panel/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer3/ScoreContainer/VBoxContainer/Score3/RichTextLabel"), NodePath("Panel/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer3/ScoreContainer/VBoxContainer/Score4/RichTextLabel"), NodePath("Panel/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer3/ScoreContainer/VBoxContainer/Score5/RichTextLabel"), NodePath("Panel/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer3/ScoreContainer/VBoxContainer/Score6/RichTextLabel"), NodePath("Panel/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer3/ScoreContainer/VBoxContainer/Score7/RichTextLabel"), NodePath("Panel/VBoxContainer/VBoxContainer3/HBoxContainer/HBoxContainer3/ScoreContainer/VBoxContainer/Score8/RichTextLabel")]
-scoresaved = ExtResource("2_oq1ef")
 
 [node name="Panel" type="Panel" parent="." unique_id=503393630]
 layout_mode = 1

@@ -11,6 +11,8 @@ var view: bool = false
 
 
 func _ready() -> void:
+	if ScoresSaved.save_exists():
+		scoresaved = ScoresSaved.load_savegame()
 	load_scores()
 	fill()
 	print(scoresaved.scores)
