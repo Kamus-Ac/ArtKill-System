@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://dlr811wmx7dq4" path="res://Scenes/Audio/musica/musica-boss.ogg" id="6_wbur8"]
 [ext_resource type="AudioStream" uid="uid://1bt7lcrenmph" path="res://Scenes/Audio/Boss/lanzar.ogg" id="7_rimqy"]
 [ext_resource type="AudioStream" uid="uid://bwl07em078f24" path="res://Scenes/Audio/Boss/muerte.ogg" id="8_q64dy"]
+[ext_resource type="Texture2D" uid="uid://dh1mpqt4l7yp0" path="res://Scenes/Particles/dust.png" id="6_wbur8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o1nrd"]
 atlas = ExtResource("3_b1kuf")
@@ -236,3 +237,8 @@ volume_db = 5.0
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=1655761293]
 stream = ExtResource("8_q64dy")
 volume_db = 3.5
+[node name="Marker" type="Sprite2D" parent="." unique_id=1998977115]
+modulate = Color(1, 0, 0, 1)
+visibility_layer = 2
+scale = Vector2(8.8125, 8.8125)
+texture = ExtResource("6_wbur8")
