@@ -198,6 +198,8 @@ size = Vector2(121, 115)
 size = Vector2(121, 114)
 
 [node name="Boss" type="CharacterBody2D" unique_id=141464151 groups=["enemies"]]
+z_index = 1
+y_sort_enabled = true
 collision_layer = 2
 collision_mask = 85
 script = ExtResource("1_7x7wj")
