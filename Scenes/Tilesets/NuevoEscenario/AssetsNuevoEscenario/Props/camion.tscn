@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cvgm1pys7wrjw"]
+
+[ext_resource type="SpriteFrames" uid="uid://1q30tkn26ssb" path="res://Scenes/Tilesets/NuevoEscenario/AssetsNuevoEscenario/Camion.tres" id="1_8hmd1"]
+
+[node name="Camion" type="Node2D" unique_id=2023302628]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1081002942]
+sprite_frames = ExtResource("1_8hmd1")
+animation = &"CamionQuemado"
+frame_progress = 0.21686327
