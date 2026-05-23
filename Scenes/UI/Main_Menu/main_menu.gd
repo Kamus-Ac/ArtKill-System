@@ -2,7 +2,6 @@ extends Control
 
 # Referencias a tus botones dentro del VBoxContainer
 @onready var jugar: Button = $VBoxContainer2/JUGAR
-@onready var ajustes: Button = $VBoxContainer2/AJUSTES
 @onready var salir: Button = $VBoxContainer2/SALIR
 @onready var menu_music = $MenuMusic
 
