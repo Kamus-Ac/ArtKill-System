@@ -1,0 +1,53 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://1q30tkn26ssb"]
+
+[ext_resource type="Texture2D" uid="uid://cig7ncu366qgu" path="res://Scenes/Tilesets/NuevoEscenario/AssetsNuevoEscenario/CamionDante_.png" id="1_etrx3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41h81"]
+atlas = ExtResource("1_etrx3")
+region = Rect2(0, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llcyn"]
+atlas = ExtResource("1_etrx3")
+region = Rect2(128, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_raifk"]
+atlas = ExtResource("1_etrx3")
+region = Rect2(256, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xtko"]
+atlas = ExtResource("1_etrx3")
+region = Rect2(384, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_de3ch"]
+atlas = ExtResource("1_etrx3")
+region = Rect2(512, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_at44p"]
+atlas = ExtResource("1_etrx3")
+region = Rect2(640, 0, 128, 192)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41h81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llcyn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_raifk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xtko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_de3ch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_at44p")
+}],
+"loop": true,
+"name": &"CamionQuemado",
+"speed": 10.0
+}]
