@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bmr1g4fj71s5p" path="res://Scenes/UI/Puntuacion In-Game/Puntuacion In-Game.tscn" id="4_w4ad0"]
 [ext_resource type="PackedScene" uid="uid://bvqgi43nkhtrb" path="res://Scenes/Players/basic_player.tscn" id="7_614yd"]
 [ext_resource type="PackedScene" uid="uid://b2gft8tdpey3f" path="res://Scenes/Objects/object.tscn" id="7_ej2hx"]
+[ext_resource type="PackedScene" uid="uid://dv1uvtwehl8no" path="res://Scenes/UI/Puntuacion_Final/Game Over.tscn" id="7_q52rl"]
 [ext_resource type="Script" uid="uid://bt0hj7weg6qe3" path="res://Scenes/UI/Puntuacion_Final/BBCode_Matrix.gd" id="8_ls6f5"]
 [ext_resource type="Texture2D" uid="uid://b4e42bxbjn8kw" path="res://Scenes/UI/MarcoDeUlti.png" id="9_ankfj"]
 [ext_resource type="Script" uid="uid://2o45m0yrk8dm" path="res://Scenes/UI/Puntuacion_Final/BBCode_Ghost.gd" id="9_w4ad0"]
@@ -65,6 +66,8 @@ scale = Vector2(0.5, 0.5)
 [node name="PuntuacionInGame" parent="GameCamera/CanvasLayer2" unique_id=143045858 instance=ExtResource("4_w4ad0")]
 offset_top = -5.96
 offset_bottom = -5.960083
+
+[node name="GameOver_Panel" parent="GameCamera/CanvasLayer2" unique_id=1110839108 instance=ExtResource("7_q52rl")]
 
 [node name="EnemyManager" parent="." unique_id=1752903025 instance=ExtResource("3_614yd")]
 
