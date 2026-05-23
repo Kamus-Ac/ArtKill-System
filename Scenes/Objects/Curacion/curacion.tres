@@ -1,0 +1,53 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://dd2dtcwj77upk"]
+
+[ext_resource type="Texture2D" uid="uid://rsosjxjdsjmj" path="res://Scenes/Objects/Curacion/Comida.png" id="1_a86e6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xeler"]
+atlas = ExtResource("1_a86e6")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m13op"]
+atlas = ExtResource("1_a86e6")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84t7k"]
+atlas = ExtResource("1_a86e6")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3bb8"]
+atlas = ExtResource("1_a86e6")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ke3dp"]
+atlas = ExtResource("1_a86e6")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rs0t"]
+atlas = ExtResource("1_a86e6")
+region = Rect2(320, 0, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xeler")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m13op")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84t7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3bb8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ke3dp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rs0t")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]

@@ -25,28 +25,29 @@ func start(p: CharacterBody2D):
 
 	dash_direction = Vector2(dir, 0)
 
+	GameManager.ult_tries+=1
+
 
 func ulti_move(delta: float) -> void:
 	if player == null or not isActive:
 		return
 
+
 	elapsed += delta
 
 	var perpendicular = dash_direction.orthogonal()
 
-	# 🔹 avance acumulado
 	var forward = dash_direction * dash_speed * elapsed
 
-	# 🔹 zigzag 
 	var zigzag := Vector2.ZERO
 
 	if elapsed > zigzag_start_time:
 		var t = elapsed - zigzag_start_time
 		zigzag = perpendicular * sin(t * waves * PI * 2) * amplitude
 
-
 	player.global_position = start_position + forward + zigzag
 
 	if elapsed >= dash_time:
 		isActive = false
 		player.velocity = Vector2.ZERO
+		player._finish_ulti_recovery()

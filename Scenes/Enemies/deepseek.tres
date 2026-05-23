@@ -1,0 +1,59 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://2u4su22auv56"]
+
+[ext_resource type="Texture2D" uid="uid://b62fv7xjpr681" path="res://Scenes/Enemies/skins/IA_DeepSeek_Iddle.png" id="1_16sfr"]
+[ext_resource type="Texture2D" uid="uid://7n0ntrjx0r4d" path="res://Scenes/Enemies/Deaths/IA_DeepSeek_Death.png" id="1_t40gp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0h5c"]
+atlas = ExtResource("1_t40gp")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwrt3"]
+atlas = ExtResource("1_t40gp")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqwtu"]
+atlas = ExtResource("1_t40gp")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfqjt"]
+atlas = ExtResource("1_t40gp")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t40gp"]
+atlas = ExtResource("1_16sfr")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wm78h"]
+atlas = ExtResource("1_16sfr")
+region = Rect2(64, 64, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0h5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwrt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqwtu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfqjt")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t40gp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wm78h")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dijqrjxnpuk6x"]
+
+[ext_resource type="Script" uid="uid://dnpw74f70s1n5" path="res://Scenes/assets/loadscene/scene/load_scene.gd" id="1_23i82"]
+[ext_resource type="SpriteFrames" uid="uid://dpspmqchocfmi" path="res://Scenes/assets/loadscene/allLoadImages.tres" id="1_e3b4f"]
+
+[node name="Camera2D" type="Camera2D" unique_id=489505668]
+zoom = Vector2(0.97, 1)
+script = ExtResource("1_23i82")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=116693450]
+position = Vector2(-0.04997635, 2.4999876)
+scale = Vector2(1.0001831, 1.0046296)
+sprite_frames = ExtResource("1_e3b4f")
+animation = &"loadscene2"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

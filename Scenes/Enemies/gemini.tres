@@ -1,0 +1,66 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://5axj7l2xgk6j"]
+
+[ext_resource type="Texture2D" uid="uid://my8kdbrh07ys" path="res://Scenes/Enemies/skins/Gemini_IA.png" id="1_a0f1l"]
+[ext_resource type="Texture2D" uid="uid://cvk43qxhumdwk" path="res://Scenes/Enemies/Deaths/Gemini_Death.png" id="1_k6gte"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iaukb"]
+atlas = ExtResource("1_k6gte")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxcnr"]
+atlas = ExtResource("1_k6gte")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xprm"]
+atlas = ExtResource("1_k6gte")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mitt7"]
+atlas = ExtResource("1_k6gte")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5weu6"]
+atlas = ExtResource("1_k6gte")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0f1l"]
+atlas = ExtResource("1_a0f1l")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfniv"]
+atlas = ExtResource("1_a0f1l")
+region = Rect2(64, 64, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iaukb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxcnr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xprm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mitt7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5weu6")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0f1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfniv")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]

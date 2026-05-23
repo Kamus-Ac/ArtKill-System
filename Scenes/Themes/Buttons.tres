@@ -1,0 +1,19 @@
+[gd_resource type="Theme" format=3 uid="uid://x3gs0n3f7en"]
+
+[ext_resource type="FontFile" uid="uid://cyiarpmaku8le" path="res://Scenes/UI/Vermin Vibes 1989.ttf" id="1_dtk0t"]
+[ext_resource type="Texture2D" uid="uid://1lmu0evxnvl6" path="res://Scenes/UI/Pause/Boton rosa.png" id="2_hkkj7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_anyku"]
+texture = ExtResource("2_hkkj7")
+texture_margin_left = 5.0
+texture_margin_top = 10.0
+texture_margin_right = 4.0
+texture_margin_bottom = 30.0
+
+[resource]
+Button/font_sizes/font_size = 25
+Button/fonts/font = ExtResource("1_dtk0t")
+Button/styles/normal = SubResource("StyleBoxTexture_anyku")
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 35
+Label/fonts/font = ExtResource("1_dtk0t")

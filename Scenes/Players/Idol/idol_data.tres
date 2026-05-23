@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_3v3uf")
 id = "Idol"
-character_name = "Dani"
+character_name = "Idol"
 max_speed = 100
 max_health = 5
 sprite = ExtResource("2_bnody")

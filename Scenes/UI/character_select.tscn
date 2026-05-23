@@ -1,14 +1,26 @@
 [gd_scene format=3 uid="uid://536btmvjhqi5"]
 
-[ext_resource type="Texture2D" uid="uid://b345jca3bjnks" path="res://Scenes/UI/gordo.png" id="2_d3lco"]
 [ext_resource type="Texture2D" uid="uid://gn4p6hbfygrd" path="res://Scenes/UI/fondo.png" id="2_dieb8"]
 [ext_resource type="Script" uid="uid://fhn4v6qc8lrn" path="res://Scenes/UI/character_select.gd" id="2_whe0c"]
 [ext_resource type="Script" uid="uid://c127btfvcob36" path="res://Scenes/UI/character_card.gd" id="3_dieb8"]
 [ext_resource type="Resource" uid="uid://j7kfry2ifdx1" path="res://Scenes/Players/Gordo/gordo_data.tres" id="4_apj1b"]
+[ext_resource type="Texture2D" uid="uid://odbgxs2eg5ub" path="res://Scenes/UI/pixil-frame-0_13.png" id="5_jjfpe"]
 [ext_resource type="Resource" uid="uid://godl0fknqbqb" path="res://Scenes/Players/Viejita/viejita_data.tres" id="6_dieb8"]
-[ext_resource type="Resource" uid="uid://cpn0itqsdlwgo" path="res://Scenes/Players/Idol/idol_data.tres" id="6_pjomi"]
+[ext_resource type="PackedScene" uid="uid://dnv3x3k1xxw5o" path="res://Scenes/Players/Idol/Idol.tscn" id="7_qsthy"]
+[ext_resource type="Script" uid="uid://cykrf8nfa65dj" path="res://Scenes/Players/characters_data.gd" id="8_jjfpe"]
+[ext_resource type="SpriteFrames" uid="uid://oygggrhhee65" path="res://Scenes/Players/Idol/Animaciones/idol.tres" id="9_nefin"]
 
-[node name="CharacterSelect" type="Control" unique_id=1705073032]
+[sub_resource type="Resource" id="Resource_yn15k"]
+script = ExtResource("8_jjfpe")
+id = "Idol"
+character_name = "Dani"
+max_speed = 100
+max_health = 5
+sprite = ExtResource("9_nefin")
+character_scene = ExtResource("7_qsthy")
+metadata/_custom_type_script = "uid://cykrf8nfa65dj"
+
+[node name="CharacterSelect" type="Control" unique_id=1122510350]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,7 +30,7 @@ grow_vertical = 2
 scale = Vector2(0.9924271, 0.9560501)
 script = ExtResource("2_whe0c")
 
-[node name="Background" type="TextureRect" parent="." unique_id=1152713745]
+[node name="Background" type="TextureRect" parent="." unique_id=1976587577]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,7 +44,7 @@ grow_vertical = 2
 scale = Vector2(1.1, 1.1)
 texture = ExtResource("2_dieb8")
 
-[node name="MainPanel" type="PanelContainer" parent="." unique_id=186075540]
+[node name="MainPanel" type="PanelContainer" parent="." unique_id=401167135]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -46,106 +58,68 @@ offset_bottom = 192.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBox" type="VBoxContainer" parent="MainPanel" unique_id=659780431]
+[node name="VBox" type="VBoxContainer" parent="MainPanel" unique_id=2103548260]
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Label" type="Label" parent="MainPanel/VBox" unique_id=1729442611]
+[node name="Label" type="Label" parent="MainPanel/VBox" unique_id=1589440846]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
 text = "Select your Character"
 
-[node name="CharactersBox" type="HBoxContainer" parent="MainPanel/VBox" unique_id=400955553]
+[node name="CharactersBox" type="HBoxContainer" parent="MainPanel/VBox" unique_id=1213813691]
 layout_mode = 2
 theme_override_constants/separation = 24
 alignment = 1
 
-[node name="Gus" type="PanelContainer" parent="MainPanel/VBox/CharactersBox" unique_id=972512210]
+[node name="Gus" type="PanelContainer" parent="MainPanel/VBox/CharactersBox" unique_id=1867797090]
 custom_minimum_size = Vector2(200, 260)
 layout_mode = 2
 script = ExtResource("3_dieb8")
 character_data = ExtResource("4_apj1b")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/VBox/CharactersBox/Gus" unique_id=473181897]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/VBox/CharactersBox/Gus" unique_id=363558209]
 layout_mode = 2
 
-[node name="Shadow" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Gus/VBoxContainer" unique_id=2103382436]
-visible = false
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-texture = ExtResource("2_d3lco")
-stretch_mode = 5
+[node name="Sprite" type="Sprite2D" parent="MainPanel/VBox/CharactersBox/Gus/VBoxContainer" unique_id=1743711263]
+position = Vector2(98.21531, 105.071396)
+scale = Vector2(0.09477265, 0.1)
+texture = ExtResource("5_jjfpe")
 
-[node name="Sprite" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Gus/VBoxContainer" unique_id=1695169049]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-stretch_mode = 5
-
-[node name="Name" type="Label" parent="MainPanel/VBox/CharactersBox/Gus/VBoxContainer" unique_id=601038603]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="Tomy" type="PanelContainer" parent="MainPanel/VBox/CharactersBox" unique_id=1378839771]
+[node name="Tomy" type="PanelContainer" parent="MainPanel/VBox/CharactersBox" unique_id=1068591855]
 custom_minimum_size = Vector2(180, 260)
 layout_mode = 2
 script = ExtResource("3_dieb8")
 character_data = ExtResource("6_dieb8")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/VBox/CharactersBox/Tomy" unique_id=1705709704]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/VBox/CharactersBox/Tomy" unique_id=1668778493]
 layout_mode = 2
 
-[node name="Shadow" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Tomy/VBoxContainer" unique_id=1271761651]
-visible = false
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-texture = ExtResource("2_d3lco")
-stretch_mode = 4
+[node name="Sprite" type="Sprite2D" parent="MainPanel/VBox/CharactersBox/Tomy/VBoxContainer" unique_id=1163172798]
+position = Vector2(89.23163, 106.01228)
+scale = Vector2(0.09477265, 0.1)
+texture = ExtResource("5_jjfpe")
 
-[node name="Sprite" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Tomy/VBoxContainer" unique_id=1961025086]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-stretch_mode = 5
-
-[node name="Name" type="Label" parent="MainPanel/VBox/CharactersBox/Tomy/VBoxContainer" unique_id=465427631]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="Dani" type="PanelContainer" parent="MainPanel/VBox/CharactersBox" unique_id=997337647]
-custom_minimum_size = Vector2(180, 260)
+[node name="Dani" type="PanelContainer" parent="MainPanel/VBox/CharactersBox" unique_id=1722818179]
+custom_minimum_size = Vector2(200, 260)
 layout_mode = 2
 script = ExtResource("3_dieb8")
-character_data = ExtResource("6_pjomi")
+character_data = SubResource("Resource_yn15k")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/VBox/CharactersBox/Dani" unique_id=1013245526]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/VBox/CharactersBox/Dani" unique_id=694747508]
 layout_mode = 2
 
-[node name="Shadow" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Dani/VBoxContainer" unique_id=169484497]
-visible = false
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-texture = ExtResource("2_d3lco")
-stretch_mode = 4
+[node name="Sprite" type="Sprite2D" parent="MainPanel/VBox/CharactersBox/Dani/VBoxContainer" unique_id=871286759]
+position = Vector2(89.23163, 106.01228)
+scale = Vector2(0.09477265, 0.1)
+texture = ExtResource("5_jjfpe")
 
-[node name="Sprite" type="TextureRect" parent="MainPanel/VBox/CharactersBox/Dani/VBoxContainer" unique_id=461314432]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-stretch_mode = 5
-
-[node name="Name" type="Label" parent="MainPanel/VBox/CharactersBox/Dani/VBoxContainer" unique_id=1746072891]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="Confirm" type="Button" parent="MainPanel/VBox" unique_id=1376356946]
+[node name="Confirm" type="Button" parent="MainPanel/VBox" unique_id=1487325974]
 custom_minimum_size = Vector2(200, 48)
 layout_mode = 2
 disabled = true
 text = "Confirm"
-
-[node name="MainPanel_VBox_CharactersBox_Idol_VBoxContainer#Sprite" type="TextureRect" parent="." unique_id=1471827751]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 0
-stretch_mode = 5
 
 [connection signal="pressed" from="MainPanel/VBox/Confirm" to="." method="_on_confirm_pressed"]
