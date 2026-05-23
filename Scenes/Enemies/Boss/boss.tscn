@@ -5,6 +5,9 @@
 [ext_resource type="Script" uid="uid://ysn1i3gwaakr" path="res://Scenes/Enemies/hurtbox_enemy.gd" id="2_gi0e2"]
 [ext_resource type="Texture2D" uid="uid://cvhi11jb0ounh" path="res://Scenes/Enemies/Boss/Prototipo_Romulus-Sheet.png" id="3_b1kuf"]
 [ext_resource type="Texture2D" uid="uid://b5135k6fv8hed" path="res://Scenes/Enemies/Boss/Muerte_Romulus-Sheet.png" id="4_o1nrd"]
+[ext_resource type="AudioStream" uid="uid://dlr811wmx7dq4" path="res://Scenes/Audio/musica/musica-boss.ogg" id="6_wbur8"]
+[ext_resource type="AudioStream" uid="uid://1bt7lcrenmph" path="res://Scenes/Audio/Boss/lanzar.ogg" id="7_rimqy"]
+[ext_resource type="AudioStream" uid="uid://bwl07em078f24" path="res://Scenes/Audio/Boss/muerte.ogg" id="8_q64dy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o1nrd"]
 atlas = ExtResource("3_b1kuf")
@@ -220,3 +223,16 @@ shape = SubResource("RectangleShape2D_b1kuf")
 
 [node name="ShootTimer" type="Timer" parent="." unique_id=1456680718]
 autostart = true
+
+[node name="BossMusic" type="AudioStreamPlayer" parent="." unique_id=1139323789]
+stream = ExtResource("6_wbur8")
+volume_db = -10.0
+parameters/looping = true
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="." unique_id=122059531]
+stream = ExtResource("7_rimqy")
+volume_db = 5.0
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=1655761293]
+stream = ExtResource("8_q64dy")
+volume_db = 3.5
