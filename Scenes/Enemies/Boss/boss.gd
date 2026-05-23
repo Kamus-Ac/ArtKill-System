@@ -9,6 +9,9 @@ const MAX_SPEED := 60.0
 @onready var shoot_timer : Timer = $ShootTimer
 @onready var anim = $AnimatedSprite2D
 @onready var player = get_tree().get_first_node_in_group("player")
+@onready var boss_music = $BossMusic
+@onready var attack_sound = $AttackSound
+@onready var death_sound = $DeathSound
 
 var health: int
 var is_dead: bool = false
@@ -25,6 +28,7 @@ func _ready() -> void:
 	shoot_timer.wait_time = 10.0
 	shoot_timer.timeout.connect(_on_shoot_timer_timeout)
 	anim.play("Idle")
+	boss_music.play()
 	var player  = get_tree().get_first_node_in_group("player")
 	#if player:
 		#self.died.connect(player._on_enemy_killed)
@@ -53,6 +57,8 @@ func shoot_projectile():
 	if boss_projectile_scene == null:
 		push_warning("Boss: boss_projectile_scene no asignada!")
 		return
+		
+	attack_sound.play()
 	
 	var projectile = boss_projectile_scene.instantiate()
 	var random_head = enemy_heads.pick_random()
@@ -77,9 +83,12 @@ func die(hit):
 			velocity = Vector2.ZERO
 			set_physics_process(false)
 			anim.play("death")
+			death_sound.play()
 			await anim.animation_finished
 			emit_signal("died")
 			SignalManager.boss_defeated.emit()
+			boss_music.stop()
+
 			
 func flash_damage():
 	modulate = Color.RED
