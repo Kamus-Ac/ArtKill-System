@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dxr5atw4dxwln" path="res://Scenes/UI/Main_Menu/Mancha pintura rosa.png" id="12_fye2e"]
 [ext_resource type="Texture2D" uid="uid://dvt6iv3icyp8f" path="res://Scenes/UI/Main_Menu/Mancha pintura amarilla.png" id="13_mf5kc"]
 [ext_resource type="Script" uid="uid://ds3cs0fq20qtp" path="res://Scenes/UI/Main_Menu/naruto.gd" id="14_2lvlm"]
+[ext_resource type="Theme" uid="uid://dwn5wpsdebd30" path="res://Scenes/Themes/Main_Menu.tres" id="20_ac8cp"]
 [ext_resource type="FontFile" uid="uid://cyiarpmaku8le" path="res://Scenes/UI/Vermin Vibes 1989.ttf" id="23_tew2s"]
 
 [node name="Main_Menu" type="Control" unique_id=276557989]
@@ -87,18 +88,17 @@ texture = ExtResource("2_2fw6m")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=854929412]
 layout_mode = 0
-offset_left = 699.99994
-offset_top = 435.0
-offset_right = 862.99994
-offset_bottom = 548.0
+offset_left = 710.0
+offset_top = 428.0
+offset_right = 873.0
+offset_bottom = 541.0
 rotation = -0.061086524
 scale = Vector2(2.4, 2.4)
 
 [node name="JUGAR" type="Button" parent="VBoxContainer2" unique_id=289230448]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../AJUSTES")
-theme_override_fonts/font = ExtResource("23_tew2s")
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("20_ac8cp")
 text = "JUGAR"
 flat = true
 
@@ -106,16 +106,14 @@ flat = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../JUGAR")
 focus_neighbor_bottom = NodePath("../SALIR")
-theme_override_fonts/font = ExtResource("23_tew2s")
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("20_ac8cp")
 text = "AJUSTES"
 flat = true
 
 [node name="SALIR" type="Button" parent="VBoxContainer2" unique_id=576033780]
 layout_mode = 2
 focus_neighbor_top = NodePath("../AJUSTES")
-theme_override_fonts/font = ExtResource("23_tew2s")
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("20_ac8cp")
 text = "SALIR"
 flat = true
 
