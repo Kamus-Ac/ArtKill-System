@@ -18,7 +18,7 @@ config/name="ArtKillSystem"
 run/main_scene="uid://daqttgfpr6wj2"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 run/max_fps=60
-config/icon="res://icon.svg"
+config/icon="uid://hmoud62jv4xx"
 
 [autoload]
 

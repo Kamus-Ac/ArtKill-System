@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bxtdchmmnixwa" path="res://Scenes/UI/Character_Select/Loli saltandi .png" id="13_r7cco"]
 [ext_resource type="Texture2D" uid="uid://cfp2huydoyfiv" path="res://Scenes/UI/Character_Select/Boton volver clicked.png" id="14_i7jg1"]
 [ext_resource type="Texture2D" uid="uid://dx06208l5wofi" path="res://Scenes/UI/Character_Select/Boton volver selected.png" id="15_8r8pr"]
+[ext_resource type="AudioStream" uid="uid://di3mfjfsj8cdu" path="res://Scenes/Audio/effects/impacto.ogg" id="20_8r8pr"]
 [ext_resource type="FontFile" uid="uid://cyiarpmaku8le" path="res://Scenes/UI/Vermin Vibes 1989.ttf" id="20_mxdfm"]
 
 [sub_resource type="Resource" id="Resource_yn15k"]
@@ -173,6 +174,10 @@ theme_override_font_sizes/font_size = 70
 text = "SELECCIONA TU 
 ARTISTA"
 horizontal_alignment = 1
+
+[node name="CharacterMusic" type="AudioStreamPlayer" parent="." unique_id=939323884]
+stream = ExtResource("20_8r8pr")
+autoplay = true
 
 [connection signal="pressed" from="MainPanel/VBox/HBoxContainer/CONFIRMAR" to="." method="_on_confirmar_pressed"]
 [connection signal="pressed" from="MainPanel/VBox/HBoxContainer/VOLVER" to="." method="_on_volver_pressed"]
