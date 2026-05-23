@@ -10,6 +10,7 @@ const EXPLOSION_DAMAGE := 1
 @onready var life_timer: Timer = $LifeTimer
 @onready var proyectil: Sprite2D = $Sprite2D
 @onready var explosion_anim: AnimatedSprite2D = $ExplosionAnim
+@onready var explosion_sound = $ExplosionSound
 var is_exploded: bool = false
 
 func _ready():
@@ -47,6 +48,7 @@ func explode():
 	if is_exploded:
 		return
 	is_exploded = true
+	explosion_sound.play()
 	visible = true
 	set_physics_process(false)
 	#verificar si el jugador está dentro del radio de explosión y aplicar daño
@@ -65,6 +67,7 @@ func explode():
 	explosion_anim.visible = true
 	explosion_anim.play("explode")
 	await explosion_anim.animation_finished
+	await explosion_sound.finished
 	queue_free()
 	
 func set_projectile_texture(texture):
