@@ -2,12 +2,14 @@ extends Node2D
 
 var i = 0
 
+
 @onready var texture_progress_bar: TextureProgressBar = $CanvasLayer/MarcodeVida/TextureProgressBar
 @onready var label_score: RichTextLabel = $CanvasLayer/Score
 @onready var label_combo: RichTextLabel = $CanvasLayer/Combo
 @onready var first_wall: StaticBody2D = $NorthWall
 @onready var mini_map: TextureRect = $CanvasLayer/MiniMap
 @onready var pause_menu: Control = $GameCamera/CanvasLayer2/pause_menu
+@onready var GameOver_Panel = $"."
 
 @export var point1: Vector2 = Vector2(-550,-150)
 @export var point2: Vector2 = Vector2(-30,115)
@@ -79,7 +81,9 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-
+	
+	
+	
 	ult_bar()
 
 	if Input.is_action_just_pressed("Pausa"):
@@ -238,7 +242,7 @@ func reset_gamedata():
 	GameManager.timeToUlt=0
 	GameManager.current_wave=1
 	GameManager.score=0
-	GameManager.playtime=0
+	GameManager.playtime= 0.0
 	GameManager.ult_tries=0
 
 func unlock_zones(zone:int):
@@ -268,4 +272,8 @@ func unlock_zones(zone:int):
 				boss.global_position = player.global_position + Vector2(250,0)
 			else:
 				boss.global_position = Vector2(500,300)
+			
+			
+			
+			
 			

@@ -1,27 +1,20 @@
 [gd_scene format=3 uid="uid://dv1uvtwehl8no"]
 
 [ext_resource type="Script" uid="uid://bkcifxlduu5b6" path="res://Scenes/UI/Puntuacion_Final/game_over.gd" id="1_unhhn"]
+[ext_resource type="Resource" uid="uid://b8l6fgqcpwywl" path="res://Scenes/ScoreScene/SaveFile.tres" id="2_egf57"]
+[ext_resource type="Texture2D" uid="uid://bl2u2ik7edflv" path="res://Scenes/UI/Puntuacion In-Game/score.png" id="3_jymyg"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7caah"]
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 3
-
-[node name="GameOver" type="Control" unique_id=1110839108]
+[node name="GameOver_Panel" type="Control" unique_id=1110839108]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_top = NodePath("ColorRect/Scoreboard")
+focus_neighbor_right = NodePath("ColorRect/Menu_Principal")
 script = ExtResource("1_unhhn")
+score_save = ExtResource("2_egf57")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1813385147]
 layout_mode = 1
@@ -32,106 +25,178 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.39215687)
 
-[node name="PanelContainer" type="PanelContainer" parent="ColorRect" unique_id=108424379]
+[node name="TextureRect" type="TextureRect" parent="ColorRect" unique_id=235640659]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -244.0
-offset_top = -211.0
-offset_right = 244.0
-offset_bottom = 211.0
+offset_left = -307.0
+offset_top = -312.0
+offset_right = 307.0
+offset_bottom = 312.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_7caah")
+mouse_filter = 2
+texture = ExtResource("3_jymyg")
 
-[node name="MarginContainer" type="MarginContainer" parent="ColorRect/PanelContainer" unique_id=1732259348]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/PanelContainer/MarginContainer" unique_id=1825406605]
-layout_mode = 2
-
-[node name="Label" type="RichTextLabel" parent="ColorRect/PanelContainer/MarginContainer/VBoxContainer" unique_id=1542244358]
-custom_minimum_size = Vector2(100, 90)
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 60
-bbcode_enabled = true
-text = "[center][wave]Fin del Juego[/wave][/center]"
-horizontal_alignment = 1
-
-[node name="Button" type="Button" parent="ColorRect" unique_id=2055523254]
+[node name="Reintentar" type="Button" parent="ColorRect" unique_id=2055523254]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.49791664
-anchor_top = 0.60833335
-anchor_right = 0.5052083
-anchor_bottom = 0.60833335
+anchor_left = 0.40833333
+anchor_top = 0.72314817
+anchor_right = 0.453125
+anchor_bottom = 0.74259263
 offset_left = -82.0
 offset_top = -20.0
 offset_right = 82.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_top = NodePath("../Scoreboard")
+focus_neighbor_right = NodePath("../Menu_Principal")
+theme_override_font_sizes/font_size = 32
 text = "Reintentar"
 metadata/_edit_use_anchors_ = true
 
-[node name="Button2" type="Button" parent="ColorRect" unique_id=1282098222]
+[node name="Menu_Principal" type="Button" parent="ColorRect" unique_id=1282098222]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.65800005
-anchor_right = 0.5
-anchor_bottom = 0.65800005
+anchor_left = 0.55364585
+anchor_top = 0.7246667
+anchor_right = 0.59166664
+anchor_bottom = 0.7431853
 offset_left = -85.0
 offset_top = -20.640076
 offset_right = 95.0
 offset_bottom = 20.359924
-text = "Salir al Menu Principal"
+focus_neighbor_left = NodePath("../Reintentar")
+focus_neighbor_top = NodePath("../Nombre")
+theme_override_font_sizes/font_size = 24
+text = " Menu Principal"
 metadata/_edit_use_anchors_ = true
 
-[node name="Label2" type="Label" parent="ColorRect" unique_id=95161957]
+[node name="Puntuacion final" type="Label" parent="ColorRect" unique_id=2098254270]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.40100002
+anchor_top = 0.31800002
+anchor_right = 0.40100002
+anchor_bottom = 0.31800002
+offset_left = -78.920044
+offset_top = -23.440033
+offset_right = 180.07996
+offset_bottom = 21.559967
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Puntuacion Final"
+
+[node name="Puntuacion_final_conta" type="Label" parent="ColorRect/Puntuacion final" unique_id=92586164]
 layout_mode = 0
-offset_left = 1028.0
-offset_top = 444.0
-offset_right = 1080.0
-offset_bottom = 467.0
+offset_left = 338.0
+offset_top = -5.0
+offset_right = 441.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
 text = "0"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="ColorRect" unique_id=2098254270]
+[node name="Tiempo Sobrevivido" type="Label" parent="ColorRect" unique_id=2112278789]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.44200003
-anchor_top = 0.42200002
-anchor_right = 0.44200003
-anchor_bottom = 0.42200002
-offset_left = -64.640076
-offset_top = -12.76001
-offset_right = 65.359924
-offset_bottom = 12.23999
-grow_horizontal = 2
-grow_vertical = 2
-text = "Puntuacion Final"
+anchor_left = 0.36600003
+anchor_top = 0.39100003
+anchor_right = 0.36600003
+anchor_bottom = 0.39100003
+offset_left = -6.7200317
+offset_top = -23.28003
+offset_right = 108.27997
+offset_bottom = 21.71997
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Tiempo Sobrevivido"
 
-[node name="Label4" type="Label" parent="ColorRect" unique_id=2112278789]
-layout_mode = 0
-offset_left = 787.0
-offset_top = 484.0
-offset_right = 845.0
-offset_bottom = 507.0
-text = "Tiempo"
+[node name="Tiempo_Sobrevivido_cont" type="Label" parent="ColorRect/Tiempo Sobrevivido" unique_id=95161957]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.263
+anchor_top = 0.56700003
+anchor_right = 1.263
+anchor_bottom = 0.56700003
+offset_left = -25.951996
+offset_top = -22.515001
+offset_right = 26.048004
+offset_bottom = 22.484999
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
 
-[node name="Label5" type="Label" parent="ColorRect" unique_id=2066583167]
-layout_mode = 0
-offset_left = 790.0
-offset_top = 524.0
-offset_right = 972.0
-offset_bottom = 573.0
+[node name="Ultis Usadas" type="Label" parent="ColorRect" unique_id=2066583167]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.42700002
+anchor_top = 0.48400003
+anchor_right = 0.42700002
+anchor_bottom = 0.48400003
+offset_left = -130.84003
+offset_top = -47.72003
+offset_right = 232.15997
+offset_bottom = 45.27997
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
 text = "Habilidades Definitivas 
 Usadas"
+
+[node name="Ultis_Usadas_cont" type="Label" parent="ColorRect/Ultis Usadas" unique_id=2025736979]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.4440001
+anchor_top = 0.54300004
+anchor_right = 1.4440001
+anchor_bottom = 0.54300004
+offset_left = -157.17206
+offset_top = -35.499004
+offset_right = -101.17206
+offset_bottom = 9.500996
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+
+[node name="Scoreboard" type="Button" parent="ColorRect" unique_id=956010164]
+layout_mode = 0
+offset_left = 707.0
+offset_top = 654.0
+offset_right = 959.0
+offset_bottom = 709.0
+focus_neighbor_right = NodePath("../Nombre")
+focus_neighbor_bottom = NodePath("../Reintentar")
+theme_override_font_sizes/font_size = 24
+text = "ScoreBoard"
+
+[node name="Nombre" type="LineEdit" parent="ColorRect" unique_id=322116999]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_left = 977.0
+offset_top = 651.0
+offset_right = 1229.0
+offset_bottom = 711.0
+size_flags_horizontal = 4
+size_flags_vertical = 10
+size_flags_stretch_ratio = 0.0
+focus_neighbor_left = NodePath("../Scoreboard")
+focus_neighbor_bottom = NodePath("../Menu_Principal")
+theme_override_font_sizes/font_size = 32
+text = "AAA"
+placeholder_text = "AAA"
+alignment = 1
+max_length = 3
+
+[connection signal="pressed" from="ColorRect/Reintentar" to="." method="_on_reintentar_pressed"]
+[connection signal="pressed" from="ColorRect/Menu_Principal" to="." method="_on_menu_principal_pressed"]
+[connection signal="pressed" from="ColorRect/Scoreboard" to="." method="_on_scoreboard_pressed"]
