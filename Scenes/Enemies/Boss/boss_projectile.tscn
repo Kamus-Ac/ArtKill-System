@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b1f4sb0x51o66" path="res://Scenes/Enemies/Boss/boss_projectile.gd" id="1_jlrcw"]
 [ext_resource type="Texture2D" uid="uid://cnjr5ugg3qdr2" path="res://Scenes/Enemies/Boss/Explosion_de_jeta.png" id="2_ebybx"]
+[ext_resource type="AudioStream" uid="uid://bwiyo1qhorljc" path="res://Scenes/Audio/Boss/explosion.ogg" id="3_0toso"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0toso"]
 atlas = ExtResource("2_ebybx")
@@ -64,3 +65,7 @@ script = ExtResource("1_jlrcw")
 visible = false
 sprite_frames = SubResource("SpriteFrames_dffu3")
 animation = &"explode"
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="." unique_id=1217715059]
+stream = ExtResource("3_0toso")
+volume_db = 8.5
