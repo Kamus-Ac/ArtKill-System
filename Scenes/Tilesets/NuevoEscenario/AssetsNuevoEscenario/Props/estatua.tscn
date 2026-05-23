@@ -17,3 +17,7 @@ collision_mask = 7
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=277854416]
 position = Vector2(-1, 21)
 shape = SubResource("CircleShape2D_3ch03")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=1589127939]
+radius = 10.0
+vertices = PackedVector2Array(-5, -22, -42, 9, -24, 55, 17, 58, 42, 23, 27, -12)

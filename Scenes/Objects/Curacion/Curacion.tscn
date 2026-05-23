@@ -8,6 +8,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_fl3hw"]
 
 [node name="Curacion" type="Area2D" unique_id=346635515 groups=["curaciones", "objects"]]
+z_index = 1
 y_sort_enabled = true
 scale = Vector2(0.7, 0.7)
 script = ExtResource("1_qlr0x")
