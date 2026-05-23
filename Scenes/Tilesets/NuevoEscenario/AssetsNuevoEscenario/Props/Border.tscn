@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://bxhrqlkude433"]
+
+[ext_resource type="SpriteFrames" uid="uid://d1xk4tanq2iug" path="res://Scenes/Tilesets/NuevoEscenario/AssetsNuevoEscenario/Border.tres" id="1_auwu5"]
+[ext_resource type="PackedScene" uid="uid://by2o64bro0sgc" path="res://Scenes/assets/tiles/objective_point.tscn" id="2_m7326"]
+
+[node name="Border" type="Node2D" unique_id=2023302628]
+
+[node name="ObjectivePoint" parent="." unique_id=1048271313 instance=ExtResource("2_m7326")]
+visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1081002942]
+sprite_frames = ExtResource("1_auwu5")
+animation = &"QuitarBorde"
+frame_progress = 0.9393214
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=17484094]
+position = Vector2(32, -16)
+sprite_frames = ExtResource("1_auwu5")
+animation = &"QuitarBorde"
+frame_progress = 0.7363456
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="." unique_id=55994874]
+position = Vector2(64, -32)
+sprite_frames = ExtResource("1_auwu5")
+animation = &"QuitarBorde"
+frame_progress = 0.89809763
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="." unique_id=1051630267]
+position = Vector2(96, -48)
+sprite_frames = ExtResource("1_auwu5")
+animation = &"QuitarBorde"
+frame_progress = 0.14534988
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="." unique_id=2143328370]
+position = Vector2(-32, 16)
+sprite_frames = ExtResource("1_auwu5")
+animation = &"QuitarBorde"
+frame_progress = 0.36067978
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="." unique_id=1173203839]
+position = Vector2(-64, 31)
+sprite_frames = ExtResource("1_auwu5")
+animation = &"QuitarBorde"
+frame_progress = 0.59333783
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="." unique_id=139402084]
+position = Vector2(127, -63)
+sprite_frames = ExtResource("1_auwu5")
+animation = &"QuitarBorde"
+frame_progress = 0.60341704
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="." unique_id=1110708037]
+position = Vector2(159, -79)
+sprite_frames = ExtResource("1_auwu5")
+animation = &"QuitarBorde"
+frame_progress = 0.82654756
+
+[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="." unique_id=403940179]
+position = Vector2(191, -95)
+sprite_frames = ExtResource("1_auwu5")
+animation = &"QuitarBorde"
+frame_progress = 0.81965506
+
+[node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="." unique_id=68032949]
+position = Vector2(-96, 46)
+sprite_frames = ExtResource("1_auwu5")
+animation = &"QuitarBorde"
+frame_progress = 0.48274958
+
+[node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="." unique_id=148604909]
+position = Vector2(-128, 61)
+sprite_frames = ExtResource("1_auwu5")
+animation = &"QuitarBorde"
+frame_progress = 0.76137364
+
+[node name="AnimatedSprite2D12" type="AnimatedSprite2D" parent="." unique_id=1858517208]
+position = Vector2(-160, 76)
+sprite_frames = ExtResource("1_auwu5")
+animation = &"QuitarBorde"
+frame_progress = 0.7221641
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=85263362]
+collision_layer = 32
+collision_mask = 5
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1583967597]
+polygon = PackedVector2Array(-176, 96, -177, 67, 207, -121, 208, -90)

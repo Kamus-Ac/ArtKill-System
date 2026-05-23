@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bmr1g4fj71s5p" path="res://Scenes/UI/Puntuacion In-Game/Puntuacion In-Game.tscn" id="4_w4ad0"]
 [ext_resource type="PackedScene" uid="uid://bvqgi43nkhtrb" path="res://Scenes/Players/basic_player.tscn" id="7_614yd"]
 [ext_resource type="PackedScene" uid="uid://b2gft8tdpey3f" path="res://Scenes/Objects/object.tscn" id="7_ej2hx"]
+[ext_resource type="PackedScene" uid="uid://dv1uvtwehl8no" path="res://Scenes/UI/Puntuacion_Final/Game Over.tscn" id="7_q52rl"]
 [ext_resource type="Script" uid="uid://bt0hj7weg6qe3" path="res://Scenes/UI/Puntuacion_Final/BBCode_Matrix.gd" id="8_ls6f5"]
 [ext_resource type="Texture2D" uid="uid://b4e42bxbjn8kw" path="res://Scenes/UI/MarcoDeUlti.png" id="9_ankfj"]
 [ext_resource type="Script" uid="uid://2o45m0yrk8dm" path="res://Scenes/UI/Puntuacion_Final/BBCode_Ghost.gd" id="9_w4ad0"]
@@ -16,6 +17,7 @@
 [ext_resource type="Shader" uid="uid://b0b6kacj31nib" path="res://Scenes/Levels/Minimapcircular.gdshader" id="13_q678k"]
 [ext_resource type="Script" uid="uid://bjqdaw2yt6ev4" path="res://Scenes/Levels/minimap_camera.gd" id="13_s4hme"]
 [ext_resource type="PackedScene" uid="uid://by2o64bro0sgc" path="res://Scenes/assets/tiles/objective_point.tscn" id="16_ankfj"]
+[ext_resource type="AudioStream" uid="uid://tees6v32hv2u" path="res://Scenes/Audio/musica/game-music.ogg" id="17_q52rl"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_ls6f5"]
 script = ExtResource("8_ls6f5")
@@ -65,6 +67,8 @@ scale = Vector2(0.5, 0.5)
 [node name="PuntuacionInGame" parent="GameCamera/CanvasLayer2" unique_id=143045858 instance=ExtResource("4_w4ad0")]
 offset_top = -5.96
 offset_bottom = -5.960083
+
+[node name="GameOver_Panel" parent="GameCamera/CanvasLayer2" unique_id=1110839108 instance=ExtResource("7_q52rl")]
 
 [node name="EnemyManager" parent="." unique_id=1752903025 instance=ExtResource("3_614yd")]
 
@@ -225,3 +229,8 @@ collision_mask = 5
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LeftWall" unique_id=1260167808]
 polygon = PackedVector2Array(-2061, -187, 609, 1149, 608, 1190, -765, 504, -2112, -173, -2108, -208)
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="." unique_id=1559603961 groups=["game_music"]]
+stream = ExtResource("17_q52rl")
+volume_db = -6.0
+autoplay = true

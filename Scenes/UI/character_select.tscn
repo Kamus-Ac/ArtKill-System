@@ -2,13 +2,24 @@
 
 [ext_resource type="Texture2D" uid="uid://gn4p6hbfygrd" path="res://Scenes/UI/fondo.png" id="2_dieb8"]
 [ext_resource type="Script" uid="uid://fhn4v6qc8lrn" path="res://Scenes/UI/character_select.gd" id="2_whe0c"]
+[ext_resource type="Theme" uid="uid://c8ou703w30asb" path="res://Scenes/Themes/Panel_main.tres" id="3_8r8pr"]
 [ext_resource type="Script" uid="uid://c127btfvcob36" path="res://Scenes/UI/character_card.gd" id="3_dieb8"]
 [ext_resource type="Resource" uid="uid://j7kfry2ifdx1" path="res://Scenes/Players/Gordo/gordo_data.tres" id="4_apj1b"]
-[ext_resource type="Texture2D" uid="uid://odbgxs2eg5ub" path="res://Scenes/UI/pixil-frame-0_13.png" id="5_jjfpe"]
+[ext_resource type="Texture2D" uid="uid://bfouplmkvdjj6" path="res://Scenes/UI/Character_Select/GordoFV1.png" id="5_elwnx"]
 [ext_resource type="Resource" uid="uid://godl0fknqbqb" path="res://Scenes/Players/Viejita/viejita_data.tres" id="6_dieb8"]
+[ext_resource type="Texture2D" uid="uid://ejrw662d4c54" path="res://Scenes/UI/Character_Select/para_memo.png" id="7_1n6fh"]
 [ext_resource type="PackedScene" uid="uid://dnv3x3k1xxw5o" path="res://Scenes/Players/Idol/Idol.tscn" id="7_qsthy"]
 [ext_resource type="Script" uid="uid://cykrf8nfa65dj" path="res://Scenes/Players/characters_data.gd" id="8_jjfpe"]
 [ext_resource type="SpriteFrames" uid="uid://oygggrhhee65" path="res://Scenes/Players/Idol/Animaciones/idol.tres" id="9_nefin"]
+[ext_resource type="Texture2D" uid="uid://dkgblmx5q3avw" path="res://Scenes/UI/Character_Select/Boton confirmar1.png" id="10_mnj10"]
+[ext_resource type="Texture2D" uid="uid://o11obxpe2xg4" path="res://Scenes/UI/Character_Select/Boton confirmar clicked.png" id="11_0jb4w"]
+[ext_resource type="Texture2D" uid="uid://dayrjrmsy643d" path="res://Scenes/UI/Character_Select/Boton confirmar selected.png" id="12_elwnx"]
+[ext_resource type="Texture2D" uid="uid://cve86bu1wu1lb" path="res://Scenes/UI/Character_Select/Boton volver.png" id="13_1n6fh"]
+[ext_resource type="Texture2D" uid="uid://bxtdchmmnixwa" path="res://Scenes/UI/Character_Select/Loli saltandi .png" id="13_r7cco"]
+[ext_resource type="Texture2D" uid="uid://cfp2huydoyfiv" path="res://Scenes/UI/Character_Select/Boton volver clicked.png" id="14_i7jg1"]
+[ext_resource type="Texture2D" uid="uid://dx06208l5wofi" path="res://Scenes/UI/Character_Select/Boton volver selected.png" id="15_8r8pr"]
+[ext_resource type="AudioStream" uid="uid://di3mfjfsj8cdu" path="res://Scenes/Audio/effects/impacto.ogg" id="20_8r8pr"]
+[ext_resource type="FontFile" uid="uid://cyiarpmaku8le" path="res://Scenes/UI/Vermin Vibes 1989.ttf" id="20_mxdfm"]
 
 [sub_resource type="Resource" id="Resource_yn15k"]
 script = ExtResource("8_jjfpe")
@@ -31,6 +42,7 @@ scale = Vector2(0.9924271, 0.9560501)
 script = ExtResource("2_whe0c")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1976587577]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,32 +63,31 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -323.5
-offset_top = -192.5
-offset_right = 366.042
-offset_bottom = 192.5
+offset_left = -489.4365
+offset_top = -370.5528
+offset_right = 200.10535
+offset_bottom = 226.45831
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.4, 1.577)
+theme = ExtResource("3_8r8pr")
 
 [node name="VBox" type="VBoxContainer" parent="MainPanel" unique_id=2103548260]
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 60
 alignment = 1
-
-[node name="Label" type="Label" parent="MainPanel/VBox" unique_id=1589440846]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 32
-text = "Select your Character"
 
 [node name="CharactersBox" type="HBoxContainer" parent="MainPanel/VBox" unique_id=1213813691]
 layout_mode = 2
+theme = ExtResource("3_8r8pr")
 theme_override_constants/separation = 24
 alignment = 1
 
 [node name="Gus" type="PanelContainer" parent="MainPanel/VBox/CharactersBox" unique_id=1867797090]
 custom_minimum_size = Vector2(200, 260)
 layout_mode = 2
+focus_neighbor_right = NodePath("../Tomy")
+focus_neighbor_bottom = NodePath("../../HBoxContainer/CONFIRMAR")
 script = ExtResource("3_dieb8")
 character_data = ExtResource("4_apj1b")
 
@@ -84,13 +95,16 @@ character_data = ExtResource("4_apj1b")
 layout_mode = 2
 
 [node name="Sprite" type="Sprite2D" parent="MainPanel/VBox/CharactersBox/Gus/VBoxContainer" unique_id=1743711263]
-position = Vector2(98.21531, 105.071396)
-scale = Vector2(0.09477265, 0.1)
-texture = ExtResource("5_jjfpe")
+position = Vector2(96.398186, 115.74027)
+scale = Vector2(3.6249783, 3.994864)
+texture = ExtResource("5_elwnx")
 
 [node name="Tomy" type="PanelContainer" parent="MainPanel/VBox/CharactersBox" unique_id=1068591855]
 custom_minimum_size = Vector2(180, 260)
 layout_mode = 2
+focus_neighbor_left = NodePath("../Gus")
+focus_neighbor_right = NodePath("../Dani")
+focus_neighbor_bottom = NodePath("../../HBoxContainer/CONFIRMAR")
 script = ExtResource("3_dieb8")
 character_data = ExtResource("6_dieb8")
 
@@ -98,13 +112,15 @@ character_data = ExtResource("6_dieb8")
 layout_mode = 2
 
 [node name="Sprite" type="Sprite2D" parent="MainPanel/VBox/CharactersBox/Tomy/VBoxContainer" unique_id=1163172798]
-position = Vector2(89.23163, 106.01228)
-scale = Vector2(0.09477265, 0.1)
-texture = ExtResource("5_jjfpe")
+position = Vector2(91.939896, 103.41594)
+scale = Vector2(4.0921655, 4.1196866)
+texture = ExtResource("7_1n6fh")
 
 [node name="Dani" type="PanelContainer" parent="MainPanel/VBox/CharactersBox" unique_id=1722818179]
 custom_minimum_size = Vector2(200, 260)
 layout_mode = 2
+focus_neighbor_left = NodePath("../Tomy")
+focus_neighbor_bottom = NodePath("../../HBoxContainer/CONFIRMAR")
 script = ExtResource("3_dieb8")
 character_data = SubResource("Resource_yn15k")
 
@@ -112,14 +128,56 @@ character_data = SubResource("Resource_yn15k")
 layout_mode = 2
 
 [node name="Sprite" type="Sprite2D" parent="MainPanel/VBox/CharactersBox/Dani/VBoxContainer" unique_id=871286759]
-position = Vector2(89.23163, 106.01228)
-scale = Vector2(0.09477265, 0.1)
-texture = ExtResource("5_jjfpe")
+position = Vector2(101.557594, 125.002144)
+scale = Vector2(0.31968465, 0.37521854)
+texture = ExtResource("13_r7cco")
 
-[node name="Confirm" type="Button" parent="MainPanel/VBox" unique_id=1487325974]
-custom_minimum_size = Vector2(200, 48)
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/VBox" unique_id=631626070]
 layout_mode = 2
-disabled = true
-text = "Confirm"
+theme_override_constants/separation = 50
+alignment = 1
 
-[connection signal="pressed" from="MainPanel/VBox/Confirm" to="." method="_on_confirm_pressed"]
+[node name="CONFIRMAR" type="TextureButton" parent="MainPanel/VBox/HBoxContainer" unique_id=176539375]
+texture_filter = 1
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../CharactersBox/Gus")
+focus_neighbor_right = NodePath("../VOLVER")
+texture_normal = ExtResource("10_mnj10")
+texture_pressed = ExtResource("11_0jb4w")
+texture_hover = ExtResource("12_elwnx")
+texture_focused = ExtResource("12_elwnx")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="VOLVER" type="TextureButton" parent="MainPanel/VBox/HBoxContainer" unique_id=1281670606]
+texture_filter = 1
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 2
+focus_neighbor_left = NodePath("../CONFIRMAR")
+texture_normal = ExtResource("13_1n6fh")
+texture_pressed = ExtResource("14_i7jg1")
+texture_hover = ExtResource("15_8r8pr")
+texture_focused = ExtResource("15_8r8pr")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="." unique_id=859860255]
+layout_mode = 0
+offset_left = 710.3796
+offset_top = 60.666275
+offset_right = 1192.3796
+offset_bottom = 187.66629
+theme_override_colors/font_color = Color(3.1934307, 0.63356715, 2.3240433, 1)
+theme_override_fonts/font = ExtResource("20_mxdfm")
+theme_override_font_sizes/font_size = 70
+text = "SELECCIONA TU 
+ARTISTA"
+horizontal_alignment = 1
+
+[node name="CharacterMusic" type="AudioStreamPlayer" parent="." unique_id=939323884]
+stream = ExtResource("20_8r8pr")
+autoplay = true
+
+[connection signal="pressed" from="MainPanel/VBox/HBoxContainer/CONFIRMAR" to="." method="_on_confirmar_pressed"]
+[connection signal="pressed" from="MainPanel/VBox/HBoxContainer/VOLVER" to="." method="_on_volver_pressed"]
