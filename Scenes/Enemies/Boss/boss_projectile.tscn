@@ -55,6 +55,8 @@ animations = [{
 }]
 
 [node name="BossProjectile" type="Node2D" unique_id=1219331630]
+z_index = 1
+y_sort_enabled = true
 script = ExtResource("1_jlrcw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=480035415]
