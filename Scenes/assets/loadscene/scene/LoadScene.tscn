@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dnpw74f70s1n5" path="res://Scenes/assets/loadscene/scene/load_scene.gd" id="1_23i82"]
 [ext_resource type="SpriteFrames" uid="uid://dpspmqchocfmi" path="res://Scenes/assets/loadscene/allLoadImages.tres" id="1_e3b4f"]
+[ext_resource type="AudioStream" uid="uid://d2bsgm07cdmmk" path="res://Scenes/Audio/effects/brillo.ogg" id="3_3ut4v"]
 
 [node name="Camera2D" type="Camera2D" unique_id=489505668]
 zoom = Vector2(0.97, 1)
@@ -12,5 +13,9 @@ position = Vector2(-0.04997635, 2.4999876)
 scale = Vector2(1.0001831, 1.0046296)
 sprite_frames = ExtResource("1_e3b4f")
 animation = &"loadscene2"
+
+[node name="LoadingMusic" type="AudioStreamPlayer" parent="." unique_id=223775108]
+stream = ExtResource("3_3ut4v")
+autoplay = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
