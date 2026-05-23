@@ -5,10 +5,13 @@ extends Control
 @onready var ajustes: Button = $VBoxContainer2/AJUSTES
 @onready var salir: Button = $VBoxContainer2/SALIR
 
+var save_scores:ScoresSaved
+
 func _ready() -> void:
 	#Aseguramos que el ratón sea visible
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
+	ScoresSaved.load_savegame()
 	# Intentamos dar el foco al arrancar
 	if jugar:
 		jugar.grab_focus()

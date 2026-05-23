@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ScoresSaved" format=3 uid="uid://b8l6fgqcpwywl"]
+
+[ext_resource type="Script" uid="uid://c51kpfn7hpag" path="res://Scenes/ScoreScene/Scores.gd" id="1_rcxp6"]
+
+[resource]
+script = ExtResource("1_rcxp6")
+names = Array[String](["AAA", "AAA", "AAA", "AAA", "AAA", "AAA", "AAA", "AAA"])
+scores = Array[int]([0, 0, 0, 0, 0, 0, 0, 0])
+metadata/_custom_type_script = "uid://c51kpfn7hpag"

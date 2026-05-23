@@ -31,6 +31,8 @@ func start(p: CharacterBody2D):
 
 	queue_redraw()
 
+	GameManager.ult_tries+=1
+
 
 func ulti_move(delta: float) -> void:
 	if !reverse:

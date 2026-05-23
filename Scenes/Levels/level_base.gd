@@ -2,7 +2,7 @@ extends Node2D
 
 var i = 0
 
-@onready var texture_rect: TextureRect = $CanvasLayer/TextureRect
+@onready var texture_progress_bar: TextureProgressBar = $CanvasLayer/MarcodeVida/TextureProgressBar
 @onready var label_score: RichTextLabel = $CanvasLayer/Score
 @onready var label_combo: RichTextLabel = $CanvasLayer/Combo
 @onready var first_wall: StaticBody2D = $NorthWall
@@ -23,6 +23,7 @@ var dynamictimer: Timer
 var tween_combo : Tween
 
 var paused = false
+var gameOver = false
 var kill_acumulated : int
 var time_forCombo: float = 4.0
 var dynamic_score : float
@@ -46,12 +47,14 @@ func get_random_point(p1: Vector2, p2: Vector2) -> Vector2:
 
 func _ready() -> void:
 	
+	reset_gamedata()
 	randomize()
 
 	SignalManager.ult_used.connect(ult_reset)
 	SignalManager.score_update.connect(reloadScore)
 	SignalManager.kill_count.connect(kill_score)
 	SignalManager.unlockedzones.connect(unlock_zones)
+	SignalManager.gameOver.connect(gameover_function)
 
 	pause_menu.hide()
 
@@ -82,7 +85,12 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Pausa"):
 		pauseMenu()
 
+func _physics_process(delta: float) -> void:
+	if !gameOver:
+		GameManager.playtime+=delta
 
+func gameover_function()->void:
+	gameOver = true
 
 func spawn_curacion():
 
@@ -112,16 +120,16 @@ func spawn_curacion():
 
 func ult_bar():
 
-	if percentage_ult < 244.0:
+	if percentage_ult < 100:
 
-		percentage_ult = GameManager.timeToUlt / GameManager.ulti_kills_required * ult_bar_scale
+		percentage_ult = GameManager.timeToUlt / GameManager.ulti_kills_required * 100
 
-		texture_rect.size.x = percentage_ult
+		texture_progress_bar.value = percentage_ult
 
 
 func ult_reset():
 
-	texture_rect.size.x = 0
+	texture_progress_bar.value = 0
 	percentage_ult = 0
 
 
@@ -206,7 +214,7 @@ func making_dynamic_score()->void:
 		if j ==0:
 			dynamic_score = 100
 		else:
-			dynamic_score = dynamic_score*2
+			dynamic_score = dynamic_score*1.2
 	previous_score = GameManager.score
 	GameManager.score += dynamic_score
 	SignalManager.score_update.emit()
@@ -227,7 +235,11 @@ func update_combo_tween()->void:
 	tween_combo.tween_callback(update_combo_tween)          
 
 func reset_gamedata():
-	pass
+	GameManager.timeToUlt=0
+	GameManager.current_wave=1
+	GameManager.score=0
+	GameManager.playtime=0
+	GameManager.ult_tries=0
 
 func unlock_zones(zone:int):
 	match zone:

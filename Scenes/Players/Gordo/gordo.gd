@@ -25,6 +25,8 @@ func start(p: CharacterBody2D):
 
 	dash_direction = Vector2(dir, 0)
 
+	GameManager.ult_tries+=1
+
 
 func ulti_move(delta: float) -> void:
 	if player == null or not isActive:

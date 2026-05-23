@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bmr1g4fj71s5p"]
 
 [ext_resource type="Script" uid="uid://db565kkxlxcou" path="res://Scenes/UI/Puntuacion In-Game/puntuacion_in_game.gd" id="1_ahk0b"]
+[ext_resource type="Resource" uid="uid://b8l6fgqcpwywl" path="res://Scenes/ScoreScene/SaveFile.tres" id="2_4r5c2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2ajq"]
 bg_color = Color(0.29411766, 0, 0.43137255, 1)
@@ -24,6 +25,7 @@ offset_top = 0.52
 offset_right = -0.2401123
 offset_bottom = 0.51989746
 script = ExtResource("1_ahk0b")
+score_save = ExtResource("2_4r5c2")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1634539258]
 layout_mode = 1
@@ -59,6 +61,16 @@ bbcode_enabled = true
 text = "[wave][center]Puntuacion[/center][/wave]"
 horizontal_alignment = 1
 
+[node name="Nombre" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=710167660]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+size_flags_stretch_ratio = 0.0
+text = "AAA"
+placeholder_text = "AAA"
+alignment = 1
+max_length = 3
+
 [node name="Label" type="Label" parent="." unique_id=9463747]
 layout_mode = 0
 offset_left = 655.0
@@ -93,6 +105,17 @@ text = "Habilidades Definitivas
 Usadas"
 vertical_alignment = 1
 
+[node name="Ult_Score" type="Label" parent="Label2" unique_id=1934603616]
+layout_mode = 0
+offset_left = 558.405
+offset_right = 666.4077
+offset_bottom = 45.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Label3" type="Label" parent="." unique_id=822319801]
 layout_mode = 0
 offset_left = 559.0
@@ -102,6 +125,17 @@ offset_bottom = 561.0
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "Tiempo Sobrevivido"
+vertical_alignment = 1
+
+[node name="Time_Score" type="Label" parent="Label3" unique_id=1708006661]
+layout_mode = 0
+offset_left = 567.45
+offset_right = 675.4527
+offset_bottom = 45.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button" type="Button" parent="." unique_id=389059241]
@@ -118,8 +152,7 @@ offset_bottom = 43.43994
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 24
-text = "Regresar a seleccion 
-de personaje"
+text = "ScoreBoard"
 
 [node name="Button2" type="Button" parent="." unique_id=1687174071]
 layout_mode = 1
