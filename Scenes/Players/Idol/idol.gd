@@ -13,6 +13,8 @@ var note:PackedScene= preload("res://Scenes/Players/Idol/Nota.tscn")
 var pack_notes: Array[CharacterBody2D]
 var delay= 0.1
 var count: int = 1
+@onready var player_hitbox: Area2D = $'../Areas/Player_Hitbox'
+@onready var ulti_area: Area2D = $'../Areas/Ulti_Area'
 func start(p: CharacterBody2D):
 	player = p
 	start_position = player.global_position
@@ -22,6 +24,7 @@ func start(p: CharacterBody2D):
 	reverse = false
 	count = 1
 	duration=0
+	
 	pack_notes.clear()
 
 	for i in range(10):
