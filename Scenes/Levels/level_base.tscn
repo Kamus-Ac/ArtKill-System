@@ -16,6 +16,7 @@
 [ext_resource type="Shader" uid="uid://b0b6kacj31nib" path="res://Scenes/Levels/Minimapcircular.gdshader" id="13_q678k"]
 [ext_resource type="Script" uid="uid://bjqdaw2yt6ev4" path="res://Scenes/Levels/minimap_camera.gd" id="13_s4hme"]
 [ext_resource type="PackedScene" uid="uid://by2o64bro0sgc" path="res://Scenes/assets/tiles/objective_point.tscn" id="16_ankfj"]
+[ext_resource type="AudioStream" uid="uid://tees6v32hv2u" path="res://Scenes/Audio/musica/game-music.ogg" id="17_q52rl"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_ls6f5"]
 script = ExtResource("8_ls6f5")
@@ -225,3 +226,8 @@ collision_mask = 5
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LeftWall" unique_id=1260167808]
 polygon = PackedVector2Array(-2061, -187, 609, 1149, 608, 1190, -765, 504, -2112, -173, -2108, -208)
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="." unique_id=1559603961 groups=["game_music"]]
+stream = ExtResource("17_q52rl")
+volume_db = -6.0
+autoplay = true
