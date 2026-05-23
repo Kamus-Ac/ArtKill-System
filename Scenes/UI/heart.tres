@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://b6e6oqvokyycn"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://b6e6oqvokyycn"]
 
 [ext_resource type="Texture2D" uid="uid://b2it36v8ehl58" path="res://Scenes/assets/ui/Corazones.png" id="1_pl4f3"]
 

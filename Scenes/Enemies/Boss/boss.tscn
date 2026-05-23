@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://ysn1i3gwaakr" path="res://Scenes/Enemies/hurtbox_enemy.gd" id="2_gi0e2"]
 [ext_resource type="Texture2D" uid="uid://cvhi11jb0ounh" path="res://Scenes/Enemies/Boss/Prototipo_Romulus-Sheet.png" id="3_b1kuf"]
 [ext_resource type="Texture2D" uid="uid://b5135k6fv8hed" path="res://Scenes/Enemies/Boss/Muerte_Romulus-Sheet.png" id="4_o1nrd"]
+[ext_resource type="Texture2D" uid="uid://dh1mpqt4l7yp0" path="res://Scenes/Particles/dust.png" id="6_wbur8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o1nrd"]
 atlas = ExtResource("3_b1kuf")
@@ -220,3 +221,9 @@ shape = SubResource("RectangleShape2D_b1kuf")
 
 [node name="ShootTimer" type="Timer" parent="." unique_id=1456680718]
 autostart = true
+
+[node name="Marker" type="Sprite2D" parent="." unique_id=1998977115]
+modulate = Color(1, 0, 0, 1)
+visibility_layer = 2
+scale = Vector2(8.8125, 8.8125)
+texture = ExtResource("6_wbur8")

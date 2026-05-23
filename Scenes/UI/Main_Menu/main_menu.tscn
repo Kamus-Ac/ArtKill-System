@@ -5,20 +5,15 @@
 [ext_resource type="Texture2D" uid="uid://bakw3n2yw1iwi" path="res://Scenes/UI/Main_Menu/Fondin.jpeg" id="2_4cysq"]
 [ext_resource type="Texture2D" uid="uid://jhudau4d7c62" path="res://Scenes/UI/Main_Menu/Edificiosatras .png" id="3_tew2s"]
 [ext_resource type="Texture2D" uid="uid://dvm7odk80cocb" path="res://Scenes/UI/Main_Menu/Edificios .png" id="4_63vpu"]
-[ext_resource type="Script" uid="uid://2qgku4cl1l2k" path="res://Scenes/UI/Main_Menu/edi_atras.gd" id="4_82ymc"]
+[ext_resource type="Script" uid="uid://b2mijr55bks1w" path="res://Scenes/UI/Main_Menu/Efecto_Capas.gd" id="4_114jo"]
 [ext_resource type="Texture2D" uid="uid://dgbj0u1ws30sc" path="res://Scenes/UI/Main_Menu/Cesped.png" id="5_2lvlm"]
 [ext_resource type="Texture2D" uid="uid://bnh46v0fu4iu8" path="res://Scenes/UI/Main_Menu/Estrellas.png" id="6_5opu3"]
-[ext_resource type="Script" uid="uid://qoo5ni8jm4wy" path="res://Scenes/UI/Main_Menu/edi.gd" id="6_ac8cp"]
 [ext_resource type="Texture2D" uid="uid://dcfybyq3ovyam" path="res://Scenes/UI/Main_Menu/Luna.png" id="7_yd5ex"]
-[ext_resource type="Script" uid="uid://cv6oylj5vv5s6" path="res://Scenes/UI/Main_Menu/cesped.gd" id="8_4cysq"]
 [ext_resource type="Texture2D" uid="uid://dnl80d6hda0qo" path="res://Scenes/UI/Main_Menu/particulas.png" id="8_xx24g"]
 [ext_resource type="Texture2D" uid="uid://co0ey0yx3uq0i" path="res://Scenes/UI/Main_Menu/TeleFondo.png" id="9_1hlvv"]
-[ext_resource type="Script" uid="uid://bs4nrivc4k7sx" path="res://Scenes/UI/Main_Menu/estrellas.gd" id="10_tew2s"]
 [ext_resource type="Texture2D" uid="uid://duv45twk2m6q" path="res://Scenes/UI/Main_Menu/Mancha pintura azul.png" id="11_8y8w7"]
-[ext_resource type="Script" uid="uid://1emrd6ah0vbb" path="res://Scenes/UI/Main_Menu/luna.gd" id="12_63vpu"]
 [ext_resource type="Texture2D" uid="uid://dxr5atw4dxwln" path="res://Scenes/UI/Main_Menu/Mancha pintura rosa.png" id="12_fye2e"]
 [ext_resource type="Texture2D" uid="uid://dvt6iv3icyp8f" path="res://Scenes/UI/Main_Menu/Mancha pintura amarilla.png" id="13_mf5kc"]
-[ext_resource type="Script" uid="uid://ds3cs0fq20qtp" path="res://Scenes/UI/Main_Menu/naruto.gd" id="14_2lvlm"]
 [ext_resource type="Theme" uid="uid://dwn5wpsdebd30" path="res://Scenes/Themes/Main_Menu.tres" id="20_ac8cp"]
 [ext_resource type="FontFile" uid="uid://cyiarpmaku8le" path="res://Scenes/UI/Vermin Vibes 1989.ttf" id="23_tew2s"]
 
@@ -40,27 +35,39 @@ texture = ExtResource("2_4cysq")
 
 [node name="Edi_atras" type="Sprite2D" parent="Node2D" unique_id=935693612]
 texture = ExtResource("3_tew2s")
-script = ExtResource("4_82ymc")
+script = ExtResource("4_114jo")
+sensibilidad_joystick = 4.0
 
 [node name="Edi" type="Sprite2D" parent="Node2D" unique_id=984945514]
 texture = ExtResource("4_63vpu")
-script = ExtResource("6_ac8cp")
+script = ExtResource("4_114jo")
+divisor_movimiento = 5.0
+sensibilidad_joystick = 4.0
 
 [node name="Cesped" type="Sprite2D" parent="Node2D" unique_id=1724746805]
 texture = ExtResource("5_2lvlm")
-script = ExtResource("8_4cysq")
+script = ExtResource("4_114jo")
+divisor_movimiento = 4.0
+limite_pixeles = 82.0
+sensibilidad_joystick = 4.0
 
 [node name="estrellas" type="Sprite2D" parent="Node2D" unique_id=161679484]
 texture = ExtResource("6_5opu3")
-script = ExtResource("10_tew2s")
+script = ExtResource("4_114jo")
+divisor_movimiento = 3.0
+sensibilidad_joystick = 4.0
 
 [node name="Luna" type="Sprite2D" parent="Node2D" unique_id=173254795]
 texture = ExtResource("7_yd5ex")
-script = ExtResource("12_63vpu")
+script = ExtResource("4_114jo")
+divisor_movimiento = 2.0
+sensibilidad_joystick = 4.0
 
 [node name="Naruto" type="Sprite2D" parent="Node2D" unique_id=1468033723]
 texture = ExtResource("8_xx24g")
-script = ExtResource("14_2lvlm")
+script = ExtResource("4_114jo")
+divisor_movimiento = 1.2
+sensibilidad_joystick = 4.0
 
 [node name="Azul" type="Sprite2D" parent="Node2D" unique_id=378108379]
 position = Vector2(-85, -67.8125)
@@ -88,31 +95,24 @@ texture = ExtResource("2_2fw6m")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=854929412]
 layout_mode = 0
-offset_left = 710.0
-offset_top = 428.0
-offset_right = 873.0
-offset_bottom = 541.0
+offset_left = 638.0
+offset_top = 390.0
+offset_right = 801.0
+offset_bottom = 502.99997
 rotation = -0.061086524
-scale = Vector2(2.4, 2.4)
+scale = Vector2(3.3, 3.3)
+alignment = 1
 
 [node name="JUGAR" type="Button" parent="VBoxContainer2" unique_id=289230448]
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../AJUSTES")
+focus_neighbor_bottom = NodePath("../SALIR")
 theme = ExtResource("20_ac8cp")
 text = "JUGAR"
 flat = true
 
-[node name="AJUSTES" type="Button" parent="VBoxContainer2" unique_id=1764569245]
-layout_mode = 2
-focus_neighbor_top = NodePath("../JUGAR")
-focus_neighbor_bottom = NodePath("../SALIR")
-theme = ExtResource("20_ac8cp")
-text = "AJUSTES"
-flat = true
-
 [node name="SALIR" type="Button" parent="VBoxContainer2" unique_id=576033780]
 layout_mode = 2
-focus_neighbor_top = NodePath("../AJUSTES")
+focus_neighbor_top = NodePath("../JUGAR")
 theme = ExtResource("20_ac8cp")
 text = "SALIR"
 flat = true
@@ -144,5 +144,4 @@ horizontal_alignment = 3
 vertical_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer2/JUGAR" to="." method="_on_jugar_pressed"]
-[connection signal="pressed" from="VBoxContainer2/AJUSTES" to="." method="_on_ajustes_pressed"]
 [connection signal="pressed" from="VBoxContainer2/SALIR" to="." method="_on_salir_pressed"]
