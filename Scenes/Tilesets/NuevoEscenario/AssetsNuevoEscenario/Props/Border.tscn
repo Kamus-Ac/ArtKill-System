@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://bxhrqlkude433"]
 
 [ext_resource type="SpriteFrames" uid="uid://d1xk4tanq2iug" path="res://Scenes/Tilesets/NuevoEscenario/AssetsNuevoEscenario/Border.tres" id="1_auwu5"]
+[ext_resource type="PackedScene" uid="uid://by2o64bro0sgc" path="res://Scenes/assets/tiles/objective_point.tscn" id="2_m7326"]
 
 [node name="Border" type="Node2D" unique_id=2023302628]
+
+[node name="ObjectivePoint" parent="." unique_id=1048271313 instance=ExtResource("2_m7326")]
+visible = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1081002942]
 sprite_frames = ExtResource("1_auwu5")

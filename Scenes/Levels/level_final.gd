@@ -1,0 +1,289 @@
+extends Node2D
+
+var i = 0
+
+
+@onready var texture_progress_bar: TextureProgressBar = $CanvasLayer/MarcodeVida/TextureProgressBar
+@onready var label_score: RichTextLabel = $CanvasLayer/Score
+@onready var label_combo: RichTextLabel = $CanvasLayer/Combo
+@onready var mini_map: TextureRect = $CanvasLayer/MiniMap
+@onready var pause_menu: Control = $GameCamera/CanvasLayer2/pause_menu
+@onready var GameOver_Panel = $"."
+
+@onready var primer_zona:Node2D = $Bordes/Bordes1erZona
+@onready var segunda_zona:Node2D = $Bordes/Bordes2daZona
+
+@export var point1: Vector2 = Vector2(-550,-150)
+@export var point2: Vector2 = Vector2(-30,115)
+
+var curacion = preload("res://Scenes/Objects/Curacion/Curacion.tscn")
+
+var percentage_ult: float = 0
+var ult_bar_scale: float = 244.0
+
+var reload: bool = false
+var timer: Timer
+var dynamictimer: Timer 
+var tween_combo : Tween
+
+var paused = false
+var gameOver = false
+var kill_acumulated : int
+var time_forCombo: float = 4.0
+var dynamic_score : float
+var previous_score: float
+
+# NUEVO
+var spawn_timer: Timer
+const MAX_CURACIONES := 5
+
+
+func get_random_point(p1: Vector2, p2: Vector2) -> Vector2:
+
+	var x: float = randf_range(p1.x, p2.x)
+	var y: float = randf_range(p1.y, p2.y)
+
+	return Vector2(x, y)
+
+
+
+
+
+func _ready() -> void:
+	
+	reset_gamedata()
+	randomize()
+
+	SignalManager.ult_used.connect(ult_reset)
+	SignalManager.score_update.connect(reloadScore)
+	SignalManager.kill_count.connect(kill_score)
+	SignalManager.unlockedzones.connect(unlock_zones)
+	SignalManager.gameOver.connect(gameover_function)
+
+	pause_menu.hide()
+
+	label_score.process_mode = Node.PROCESS_MODE_DISABLED
+
+	GameManager.score = 0
+
+	# TIMER DE SPAWN
+	spawn_timer = Timer.new()
+
+	add_child(spawn_timer)
+
+	spawn_timer.wait_time = 3.0
+	spawn_timer.one_shot = false
+
+	spawn_timer.timeout.connect(spawn_curacion)
+
+	spawn_timer.start()
+
+	get_viewport().canvas_cull_mask = 1
+
+
+
+func _process(_delta: float) -> void:
+	
+	
+	
+	ult_bar()
+
+	if Input.is_action_just_pressed("Pausa"):
+		pauseMenu()
+
+func _physics_process(delta: float) -> void:
+	if !gameOver:
+		GameManager.playtime+=delta
+
+func gameover_function()->void:
+	gameOver = true
+
+func spawn_curacion():
+
+	var current_curaciones := 0
+
+	for child in get_children():
+
+		if child.is_in_group("curaciones"):
+			current_curaciones += 1
+
+	print("ACTIVAS: ", current_curaciones)
+
+	if current_curaciones >= MAX_CURACIONES:
+		print("MAXIMO ALCANZADO")
+		return
+
+	var curacionInstance = curacion.instantiate()
+
+	add_child(curacionInstance)
+
+	var spawnLocation = get_random_point(point1, point2)
+
+	curacionInstance.global_position = spawnLocation
+
+	print("SPAWN EN: ", spawnLocation)
+	
+
+func ult_bar():
+
+	if percentage_ult < 100:
+
+		percentage_ult = GameManager.timeToUlt / GameManager.ulti_kills_required * 100
+
+		texture_progress_bar.value = percentage_ult
+
+
+func ult_reset():
+
+	texture_progress_bar.value = 0
+	percentage_ult = 0
+
+
+func pauseMenu():
+
+	paused = !paused
+
+	if paused:
+
+		pause_menu.show()
+		get_tree().paused = true
+
+	else:
+
+		pause_menu.hide()
+		get_tree().paused = false
+
+
+func reloadScore() -> void:
+
+	
+	if !timer:
+
+		kill_acumulated=0
+		dynamic_score = 0
+		label_combo.visible = false
+		label_score.process_mode = Node.PROCESS_MODE_INHERIT
+
+		label_score.text = """ [font=res://Scenes/UI/Puntuacion_Final/JetBrainsMono-Italic.ttf][font_size=64] [matrix]%d[/matrix]
+		[/font_size] 
+		[/font]
+		""" % previous_score
+
+		timer = Timer.new()
+
+		add_child(timer)
+
+		timer.timeout.connect(_on_timer_timeout)
+
+		timer.one_shot = true
+
+		timer.start(3.0)
+
+
+func activeScore() -> void:
+	reload = true
+
+
+func _on_timer_timeout():
+	label_score.text = """[font=res://Scenes/UI/Puntuacion_Final/JetBrainsMono-Italic.ttf][font_size=64]%d[/font_size]
+	[/font]
+	""" % [GameManager.score]
+
+	label_score.process_mode = Node.PROCESS_MODE_DISABLED
+
+	timer.queue_free()
+
+	timer = null
+
+func kill_score()->void:
+	if dynamictimer:
+		dynamictimer.stop()
+		dynamictimer.queue_free()
+		dynamictimer = null
+	kill_acumulated+=1
+	dynamictimer = Timer.new()
+	add_child(dynamictimer)
+	dynamictimer.timeout.connect(making_dynamic_score)
+	dynamictimer.one_shot = true
+	dynamictimer.start(time_forCombo)
+
+	label_combo.visible = true
+	label_combo.text = """[center][font=res://Scenes/UI/Puntuacion_Final/JetBrainsMono-Italic.ttf][font_size=64]
+	[color=gold][shake]Combo= %d[/shake][/color][/font_size][/font][/center]""" %[kill_acumulated]
+	update_combo_tween()
+
+
+func making_dynamic_score()->void:
+	tween_combo.kill()
+	label_combo.modulate.a = 1.0
+	for j in range(kill_acumulated):
+		if j ==0:
+			dynamic_score = 100
+		else:
+			dynamic_score = dynamic_score*1.2
+	previous_score = GameManager.score
+	GameManager.score += dynamic_score
+	SignalManager.score_update.emit()
+
+func update_combo_tween()->void:
+	if tween_combo:
+		tween_combo.kill()
+		
+	if not dynamictimer or dynamictimer.is_stopped():
+		return
+	
+	var t = dynamictimer.time_left / time_forCombo         
+	var speed = lerp(0.05, 0.4, t)
+	
+	tween_combo = create_tween()
+	tween_combo.tween_property(label_combo, "modulate:a", 0.1, speed)
+	tween_combo.tween_property(label_combo, "modulate:a", 1.0, speed)
+	tween_combo.tween_callback(update_combo_tween)          
+
+func reset_gamedata():
+	GameManager.timeToUlt=0
+	GameManager.current_wave=1
+	GameManager.score=0
+	GameManager.playtime= 0.0
+	GameManager.ult_tries=0
+
+func unlock_zones(zone:int):
+	match zone:
+		2:
+			mini_map.visible=false
+			for j in range(primer_zona.get_child_count()):
+				primer_zona.get_child(j).get_child(0).visible = true
+			await get_tree().create_timer(8.0).timeout
+			primer_zona.queue_free()
+			mini_map.visible = true
+			print("primera zona liberada")
+		3:
+			mini_map.visible=false
+			for j in range(segunda_zona.get_child_count()):
+				segunda_zona.get_child(j).get_child(0).visible = true
+			await get_tree().create_timer(8.0).timeout
+			segunda_zona.queue_free()
+			mini_map.visible = true
+			print("segunda zona liberada")
+			var all_enemies = get_tree().get_nodes_in_group("enemies")
+			for enemy in all_enemies:
+				if "skins" in enemy:
+					enemy.queue_free()
+			#manda el aviso para que pause horda
+			SignalManager.boss_spawned.emit()
+			#aqui spawnea el boss
+			var boss_scene = preload("res://Scenes/Enemies/Boss/boss.tscn")
+			var boss = boss_scene.instantiate()
+			#lo agregamos al nivel
+			add_child.call_deferred(boss)
+			#posicionamos al boss
+			var player = get_tree().get_first_node_in_group("player")
+			if player:
+				boss.global_position = player.global_position + Vector2(250,0)
+			else:
+				boss.global_position = Vector2(500,300)
+			
+			
+			
+			
+			

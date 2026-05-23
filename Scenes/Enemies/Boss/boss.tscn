@@ -199,7 +199,7 @@ size = Vector2(121, 114)
 
 [node name="Boss" type="CharacterBody2D" unique_id=141464151 groups=["enemies"]]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 85
 script = ExtResource("1_7x7wj")
 boss_projectile_scene = ExtResource("2_b1kuf")
 
@@ -215,6 +215,7 @@ position = Vector2(-2, 14.5)
 shape = SubResource("RectangleShape2D_o1nrd")
 
 [node name="BossHurtBox" type="Area2D" parent="." unique_id=57136284]
+collision_mask = 17
 script = ExtResource("2_gi0e2")
 metadata/_custom_type_script = "uid://ysn1i3gwaakr"
 

@@ -85,7 +85,6 @@ func _on_enemy_died():
 		GameManager.current_wave += 1
 		if GameManager.current_wave <4:
 			#pausamos las waves
-			waves_paused = true
+			#waves_paused = true
 			SignalManager.unlockedzones.emit(GameManager.current_wave)
-		else:
 			start_wave()

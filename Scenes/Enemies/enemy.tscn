@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dsaua6iwjkfft"]
+[gd_scene format=3 uid="uid://dsaua6iwjkfft"]
 
 [ext_resource type="Script" uid="uid://ycu2q01ywlf4" path="res://Scenes/Enemies/enemy.gd" id="1_x1rqp"]
 [ext_resource type="SpriteFrames" uid="uid://c8weo0sshd0wq" path="res://Scenes/Enemies/chat.tres" id="3_7ubbs"]
@@ -30,29 +30,30 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_7ubbs"]
 colors = PackedColorArray(1, 0.84705883, 0.15686275, 1, 0.89411765, 0.05490196, 0.20784314, 1)
 
-[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+[node name="Enemy" type="CharacterBody2D" unique_id=444167756 groups=["enemies"]]
 visibility_layer = 3
+z_index = 1
+y_sort_enabled = true
 scale = Vector2(1.5, 1.5)
 collision_layer = 2
-collision_mask = 15
+collision_mask = 79
 script = ExtResource("1_x1rqp")
 skins = Array[SpriteFrames]([ExtResource("10_ycxl0"), ExtResource("3_7ubbs"), ExtResource("4_ycxl0"), ExtResource("5_pko3b"), ExtResource("6_53ao7"), ExtResource("7_3hxf3"), ExtResource("8_xedeb"), ExtResource("9_kx2d8")])
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1496761252]
 position = Vector2(0, -23)
 sprite_frames = ExtResource("7_3hxf3")
 animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=245953991]
 position = Vector2(0, -4.999998)
 scale = Vector2(1.09, 1.09)
 shape = SubResource("CircleShape2D_jcvw6")
 
-[node name="HitLag" type="Timer" parent="."]
+[node name="HitLag" type="Timer" parent="." unique_id=29317353]
 one_shot = true
 
-[node name="Enemy_Hitbox" type="Area2D" parent="."]
+[node name="Enemy_Hitbox" type="Area2D" parent="." unique_id=231354127]
 visible = false
 collision_layer = 2
 collision_mask = 0
@@ -60,38 +61,39 @@ monitoring = false
 script = ExtResource("11_beuat")
 metadata/_custom_type_script = "uid://c56xdds258tel"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_Hitbox" unique_id=1821342391]
 position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_7ubbs")
 
-[node name="EnemyHurtBox" type="Area2D" parent="."]
+[node name="EnemyHurtBox" type="Area2D" parent="." unique_id=1194296753]
 visible = false
 collision_layer = 2
 collision_mask = 23
 script = ExtResource("10_4bcle")
 metadata/_custom_type_script = "uid://ysn1i3gwaakr"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHurtBox" unique_id=1301500156]
 position = Vector2(0, -6.5)
 shape = SubResource("CapsuleShape2D_4bcle")
 
-[node name="LaunchingArea" type="Area2D" parent="."]
+[node name="LaunchingArea" type="Area2D" parent="." unique_id=1683905054]
 visible = false
 collision_layer = 2
 collision_mask = 22
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LaunchingArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaunchingArea" unique_id=1986418276]
 position = Vector2(0, -6.5)
 shape = SubResource("CapsuleShape2D_ubio8")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=552437068]
+debug_enabled = true
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1157489711]
 wait_time = 0.5
 autostart = true
 
-[node name="HitParticles" type="CPUParticles2D" parent="."]
+[node name="HitParticles" type="CPUParticles2D" parent="." unique_id=13992057]
 emitting = false
 amount = 18
 texture = ExtResource("12_7ubbs")
@@ -112,7 +114,7 @@ scale_amount_max = 0.5
 scale_amount_curve = SubResource("Curve_ycxl0")
 color_ramp = SubResource("Gradient_7ubbs")
 
-[node name="FollowCircle" type="Sprite2D" parent="."]
+[node name="FollowCircle" type="Sprite2D" parent="." unique_id=734210838]
 modulate = Color(1, 0, 0, 1)
 visibility_layer = 2
 scale = Vector2(2.89, 2.89)
