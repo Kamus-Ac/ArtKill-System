@@ -16,9 +16,6 @@ func _ready() -> void:
 	if jugar:
 		jugar.grab_focus()
 
-func _on_ajustes_pressed() -> void:
-	pass # Aquí irá tu lógica de ajustes
-
 
 func _on_jugar_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/UI/character_select.tscn")

@@ -5,8 +5,8 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wa43b"]
 texture = ExtResource("2_wa43b")
-texture_margin_left = 10.0
-texture_margin_right = 10.0
+texture_margin_left = 33.0
+texture_margin_right = 30.0
 expand_margin_bottom = 12.0
 
 [resource]
