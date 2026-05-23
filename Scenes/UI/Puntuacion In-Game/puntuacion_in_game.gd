@@ -5,7 +5,7 @@ extends Node
 @onready var scoreboard_panel = $"."
 @onready var final_score: Label = $Label/Final_Score
 
-
+var score_save: ScoresSaved
 
 func _process(_delta: float) -> void:
 	if scoreboard_panel.visible:
@@ -13,8 +13,8 @@ func _process(_delta: float) -> void:
 
 
 func _ready() -> void:
-	#if ScoresSaved.save_exists():
-		#score_save = ScoresSaved.load_savegame()
+	if ScoresSaved.save_exists():
+		score_save = ScoresSaved.load_savegame()
 	#SignalManager.gameOver.connect(gameOver)
 	if scoreboard_panel:
 		scoreboard_panel.visible = false

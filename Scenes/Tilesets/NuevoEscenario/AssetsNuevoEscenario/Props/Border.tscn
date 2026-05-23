@@ -74,3 +74,10 @@ position = Vector2(-160, 76)
 sprite_frames = ExtResource("1_auwu5")
 animation = &"QuitarBorde"
 frame_progress = 0.7221641
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=85263362]
+collision_layer = 32
+collision_mask = 5
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1583967597]
+polygon = PackedVector2Array(-176, 96, -177, 67, 207, -121, 208, -90)

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dsxsepovwk0d8"]
+
+[ext_resource type="Texture2D" uid="uid://nbmw1vgxl65j" path="res://Scenes/Tilesets/NuevoEscenario/AssetsNuevoEscenario/estatua2.png" id="1_3ch03"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ch03"]
+radius = 42.0
+
+[node name="Estatua" type="Node2D" unique_id=2023302628]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1668007388]
+texture = ExtResource("1_3ch03")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=397228730]
+collision_layer = 8
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=277854416]
+position = Vector2(-1, 21)
+shape = SubResource("CircleShape2D_3ch03")

@@ -14,6 +14,8 @@ var current_name: String
 var current_position: int
 
 func _ready() -> void:
+	if ScoresSaved.save_exists():
+		score_save = ScoresSaved.load_savegame()
 	GameOver_Panel.visible = false
 	SignalManager.gameOver.connect(_mostrar_GameOver_Panel)
 
