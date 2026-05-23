@@ -6,10 +6,12 @@ extends Control
 @onready var dani: PanelContainer = $MainPanel/VBox/CharactersBox/Dani
 @onready var confirm: TextureButton = $MainPanel/VBox/HBoxContainer/CONFIRMAR
 @onready var volver: TextureButton = $MainPanel/VBox/HBoxContainer/VOLVER
+@onready var character_music = $CharacterMusic
 
 var selected_card: PanelContainer = null
 
 func _ready():
+	character_music.play()
 	confirm.disabled = true
 	for card in characters_box.get_children():
 		if card.has_method("set_selected"):
@@ -58,6 +60,7 @@ func _on_card_selected(card):
 func _on_confirmar_pressed() -> void:
 	if selected_card == null:
 		return
+	character_music.stop()
 	get_tree().change_scene_to_file("res://Scenes/assets/loadscene/scene/LoadScene.tscn")
 
 
