@@ -4,19 +4,22 @@ extends Resource
 @export var names: Array[String] = []
 @export var scores: Array[int] = []
 
-const SAVE_GAME_PATH := "user://SaveFile.tres"
+const SAVE_GAME_BASE_PATH := "user://SaveFile"
 
 
 func write_savegame() -> void:
-	ResourceSaver.save(self, SAVE_GAME_PATH)
+	var result = ResourceSaver.save(self, get_save_path())
+	print("SAVE RESULT: ", result)
 
 
 static func save_exists() -> bool:
-	return ResourceLoader.exists(SAVE_GAME_PATH)
+	return ResourceLoader.exists(get_save_path())
 
 
 static func load_savegame() -> ScoresSaved:
-	if not ResourceLoader.exists(SAVE_GAME_PATH):
-		return null
-	
-	return ResourceLoader.load(SAVE_GAME_PATH, "", ResourceLoader.CACHE_MODE_IGNORE) as ScoresSaved
+	var save_path := get_save_path()
+	return ResourceLoader.load(save_path, "", ResourceLoader.CACHE_MODE_IGNORE)
+
+static func get_save_path() -> String:
+	var extension := ".tres" if OS.is_debug_build() else ".res"
+	return SAVE_GAME_BASE_PATH + extension
