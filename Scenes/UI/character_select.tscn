@@ -146,7 +146,7 @@ focus_neighbor_right = NodePath("../VOLVER")
 texture_normal = ExtResource("10_mnj10")
 texture_pressed = ExtResource("11_0jb4w")
 texture_hover = ExtResource("12_elwnx")
-texture_focused = ExtResource("12_elwnx")
+texture_focused = ExtResource("11_0jb4w")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -158,7 +158,7 @@ focus_neighbor_left = NodePath("../CONFIRMAR")
 texture_normal = ExtResource("13_1n6fh")
 texture_pressed = ExtResource("14_i7jg1")
 texture_hover = ExtResource("15_8r8pr")
-texture_focused = ExtResource("15_8r8pr")
+texture_focused = ExtResource("14_i7jg1")
 ignore_texture_size = true
 stretch_mode = 0
 

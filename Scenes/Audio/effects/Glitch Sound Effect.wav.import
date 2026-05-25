@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dthvb62ou8ahs"
+path="res://.godot/imported/Glitch Sound Effect.wav-a70db41c3ea48ebe1dcb05f3ea767945.sample"
+
+[deps]
+
+source_file="res://Scenes/Audio/effects/Glitch Sound Effect.wav"
+dest_files=["res://.godot/imported/Glitch Sound Effect.wav-a70db41c3ea48ebe1dcb05f3ea767945.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

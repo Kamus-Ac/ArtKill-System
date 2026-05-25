@@ -250,6 +250,6 @@ polygon = PackedVector2Array(-2061, -187, 609, 1149, 608, 1190, -765, 504, -2112
 
 [node name="GameMusic" type="AudioStreamPlayer" parent="." unique_id=1559603961 groups=["game_music"]]
 stream = SubResource("AudioStreamOggVorbis_q52rl")
-volume_db = -6.0
+volume_db = 0.5
 autoplay = true
 parameters/looping = true
