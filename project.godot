@@ -19,6 +19,7 @@ run/main_scene="uid://daqttgfpr6wj2"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 run/max_fps=60
 config/icon="uid://hmoud62jv4xx"
+config/windows_native_icon="res://AKS.ico"
 
 [autoload]
 
