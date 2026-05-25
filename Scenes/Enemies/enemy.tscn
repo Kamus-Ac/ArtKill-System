@@ -88,7 +88,6 @@ shape = SubResource("CapsuleShape2D_ubio8")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=552437068]
 avoidance_enabled = true
-debug_enabled = true
 
 [node name="Timer" type="Timer" parent="." unique_id=1157489711]
 wait_time = 2.0

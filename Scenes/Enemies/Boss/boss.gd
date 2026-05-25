@@ -4,7 +4,7 @@ signal died
 
 const MAX_SPEED := 60.0
 
-@export var max_health: int = 5
+@export var max_health: int = 20
 @export var boss_projectile_scene : PackedScene
 @onready var shoot_timer : Timer = $ShootTimer
 @onready var anim = $AnimatedSprite2D

@@ -1,7 +1,7 @@
 extends Node
 
 @export var enemy_scene: PackedScene
-@export var spawn_radius := 950 #radio en el que spawnean
+@export var spawn_radius := 1250 #radio en el que spawnean
 @export var initial_spawn_count := 3 #cuántos al inicio
 @export var spawn_increase_per_wave := 15 #cuantos incrementan por ronda
 @export var max_enemies_per_wave := 105 #cuantos puede haber por ronda 
@@ -21,7 +21,7 @@ func _ready():
 	start_wave()
 
 func _on_boss_spawned():
-	waves_paused = true
+	waves_paused = false
 	var all_enemies = get_tree().get_nodes_in_group("enemies")
 	for enemy in all_enemies:
 		if "skins" in enemy:
@@ -83,7 +83,7 @@ func _on_enemy_died():
 	
 	if enemies_alive <= 0 and player and not waves_paused:
 		GameManager.current_wave += 1
-		if GameManager.current_wave <4:
+		if GameManager.current_wave < 10:
 			#pausamos las waves
 			#waves_paused = true
 			SignalManager.unlockedzones.emit(GameManager.current_wave)
