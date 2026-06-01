@@ -3,9 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://gn4p6hbfygrd" path="res://Scenes/UI/fondo.png" id="1_d2u0d"]
 [ext_resource type="Script" uid="uid://cfgcic74nx4h8" path="res://Scenes/UI/Ajustes/ajustes.gd" id="1_jr8yr"]
 [ext_resource type="FontFile" uid="uid://cyiarpmaku8le" path="res://Scenes/UI/Vermin Vibes 1989.ttf" id="2_e4iy2"]
+[ext_resource type="Theme" uid="uid://cg2w411f2mn6q" path="res://Scenes/Themes/Marco.tres" id="4_es6t0"]
+[ext_resource type="Theme" uid="uid://dwn5wpsdebd30" path="res://Scenes/Themes/Main_Menu.tres" id="4_jkr3c"]
 [ext_resource type="Texture2D" uid="uid://cve86bu1wu1lb" path="res://Scenes/UI/Character_Select/Boton volver.png" id="4_yrbai"]
 [ext_resource type="Texture2D" uid="uid://cfp2huydoyfiv" path="res://Scenes/UI/Character_Select/Boton volver clicked.png" id="5_jkr3c"]
 [ext_resource type="Texture2D" uid="uid://dx06208l5wofi" path="res://Scenes/UI/Character_Select/Boton volver selected.png" id="6_es6t0"]
+[ext_resource type="PackedScene" uid="uid://c2ji2sfc67t8b" path="res://Scenes/UI/Ajustes/max_fps.tscn" id="9_es6t0"]
 
 [node name="Control" type="Control" unique_id=56700099]
 layout_mode = 3
@@ -65,42 +68,185 @@ grow_vertical = 2
 
 [node name="TabContainer" type="TabContainer" parent="TextureRect/PanelContainer" unique_id=1799270369]
 layout_mode = 2
+theme = ExtResource("4_es6t0")
+theme_override_constants/side_margin = 5
+theme_override_constants/tab_separation = 8
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_e4iy2")
 theme_override_font_sizes/font_size = 50
-current_tab = 0
+current_tab = 1
 
 [node name="PANTALLA" type="TabBar" parent="TextureRect/PanelContainer/TabContainer" unique_id=1642382132]
+visible = false
 layout_mode = 2
+focus_neighbor_right = NodePath("../SONIDO")
+focus_neighbor_bottom = NodePath("MarginContainer/GridContainer/OpcionDisplay")
 theme_override_fonts/font = ExtResource("2_e4iy2")
 metadata/_tab_index = 0
 
-[node name="GridContainer" type="GridContainer" parent="TextureRect/PanelContainer/TabContainer/PANTALLA" unique_id=741605680]
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/PanelContainer/TabContainer/PANTALLA" unique_id=708128307]
 layout_mode = 0
-offset_top = 0.5
-offset_right = 1806.0
-offset_bottom = 646.5
+offset_left = 48.0
+offset_top = 9.5
+offset_right = 1753.0
+offset_bottom = 629.5
+
+[node name="GridContainer" type="GridContainer" parent="TextureRect/PanelContainer/TabContainer/PANTALLA/MarginContainer" unique_id=741605680]
+layout_mode = 2
+columns = 2
+
+[node name="Display" type="Label" parent="TextureRect/PanelContainer/TabContainer/PANTALLA/MarginContainer/GridContainer" unique_id=625941282]
+layout_mode = 2
+theme = ExtResource("4_jkr3c")
+theme_override_constants/outline_size = 10
+text = "DISPLAY MODE"
+
+[node name="OpcionDisplay" type="OptionButton" parent="TextureRect/PanelContainer/TabContainer/PANTALLA/MarginContainer/GridContainer" unique_id=915673890]
+layout_mode = 2
+size_flags_horizontal = 10
+focus_neighbor_top = NodePath("../../..")
+focus_neighbor_bottom = NodePath("../vsync")
+theme = ExtResource("4_jkr3c")
+selected = 0
+item_count = 2
+popup/item_0/text = "Full Screen"
+popup/item_0/id = 0
+popup/item_1/text = "Windowed"
+popup/item_1/id = 1
+
+[node name="VSync" type="Label" parent="TextureRect/PanelContainer/TabContainer/PANTALLA/MarginContainer/GridContainer" unique_id=248940358]
+layout_mode = 2
+theme = ExtResource("4_jkr3c")
+theme_override_constants/outline_size = 10
+text = "V Sync"
+
+[node name="vsync" type="CheckButton" parent="TextureRect/PanelContainer/TabContainer/PANTALLA/MarginContainer/GridContainer" unique_id=207177403]
+layout_mode = 2
+focus_neighbor_top = NodePath("../OpcionDisplay")
+focus_neighbor_bottom = NodePath("../Dsplyfps")
+theme = ExtResource("4_jkr3c")
+
+[node name="Dsply FPS" type="Label" parent="TextureRect/PanelContainer/TabContainer/PANTALLA/MarginContainer/GridContainer" unique_id=777066409]
+layout_mode = 2
+theme = ExtResource("4_jkr3c")
+theme_override_constants/outline_size = 10
+text = "display fps"
+
+[node name="Dsplyfps" type="CheckButton" parent="TextureRect/PanelContainer/TabContainer/PANTALLA/MarginContainer/GridContainer" unique_id=1013142350]
+layout_mode = 2
+focus_neighbor_top = NodePath("../vsync")
+focus_neighbor_bottom = NodePath("../Mxfps")
+theme = ExtResource("4_jkr3c")
+
+[node name="Max FPS" type="Label" parent="TextureRect/PanelContainer/TabContainer/PANTALLA/MarginContainer/GridContainer" unique_id=947958968]
+layout_mode = 2
+theme = ExtResource("4_jkr3c")
+theme_override_constants/outline_size = 10
+text = "Max fps"
+
+[node name="Mxfps" type="HSlider" parent="TextureRect/PanelContainer/TabContainer/PANTALLA/MarginContainer/GridContainer" unique_id=1212002323]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../Dsplyfps")
+focus_neighbor_bottom = NodePath("../../../../../../VOLVER")
+min_value = 30.0
+max_value = 500.0
+value = 30.0
+rounded = true
+
+[node name="Brigthness" type="Label" parent="TextureRect/PanelContainer/TabContainer/PANTALLA/MarginContainer/GridContainer" unique_id=1510434274]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_jkr3c")
+theme_override_constants/outline_size = 10
+text = "Brigthness"
+
+[node name="mxBri" type="HSlider" parent="TextureRect/PanelContainer/TabContainer/PANTALLA/MarginContainer/GridContainer" unique_id=1090622614]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../Dsplyfps")
+focus_neighbor_bottom = NodePath("../../../../../../VOLVER")
+max_value = 2.0
+value = 1.0
+rounded = true
 
 [node name="SONIDO" type="TabBar" parent="TextureRect/PanelContainer/TabContainer" unique_id=208263790]
-visible = false
 layout_mode = 2
+focus_neighbor_left = NodePath("../PANTALLA")
+focus_neighbor_right = NodePath("../CONTROLES")
+focus_neighbor_bottom = NodePath("../../../VOLVER")
 metadata/_tab_index = 1
 
-[node name="GridContainer2" type="GridContainer" parent="TextureRect/PanelContainer/TabContainer/SONIDO" unique_id=2122058832]
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/PanelContainer/TabContainer/SONIDO" unique_id=397087086]
 layout_mode = 0
-offset_top = 0.5
-offset_right = 1806.0
-offset_bottom = 646.5
+offset_left = 48.0
+offset_top = 9.5
+offset_right = 1753.0
+offset_bottom = 629.5
+
+[node name="GridContainer" type="GridContainer" parent="TextureRect/PanelContainer/TabContainer/SONIDO/MarginContainer" unique_id=209834905]
+layout_mode = 2
+columns = 2
+
+[node name="Master" type="Label" parent="TextureRect/PanelContainer/TabContainer/SONIDO/MarginContainer/GridContainer" unique_id=1620400920]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_jkr3c")
+theme_override_constants/outline_size = 10
+text = "Master"
+
+[node name="master" type="HSlider" parent="TextureRect/PanelContainer/TabContainer/SONIDO/MarginContainer/GridContainer" unique_id=353014876]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_neighbor_bottom = NodePath("../../../../../../VOLVER")
+min_value = -50.0
+max_value = 0.0
+value = -15.0
+rounded = true
+
+[node name="Musica" type="Label" parent="TextureRect/PanelContainer/TabContainer/SONIDO/MarginContainer/GridContainer" unique_id=44984795]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_jkr3c")
+theme_override_constants/outline_size = 10
+text = "MUSIC"
+
+[node name="musica" type="HSlider" parent="TextureRect/PanelContainer/TabContainer/SONIDO/MarginContainer/GridContainer" unique_id=952358035]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_neighbor_bottom = NodePath("../../../../../../VOLVER")
+min_value = -50.0
+max_value = 0.0
+value = -15.0
+rounded = true
+
+[node name="SFX" type="Label" parent="TextureRect/PanelContainer/TabContainer/SONIDO/MarginContainer/GridContainer" unique_id=732251309]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_jkr3c")
+theme_override_constants/outline_size = 10
+text = "SFX"
+
+[node name="sfx" type="HSlider" parent="TextureRect/PanelContainer/TabContainer/SONIDO/MarginContainer/GridContainer" unique_id=55295609]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_neighbor_bottom = NodePath("../../../../../../VOLVER")
+min_value = -50.0
+max_value = 0.0
+value = -15.0
+rounded = true
 
 [node name="CONTROLES" type="TabBar" parent="TextureRect/PanelContainer/TabContainer" unique_id=1800209167]
 visible = false
 layout_mode = 2
+focus_neighbor_left = NodePath("../SONIDO")
+focus_neighbor_bottom = NodePath("../../../VOLVER")
 metadata/_tab_index = 2
-
-[node name="GridContainer3" type="GridContainer" parent="TextureRect/PanelContainer/TabContainer/CONTROLES" unique_id=92962115]
-layout_mode = 0
-offset_top = 0.5
-offset_right = 1806.0
-offset_bottom = 646.5
 
 [node name="VOLVER" type="TextureButton" parent="TextureRect" unique_id=1333925876]
 texture_filter = 1
@@ -118,4 +264,15 @@ texture_focused = ExtResource("5_jkr3c")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="Label" parent="." unique_id=1990822297 instance=ExtResource("9_es6t0")]
+layout_mode = 1
+
+[connection signal="item_selected" from="TextureRect/PanelContainer/TabContainer/PANTALLA/MarginContainer/GridContainer/OpcionDisplay" to="." method="_on_opcion_display_item_selected"]
+[connection signal="toggled" from="TextureRect/PanelContainer/TabContainer/PANTALLA/MarginContainer/GridContainer/vsync" to="." method="_on_vsync_toggled"]
+[connection signal="toggled" from="TextureRect/PanelContainer/TabContainer/PANTALLA/MarginContainer/GridContainer/Dsplyfps" to="." method="_on_dsplyfps_toggled"]
+[connection signal="value_changed" from="TextureRect/PanelContainer/TabContainer/PANTALLA/MarginContainer/GridContainer/Mxfps" to="." method="_on_mxfps_value_changed"]
+[connection signal="value_changed" from="TextureRect/PanelContainer/TabContainer/PANTALLA/MarginContainer/GridContainer/mxBri" to="." method="_on_mx_bri_value_changed"]
+[connection signal="value_changed" from="TextureRect/PanelContainer/TabContainer/SONIDO/MarginContainer/GridContainer/master" to="." method="_on_master_value_changed"]
+[connection signal="value_changed" from="TextureRect/PanelContainer/TabContainer/SONIDO/MarginContainer/GridContainer/musica" to="." method="_on_musica_value_changed"]
+[connection signal="value_changed" from="TextureRect/PanelContainer/TabContainer/SONIDO/MarginContainer/GridContainer/sfx" to="." method="_on_sfx_value_changed"]
 [connection signal="pressed" from="TextureRect/VOLVER" to="." method="_on_volver_pressed"]

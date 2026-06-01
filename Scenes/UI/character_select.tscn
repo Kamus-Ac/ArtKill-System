@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://dx06208l5wofi" path="res://Scenes/UI/Character_Select/Boton volver selected.png" id="15_8r8pr"]
 [ext_resource type="AudioStream" uid="uid://di3mfjfsj8cdu" path="res://Scenes/Audio/effects/impacto.ogg" id="20_8r8pr"]
 [ext_resource type="FontFile" uid="uid://cyiarpmaku8le" path="res://Scenes/UI/Vermin Vibes 1989.ttf" id="20_mxdfm"]
+[ext_resource type="PackedScene" uid="uid://c2ji2sfc67t8b" path="res://Scenes/UI/Ajustes/max_fps.tscn" id="21_v2mwy"]
 
 [sub_resource type="Resource" id="Resource_yn15k"]
 script = ExtResource("8_jjfpe")
@@ -178,6 +179,9 @@ horizontal_alignment = 1
 [node name="CharacterMusic" type="AudioStreamPlayer" parent="." unique_id=939323884]
 stream = ExtResource("20_8r8pr")
 autoplay = true
+
+[node name="Label2" parent="." unique_id=1990822297 instance=ExtResource("21_v2mwy")]
+layout_mode = 1
 
 [connection signal="pressed" from="MainPanel/VBox/HBoxContainer/CONFIRMAR" to="." method="_on_confirmar_pressed"]
 [connection signal="pressed" from="MainPanel/VBox/HBoxContainer/VOLVER" to="." method="_on_volver_pressed"]
