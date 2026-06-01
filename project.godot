@@ -25,13 +25,14 @@ config/windows_native_icon="res://AKS.ico"
 
 SignalManager="*res://Scenes/Managers/signal_manager.gd"
 GameManager="*res://Scenes/Managers/game_manager.gd"
+GlobalSettings="*uid://brbl5fipnm5xl"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 
 [global_group]
 

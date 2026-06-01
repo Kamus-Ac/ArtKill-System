@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dvt6iv3icyp8f" path="res://Scenes/UI/Main_Menu/Mancha pintura amarilla.png" id="13_mf5kc"]
 [ext_resource type="Shader" uid="uid://b8vqruqbfi21m" path="res://Scenes/UI/Main_Menu/main_menu.gdshader" id="15_yjy6s"]
 [ext_resource type="AudioStream" uid="uid://cxqwlm4rlu1rs" path="res://Scenes/Audio/musica/menu-music.ogg" id="17_vwxdh"]
+[ext_resource type="PackedScene" uid="uid://c2ji2sfc67t8b" path="res://Scenes/UI/Ajustes/max_fps.tscn" id="19_ii72m"]
 [ext_resource type="Theme" uid="uid://dwn5wpsdebd30" path="res://Scenes/Themes/Main_Menu.tres" id="20_ac8cp"]
 [ext_resource type="FontFile" uid="uid://cyiarpmaku8le" path="res://Scenes/UI/Vermin Vibes 1989.ttf" id="23_tew2s"]
 
@@ -195,6 +196,9 @@ parameters/looping = true
 [node name="Glitch" type="AudioStreamPlayer" parent="." unique_id=1438617880]
 stream = SubResource("AudioStreamWAV_yjy6s")
 volume_db = -6.5
+
+[node name="Label" parent="." unique_id=1990822297 instance=ExtResource("19_ii72m")]
+layout_mode = 1
 
 [connection signal="pressed" from="VBoxContainer2/JUGAR" to="." method="_on_jugar_pressed"]
 [connection signal="pressed" from="VBoxContainer2/AJUSTES" to="." method="_on_ajustes_pressed"]

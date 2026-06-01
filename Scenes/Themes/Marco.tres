@@ -6,6 +6,25 @@ bg_color = Color(0.22352941, 0.019607844, 0.2509804, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tejen"]
 bg_color = Color(0.22448227, 0.01968538, 0.25200474, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ocyp1"]
+bg_color = Color(0.8934682, 0.53497803, 0.8191004, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pojly"]
+bg_color = Color(0.6925115, 0.61319095, 0.9291814, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uf2ae"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5xp87"]
+bg_color = Color(0.5227242, 0.5227243, 0.5227241, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3m2v"]
+bg_color = Color(0.9357623, 0.54550165, 0.8142342, 1)
+
 [resource]
 Panel/styles/panel = SubResource("StyleBoxFlat_tnwmx")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_tejen")
+TabBar/styles/button_highlight = SubResource("StyleBoxFlat_ocyp1")
+TabContainer/styles/panel = SubResource("StyleBoxFlat_pojly")
+TabContainer/styles/tab_selected = SubResource("StyleBoxEmpty_uf2ae")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_5xp87")
+TabContainer/styles/tabbar_background = SubResource("StyleBoxFlat_c3m2v")

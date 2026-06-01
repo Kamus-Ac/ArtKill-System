@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c2ji2sfc67t8b"]
+
+[ext_resource type="Theme" uid="uid://dwn5wpsdebd30" path="res://Scenes/Themes/Main_Menu.tres" id="1_if1vr"]
+[ext_resource type="Script" uid="uid://s5q05bwmkdnr" path="res://Scenes/UI/Ajustes/max_fps.gd" id="2_523v4"]
+
+[node name="Label" type="Label" unique_id=1990822297]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -113.0
+offset_bottom = 88.0
+grow_horizontal = 0
+size_flags_horizontal = 10
+theme = ExtResource("1_if1vr")
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 100
+text = "30"
+script = ExtResource("2_523v4")

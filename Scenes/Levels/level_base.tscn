@@ -17,6 +17,7 @@
 [ext_resource type="Shader" uid="uid://b0b6kacj31nib" path="res://Scenes/Levels/Minimapcircular.gdshader" id="13_q678k"]
 [ext_resource type="Script" uid="uid://bjqdaw2yt6ev4" path="res://Scenes/Levels/minimap_camera.gd" id="13_s4hme"]
 [ext_resource type="PackedScene" uid="uid://by2o64bro0sgc" path="res://Scenes/assets/tiles/objective_point.tscn" id="16_ankfj"]
+[ext_resource type="PackedScene" uid="uid://c2ji2sfc67t8b" path="res://Scenes/UI/Ajustes/max_fps.tscn" id="18_hr3fp"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_ls6f5"]
 script = ExtResource("8_ls6f5")
@@ -253,3 +254,9 @@ stream = SubResource("AudioStreamOggVorbis_q52rl")
 volume_db = 0.5
 autoplay = true
 parameters/looping = true
+
+[node name="Label" parent="." unique_id=1990822297 instance=ExtResource("18_hr3fp")]
+offset_left = 5.0
+offset_top = 2.0
+offset_right = 118.0
+offset_bottom = 90.0

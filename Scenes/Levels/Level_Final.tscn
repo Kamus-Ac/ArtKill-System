@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bxhrqlkude433" path="res://Scenes/Tilesets/NuevoEscenario/AssetsNuevoEscenario/Props/Border.tscn" id="16_x5psd"]
 [ext_resource type="PackedScene" uid="uid://dsxsepovwk0d8" path="res://Scenes/Tilesets/NuevoEscenario/AssetsNuevoEscenario/Props/estatua.tscn" id="17_atoaq"]
 [ext_resource type="AudioStream" uid="uid://tees6v32hv2u" path="res://Scenes/Audio/musica/game-music.ogg" id="19_ef4yo"]
+[ext_resource type="PackedScene" uid="uid://c2ji2sfc67t8b" path="res://Scenes/UI/Ajustes/max_fps.tscn" id="21_ei8v7"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_ls6f5"]
 script = ExtResource("11_moj7s")
@@ -72,6 +73,8 @@ offset_top = -5.96
 offset_bottom = -5.960083
 
 [node name="GameOver_Panel" parent="GameCamera/CanvasLayer2" unique_id=1110839108 instance=ExtResource("7_hoya3")]
+
+[node name="Label" parent="GameCamera/CanvasLayer2" unique_id=1990822297 instance=ExtResource("21_ei8v7")]
 
 [node name="EnemyManager" parent="." unique_id=1752903025 instance=ExtResource("7_vlw1u")]
 
