@@ -41,6 +41,6 @@ It also helped me gain experience working with **GDScript**, Godot's scene-based
 
 Developed collaboratively by the IA Valio Studios team:
 
-**Manuel Acosta**, Memo, Félix, Ángel, Dante, Mike, Milton, Óscar, Raziel, Valentina, Yaiza, Daniel, Eduardo y Adame.
+**Manuel Acosta**, Memo, Félix, Ángel, Dante, Mike, Milton, Óscar, Raziel, Valentina, Yaiza, Daniel y Adame.
 
 My main contributions included gameplay programming and systems development, including player behavior, combat mechanics, enemy management, spawning systems, and gameplay interactions.
